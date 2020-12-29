@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.3",
+  "description": "todo node app",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client && npm build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node index.js"
+  },
+  "author": "Nightmare9254 & mix1o",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "nodemon": "^2.0.6"
+  }
+}

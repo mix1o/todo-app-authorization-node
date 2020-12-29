@@ -1,0 +1,34 @@
+  // const isExistingUser = await Users.findOne({
+  //   email: req.body.userEmail,
+  //   password: req.body.userPassword,
+  // });
+  // if (isExistingUser) {
+  //   req.session.user = isExistingUser;
+  //   const user = { ...isExistingUser };
+
+  //   res.cookie('user', user._doc);
+  //   res.send({ message: 'Logged in', correct: true });
+  //   res.json(user);
+  // } else {
+  //   res.send({ message: 'Invalid email address or password' });
+  // }
+
+
+
+    // const isExistingEmail = await Users.findOne({
+  //   email: req.body.userEmail,
+  // });
+  // const { userNewPassword } = req.body;
+  // if (isExistingEmail) {
+  //   const updatedPassword = await Users.updateOne(
+  //     { email: req.body.userEmail },
+  //     {
+  //       $set: {
+  //         password: userNewPassword,
+  //       },
+  //     }
+  //   );
+  //   res.json(updatedPassword);
+  // } else {
+  //   res.send({ message: 'This email is incorrect!' });
+  // }
