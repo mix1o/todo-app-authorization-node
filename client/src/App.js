@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
-          <Route exact path="/user-panel">
+          <Route exact path="user-panel">
             <UserPanel />
             {/* {!user ? <Redirect to="/login" /> : <UserPanel />} */}
           </Route>
