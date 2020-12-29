@@ -17,8 +17,6 @@ function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
-  const history = createMemoryHistory(location);
-
   return (
     <div className="App">
       <Router history={browserHistory}>
