@@ -9,6 +9,7 @@ import {
   Switch,
   Route,
   Redirect,
+  HashRouter,
 } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
@@ -30,7 +31,7 @@ function App() {
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
         </Switch>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
