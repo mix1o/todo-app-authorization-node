@@ -10,13 +10,12 @@ import Todo from '../todo/Todo';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-    text-align: center;
-    padding: 9rem 1.5rem;
-    filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
-    background: ${({ open }) => (open ? 'rgb(235, 235, 235)' : '#fff')};
-    height: 93vh;
-  `;
-
+  text-align: center;
+  padding: 9rem 1.5rem;
+  filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
+  background: ${({ open }) => (open ? 'rgb(235, 235, 235)' : '#fff')};
+  height: 93vh;
+`;
 
 const UserPanel = () => {
   const [message, setMessage] = useState('');
@@ -44,18 +43,18 @@ const UserPanel = () => {
     }).then(() => history.push('/'));
   };
 
-  const convertDate = () => {
-    if (correct) {
-      const date = new Date(user[0].createdDate);
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      const x = `${day}/${month}/${year}`;
-      return x;
-    }
-  };
+  // const convertDate = () => {
+  //   if (correct) {
+  //     const date = new Date(user[0].createdDate);
+  //     const day = date.getDate();
+  //     const month = date.getMonth() + 1;
+  //     const year = date.getFullYear();
+  //     const x = `${day}/${month}/${year}`;
+  //     return x;
+  //   }
+  // };
 
-  const myNewDate = convertDate();
+  // const myNewDate = convertDate();
 
   const deleteAccount = () => {
     fetch('/api/delete', {
@@ -81,26 +80,36 @@ const UserPanel = () => {
       });
   }, [tasks]);
 
-
   return (
     <>
       <button onClick={singOut}>wyloguj</button>
       <Header />
-      {tasks.length < 1 && <div className="center">
-      <div onClick={() => {
-        if(open){
-          setOpen(false)
-        }
-      }}>
-        <StyledDiv open={open}>
-          <h2 className="heading-2">Start with adding new task</h2>
-          {!open && <button className="btn-user-panel" onClick={() => setOpen(true)}>Add task</button>}
-          <div className="user-panel-svg">{illustration}</div>
-        </StyledDiv> 
-       </div>
-      {open && <Todo setOpen={setOpen}/>}
-      </div>}
-      {tasks.length > 0 && <UserTodos tasks={tasks}/>}
+      {tasks.length < 1 && (
+        <div className="center">
+          <div
+            onClick={() => {
+              if (open) {
+                setOpen(false);
+              }
+            }}
+          >
+            <StyledDiv open={open}>
+              <h2 className="heading-2">Start with adding new task</h2>
+              {!open && (
+                <button
+                  className="btn-user-panel"
+                  onClick={() => setOpen(true)}
+                >
+                  Add task
+                </button>
+              )}
+              <div className="user-panel-svg">{illustration}</div>
+            </StyledDiv>
+          </div>
+          {open && <Todo setOpen={setOpen} />}
+        </div>
+      )}
+      {tasks.length > 0 && <UserTodos tasks={tasks} />}
     </>
   );
 };
