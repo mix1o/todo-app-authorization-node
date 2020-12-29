@@ -10,7 +10,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { browserHistory } from 'react-router';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
 function App() {
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router history={browserHistory}>
+      <Router>
         <Switch>
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
