@@ -18,7 +18,8 @@ const SignIn = () => {
 
     setUserData({ ...userData, [name]: value });
   };
-  const hanlderSign = () => {
+  const hanlderSign = (e) => {
+    e.preventDefault();
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -30,7 +31,7 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          history.push('/user-panel');
+          window.location.href = '/user-panel';
         }
       });
   };
@@ -80,7 +81,10 @@ const SignIn = () => {
         </label>
       </div>
       <div className="section__buttons">
-        <button onClick={hanlderSign} className="signIn__btn btn__main--full ">
+        <button
+          onClick={(e) => hanlderSign(e)}
+          className="signIn__btn btn__main--full "
+        >
           Login
         </button>
       </div>

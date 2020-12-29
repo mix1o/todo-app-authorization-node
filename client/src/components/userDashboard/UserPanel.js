@@ -40,7 +40,10 @@ const UserPanel = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(() => history.push('/'));
+    }).then(() => {
+      history.push('/');
+      window.location.reload();
+    });
   };
 
   // const convertDate = () => {
