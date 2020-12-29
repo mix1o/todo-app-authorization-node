@@ -4,7 +4,14 @@ import ResetPasswordForm from './components/loginComponents/ResetPasswordForm';
 import UserPanel from './components/userDashboard/UserPanel';
 import Todo from './components/todo/Todo';
 import PayNow from './components/payments/PayNow';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  HashRouter,
+} from 'react-router-dom';
+
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
 function App() {
@@ -13,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
@@ -25,7 +32,7 @@ function App() {
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
