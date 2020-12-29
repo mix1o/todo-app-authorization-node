@@ -21,14 +21,14 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={SignUp} />
-          <Route exact path="/reset" component={ResetPasswordForm} />
-          <Route exact path="/user-panel">
-            {!user ? <Redirect to="/login" /> : <UserPanel />}
+          <Route exact path="/#/reset" component={ResetPasswordForm} />
+          <Route exact path="/#/user-panel">
+            {!user ? <Redirect to="/#/login" /> : <UserPanel />}
           </Route>
-          {user && <Route exact path="/login" component={UserPanel} />}
-          <Route exact path="/login" component={SignIn} />
-          <Route exact path="/pay-now" component={PayNow} />
-          {user && <Route exact path="/todo" component={Todo} />}
+          {user && <Route exact path="/#/login" component={UserPanel} />}
+          <Route exact path="/#/login" component={SignIn} />
+          <Route exact path="/#/pay-now" component={PayNow} />
+          {user && <Route exact path="/#/todo" component={Todo} />}
         </Switch>
       </Router>
     </div>
