@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
+      <HashRouter basename="/">
         <Switch>
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
