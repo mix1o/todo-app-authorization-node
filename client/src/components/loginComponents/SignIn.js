@@ -32,6 +32,7 @@ const SignIn = () => {
         setMessage(json);
         if (json.correct) {
           window.location.href = '/#/user-panel';
+          window.location.href = '/user-panel';
         }
       });
   };
