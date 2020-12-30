@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const auth = require('./auth');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -14,6 +15,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 8000;
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+});
 
 mongoose
   .connect(
