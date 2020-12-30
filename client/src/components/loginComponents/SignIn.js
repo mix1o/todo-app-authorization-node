@@ -10,6 +10,7 @@ const SignIn = () => {
   });
   const [passwordVis, setPasswordVis] = useState('password');
   const [isVisible, setIsVisible] = useState(true);
+  const [correct, setCorrect] = useState(false);
   const history = useHistory();
   const handlerInput = (e) => {
     const target = e.target;
@@ -31,8 +32,7 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          window.location.href = '/#/user-panel';
-          window.location.href = '/user-panel';
+          setCorrect(true);
         }
       });
   };
@@ -86,7 +86,8 @@ const SignIn = () => {
           onClick={(e) => hanlderSign(e)}
           className="signIn__btn btn__main--full "
         >
-          Login
+          login
+          {correct && <Link to="/user-panel"></Link>}
         </button>
       </div>
     </section>
