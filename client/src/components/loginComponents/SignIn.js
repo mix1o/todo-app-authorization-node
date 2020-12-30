@@ -31,7 +31,7 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          window.location.href = '/user-panel';
+          window.location.href = '/#/user-panel';
         }
       });
   };
