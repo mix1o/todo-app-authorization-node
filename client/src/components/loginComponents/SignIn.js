@@ -32,7 +32,8 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          setCorrect(true);
+          window.location.href('/user-panel');
+          history.push('/user-panel');
         }
       });
   };
@@ -86,8 +87,7 @@ const SignIn = () => {
           onClick={(e) => hanlderSign(e)}
           className="signIn__btn btn__main--full "
         >
-          login
-          {correct && <Link to="/user-panel"></Link>}
+          Login
         </button>
       </div>
     </section>
