@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import ToggleEye from './ToggleEye';
 
 const SignIn = () => {
@@ -33,7 +33,6 @@ const SignIn = () => {
         setMessage(json);
         if (json.correct) {
           window.location.href('/user-panel');
-          history.push('/user-panel');
         }
       });
   };
@@ -88,6 +87,7 @@ const SignIn = () => {
           className="signIn__btn btn__main--full "
         >
           Login
+          {correct && <Redirect to="/user-panel" />}
         </button>
       </div>
     </section>
