@@ -82,13 +82,14 @@ const SignIn = () => {
         </label>
       </div>
       <div className="section__buttons">
-        <button
-          onClick={(e) => hanlderSign(e)}
-          className="signIn__btn btn__main--full "
-        >
-          Login
-          <Link to="/user-panel">NEXT</Link>
-        </button>
+        <Link to="/user-panel">
+          <button
+            onClick={(e) => hanlderSign(e)}
+            className="signIn__btn btn__main--full "
+          >
+            Login NEXT
+          </button>
+        </Link>
       </div>
     </section>
   );
