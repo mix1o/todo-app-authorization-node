@@ -87,7 +87,7 @@ const SignIn = () => {
           className="signIn__btn btn__main--full "
         >
           Login
-          {correct && <Redirect to="/user-panel" />}
+          <Link to="/user-panel">NEXT</Link>
         </button>
       </div>
     </section>
