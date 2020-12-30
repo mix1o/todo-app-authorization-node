@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ToggleEye from './ToggleEye';
 
 const SignIn = () => {
@@ -82,14 +82,12 @@ const SignIn = () => {
         </label>
       </div>
       <div className="section__buttons">
-        <Link to="/user-panel">
-          <button
-            onClick={(e) => hanlderSign(e)}
-            className="signIn__btn btn__main--full "
-          >
-            Login NEXT
-          </button>
-        </Link>
+        <button
+          onClick={(e) => hanlderSign(e)}
+          className="signIn__btn btn__main--full "
+        >
+          Login
+        </button>
       </div>
     </section>
   );

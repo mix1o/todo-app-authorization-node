@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cd client && npm build",
     "install-client": "cd client && npm install",
-	"heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "node index.js"
   },
   "author": "Nightmare9254 & mix1o",
