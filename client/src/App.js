@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
           <Route exact path="/user-panel">
-            {!user ? <SignIn /> : <Redirect to="user-panel" />}
+            {!user ? <SignIn /> : <UserPanel />}
           </Route>
           {user && <Route exact path="/login" component={UserPanel} />}
           <Route exact path="/login" component={SignIn} />
