@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, browserHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ToggleEye from './ToggleEye';
 
 const SignIn = () => {
@@ -32,8 +32,7 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          //window.location.href('/user-panel');
-          browserHistory.push('/user-panel');
+          window.location.href('/user-panel');
         }
       });
   };
