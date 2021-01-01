@@ -32,7 +32,10 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          window.location.href('/user-panel');
+          replace({
+            pathname: '/user-panel',
+          });
+          //window.location.href('/user-panel');
         }
       });
   };
