@@ -20,7 +20,7 @@ const SignIn = () => {
     setUserData({ ...userData, [name]: value });
   };
   const hanlderSign = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     fetch('/api/login', {
       method: 'POST',
       headers: {
