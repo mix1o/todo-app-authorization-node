@@ -32,7 +32,8 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          history.push('/user-panel');
+          // history.push('/user-panel');
+          window.location.href('/user-panel');
         }
       });
   };

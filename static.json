@@ -1,0 +1,7 @@
+{
+  "root": "./client/build/index.html",
+  "routes": {
+    "/*": "index.html"
+  },
+  "hot": true
+}
