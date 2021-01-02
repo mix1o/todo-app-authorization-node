@@ -20,7 +20,7 @@ const SignIn = () => {
     setUserData({ ...userData, [name]: value });
   };
   const hanlderSign = (e) => {
-    // e.preventDefault();
+    //e.preventDefault();
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -32,7 +32,6 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          // history.push('/user-panel');
           window.location.href('/user-panel');
         }
       });
