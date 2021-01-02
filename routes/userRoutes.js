@@ -15,6 +15,26 @@ router.get('http://localhost:8000/test', (req, res) => {
   res.send('test');
 });
 
+let protected = [
+  'transformed.js',
+  'svg.js',
+  'MainStyle.css',
+  'main.css',
+  'favicon.ico',
+];
+
+app.get('*', (req, res) => {
+  let path = req.params['0'].substring(1);
+
+  if (protected.includes(path)) {
+    // Return the actual file
+    res.sendFile(`${__dirname}/client/build/${path}`);
+  } else {
+    // Otherwise, redirect to /build/index.html
+    res.sendFile(`${__dirname}/client/build/index.html`);
+  }
+});
+
 router.post('/api/newuser', async (req, res) => {
   const { error } = registerValidation(req.body);
 
