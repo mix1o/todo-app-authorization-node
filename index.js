@@ -38,17 +38,12 @@ let protected = [
   'favicon.ico',
 ];
 
-app.get('*', (req, res) => {
-  let path = req.params['0'].substring(1);
-
-  if (protected.includes(path)) {
-    // Return the actual file
-    res.sendFile(`${__dirname}/client/build/${path}`);
-  } else {
-    // Otherwise, redirect to /build/index.html
-    res.sendFile(`${__dirname}/client/build/index.html`);
-  }
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+  });
+}
 
 app.use(cookieParser());
 app.use(
