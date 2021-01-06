@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import ToggleEye from './ToggleEye';
 
 const ResetPasswordForm = () => {
-  const [userEmail, setEmail] = useState('');
-  const [userNewPassword, setUserNewPassword] = useState('');
   const [passwordVis, setPasswordVis] = useState('password');
+  const [isVisible, setIsVisible] = useState(true);
 
   const [userData, setUserData] = useState({
     Email: '',
@@ -34,59 +34,66 @@ const ResetPasswordForm = () => {
   };
 
   return (
-    <section className="section__reset--password">
-      <label className="label__reset">
-        <p className="label__paragraph">E-mail: </p>
-        <input
-          className="label__input label__input--email"
-          type="email"
-          name="Email"
-          placeholder="Your E-mail"
-          required
-          value={userData.Email}
-          onChange={(e) => handlerInput(e)}
-        />
-      </label>
-      <label className="label__reset">
-        <p className="label__paragraph">New Password: </p>
-        <input
-          className="label__input label__input--password"
-          type={passwordVis}
-          placeholder="New password"
-          name="NewPassword"
-          required
-          value={userData.NewPassword}
-          onChange={(e) => handlerInput(e)}
-        />
-      </label>
-      <label className="label__reset">
-        <p className="label__paragraph">Confirm New Password: </p>
-        <input
-          className="label__input label__input--password"
-          type={passwordVis}
-          placeholder="New password"
-          required
-          name="ConfirmNewPassword"
-          value={userData.ConfirmNewPassword}
-          onChange={(e) => handlerInput(e)}
-        />
-      </label>
-      <p
-        onClick={() => {
-          if (passwordVis === 'password') {
-            setPasswordVis('text');
-          } else {
-            setPasswordVis('password');
-          }
-        }}
-      >
-        See password
-      </p>
-      <button onClick={resetPassword} className="section__reset--btn">
-        Reset
-      </button>
+    <main className="reset__password">
+      <form className="rest__passwordForm" name="reset password form">
+        <label className="passwordForm__email">
+          <p className="label__paragraph">E-mail: </p>
+          <input
+            className="label__input label__input--email"
+            type="email"
+            name="Email"
+            placeholder="Your E-mail"
+            required
+            value={userData.Email}
+            onChange={(e) => handlerInput(e)}
+          />
+        </label>
+        <label className="passwordForm__password">
+          <p className="label__paragraph">New Password: </p>
+          <input
+            className="label__input label__input--password"
+            type={passwordVis}
+            placeholder="New password"
+            name="NewPassword"
+            required
+            value={userData.NewPassword}
+            onChange={(e) => handlerInput(e)}
+          />
+        </label>
+        <label className="passwordForm__password--confirm">
+          <p className="label__paragraph">Confirm New Password: </p>
+          <input
+            className="label__input label__input--password"
+            type={passwordVis}
+            placeholder="New password"
+            required
+            name="ConfirmNewPassword"
+            value={userData.ConfirmNewPassword}
+            onChange={(e) => handlerInput(e)}
+          />
+        </label>
+        <p
+          onClick={() => {
+            if (passwordVis === 'password') {
+              setPasswordVis('text');
+              setIsVisible(false);
+            } else {
+              setPasswordVis('password');
+              setIsVisible(true);
+            }
+          }}
+        >
+          <ToggleEye isVisible={isVisible} />
+        </p>
+      </form>
+
+      <section>
+        <button onClick={resetPassword} className="section__reset--btn">
+          Reset
+        </button>
+      </section>
       <p className="section__message">{message}</p>
-    </section>
+    </main>
   );
 };
 

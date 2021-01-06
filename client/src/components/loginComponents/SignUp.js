@@ -37,9 +37,9 @@ const RegisterationForm = () => {
     // console.log(userData);
   };
   return (
-    <section className="section__signUp">
-      <h2 className="section__header">Create Account</h2>
-      <div className="section__formWrapper">
+    <main className="section__signUp">
+      <h1 className="section__header">Create Account</h1>
+      <form className="section__formWrapper" name="sign up form">
         <label className="signUp__label--firstname form__label">
           <p className="label__paragraph">First Name: </p>
           <input
@@ -117,16 +117,16 @@ const RegisterationForm = () => {
           </p>
           <p className="section__message">{catchError.message}</p>
         </label>
-      </div>
-      <div className="section__buttons">
+      </form>
+      <section className="section__buttons ">
         <Link to="/login">
           <button className="signIn__btn btn__main--empty">Sign In</button>
         </Link>
         <button className="signUp__btn btn__main--full" onClick={registration}>
           Sign Up
         </button>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

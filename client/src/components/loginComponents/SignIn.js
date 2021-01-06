@@ -38,9 +38,9 @@ const SignIn = () => {
   };
 
   return (
-    <section className="section__signIn ">
-      <h2 className="section__header">Sign In</h2>
-      <div className="section__formWrapper">
+    <main className="section__signIn ">
+      <h1 className="section__header">Sign In</h1>
+      <form className="section__formWrapper" name="sign in form">
         <label className="signUp__label--email form__label">
           <p className="label__paragraph">E-mail address:</p>
           <input
@@ -80,16 +80,16 @@ const SignIn = () => {
             {message.message}
           </p>
         </label>
-      </div>
-      <div className="section__buttons">
+      </form>
+      <section className="section__buttons">
         <button
           onClick={(e) => hanlderSign(e)}
           className="signIn__btn btn__main--full "
         >
           Login
         </button>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
