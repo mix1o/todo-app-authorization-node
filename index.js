@@ -30,9 +30,9 @@ mongoose
 
 const userRoutes = require('./routes/userRoutes');
 
-app.use(express.static('client/build'));
+app.use(express.static('./client/build'));
 app.get('*', function (req, res) {
-  res.sendFile('client/index.html');
+  res.sendFile('./client/index.html');
 });
 
 app.use(cookieParser());
