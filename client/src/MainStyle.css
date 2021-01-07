@@ -256,7 +256,7 @@ h3 > span {
 }
 .section__signUp,
 .section__signIn {
-  height: 100vh;
+  height: 85vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -278,6 +278,7 @@ h3 > span {
 /* form styles */
 .form__label {
   margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
   width: 100%;
 }
 .label__paragraph {
@@ -295,6 +296,7 @@ h3 > span {
 .section__message--signin {
   top: 6rem;
 }
+
 /* buttons styles */
 .section__buttons {
   width: 85vw;
@@ -401,4 +403,8 @@ h3 > span {
   width: calc(100% + 1.3rem);
   height: calc(100% + 0.5rem);
   z-index: -1;
+}
+.label__par--link {
+  font-size: 1.3rem;
+  width: 10.7rem;
 }
