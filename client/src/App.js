@@ -10,7 +10,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-
+import Main from './components/page/Main';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
 function App() {
@@ -21,7 +21,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={SignUp} />
+          <Route exact path="/" component={Main}/>
+          <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
           <Route exact path="/user-panel">
             {!user ? <Redirect to="/login" /> : <UserPanel />}
