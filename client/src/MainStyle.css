@@ -292,6 +292,9 @@ h3 > span {
   position: relative;
   font-size: 1.1rem;
 }
+.toggle_password:focus-within > * {
+  outline: 2px solid black;
+}
 /* custom checkbox */
 .checkbox__indicator {
   width: 2rem;

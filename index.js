@@ -28,14 +28,14 @@ mongoose
   .then((result) => console.log('conntected'))
   .catch((err) => console.log(err));
 
-const userRoutes = require('./routes/userRoutes');
-
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-// console.log(path.join(__dirname, 'client', 'build', 'index.html'));
 
+const userRoutes = require('./routes/userRoutes');
+
+// console.log(path.join(__dirname, 'client', 'build', 'index.html'));
 app.use(cookieParser());
 app.use(
   cookieSession({
@@ -47,10 +47,5 @@ app.use(
 
 app.use(auth);
 app.use('/', userRoutes);
-
-if (process.env.NODE_ENV === 'production') {
-  //app.use(express.static('client/build'));
-  app.use(express.static(__dirname + '/client/build'));
-}
 
 app.listen(PORT, () => console.log('Listening'));

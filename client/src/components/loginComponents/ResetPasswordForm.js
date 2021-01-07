@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ToggleEye from './ToggleEye';
 
 const ResetPasswordForm = () => {
   const [passwordVis, setPasswordVis] = useState('password');
@@ -82,9 +81,7 @@ const ResetPasswordForm = () => {
               setIsVisible(true);
             }
           }}
-        >
-          <ToggleEye isVisible={isVisible} />
-        </p>
+        ></p>
       </form>
 
       <section>
