@@ -197,7 +197,7 @@ h3 > span {
 }
 .section__signUp,
 .section__signIn {
-  height: 100vh;
+  height: 85vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -219,6 +219,7 @@ h3 > span {
 /* form styles */
 .form__label {
   margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
   width: 100%;
 }
 .label__paragraph {
