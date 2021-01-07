@@ -28,11 +28,6 @@ mongoose
   .then((result) => console.log('conntected'))
   .catch((err) => console.log(err));
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
-
 const userRoutes = require('./routes/userRoutes');
 
 // console.log(path.join(__dirname, 'client', 'build', 'index.html'));
@@ -47,5 +42,10 @@ app.use(
 
 app.use(auth);
 app.use('/', userRoutes);
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.listen(PORT, () => console.log('Listening'));

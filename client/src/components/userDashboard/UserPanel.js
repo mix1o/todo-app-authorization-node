@@ -71,15 +71,12 @@ const UserPanel = () => {
   };
 
   const [tasks, setTasks] = useState([]);
-  const [cor, setCor] = useState(false);
 
   useEffect(() => {
     fetch('/api/todos')
       .then((response) => response.json())
       .then((json) => {
         setTasks(json);
-        // console.log(json);
-        setCor(true);
       });
   }, [tasks]);
 
