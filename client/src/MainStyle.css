@@ -237,6 +237,7 @@ h3 > span {
 .section__message--signin {
   top: 6rem;
 }
+
 /* buttons styles */
 .section__buttons {
   width: 85vw;
@@ -343,4 +344,8 @@ h3 > span {
   width: calc(100% + 1.3rem);
   height: calc(100% + 0.5rem);
   z-index: -1;
+}
+.label__par--link {
+  font-size: 1.3rem;
+  width: 10.7rem;
 }

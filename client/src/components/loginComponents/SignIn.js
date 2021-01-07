@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SignIn = () => {
@@ -116,6 +116,13 @@ const SignIn = () => {
           <p className="section__message section__message--signin">
             {message.message}
           </p>
+        </label>
+        <label className="signUp__label--resetPass form__label">
+          <Link className="label__link" to="/reset">
+            <p className="label__par--link label__span--link">
+              Forgot Password?
+            </p>
+          </Link>
         </label>
       </form>
       <section className="section__buttons">
