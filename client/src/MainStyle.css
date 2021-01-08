@@ -260,6 +260,7 @@ h3 > span {
   text-align: center;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 .signUp__btn__signIn > a {
   text-decoration: none;
@@ -268,6 +269,7 @@ h3 > span {
   border-bottom: 1px solid var(--main-color-green);
   font-weight: 700;
   text-transform: uppercase;
+  color: #000;
 }
 .section__signUp,
 .section__signIn {
