@@ -3,16 +3,16 @@ import Task from '../todo/Task';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import styled from 'styled-components';
 import Todo from '../todo/Todo';
+import Footer from '../page/Footer';
 
 const StyledDiv = styled.div`
   filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
   background: ${({ open }) => (open ? 'rgb(235, 235, 235)' : '#fff')};
   padding: 1rem;
-  min-height: 93vh;
+  height: auto;
 `;
 
 const UserTodos = ({ tasks }) => {
-  const [open, setOpen] = useState(false);
   const newItems = tasks.filter((item) => item.complete !== 'Completed');
   const completedItems = tasks.filter((item) => item.complete === 'Completed');
   const [seeCompleted, setSeeCompleted] = useState(false);
@@ -44,12 +44,12 @@ const UserTodos = ({ tasks }) => {
     <div className="center">
       <div
         onClick={() => {
-          if (open) {
-            setOpen(false);
+          if (state.newTodo) {
+            actions.openTodo(false)
           }
         }}
       >
-        <StyledDiv open={open} class="tasks">
+        <StyledDiv open={state.newTodo} class="tasks">
           <h3>
             Today is <span>{`${dayName} ${dayOfWeek} ${month}`}</span>
           </h3>
@@ -60,7 +60,7 @@ const UserTodos = ({ tasks }) => {
             </p>
           )}
           <p style={{ fontSize: '22px' }}>Current tasks</p>
-          {newItems.map(
+          {newItems.reverse().map(
             ({ _id, name, description, priority, date, complete, input }) => (
               <Task
                 id={_id}
@@ -75,11 +75,12 @@ const UserTodos = ({ tasks }) => {
             )
           )}
           <div style={{ textAlign: 'center' }}>
-            <button onClick={() => setOpen(true)} className="btn-tasks-new">
+            <button onClick={() => actions.openTodo(true)} className="btn-tasks-new">
               Add task
             </button>
           </div>
-          <p style={{ fontSize: '22px' }}>Completed tasks</p>
+          <div style={{display: 'flex',justifyContent:'flex-start',alignItems:'center',marginTop: '4rem'}}>
+          <p style={{ fontSize: '22px',margin: '0 1rem' }}>Completed tasks</p>
           <div onClick={() => setSeeCompleted(!seeCompleted)}>
             {!seeCompleted && (
               <svg
@@ -110,11 +111,11 @@ const UserTodos = ({ tasks }) => {
               </svg>
             )}
           </div>
-
+          </div>
           {
             <div>
               {seeCompleted &&
-                completedItems.map(
+                completedItems.reverse().map(
                   ({ _id, name, description, priority, date, complete }) => (
                     <Task
                       id={_id}
@@ -130,9 +131,10 @@ const UserTodos = ({ tasks }) => {
             </div>
           }
           {!tasks.length > 0 && <p>You don't have any tasks yet.</p>}
+        <Footer/>
         </StyledDiv>
       </div>
-      {open && <Todo setOpen={setOpen} />}
+      {state.newTodo && <Todo />}
     </div>
   );
 };

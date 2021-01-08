@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useCounter } from '../../store/sub';
 
-const Header = () => {
+const Header = ({logOut}) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [state,actions] = useCounter();
 
   return (
     <header className="header">
       <div className="left-section">
+        <button onClick={logOut}>Sign out</button>
         <div className="left-section-first-item">
           <Link to="/">
             <svg
@@ -22,7 +26,9 @@ const Header = () => {
           </Link>
         </div>
         <div>
-          <svg
+          <svg onClick={() => {
+            actions.openTodo(true);
+          }}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"

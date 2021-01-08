@@ -13,6 +13,7 @@ body {
   --input-placeholder-text: #cbd5e0;
   --input-background: #f7fafc;
   --white: #f7fafc;
+  --light-grey: #f9f9f9;
   --low-prio: 29, 185, 94;
   --medium-prio: 240, 145, 51;
   --high-prio: 235, 34, 19;
@@ -112,19 +113,20 @@ p {
 .todo__body {
   z-index: 3;
   position: absolute;
-  top: 20%;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background: rgb(248, 248, 248);
   width: 90%;
   text-align: center;
   border: 1px solid var(--paragraphs-colors);
   padding: 2rem 0;
+  margin-top: 4rem;
 }
 .todo__taskName {
   display: block;
   margin-top: 10px;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   width: 100%;
 }
 .todo__taskName > input {
@@ -247,13 +249,7 @@ h3 > span {
   z-index: 1;
 }
 /* sign up */
-.todo__body {
-  z-index: 3;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 .section__signUp,
 .section__signIn {
   height: 85vh;
@@ -408,3 +404,44 @@ h3 > span {
   font-size: 1.3rem;
   width: 10.7rem;
 }
+/* FOOTER */
+
+.footer {
+  background: var(--light-grey);
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin-top: 10rem;
+  color: var(--paragraphs-colors)
+}
+.footer > div > p {
+  margin-top: 2rem;
+}
+.footer__first {
+  padding: 1rem;
+}
+.footer__first > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__div_second_p {
+  margin-right: 40%;
+}
+.footer__second {
+  border-top: 1px solid var(--paragraphs-colors);
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+}
+.footer__second > div > svg {
+  fill: var(--secondary-grey);
+  margin-left: 1rem;
+}
+.footer__second_first_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* END FOOTER */

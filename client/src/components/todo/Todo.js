@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useCounter } from '../../store/sub';
 
-const Todo = ({ setOpen }) => {
+const Todo = () => {
+  const [state,actions] = useCounter();
   const [taskData, setTaskData] = useState({
     Title: '',
     Description: '',
@@ -31,7 +33,7 @@ const Todo = ({ setOpen }) => {
         setMessage(json.message);
 
         if (json.correct) {
-          setOpen(false);
+          actions.openTodo(false);
           setTaskData({
             Title: '',
             Description: '',

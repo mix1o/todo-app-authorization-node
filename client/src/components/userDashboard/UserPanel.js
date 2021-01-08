@@ -8,6 +8,8 @@ import Header from '../page/Header';
 import { illustration } from '../../svg';
 import Todo from '../todo/Todo';
 import styled from 'styled-components';
+import Footer from '../page/Footer';
+import { STATES } from 'mongoose';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -23,6 +25,7 @@ const UserPanel = () => {
   const history = useHistory();
   const [correct, setCorrect] = useState(false);
   const [open, setOpen] = useState(false);
+const [state,actions] = useCounter();
 
   useEffect(() => {
     fetch('/api/userpanel')
@@ -82,18 +85,18 @@ const UserPanel = () => {
 
   return (
     <>
-      <button onClick={singOut}>wyloguj</button>
-      <Header />
+    
+      <Header logOut={singOut}/>
       {tasks.length < 1 && (
         <div className="center">
           <div
             onClick={() => {
-              if (open) {
-                setOpen(false);
+              if (state.newTodo) {
+                actions.openTodo(false)
               }
             }}
           >
-            <StyledDiv open={open}>
+            <StyledDiv open={state.newTodo}>
               <h2 className="heading-2">Start with adding new task</h2>
               {!open && (
                 <button
@@ -107,6 +110,7 @@ const UserPanel = () => {
             </StyledDiv>
           </div>
           {open && <Todo setOpen={setOpen} />}
+          
         </div>
       )}
       {tasks.length > 0 && <UserTodos tasks={tasks} />}

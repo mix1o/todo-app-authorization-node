@@ -7,6 +7,13 @@ const Task = ({ id, name, desc, prio, date, status, input }) => {
   let month = dateF.getMonth() + 1;
   let years = dateF.getFullYear();
 
+  if(day < '10'){
+    day = `0${day}`
+  }
+  if(month < '10'){
+    month = `0${month}`
+  }
+
   const sendStatus = (idTask) => {
     fetch('/api/changeStatusTask', {
       method: 'POST',
