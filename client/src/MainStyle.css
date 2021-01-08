@@ -247,7 +247,37 @@ h3 > span {
   z-index: 1;
 }
 /* sign up */
-
+.not__account {
+  font-size: 1.3rem;
+}
+.not__account > a {
+  color: #fff;
+  background: var(--main-color-green);
+  padding: 3px 3px 1rem 1rem;
+}
+.signUp__btn__signIn {
+  background: transparent;
+  border: none;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.signUp_div_signIn {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.signUp__btn__signIn > a {
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: .5rem;
+  background:  var(--main-color-green);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 3px 1rem 1rem;
+}
 .section__signUp,
 .section__signIn {
   height: 85vh;

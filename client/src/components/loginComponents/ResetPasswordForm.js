@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {Link} from 'react-router-dom'
 const ResetPasswordForm = () => {
   const [passwordVis, setPasswordVis] = useState('password');
   const [isVisible, setIsVisible] = useState(true);
@@ -46,6 +46,16 @@ const ResetPasswordForm = () => {
   };
 
   return (
+    <>
+    <div style={{marginTop: '2rem'}} className="link__back">
+      <Link style={{margin: '2rem'}} to="/login">
+      <svg width="40" height="40" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24.0475" cy="24.0475" r="23.0475" stroke="#4A5568" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z" fill="#4A5568"/>
+</svg>
+
+      </Link> 
+      </div>
     <main className="section__signIn">
       <h1 className="section__header">Reset your Password</h1>
       <form className="section__formWrapper" name="reset password form">
@@ -66,7 +76,7 @@ const ResetPasswordForm = () => {
           <input
             className="label__input label__input--password"
             type={passwordVis}
-            name="Password"
+            name="NewPassword"
             placeholder="Password"
             value={userData.NewPassword}
             onChange={(e) => handlerInput(e)}
@@ -77,7 +87,7 @@ const ResetPasswordForm = () => {
           <input
             className="label__input label__input--password"
             type={passwordVis}
-            name="Password"
+            name="ConfirmNewPassword"
             placeholder="Password"
             value={userData.ConfirmNewPassword}
             onChange={(e) => handlerInput(e)}
@@ -123,7 +133,10 @@ const ResetPasswordForm = () => {
         </button>
       </section>
       <p className="section__message">{message}</p>
+
+    
     </main>
+    </>
   );
 };
 

@@ -49,7 +49,18 @@ const SignIn = () => {
   };
 
   return (
+    <>
+    <div style={{marginTop: '2rem'}} className="link__back">
+      <Link style={{margin: '2rem'}} to="/">
+      <svg width="40" height="40" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24.0475" cy="24.0475" r="23.0475" stroke="#4A5568" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z" fill="#4A5568"/>
+</svg>
+
+      </Link> 
+      </div>
     <main className="section__signIn ">
+      
       <h1 className="section__header">Sign In</h1>
       <form className="section__formWrapper" name="sign in form">
         <label className="signUp__label--email form__label">
@@ -115,6 +126,7 @@ const SignIn = () => {
           </Link>
         </label>
       </form>
+        
       <section className="section__buttons">
         <button
           onClick={(e) => hanlderSign(e)}
@@ -122,8 +134,10 @@ const SignIn = () => {
         >
           Login
         </button>
+        <p className="not__account">Don't have an account <Link to="/sign-up">Create one</Link></p>
       </section>
     </main>
+    </>
   );
 };
 
