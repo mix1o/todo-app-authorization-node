@@ -271,8 +271,8 @@ h3 > span {
 .signUp__btn__signIn > a {
   text-decoration: none;
   display: inline-block;
-  padding-bottom: .5rem;
-  background:  var(--main-color-green);
+  padding-bottom: 0.5rem;
+  background: var(--main-color-green);
   font-weight: 500;
   text-transform: uppercase;
   color: #fff;
@@ -285,6 +285,8 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+  background-image: url('./components/loginComponents/waves.svg');
+  background-position: bottom;
 }
 .section__header {
   margin-top: 6rem;
