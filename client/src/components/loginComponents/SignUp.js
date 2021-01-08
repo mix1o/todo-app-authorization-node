@@ -29,7 +29,7 @@ const RegisterationForm = () => {
       body: JSON.stringify(userData),
     })
       .then((res) => res.json())
-      // .then((json) => setCatchError(json));
+      .then((json) => setCatchError(json));
       .then((json) => setCatchError(json));
 
     // console.log(userData);
