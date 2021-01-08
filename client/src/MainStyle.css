@@ -14,6 +14,7 @@ body {
   --input-background: #f7fafc;
   --white: #f7fafc;
   --light-grey: #f9f9f9;
+  --red: #e53e3e;
   --low-prio: 29, 185, 94;
   --medium-prio: 240, 145, 51;
   --high-prio: 235, 34, 19;
@@ -48,12 +49,13 @@ body {
   color: #fff;
 }
 
-.heading__btn,.heading__btn-sign {
+.heading__btn,
+.heading__btn-sign {
   background: var(--main-color-green);
   color: #fff;
   border: none;
   padding: 1rem 2rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   display: inline-block;
   margin: 7rem 1rem;
   font-size: 1.8rem;
@@ -82,10 +84,6 @@ body {
   height: 3.5rem;
 }
 /* END MAIN PAGE */
-
-
-
-
 
 .left-section > div {
   display: inline-block;
@@ -271,6 +269,9 @@ h3 > span {
   justify-content: center;
   align-items: center;
 }
+.form__message {
+  color: var(--red);
+}
 /* form styles */
 .form__label {
   margin-bottom: 1rem;
@@ -283,16 +284,12 @@ h3 > span {
   color: var(--secondary-grey);
 }
 .section__message {
+  color: var(--high-prio);
   position: absolute;
   top: 3rem;
   left: 0;
   font-size: 1.3rem;
-  color: var(--high-prio);
 }
-.section__message--signin {
-  top: 6rem;
-}
-
 /* buttons styles */
 .section__buttons {
   width: 85vw;
@@ -411,7 +408,7 @@ h3 > span {
   padding: 1rem;
   font-size: 1.3rem;
   margin-top: 10rem;
-  color: var(--paragraphs-colors)
+  color: var(--paragraphs-colors);
 }
 .footer > div > p {
   margin-top: 2rem;
