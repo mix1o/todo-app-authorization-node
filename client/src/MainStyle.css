@@ -249,7 +249,26 @@ h3 > span {
   z-index: 1;
 }
 /* sign up */
-
+.signUp__btn__signIn {
+  background: transparent;
+  border: none;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.signUp_div_signIn {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.signUp__btn__signIn > a {
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--main-color-green);
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .section__signUp,
 .section__signIn {
   height: 85vh;
