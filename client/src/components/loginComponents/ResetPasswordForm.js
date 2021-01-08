@@ -76,7 +76,7 @@ const ResetPasswordForm = () => {
           <input
             className="label__input label__input--password"
             type={passwordVis}
-            name="Password"
+            name="NewPassword"
             placeholder="Password"
             value={userData.NewPassword}
             onChange={(e) => handlerInput(e)}
@@ -87,7 +87,7 @@ const ResetPasswordForm = () => {
           <input
             className="label__input label__input--password"
             type={passwordVis}
-            name="Password"
+            name="ConfirmNewPassword"
             placeholder="Password"
             value={userData.ConfirmNewPassword}
             onChange={(e) => handlerInput(e)}
@@ -135,6 +135,8 @@ const ResetPasswordForm = () => {
         </button>
       </section>
       <p className="section__message">{message}</p>
+
+    
     </main>
     </>
   );

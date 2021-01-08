@@ -249,6 +249,14 @@ h3 > span {
   z-index: 1;
 }
 /* sign up */
+.not__account {
+  font-size: 1.3rem;
+}
+.not__account > a {
+  color: #fff;
+  background: var(--main-color-green);
+  padding: 3px 3px 1rem 1rem;
+}
 .signUp__btn__signIn {
   background: transparent;
   border: none;
@@ -266,10 +274,11 @@ h3 > span {
   text-decoration: none;
   display: inline-block;
   padding-bottom: .5rem;
-  border-bottom: 1px solid var(--main-color-green);
-  font-weight: 700;
+  background:  var(--main-color-green);
+  font-weight: 500;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
+  padding: 3px 3px 1rem 1rem;
 }
 .section__signUp,
 .section__signIn {

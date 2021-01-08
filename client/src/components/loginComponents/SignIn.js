@@ -128,6 +128,7 @@ const SignIn = () => {
           </Link>
         </label>
       </form>
+        
       <section className="section__buttons">
         <button
           onClick={(e) => hanlderSign(e)}
@@ -135,6 +136,7 @@ const SignIn = () => {
         >
           Login
         </button>
+        <p className="not__account">Don't have an account <Link to="/sign-up">Create one</Link></p>
       </section>
     </main>
     </>
