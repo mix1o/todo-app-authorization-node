@@ -6,6 +6,7 @@ import Todo from './components/todo/Todo';
 import Terms from './components/page/Terms';
 import Policy from './components/page/Policy';
 import PayNow from './components/payments/PayNow';
+import About from './components/page/About';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,6 +36,7 @@ function App() {
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/policy" component={Policy} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </Router>
     </div>
