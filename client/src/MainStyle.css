@@ -515,7 +515,6 @@ h3 > span {
   color: var(--light-grey);
 }
 /* End terms & Policy */
-<<<<<<< HEAD
 /* HAMBURGER */
 .list__hamburger {
   list-style: none;
@@ -582,7 +581,6 @@ h3 > span {
   background: aqua;
 }
 /* END HAMBURGER */
-=======
 /* Contact us */
 .contactUs {
   max-width: 85vw;
@@ -640,4 +638,3 @@ h3 > span {
   left: 2rem;
 }
 /* end 404 */
->>>>>>> e339a45500f480283fde3c46f08952f83e25439f

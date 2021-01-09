@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const NotFound = () => {
   return (
     <>
-      <Header />
       <main className="main__notFound">
         <section className="section__notFound">
           <p className="notFound__404">404</p>
