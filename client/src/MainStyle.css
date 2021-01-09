@@ -87,10 +87,13 @@ body {
 .social {
   margin: 0 1rem;
 }
-.social > svg {
+.social > a > i > svg {
   fill: var(--secondary-grey);
   width: 3.5rem;
   height: 3.5rem;
+}
+.social > a > i > svg:hover {
+  fill: var(--header-color);
 }
 /* END MAIN PAGE */
 
