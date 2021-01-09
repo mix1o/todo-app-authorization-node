@@ -25,7 +25,7 @@ const UserPanel = () => {
   const history = useHistory();
   const [correct, setCorrect] = useState(false);
   const [open, setOpen] = useState(false);
-const [state,actions] = useCounter();
+  const [state, actions] = useCounter();
 
   useEffect(() => {
     fetch('/api/userpanel')
@@ -82,17 +82,17 @@ const [state,actions] = useCounter();
         setTasks(json);
       });
   }, [tasks]);
-
+  const filtered = tasks.filter((item) => item.complete === 'Completed');
+  console.log(filtered);
   return (
     <>
-    
-      <Header logOut={singOut}/>
-      {tasks.length < 1 && (
+      <Header logOut={singOut} />
+      {filtered.length > 0 && (
         <div className="center">
           <div
             onClick={() => {
               if (state.newTodo) {
-                actions.openTodo(false)
+                actions.openTodo(false);
               }
             }}
           >
@@ -110,10 +110,10 @@ const [state,actions] = useCounter();
             </StyledDiv>
           </div>
           {open && <Todo setOpen={setOpen} />}
-          
         </div>
       )}
-      {tasks.length > 0 && <UserTodos tasks={tasks} />}
+
+      {filtered.length < 1 && <UserTodos tasks={tasks} />}
     </>
   );
 };

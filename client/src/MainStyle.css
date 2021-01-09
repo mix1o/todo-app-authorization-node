@@ -309,6 +309,7 @@ h3 > span {
   margin-bottom: 1rem;
   padding-bottom: 1.5rem;
   width: 100%;
+  position: relative;
 }
 .label__paragraph {
   font-size: 1.2rem;
@@ -322,6 +323,12 @@ h3 > span {
   left: 0;
   font-size: 1.3rem;
 }
+.form__labelError {
+  position: relative;
+  width: 100%;
+  margin-top: -4rem;
+}
+
 /* buttons styles */
 .section__buttons {
   width: 85vw;
@@ -362,9 +369,6 @@ h3 > span {
   position: absolute;
   top: 2.3rem;
   right: 1rem;
-}
-.signUp__label--password {
-  position: relative;
 }
 .form__checkbox {
   display: flex;

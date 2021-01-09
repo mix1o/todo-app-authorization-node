@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Warning from './Warning';
 
 const SignIn = () => {
   const [message, setMessage] = useState('');
@@ -131,7 +132,6 @@ const SignIn = () => {
                 </svg>
               )}
             </i>
-            <p className="section__message">{message.message}</p>
           </label>
           <label className="signUp__label--resetPass form__label">
             <Link className="label__link" to="/reset">
@@ -139,6 +139,7 @@ const SignIn = () => {
                 Forgot Password?
               </p>
             </Link>
+            <Warning errorMessage={message.message} />
           </label>
         </form>
 
