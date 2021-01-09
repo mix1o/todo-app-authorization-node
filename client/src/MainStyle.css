@@ -9,6 +9,7 @@ html {
 body {
   --main-color-green: #1db95e;
   --secondary-grey: #4a5568;
+  --header-color: #2d3748;
   --paragraphs-colors: #a0aec0;
   --input-placeholder-text: #cbd5e0;
   --input-background: #f7fafc;
@@ -19,6 +20,7 @@ body {
   --medium-prio: 240, 145, 51;
   --high-prio: 235, 34, 19;
   --alpha: 0.45;
+  --outline-color: #161616;
   font-family: 'Noto Sans JP', sans-serif;
 }
 .body,
@@ -45,6 +47,7 @@ body {
 .heading-1 {
   font-size: 4rem;
   text-align: center;
+  color: var(--header-color);
 }
 .heading__span {
   display: block;
@@ -283,8 +286,9 @@ h3 > span {
   color: #fff;
   padding: 3px 3px 1rem 1rem;
 }
-.section__signUp,
-.section__signIn {
+.main__signUp,
+.main__reset,
+.main__signIn {
   height: 85vh;
   display: flex;
   flex-flow: column nowrap;
@@ -305,6 +309,7 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  max-width: 85vw;
 }
 .form__message {
   color: var(--red);
@@ -364,7 +369,7 @@ h3 > span {
 .label__input {
   font-size: 1.5rem;
   width: 85vw;
-  padding: 0.5rem;
+  padding: 0.85rem;
   background-color: var(--input-background);
   border: 0.1rem solid var(--paragraphs-colors);
   border-radius: 0.3rem;
@@ -372,7 +377,7 @@ h3 > span {
 .label__eye {
   fill: var(--secondary-grey);
   position: absolute;
-  top: 2.3rem;
+  top: 2.6rem;
   right: 1rem;
 }
 .form__checkbox {
@@ -388,7 +393,7 @@ h3 > span {
   font-size: 1.1rem;
 }
 .toggle_password:focus-within > * {
-  outline: 2px solid black;
+  outline: 2px solid var(--outline-color);
 }
 /* custom checkbox */
 .checkbox__indicator {
@@ -489,12 +494,35 @@ h3 > span {
   margin: 5% auto;
   color: var(--secondary-grey);
 }
-.main__header {
-  font-size: 3.6rem;
-  margin-bottom: 5rem;
+.section__title {
+  font-size: 3.8rem;
+  margin-bottom: 3rem;
+  color: var(--header-color);
 }
 .main__info {
   font-size: 1.5rem;
   line-height: 3rem;
+  margin-bottom: 5rem;
+}
+.about__link--store {
+  text-decoration: none;
+  color: var(--light-grey);
 }
 /* End terms & Policy */
+/* Contact us */
+.contactUs {
+  max-width: 85vw;
+  margin: 10rem auto;
+}
+.label__textarea {
+  font-size: 1.5rem;
+  width: 85vw;
+  padding: 0.85rem;
+  background-color: var(--input-background);
+  border: 0.1rem solid var(--paragraphs-colors);
+  border-radius: 0.3rem;
+  font-family: 'Noto Sans JP' sans-serif;
+  resize: none;
+  overflow: auto;
+}
+/* End of contact us */

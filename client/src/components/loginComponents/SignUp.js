@@ -73,7 +73,7 @@ const RegisterationForm = () => {
           </svg>
         </Link>
       </div>
-      <main className="section__signUp">
+      <main className="main__signUp">
         <h1 className="section__header">Create Account</h1>
         <form className="section__formWrapper" name="sign up form">
           <label className="signUp__label--firstname form__label">

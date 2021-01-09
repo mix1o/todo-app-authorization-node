@@ -76,7 +76,7 @@ const SignIn = () => {
           </svg>
         </Link>
       </div>
-      <main className="section__signIn ">
+      <main className="main__signIn ">
         <h1 className="section__header">Sign In</h1>
         <form className="section__formWrapper" name="sign in form">
           <label className="signUp__label--email form__label">

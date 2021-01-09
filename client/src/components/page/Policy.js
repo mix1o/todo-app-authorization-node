@@ -7,12 +7,12 @@ const Policy = () => {
     <>
       <Header />
       <main className="terms">
-        <h1 className="main__header">Privacy Policy</h1>
+        <h1 className="section__title">Privacy Policy</h1>
         <p className="main__info">
-          Overview{' '}
+          Overview
           <span className="label__tearms label__span--link">
             <strong>nmTasks</strong>
-          </span>{' '}
+          </span>
           Holdings Ltd. (nmTasks, “we”, “us” or “our”) is committed to
           protecting the privacy of personal information (i.e. any information
           relating to an identified or identifiable natural person) who visit

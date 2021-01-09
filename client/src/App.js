@@ -7,6 +7,7 @@ import Terms from './components/page/Terms';
 import Policy from './components/page/Policy';
 import PayNow from './components/payments/PayNow';
 import About from './components/page/About';
+import ContactUs from './components/page/ContactUs';
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/policy" component={Policy} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/contact-us" component={ContactUs} />
         </Switch>
       </Router>
     </div>

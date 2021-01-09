@@ -73,7 +73,7 @@ const ResetPasswordForm = () => {
           </svg>
         </Link>
       </div>
-      <main className="section__signIn">
+      <main className="main__reset">
         <h1 className="section__header">Reset your Password</h1>
         <form className="section__formWrapper" name="reset password form">
           <label className="passwordForm__email form__label">
