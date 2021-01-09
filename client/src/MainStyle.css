@@ -20,6 +20,7 @@ body {
   --medium-prio: 240, 145, 51;
   --high-prio: 235, 34, 19;
   --alpha: 0.45;
+  --linera-gradient-alpha: 0.85;
   --outline-color: #161616;
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -113,7 +114,7 @@ p {
   margin-top: 5rem;
 }
 .heading-2 {
-  color: var(--secondary-grey);
+  color: var(--header-color);
   font-size: 3.6rem;
 }
 .todo__body {
@@ -241,10 +242,12 @@ h3 > span {
   color: var(--paragraphs-colors);
 }
 .btn-user-panel {
-  border: 1px solid var(--main-color-green);
+  border: 0.2rem solid var(--main-color-green);
+  border-radius: 0.5rem;
   padding: 0.5rem 2.5rem;
   margin-top: 5rem;
   color: var(--main-color-green);
+  background-color: var(--white);
   font-size: 1.6rem;
 }
 .user-panel-svg {
@@ -453,7 +456,6 @@ h3 > span {
   background: var(--light-grey);
   padding: 1rem;
   font-size: 1.3rem;
-  margin-top: 10rem;
   color: var(--paragraphs-colors);
 }
 .footer > div > p {
@@ -526,3 +528,43 @@ h3 > span {
   overflow: auto;
 }
 /* End of contact us */
+/* 404 */
+.main__notFound {
+  background-image: url('./components/page/lostGuy.svg');
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  position: relative;
+}
+.section__notFound {
+  background: linear-gradient(
+    rgba(29, 185, 94, var(--linera-gradient-alpha)),
+    rgba(29, 185, 94, var(--linera-gradient-alpha))
+  );
+  border-radius: 0.3rem;
+  max-width: 85vw;
+  padding: 1rem;
+  color: var(--white);
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
+}
+.notFound__404 {
+  font-size: 5rem;
+  font-weight: 700;
+}
+.notFound__title {
+  margin: -1rem 0 1.5rem 0;
+  font-weight: 500;
+  font-size: 3rem;
+}
+.notFound__paragraph {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.btn__notFound {
+  width: 15rem;
+  position: absolute;
+  top: 27rem;
+  left: 2rem;
+}
+/* end 404 */
