@@ -5,7 +5,7 @@ import Payments from '../payments/Payments';
 import Card from '../payments/Card';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import Header from '../page/Header';
-import { illustration } from '../../svg';
+import { illustration } from '../../illustration';
 import Todo from '../todo/Todo';
 import styled from 'styled-components';
 import Footer from '../page/Footer';

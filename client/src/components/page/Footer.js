@@ -23,7 +23,7 @@ const Footer = () => {
         <p>Contact us</p>
       </div>
       <div className="footer__second">
-        <p>&copy; 2021 tod's. All rights reserved</p>
+        <p>&copy; 2021 nmTasks. All rights reserved</p>
         <div className="footer__second_first_div">
           <p>Made in quarantine</p>
           <i>

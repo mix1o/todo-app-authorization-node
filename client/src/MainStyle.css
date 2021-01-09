@@ -10,6 +10,7 @@ html {
 body {
   --main-color-green: #1db95e;
   --secondary-grey: #4a5568;
+  --header-color: #2d3748;
   --paragraphs-colors: #a0aec0;
   --input-placeholder-text: #cbd5e0;
   --input-background: #f7fafc;
@@ -20,6 +21,8 @@ body {
   --medium-prio: 240, 145, 51;
   --high-prio: 235, 34, 19;
   --alpha: 0.45;
+  --linera-gradient-alpha: 0.85;
+  --outline-color: #161616;
   font-family: 'Noto Sans JP', sans-serif;
   scroll-behavior: smooth;
 }
@@ -46,6 +49,7 @@ body {
 .heading-1 {
   font-size: 4rem;
   text-align: center;
+  color: var(--header-color);
 }
 .heading__span {
   display: block;
@@ -84,10 +88,13 @@ body {
 .social {
   margin: 0 1rem;
 }
-.social > svg {
+.social > a > i > svg {
   fill: var(--secondary-grey);
   width: 3.5rem;
   height: 3.5rem;
+}
+.social > a > i > svg:hover {
+  fill: var(--header-color);
 }
 /* END MAIN PAGE */
 
@@ -111,7 +118,7 @@ p {
   margin-top: 5rem;
 }
 .heading-2 {
-  color: var(--secondary-grey);
+  color: var(--header-color);
   font-size: 3.6rem;
 }
 .todo__body {
@@ -239,10 +246,12 @@ h3 > span {
   color: var(--paragraphs-colors);
 }
 .btn-user-panel {
-  border: 1px solid var(--main-color-green);
+  border: 0.2rem solid var(--main-color-green);
+  border-radius: 0.5rem;
   padding: 0.5rem 2.5rem;
   margin-top: 5rem;
   color: var(--main-color-green);
+  background-color: var(--white);
   font-size: 1.6rem;
 }
 .user-panel-svg {
@@ -284,8 +293,9 @@ h3 > span {
   color: #fff;
   padding: 3px 3px 1rem 1rem;
 }
-.section__signUp,
-.section__signIn {
+.main__signUp,
+.main__reset,
+.main__signIn {
   height: 85vh;
   display: flex;
   flex-flow: column nowrap;
@@ -306,6 +316,7 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  max-width: 85vw;
 }
 .form__message {
   color: var(--red);
@@ -365,7 +376,7 @@ h3 > span {
 .label__input {
   font-size: 1.5rem;
   width: 85vw;
-  padding: 0.5rem;
+  padding: 0.85rem;
   background-color: var(--input-background);
   border: 0.1rem solid var(--paragraphs-colors);
   border-radius: 0.3rem;
@@ -373,7 +384,7 @@ h3 > span {
 .label__eye {
   fill: var(--secondary-grey);
   position: absolute;
-  top: 2.3rem;
+  top: 2.6rem;
   right: 1rem;
 }
 .form__checkbox {
@@ -389,7 +400,7 @@ h3 > span {
   font-size: 1.1rem;
 }
 .toggle_password:focus-within > * {
-  outline: 2px solid black;
+  outline: 2px solid var(--outline-color);
 }
 /* custom checkbox */
 .checkbox__indicator {
@@ -449,7 +460,6 @@ h3 > span {
   background: var(--light-grey);
   padding: 1rem;
   font-size: 1.3rem;
-  margin-top: 10rem;
   color: var(--paragraphs-colors);
 }
 .footer > div > p {
@@ -490,15 +500,22 @@ h3 > span {
   margin: 5% auto;
   color: var(--secondary-grey);
 }
-.main__header {
-  font-size: 3.6rem;
-  margin-bottom: 5rem;
+.section__title {
+  font-size: 3.8rem;
+  margin-bottom: 3rem;
+  color: var(--header-color);
 }
 .main__info {
   font-size: 1.5rem;
   line-height: 3rem;
+  margin-bottom: 5rem;
+}
+.about__link--store {
+  text-decoration: none;
+  color: var(--light-grey);
 }
 /* End terms & Policy */
+<<<<<<< HEAD
 /* HAMBURGER */
 .list__hamburger {
   list-style: none;
@@ -565,3 +582,62 @@ h3 > span {
   background: aqua;
 }
 /* END HAMBURGER */
+=======
+/* Contact us */
+.contactUs {
+  max-width: 85vw;
+  margin: 10rem auto;
+}
+.label__textarea {
+  font-size: 1.5rem;
+  width: 85vw;
+  padding: 0.85rem;
+  background-color: var(--input-background);
+  border: 0.1rem solid var(--paragraphs-colors);
+  border-radius: 0.3rem;
+  font-family: 'Noto Sans JP' sans-serif;
+  resize: none;
+  overflow: auto;
+}
+/* End of contact us */
+/* 404 */
+.main__notFound {
+  background-image: url('./components/page/lostGuy.svg');
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  position: relative;
+}
+.section__notFound {
+  background: linear-gradient(
+    rgba(29, 185, 94, var(--linera-gradient-alpha)),
+    rgba(29, 185, 94, var(--linera-gradient-alpha))
+  );
+  border-radius: 0.3rem;
+  max-width: 85vw;
+  padding: 1rem;
+  color: var(--white);
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
+}
+.notFound__404 {
+  font-size: 5rem;
+  font-weight: 700;
+}
+.notFound__title {
+  margin: -1rem 0 1.5rem 0;
+  font-weight: 500;
+  font-size: 3rem;
+}
+.notFound__paragraph {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.btn__notFound {
+  width: 15rem;
+  position: absolute;
+  top: 27rem;
+  left: 2rem;
+}
+/* end 404 */
+>>>>>>> e339a45500f480283fde3c46f08952f83e25439f
