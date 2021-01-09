@@ -165,7 +165,7 @@ router.post('/api/delete', async (req, res) => {
 router.get('/api/userpanel', async (req, res) => {
   try {
     const userInfo = await Users.find({ _id: req.session.user._id });
-    res.send(userInfo);
+    res.send({correct: true,user: userInfo});
   } catch (e) {
     res.send(e);
   }

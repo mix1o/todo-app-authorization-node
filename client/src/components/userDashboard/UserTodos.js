@@ -77,12 +77,8 @@ const UserTodos = ({ tasks }) => {
               )
             )}
           <div style={{ textAlign: 'center' }}>
-            <button
-              onClick={() => actions.openTodo(true)}
-              className="btn-tasks-new"
-            >
-              Add task
-            </button>
+            <a onClick={() => actions.openTodo(true)} className="btn-tasks-new" style={{display:'inline-block',color: '#1db95e',textDecoration: 'none', fontSize: '1.4rem', background: 'transparent'}} href="#todo">Add task
+            </a>   
           </div>
           <div
             style={{

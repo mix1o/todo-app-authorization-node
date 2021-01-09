@@ -21,21 +21,12 @@ const StyledDiv = styled.div`
 
 const UserPanel = () => {
   const [message, setMessage] = useState('');
-  const [user, setUser] = useState([]);
+ 
   const history = useHistory();
-  const [correct, setCorrect] = useState(false);
+  
   const [open, setOpen] = useState(false);
   const [state, actions] = useCounter();
 
-  useEffect(() => {
-    fetch('/api/userpanel')
-      .then((res) => res.json())
-      .then((json) => {
-        setUser(json);
-        setCorrect(true);
-      });
-    // .then((json) => console.log(json));
-  }, []);
 
   const singOut = () => {
     fetch('/api/signOut', {
@@ -82,12 +73,16 @@ const UserPanel = () => {
         setTasks(json);
       });
   }, [tasks]);
-  const filtered = tasks.filter((item) => item.complete === 'Completed');
-  console.log(filtered);
+
+
+  const filteredUnCompleted = tasks.filter((item) => item.complete != 'Completed')
+
+ 
   return (
     <>
+    
       <Header logOut={singOut} />
-      {filtered.length > 0 && (
+      {filteredUnCompleted.length < 1 &&  (
         <div className="center">
           <div
             onClick={() => {
@@ -101,7 +96,7 @@ const UserPanel = () => {
               {!open && (
                 <button
                   className="btn-user-panel"
-                  onClick={() => setOpen(true)}
+                  onClick={() => actions.openTodo(true)}
                 >
                   Add task
                 </button>
@@ -109,11 +104,11 @@ const UserPanel = () => {
               <div className="user-panel-svg">{illustration}</div>
             </StyledDiv>
           </div>
-          {open && <Todo setOpen={setOpen} />}
+          {state.newTodo && <Todo setOpen={setOpen} />}
         </div>
       )}
 
-      {filtered.length < 1 && <UserTodos tasks={tasks} />}
+      {filteredUnCompleted.length > 0 && <UserTodos tasks={tasks} />}
     </>
   );
 };

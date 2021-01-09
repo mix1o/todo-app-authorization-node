@@ -24,17 +24,27 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Main} />
+          <Route exact path="/" component={Main}/>
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
           <Route exact path="/user-panel">
-            {!user ? <Redirect to="/login" /> : <UserPanel />}
+            {!user ? <SignIn/> : <UserPanel/> }
           </Route>
-          {user && <Route exact path="/login" component={UserPanel} />}
-          <Route exact path="/login" component={SignIn} />
+          {/* {user && <Route exact path="/login" component={UserPanel} />} */}
+          {/* <Route exact path="/login" component={SignIn}/> */}
+          <Route exact path="/login">
+            {user ?  <UserPanel/> : <SignIn/>}
+          </Route>
+
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
+          <Route exact path="/pricing">
+            <h3>Pricing</h3>
+          </Route>
+          <Route exact path="/settings">
+            <h3>Settings</h3>
+          </Route>
           <Route exact path="/policy" component={Policy} />
           <Route exact path="/about" component={About} />
         </Switch>

@@ -5,6 +5,7 @@
 }
 html {
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 body {
   --main-color-green: #1db95e;
@@ -20,11 +21,11 @@ body {
   --high-prio: 235, 34, 19;
   --alpha: 0.45;
   font-family: 'Noto Sans JP', sans-serif;
+  scroll-behavior: smooth;
 }
 .body,
 .header {
   background-color: var(--main-color-green);
-  background: red;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -498,3 +499,69 @@ h3 > span {
   line-height: 3rem;
 }
 /* End terms & Policy */
+/* HAMBURGER */
+.list__hamburger {
+  list-style: none;
+  width: 100%;
+}
+.list__hamburger > li {
+  margin-top: 4rem;
+  width: 80%;
+  text-align: left;
+}
+.hamburger_link {
+  font-size: 3.4rem;
+  color: var(--main-color-green);
+  background: #fff;
+  padding: 1rem;
+  display: inline-block;
+  width: 100%;
+  font-weight: 700;
+}
+.info__user {
+  text-align: left;
+  color: #fff;
+  font-size: 3.7rem;
+}
+.info__user > .second::first-letter {
+  background: #fff;
+  padding: 0 .7rem;
+  color: var(--main-color-green)
+}
+.credits {
+  font-size: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  font-weight: 100;
+}
+.credits > span {
+  font-weight: 900;
+  background: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  color: var(--main-color-green)
+}
+
+.hamburger__log__out {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+  padding: .5rem 1rem;
+  background: red;
+
+}
+.log__out {
+  padding: 1rem;
+  background: transparent;
+  color: #fff;
+  font-size: 2rem;
+  border: none;
+  background: aqua;
+}
+/* END HAMBURGER */
