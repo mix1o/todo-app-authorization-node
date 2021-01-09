@@ -3,6 +3,8 @@ import SignIn from './components/loginComponents/SignIn';
 import ResetPasswordForm from './components/loginComponents/ResetPasswordForm';
 import UserPanel from './components/userDashboard/UserPanel';
 import Todo from './components/todo/Todo';
+import Terms from './components/page/Terms';
+import Policy from './components/page/Policy';
 import PayNow from './components/payments/PayNow';
 import {
   BrowserRouter as Router,
@@ -21,7 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Main}/>
+          <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
           <Route exact path="/user-panel">
@@ -31,6 +33,8 @@ function App() {
           <Route exact path="/login" component={SignIn} />
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
+          <Route exact path="/terms" component={Terms} />
+          <Route exact path="/policy" component={Policy} />
         </Switch>
       </Router>
     </div>

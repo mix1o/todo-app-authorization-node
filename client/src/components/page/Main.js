@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Main = () => {
   return (
-    <div className="main__heading">
+    <main className="main__heading">
       <h1 className="heading-1">
         All your tasks in
         <span className="heading__span">One Place</span>
@@ -230,7 +230,7 @@ const Main = () => {
           </svg>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

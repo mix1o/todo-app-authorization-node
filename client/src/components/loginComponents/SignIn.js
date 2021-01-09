@@ -65,11 +65,11 @@ const SignIn = () => {
               cy="24.0475"
               r="23.0475"
               stroke="#4A5568"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
               fill="#4A5568"
             />

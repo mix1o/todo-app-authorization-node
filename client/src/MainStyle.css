@@ -467,7 +467,7 @@ h3 > span {
   margin-top: 4rem;
   padding: 2rem;
 }
-.footer__second > div > svg {
+.footer__second > div > i > svg {
   fill: var(--secondary-grey);
   margin-left: 1rem;
 }
@@ -479,3 +479,18 @@ h3 > span {
 }
 
 /* END FOOTER */
+/* Terms & Policy */
+.terms {
+  width: 80%;
+  margin: 5% auto;
+  color: var(--secondary-grey);
+}
+.main__header {
+  font-size: 3.6rem;
+  margin-bottom: 5rem;
+}
+.main__info {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+/* End terms & Policy */

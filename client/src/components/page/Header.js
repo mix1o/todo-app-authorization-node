@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { useCounter } from '../../store/sub';
 
-const Header = ({logOut}) => {
+const Header = ({ logOut }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [state,actions] = useCounter();
+  const [state, actions] = useCounter();
 
   return (
     <header className="header">
-      <div className="left-section">
+      <section className="left-section">
         <button onClick={logOut}>Sign out</button>
         <div className="left-section-first-item">
           <Link to="/">
@@ -26,9 +25,10 @@ const Header = ({logOut}) => {
           </Link>
         </div>
         <div>
-          <svg onClick={() => {
-            actions.openTodo(true);
-          }}
+          <svg
+            onClick={() => {
+              actions.openTodo(true);
+            }}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -38,8 +38,8 @@ const Header = ({logOut}) => {
             <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z" />
           </svg>
         </div>
-      </div>
-      <div className="menu" onClick={() => setIsOpen(!isOpen)}>
+      </section>
+      <nav className="menu" onClick={() => setIsOpen(!isOpen)}>
         <div>
           {!isOpen && (
             <svg
@@ -64,7 +64,7 @@ const Header = ({logOut}) => {
             </svg>
           )}
         </div>
-      </div>
+      </nav>
     </header>
   );
 };
