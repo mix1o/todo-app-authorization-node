@@ -24,6 +24,7 @@ body {
 .body,
 .header {
   background-color: var(--main-color-green);
+  background: red;
   display: flex;
   justify-content: space-between;
   align-items: center;
