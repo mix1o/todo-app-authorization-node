@@ -126,7 +126,6 @@ const UserTodos = ({ tasks }) => {
               )}
             </div>
           </div>
-          {
             <div>
               {seeCompleted &&
                 completedItems
@@ -141,11 +140,11 @@ const UserTodos = ({ tasks }) => {
                         prio={priority}
                         date={date}
                         status={complete}
+                        isCompleted={true}
                       />
                     )
                   )}
             </div>
-          }
           {!tasks.length > 0 && <p>You don't have any tasks yet.</p>}
           <Footer />
         </StyledDiv>

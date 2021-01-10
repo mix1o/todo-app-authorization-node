@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 
-const Task = ({ id, name, desc, prio, date, status, input }) => {
+const Task = ({ id, name, desc, prio, date, status, input, isCompleted }) => {
   let dateF = new Date(date);
   let day = dateF.getDate();
   let month = dateF.getMonth() + 1;
@@ -34,7 +34,6 @@ const Task = ({ id, name, desc, prio, date, status, input }) => {
       <div className="status-div"><div style={{marginRight: '10px'}} className={`circle ${prio}`}></div><p className="task__name">{name}</p></div>
       <p className="task__desc">{desc}</p>
       {input && (
-        <>
         <div className="status__task">
         <p className="task__date">Added {`${day}:${month}:${years}`}</p>
         <div className="finish">
@@ -45,11 +44,16 @@ const Task = ({ id, name, desc, prio, date, status, input }) => {
           onClick={(e) => {
             sendStatus(e.target.value);
           }}
-        />
+        /> 
         </div>
         </div>
-        </>
-      )}
+        
+        )}
+        {isCompleted && 
+        <div className="status__task">
+          <p className="task__date">Added {`${day}:${month}:${years}`}</p>
+          <p>Finished: </p>
+        </div>}
       </section>
   );
 };

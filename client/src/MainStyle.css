@@ -548,7 +548,7 @@ h3 > span {
   font-size: 2rem;
   margin-top: 3rem;
   text-align: center;
-  font-weight: 100;
+  font-weight: 400;
 }
 .credits > span {
   font-weight: 900;
@@ -557,20 +557,20 @@ h3 > span {
   border-radius: 3px;
   color: var(--main-color-green)
 }
-
+.hamburger__left__border {
+  backdrop-filter: blur(3px);
+  height: 100vh;
+}
 .hamburger__log__out {
   text-align: center;
   position: absolute;
-  bottom: 20px;
+  bottom: 5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid #fff;
-  padding: .5rem 1rem;
-  background: red;
-
 }
 .log__out {
   padding: 1rem;
@@ -578,7 +578,9 @@ h3 > span {
   color: #fff;
   font-size: 2rem;
   border: none;
-  background: aqua;
+}
+.log__out > svg {
+  margin-right: 1rem;
 }
 /* END HAMBURGER */
 /* Contact us */

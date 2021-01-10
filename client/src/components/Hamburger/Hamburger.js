@@ -13,6 +13,7 @@ const HamburgerDiv = styled.div`
   width: 80%;
   text-align: right;
   padding: 1rem;
+  z-index: 4;
 `;
 const HelpDiv = styled.div`
 height: 100vh;
@@ -20,10 +21,9 @@ position: fixed;
 top: 0;
 right: 0;
 width: 100%;
-backdrop-filter: blur(3px);
 transform: ${({isOpen}) => isOpen ? 'translateX(0)' : 'translateX(100%)'};
 transition: transform .3s ease-in-out;
-z-index: 3;
+z-index: 5;
 `;
 
 
@@ -47,8 +47,11 @@ const Hamburger = ({isOpen,setIsOpen,logOut}) => {
 
 
 
+      
     return (
-        <HelpDiv onClick={() => setIsOpen(false)} isOpen={isOpen}>
+        <HelpDiv isOpen={isOpen}>
+          <div onClick={() => setIsOpen(false)} className="hamburger__left__border">
+          </div>
         <HamburgerDiv>
        
             <svg onClick={() => setIsOpen(false)}
@@ -65,15 +68,17 @@ const Hamburger = ({isOpen,setIsOpen,logOut}) => {
             {correct && <p className="second">{user.user[0].name}</p>}
             {correct && <p className="credits">Your credits: <span>{user.user[0].credits}</span></p>}
             </div>
-            <div style={{display: 'flex',alignItems: 'center', height: '70vh'}}>
+            <div style={{display: 'flex',alignItems: 'center', height: '60vh'}}>
             <ListHamburger/>
             </div>
             <div  className="hamburger__log__out">
+            <button onClick={logOut} className="log__out">
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M13 2v-2l10 3v18l-10 3v-2h-9v-7h1v6h8v-18h-8v7h-1v-8h9zm-2.947 10l-3.293-3.293.707-.707 4.5 4.5-4.5 4.5-.707-.707 3.293-3.293h-9.053v-1h9.053z"/></svg>
-            <button onClick={logOut} className="log__out">Log out</button>
+              Log out
+            </button>
             </div>
         </HamburgerDiv>
-    </HelpDiv>
+        </HelpDiv>
     )
 }
 
