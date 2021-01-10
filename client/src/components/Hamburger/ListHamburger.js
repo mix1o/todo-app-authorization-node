@@ -15,11 +15,16 @@ const ListHamburger = () => {
                 </Link>
             </li>
             <li>
+                <Link className="hamburger_link" to="/completed-tasks">
+                    History
+                </Link>
+            </li>
+            <li>
                 <Link className="hamburger_link" to="/pricing">
                     Add Credits
                 </Link>
             </li>
-           
+        
             
         </ul>
     )

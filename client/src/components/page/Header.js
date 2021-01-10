@@ -2,11 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCounter } from '../../store/sub';
 import Hamburger from '../Hamburger/Hamburger';
+import { useHistory } from 'react-router-dom';
 
-const Header = ({ logOut }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const history = useHistory();
   const [state, actions] = useCounter();
+
+  const singOut = () => {
+    fetch('/api/signOut', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(() => {
+      history.push('/')
+      window.location.reload();
+    });
+  };
 
   return (
     <>
@@ -62,7 +75,7 @@ const Header = ({ logOut }) => {
       </nav>
       
     </header>
-    <Hamburger logOut={logOut} isOpen={isOpen} setIsOpen={setIsOpen}/>
+    <Hamburger logOut={singOut} isOpen={isOpen} setIsOpen={setIsOpen}/>
     </>
   );
 };

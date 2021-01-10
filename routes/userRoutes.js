@@ -179,6 +179,7 @@ router.post('/api/changeStatusTask', async (req, res) => {
     {
       $set: {
         complete: 'Completed',
+        finishedDate: Date.now()
       },
     }
   );

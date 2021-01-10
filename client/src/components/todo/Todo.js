@@ -45,7 +45,8 @@ const Todo = () => {
 
   return (
     <section className="todo__body">
-      <p style={{ fontSize: '15px', color: '#4a5568' }}>Make a new task</p>
+      <p style={{ fontSize: '17px', color: '#4a5568' }}>Make a new task</p>
+      <p style={{marginTop: '1rem',fontSize: '13px', color: '#4a5568'}}>1 credit gives you 1 task</p>
       <label className="todo__taskName">
         <input
           name="Title"
@@ -69,6 +70,7 @@ const Todo = () => {
         <button className="btn-newtask" onClick={addNewTask}>
           Add task
         </button>
+        <p style={{fontSize: '14px',color: '#4a5568'}}>Your credits: <span style={{color: '#000'}}>{state.userData.user[0].credits}</span></p>
         {!sel && (
           <div onClick={() => setSel(true)}>
             <i>

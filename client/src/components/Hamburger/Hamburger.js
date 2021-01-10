@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import styled from 'styled-components'
 import ListHamburger from './ListHamburger';
 import { useCookies } from 'react-cookie';
+import { useCounter } from '../../store/sub';
 
 
 const HamburgerDiv = styled.div`
@@ -30,7 +31,7 @@ z-index: 5;
 const Hamburger = ({isOpen,setIsOpen,logOut}) => {
     const [user, setUser] = useState([]);
     const [correct, setCorrect] = useState(false);
-    
+    const [state,actions] = useCounter();
     
 
     useEffect(() => {
@@ -40,6 +41,7 @@ const Hamburger = ({isOpen,setIsOpen,logOut}) => {
               if(json.correct){
                   setUser(json);
                   setCorrect(true);
+                  actions.user(json);
               }
           });
         // .then((json) => console.log(json));

@@ -9,12 +9,16 @@ const ToDoSchema = mongoose.Schema({
   priority: String,
   complete: {
     type: String,
-    default: 'UnCompleted',
+    default: 'Uncompleted',
   },
   date: {
     type: Date,
     default: Date.now(),
   },
+  finishedDate: {
+    type: Date,
+    default: null
+  }
 });
 
 module.exports = mongoose.model('todoLists', ToDoSchema);

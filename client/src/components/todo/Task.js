@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 
-const Task = ({ id, name, desc, prio, date, status, input, isCompleted }) => {
+const Task = ({ id, name, desc, prio, date, status, input, isCompleted,bgColor,finished }) => {
   let dateF = new Date(date);
   let day = dateF.getDate();
   let month = dateF.getMonth() + 1;
@@ -12,6 +12,30 @@ const Task = ({ id, name, desc, prio, date, status, input, isCompleted }) => {
   }
   if(month < '10'){
     month = `0${month}`
+  }
+
+  let dateCompleted = new Date(finished);
+  let dayCompleted = dateCompleted.getDate();
+  let monthCompleted = dateCompleted.getMonth() +1;
+  let yearsCompleted = dateCompleted.getFullYear();
+  let hoursCompleted = dateCompleted.getHours();
+  let minutesCompleted = dateCompleted.getMinutes();
+  let secondsCompleted = dateCompleted.getSeconds();
+
+  if(dayCompleted < '10'){
+    dayCompleted = `0${dayCompleted}`
+  }
+  if(monthCompleted < '10'){
+    monthCompleted = `0${monthCompleted}`
+  }
+  if(hoursCompleted < '10'){
+    hoursCompleted = `0${hoursCompleted}`
+  }
+  if(minutesCompleted < '10'){
+    minutesCompleted = `0${minutesCompleted}`
+  }
+  if(secondsCompleted < '10'){
+    secondsCompleted = `0${secondsCompleted}`
   }
 
   const sendStatus = (idTask) => {
@@ -30,9 +54,10 @@ const Task = ({ id, name, desc, prio, date, status, input, isCompleted }) => {
   const [state, actions] = useCounter();
 
   return (
-    <section className="section__task">
+    <section className={`section__task ${bgColor}`}>
       <div className="status-div"><div style={{marginRight: '10px'}} className={`circle ${prio}`}></div><p className="task__name">{name}</p></div>
       <p className="task__desc">{desc}</p>
+      <p style={{fontSize: '1.5rem'}} className="task__desc">Status: <span style={{fontSize: '1.4rem', color: '#2d3748'}}>{status}</span></p>
       {input && (
         <div className="status__task">
         <p className="task__date">Added {`${day}:${month}:${years}`}</p>
@@ -50,9 +75,9 @@ const Task = ({ id, name, desc, prio, date, status, input, isCompleted }) => {
         
         )}
         {isCompleted && 
-        <div className="status__task">
-          <p className="task__date">Added {`${day}:${month}:${years}`}</p>
-          <p>Finished: </p>
+        <div style={{display: 'block'}} className="status__task">
+          <p className="task__date">Date added: <span style={{fontWeight: '900'}}>{`${day}:${month}:${years}`}</span></p>
+          <p style={{borderBottom: '1px solid #333',paddingBottom:'.3rem', textAlign: 'center', marginTop: '2rem'}}>Date finished: {`${dayCompleted}:${monthCompleted}:${yearsCompleted}`}<span style={{fontWeight: '700',marginLeft: '1rem'}}>{`${hoursCompleted}:${minutesCompleted}:${secondsCompleted}`}</span></p>
         </div>}
       </section>
   );

@@ -18,6 +18,7 @@ import {
 import Main from './components/page/Main';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
+import Hisotry from './components/page/History'
 function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
@@ -37,7 +38,7 @@ function App() {
           <Route exact path="/login">
             {user ?  <UserPanel/> : <SignIn/>}
           </Route>
-
+          {user && <Route exact path="/completed-tasks" component={Hisotry}/>}
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />

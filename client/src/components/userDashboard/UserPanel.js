@@ -28,17 +28,6 @@ const UserPanel = () => {
   const [state, actions] = useCounter();
 
 
-  const singOut = () => {
-    fetch('/api/signOut', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(() => {
-      history.push('/');
-      window.location.reload();
-    });
-  };
 
   // const convertDate = () => {
   //   if (correct) {
@@ -81,7 +70,7 @@ const UserPanel = () => {
   return (
     <>
     
-      <Header logOut={singOut} />
+      <Header />
       {filteredUnCompleted.length < 1 &&  (
         <div className="center">
           <div

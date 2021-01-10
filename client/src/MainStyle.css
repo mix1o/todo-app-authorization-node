@@ -230,6 +230,10 @@ p {
   border: 0.2rem solid rgba(var(--high-prio), 1);
   background: rgba(var(--high-prio), var(--alpha));
 }
+.completed__task__bgColor {
+  background-color: rgba(221, 255, 236, .4);
+}
+
 .btn-tasks-new {
   border: 2px solid var(--main-color-green);
   padding: 0.5rem 5rem;
@@ -244,6 +248,12 @@ h3 {
 h3 > span {
   font-size: 10px;
   color: var(--paragraphs-colors);
+}
+.heading-3 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.6rem;
+  color: var(--secondary-grey)
 }
 .btn-user-panel {
   border: 0.2rem solid var(--main-color-green);
@@ -461,6 +471,7 @@ h3 > span {
   padding: 1rem;
   font-size: 1.3rem;
   color: var(--paragraphs-colors);
+  margin-top: 5rem;
 }
 .footer > div > p {
   margin-top: 2rem;
@@ -640,3 +651,12 @@ h3 > span {
   left: 2rem;
 }
 /* end 404 */
+/* HISTORY */
+
+.history__p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+/* END HISTORY/ */
