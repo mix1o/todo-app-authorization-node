@@ -31,6 +31,7 @@ const RegisterationForm = () => {
     })
       .then((res) => res.json())
       .then((json) => setCatchError(json));
+    console.log(userData);
   };
   const changePassType = (e) => {
     if (e.keyCode === 9) {
@@ -154,7 +155,15 @@ const RegisterationForm = () => {
             </i>
           </label>
           <label className="form__label form__checkbox">
-            <input type="checkbox" required className="label__checkbox" />
+            <input
+              name="Terms"
+              type="checkbox"
+              checked
+              disabled
+              onChange={(e) => handlerInput(e)}
+              required
+              className="label__checkbox"
+            />
             <i className="checkbox__indicator"></i>
 
             <p className="label__terms">

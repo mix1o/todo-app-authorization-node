@@ -65,7 +65,7 @@ const UserPanel = () => {
   }, [tasks]);
 
   const filteredUnCompleted = tasks.filter(
-    (item) => item.complete != 'Completed'
+    (item) => item.complete !== 'Completed'
   );
 
   return (

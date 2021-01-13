@@ -104,7 +104,9 @@ const Hamburger = ({ isOpen, setIsOpen, logOut }) => {
           >
             <ListHamburger />
           </div>
-          {isOpen && user.newUser && <Tour open={isOpen} steps={STEPS} />}
+          {isOpen && userD.user[0].newUser && (
+            <Tour open={isOpen} steps={STEPS} />
+          )}
           <div className="hamburger__log__out">
             <button onClick={logOut} className="log__out">
               <svg

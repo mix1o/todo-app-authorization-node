@@ -79,16 +79,18 @@ const Task = ({
       {input && (
         <div className="status__task">
           <p className="task__date">Added {`${day}:${month}:${years}`}</p>
-          <div className="finish">
+          <label className="finish">
             <p className="finish_text">Finish now</p>
             <input
               type="checkbox"
               value={id}
+              className="label__checkbox"
               onClick={(e) => {
                 sendStatus(e.target.value);
               }}
             />
-          </div>
+            <i className="checkbox__indicator"></i>
+          </label>
         </div>
       )}
       {isCompleted && (
