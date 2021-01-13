@@ -14,6 +14,10 @@ const UserSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  newUser: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 module.exports = mongoose.model('User', UserSchema);

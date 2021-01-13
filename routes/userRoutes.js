@@ -64,9 +64,9 @@ router.post('/api/resetPassword', async (req, res) => {
 });
 
 router.post('/api/login', async (req, res, next) => {
-  const { error } = loginValidation(req.body);
+  // const { error } = loginValidation(req.body);
 
-  if (error) return res.send({ message: error.details[0].message });
+  // if (error) return res.send({ message: error.details[0].message });
 
   const client = await Users.findOne({ email: req.body.Email });
   if (!client) return res.send({ message: 'Email not found!' });
@@ -118,6 +118,19 @@ router.post('/api/newToDo', async (req, res, next) => {
     );
 
     req.session.user.credits -= 1;
+
+    const updateUserStatus = await Users.updateOne(
+      { _id: req.session.user._id },
+
+      {
+        $set: {
+          newUser: false,
+        },
+      }
+    );
+
+    req.session.user.newUser = false;
+
     res.status(200).send({ message: 'You added task', correct: true });
     console.log(req.session.user.credits);
   } catch (e) {
@@ -165,7 +178,7 @@ router.post('/api/delete', async (req, res) => {
 router.get('/api/userpanel', async (req, res) => {
   try {
     const userInfo = await Users.find({ _id: req.session.user._id });
-    res.send({correct: true,user: userInfo});
+    res.send({ correct: true, user: userInfo });
   } catch (e) {
     res.send(e);
   }
@@ -179,7 +192,7 @@ router.post('/api/changeStatusTask', async (req, res) => {
     {
       $set: {
         complete: 'Completed',
-        finishedDate: Date.now()
+        finishedDate: Date.now(),
       },
     }
   );

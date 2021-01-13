@@ -1,7 +1,37 @@
 import React, { useState } from 'react';
 import { useCounter } from '../../store/sub';
+import Tour from '../Guide/Tour';
+import { useCookies } from 'react-cookie';
 
 const Todo = () => {
+  const [cookies] = useCookies({});
+  const { user } = cookies;
+
+  const STEPS = [
+    {
+      target: '.todo__taskName',
+      content: 'Here you can enter name of task',
+      disableBeacon: true,
+    },
+    {
+      target: '.todo__description',
+      content: 'Add description about task',
+    },
+    {
+      target: '.select__diff',
+      content: 'Here you can choose priority of task',
+    },
+    {
+      target: '.tour-credits',
+      content:
+        'Your credits. Notice that you need have at least on credit to add task',
+    },
+    {
+      target: '.btn-newtask',
+      content: 'This button adds new task',
+    },
+  ];
+
   const [state, actions] = useCounter();
   const [taskData, setTaskData] = useState({
     Title: '',
@@ -45,8 +75,11 @@ const Todo = () => {
 
   return (
     <section className="todo__body">
+      {user.newUser && <Tour open={true} steps={STEPS} />}
       <p style={{ fontSize: '17px', color: '#4a5568' }}>Make a new task</p>
-      <p style={{marginTop: '1rem',fontSize: '13px', color: '#4a5568'}}>1 credit gives you 1 task</p>
+      <p style={{ marginTop: '1rem', fontSize: '13px', color: '#4a5568' }}>
+        1 credit gives you 1 task
+      </p>
       <label className="todo__taskName">
         <input
           name="Title"
@@ -70,9 +103,17 @@ const Todo = () => {
         <button className="btn-newtask" onClick={addNewTask}>
           Add task
         </button>
-        <p style={{fontSize: '14px',color: '#4a5568'}}>Your credits: <span style={{color: '#000'}}>{state.userData.user[0].credits}</span></p>
+        <p
+          className="tour-credits"
+          style={{ fontSize: '14px', color: '#4a5568' }}
+        >
+          Your credits:{' '}
+          <span style={{ color: '#000' }}>
+            {state.userData.user[0].credits}
+          </span>
+        </p>
         {!sel && (
-          <div onClick={() => setSel(true)}>
+          <div className="select__diff" onClick={() => setSel(true)}>
             <i>
               <svg
                 width="29"

@@ -10,6 +10,7 @@ import Todo from '../todo/Todo';
 import styled from 'styled-components';
 import Footer from '../page/Footer';
 import { STATES } from 'mongoose';
+import Tour from '../Guide/Tour';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -21,13 +22,13 @@ const StyledDiv = styled.div`
 
 const UserPanel = () => {
   const [message, setMessage] = useState('');
- 
+
   const history = useHistory();
-  
+
+  const [startTour, setStartTour] = useState();
+  const [showBox, setShowBox] = useState(true);
   const [open, setOpen] = useState(false);
   const [state, actions] = useCounter();
-
-
 
   // const convertDate = () => {
   //   if (correct) {
@@ -63,15 +64,14 @@ const UserPanel = () => {
       });
   }, [tasks]);
 
+  const filteredUnCompleted = tasks.filter(
+    (item) => item.complete != 'Completed'
+  );
 
-  const filteredUnCompleted = tasks.filter((item) => item.complete != 'Completed')
-
- 
   return (
     <>
-    
       <Header />
-      {filteredUnCompleted.length < 1 &&  (
+      {filteredUnCompleted.length < 1 && (
         <div className="center">
           <div
             onClick={() => {
