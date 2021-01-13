@@ -119,17 +119,21 @@ router.post('/api/newToDo', async (req, res, next) => {
 
     req.session.user.credits -= 1;
 
-    const updateUserStatus = await Users.updateOne(
-      { _id: req.session.user._id },
+    const userStatus = await Users.findOne({ _id: req.session.user._id });
 
-      {
-        $set: {
-          newUser: false,
-        },
-      }
-    );
+    if (userStatus.newUser) {
+      const updateUserStatus = await Users.updateOne(
+        { _id: req.session.user._id },
 
-    req.session.user.newUser = false;
+        {
+          $set: {
+            newUser: false,
+          },
+        }
+      );
+
+      req.session.user.newUser = false;
+    }
 
     res.status(200).send({ message: 'You added task', correct: true });
     console.log(req.session.user.credits);

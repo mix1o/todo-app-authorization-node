@@ -70,7 +70,6 @@ const Hamburger = ({ isOpen, setIsOpen, logOut }) => {
 
   const [cookies] = useCookies({});
   const { user } = cookies;
-  console.log(user);
   return (
     <>
       <HelpDiv isOpen={isOpen}>
