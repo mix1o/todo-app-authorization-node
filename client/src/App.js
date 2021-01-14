@@ -9,6 +9,7 @@ import PayNow from './components/payments/PayNow';
 import About from './components/page/About';
 import ContactUs from './components/page/ContactUs';
 import NotFound from './components/page/NotFound';
+import HoWorks from './components/page/HoWorks';
 import {
   BrowserRouter as Router,
   Switch,
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/policy" component={Policy} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact-us" component={ContactUs} />
+          <Route exact path="/how-works" component={HoWorks} />
           <Route component={NotFound} />
         </Switch>
       </Router>

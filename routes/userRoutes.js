@@ -35,7 +35,7 @@ router.post('/api/newuser', async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.send({ message: 'Your account has been created!' });
+    res.send({ message: 'Your account has been created!', correct: true });
   } catch (e) {
     res.status(400).send(e);
   }
@@ -60,7 +60,7 @@ router.post('/api/resetPassword', async (req, res) => {
     { $set: { password: newHashedPassword } }
   );
 
-  res.send({ message: 'Your password has been changed' });
+  res.send({ message: 'Your password has been changed', correct: true });
 });
 
 router.post('/api/login', async (req, res, next) => {

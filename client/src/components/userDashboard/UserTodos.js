@@ -47,7 +47,7 @@ const UserTodos = ({ tasks }) => {
           }
         }}
       >
-        <StyledDiv open={state.newTodo} class="tasks">
+        <StyledDiv open={state.newTodo} className="tasks">
           <h3>
             Today is <span>{`${dayName} ${dayOfWeek} ${month}`}</span>
           </h3>
@@ -75,10 +75,22 @@ const UserTodos = ({ tasks }) => {
               )
             )}
           <div style={{ textAlign: 'center' }}>
-            <a onClick={() => actions.openTodo(true)} className="btn-tasks-new" style={{display:'inline-block',color: '#1db95e',textDecoration: 'none', fontSize: '1.4rem', background: 'transparent'}} href="#todo">Add task
-            </a>   
+            <a
+              onClick={() => actions.openTodo(true)}
+              className="btn-tasks-new"
+              style={{
+                display: 'inline-block',
+                color: '#1db95e',
+                textDecoration: 'none',
+                fontSize: '1.4rem',
+                background: 'transparent',
+              }}
+              href="#todo"
+            >
+              Add task
+            </a>
           </div>
-          
+
           <Footer />
         </StyledDiv>
       </div>

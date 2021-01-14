@@ -30,7 +30,12 @@ const ResetPasswordForm = () => {
       body: JSON.stringify(userData),
     })
       .then((response) => response.json())
-      .then((json) => setMessage(json.message));
+      .then((json) => {
+        setMessage(json);
+        if (json.correct) {
+          setUserData({ Email: '', NewPassword: '', ConfirmNewPassword: '' });
+        }
+      });
   };
   const changePassType = (e) => {
     if (e.keyCode === 9) {
@@ -142,7 +147,10 @@ const ResetPasswordForm = () => {
             </i>
           </label>
           <label className="form__labelError">
-            <Warning errorMessage={message} />
+            <Warning
+              errorMessage={message.message}
+              isCorrect={message.correct}
+            />
           </label>
         </form>
 

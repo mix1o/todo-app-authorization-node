@@ -17,7 +17,7 @@ const Main = () => {
       </div>
       <div>
         <svg
-          width="375"
+          width="355"
           height="262"
           viewBox="0 0 375 262"
           fill="none"
@@ -187,6 +187,13 @@ const Main = () => {
             </clipPath>
           </defs>
         </svg>
+        <Link
+          style={{ marginTop: '2rem', marginBottom: '0' }}
+          className="heading__btn"
+          to="/how-works"
+        >
+          How it works?
+        </Link>
       </div>
       <div className="heading__socials">
         <div className="social">

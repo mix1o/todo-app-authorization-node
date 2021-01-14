@@ -23,8 +23,17 @@ body {
   --alpha: 0.45;
   --linera-gradient-alpha: 0.85;
   --outline-color: #161616;
+  --border-guide-color: #ff9b21;
   font-family: 'Noto Sans JP', sans-serif;
   scroll-behavior: smooth;
+}
+@keyframes roundAbout {
+  0% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(4px);
+  }
 }
 .body,
 .header {
@@ -43,7 +52,6 @@ body {
 .main__heading {
   padding: 2rem;
   text-align: center;
-  margin-top: 4rem;
 }
 
 .heading-1 {
@@ -314,6 +322,9 @@ h3 > span {
   background-image: url('./components/loginComponents/waves.svg');
   background-position: bottom;
 }
+.main__signIn {
+  justify-content: space-around;
+}
 .section__header {
   margin-top: 6rem;
   color: var(--main-color-green);
@@ -344,7 +355,6 @@ h3 > span {
   color: var(--secondary-grey);
 }
 .section__message {
-  color: var(--high-prio);
   position: absolute;
   top: 3rem;
   left: 0;
@@ -483,6 +493,12 @@ h3 > span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.footer__first > p > a,
+.footer__first > div > p > a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--paragraphs-colors);
 }
 .footer__div_second_p {
   margin-right: 40%;
@@ -674,3 +690,49 @@ h3 > span {
   background-color: red;
 }
 /* end styl select */
+/* popup */
+.popup-relative {
+  position: relative;
+}
+.popup {
+  background-color: var(--header-color);
+  color: var(--white);
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.7rem;
+  width: 80%;
+  padding: 2rem;
+  height: 40vh;
+  text-align: center;
+}
+.arrowIcon {
+  animation-name: roundAbout;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+/* endpopup */
+/* how-works */
+
+.how-works-box {
+  background: var(--light-grey);
+  margin: 2rem auto;
+  width: 90%;
+  padding: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--paragraphs-colors);
+  border: 1px solid var(--secondary-grey);
+  border-radius: 0.3rem;
+}
+.title-box {
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+/* end how-works */

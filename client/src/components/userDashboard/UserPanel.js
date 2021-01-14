@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import Footer from '../page/Footer';
 import { STATES } from 'mongoose';
 import Tour from '../Guide/Tour';
-
+import { Link } from 'react-router-dom';
 const StyledDiv = styled.div`
   text-align: center;
   padding: 9rem 1.5rem;

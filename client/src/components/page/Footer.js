@@ -9,18 +9,29 @@ const Footer = () => {
           style={{
             fontWeight: '700',
             color: '#4A5568',
-            marginBottom: '2rem',
+            marginBottom: '3rem',
+            fontSize: '2rem',
           }}
         >
           Usefull Links
         </p>
         <div>
-          <p>About</p>
-          <p className="footer__div_second_p">How to use</p>
+          <p>
+            <Link to="/about">About</Link>
+          </p>
+          <p className="footer__div_second_p">
+            <Link to="/how-works">How to use</Link>
+          </p>
         </div>
-        <p>Terms of service</p>
-        <p>Privacy policy</p>
-        <p>Contact us</p>
+        <p>
+          <Link to="/terms">Terms of service</Link>
+        </p>
+        <p>
+          <Link to="/policy">Privacy policy</Link>
+        </p>
+        <p>
+          <Link to="/contact-us">Contact us</Link>
+        </p>
       </div>
       <div className="footer__second">
         <p>&copy; 2021 nmTasks. All rights reserved</p>

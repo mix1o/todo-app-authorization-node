@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ParagraphError = styled.p`
-  color: #e53e3e;
+  color: ${({ isCorrect }) => (isCorrect ? '#2d3748' : '#e53e3e')};
 `;
 
-const Warning = ({ errorMessage }) => {
+const Warning = ({ errorMessage, isCorrect }) => {
   return (
-    <ParagraphError className="section__message">{errorMessage}</ParagraphError>
+    <ParagraphError className="section__message" isCorrect={isCorrect}>
+      {errorMessage}
+    </ParagraphError>
   );
 };
 
