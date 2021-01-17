@@ -62,7 +62,7 @@ const RegisterationForm = () => {
         }
         setCatchError(json);
       });
-    console.log(userData);
+  
   };
   const changePassType = (e) => {
     if (e.keyCode === 9) {

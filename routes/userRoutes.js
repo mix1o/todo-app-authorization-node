@@ -9,7 +9,9 @@ const {
   loginValidation,
   resetValidation,
   taskValidation,
+  messageValidation
 } = require('../validation/validation');
+const sgMail = require("@sendgrid/mail");
 
 router.get('http://localhost:8000/test', (req, res) => {
   res.send('test');
@@ -202,5 +204,26 @@ router.post('/api/changeStatusTask', async (req, res) => {
   );
   res.send({ message: 'New status of task' });
 });
+
+
+router.post('/api/message', (req,res) => {
+  const {error} = messageValidation(req.body);
+  if (error) return res.send({ message: error.details[0].message });
+
+  const {Subject,Email,Message} = req.body;
+
+  sgMail.setApiKey('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');
+    const msg = {
+        to: "adam.malik22@interia.pl",
+        from: Email,
+        subject: Subject,
+        text: Message,
+    };
+   
+	sgMail.send(msg);
+  
+  res.status(200).send({message: 'Your email has been send', correct: true});
+
+})
 
 module.exports = router;
