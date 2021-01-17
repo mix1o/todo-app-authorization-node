@@ -62,7 +62,7 @@ const UserPanel = () => {
       .then((json) => {
         setTasks(json);
       });
-  }, [tasks]);
+  },[tasks]);
 
   const filteredUnCompleted = tasks.filter(
     (item) => item.complete !== 'Completed'
