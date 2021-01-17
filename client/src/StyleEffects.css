@@ -1,0 +1,24 @@
+h1::selection,
+h2::selection,
+h3::selection,
+p::selection,
+.label__input::selection,
+strong::selection,
+span::selection,
+.select__diff::selection,
+.heading__btn-sign::selection {
+  background: var(--main-color-green);
+  color: var(--light-grey);
+}
+a::selection,
+.log__out::selection,
+.first::selection,
+.second::selection,
+.credits::selection,
+.btn__main--full::selection,
+.label__span--link::selection,
+.heading__btn::selection,
+.heading__span::selection {
+  background: #fff;
+  color: var(--main-color-green);
+}

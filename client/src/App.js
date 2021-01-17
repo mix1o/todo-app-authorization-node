@@ -10,6 +10,7 @@ import About from './components/page/About';
 import ContactUs from './components/page/ContactUs';
 import NotFound from './components/page/NotFound';
 import HoWorks from './components/page/HoWorks';
+import Subscription from './components/payments/Subscriptions';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +20,7 @@ import {
 import Main from './components/page/Main';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
+import StyleEffects from './StyleEffects.css';
 import Hisotry from './components/page/History';
 import { useState } from 'react';
 function App() {
@@ -44,9 +46,7 @@ function App() {
           <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
-          <Route exact path="/pricing">
-            <h3>Pricing</h3>
-          </Route>
+          <Route exact path="/subscription" component={Subscription} />
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>

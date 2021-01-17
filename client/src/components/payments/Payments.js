@@ -75,10 +75,10 @@ const Payments = ({ price }) => {
                 value={cardData.expireDate}
                 onChange={(e) => handlerInput(e)}
                 type="text"
-              />{' '}
+              />
             </label>
             <label>
-              <p>CVC</p>{' '}
+              <p>CVC</p>
               <input
                 name="cvc"
                 placeholder="123"
