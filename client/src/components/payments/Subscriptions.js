@@ -12,7 +12,7 @@ const Subscriptions = () => {
         <Card
           title={'Basic'}
           price={{
-            roundedPrice: '$4',
+            roundedPrice: '4',
             afterComma: '99',
           }}
           priceFull={'4.99'}
@@ -27,7 +27,7 @@ const Subscriptions = () => {
         <Card
           title={'Standard'}
           price={{
-            roundedPrice: '$9',
+            roundedPrice: '9',
             afterComma: '99',
           }}
           priceFull={'9.99'}
@@ -42,7 +42,7 @@ const Subscriptions = () => {
         <Card
           title={'Premium'}
           price={{
-            roundedPrice: '$19',
+            roundedPrice: '19',
             afterComma: '99',
           }}
           priceFull={'19.99'}

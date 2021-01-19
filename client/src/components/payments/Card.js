@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import styled from 'styled-components';
 
-const SectionBGColor = styled.section`
-  background-color: ${({ changeColor }) =>
-    changeColor ? '#1db95e' : '#ebf0f5'};
-  border-radius: 2.6rem 2.6rem 0 0;
-  padding-bottom: 5rem;
-`;
 const StyledDiv = styled.div`
   color: ${({ changeFontColor }) => (changeFontColor ? '#f7fafc' : '#1db95e')};
   width: 70%;
@@ -31,7 +25,8 @@ const Card = ({
 
   return (
     <div className={className}>
-      <SectionBGColor changeColor={recomendation} className="card__topInfo">
+      {recomendation && <p className="card__recomended">Recomended</p>}
+      <section changeColor={recomendation} className="card__topInfo">
         <h3>{title}</h3>
         <StyledDiv changeFontColor={recomendation} className="card__listDesc">
           <p>
@@ -104,11 +99,12 @@ const Card = ({
             {description.row3}
           </p>
         </StyledDiv>
-      </SectionBGColor>
-      <p className="card__price">
-        {price.roundedPrice}
+      </section>
+      <div className="card__price">
+        <span style={{ fontSize: '5rem' }}>$</span>
+        <p style={{ fontWeight: '700' }}>{price.roundedPrice}</p>
         <span className="card__span">{price.afterComma}</span>
-      </p>
+      </div>
       <Link to="/pay-now">
         <button
           className={`card__btn ${
