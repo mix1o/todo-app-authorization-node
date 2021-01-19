@@ -24,7 +24,7 @@ const ListHamburger = () => {
         </Link>
       </li>
       <li>
-        <Link className="hamburger_link hamburger_credits" to="/pricing">
+        <Link className="hamburger_link hamburger_credits" to="/subscription">
           Add Credits
         </Link>
       </li>

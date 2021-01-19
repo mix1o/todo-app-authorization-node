@@ -86,7 +86,7 @@ const HoWorks = () => {
             <Link
               style={{ marginTop: '2rem', marginBottom: '0' }}
               className="heading__btn"
-              to="/sing-up"
+              to="/sign-up"
             >
               Sign up
             </Link>
