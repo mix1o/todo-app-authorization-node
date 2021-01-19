@@ -27,24 +27,11 @@ const HelpDiv = styled.div`
   z-index: 5;
 `;
 
-const Hamburger = ({ isOpen, setIsOpen, logOut }) => {
-  const [userD, setUserD] = useState([]);
-  const [correct, setCorrect] = useState(false);
+const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
+  
   const [state, actions] = useCounter();
-
-  useEffect(() => {
-    fetch('/api/userpanel')
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.correct) {
-          setUserD(json);
-          setCorrect(true);
-          actions.user(json);
-        }
-      });
-    // .then((json) => console.log(json));
-  }, [userD]);
-
+ 
+ 
   const STEPS = [
     {
       target: '.credits',

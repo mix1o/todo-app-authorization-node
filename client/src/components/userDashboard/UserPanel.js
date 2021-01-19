@@ -12,6 +12,7 @@ import Footer from '../page/Footer';
 import { STATES } from 'mongoose';
 import Tour from '../Guide/Tour';
 import { Link } from 'react-router-dom';
+
 const StyledDiv = styled.div`
   text-align: center;
   padding: 9rem 1.5rem;
@@ -29,6 +30,8 @@ const UserPanel = () => {
   const [showBox, setShowBox] = useState(true);
   const [open, setOpen] = useState(false);
   const [state, actions] = useCounter();
+  const [userD, setUserD] = useState([]);
+  const [correct, setCorrect] = useState(false);
 
   // const convertDate = () => {
   //   if (correct) {
@@ -56,21 +59,42 @@ const UserPanel = () => {
 
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
+  const loadTasks = () => {
     fetch('/api/todos')
-      .then((response) => response.json())
+    .then((response) => response.json())
+    .then((json) => {
+      setTasks(json);        
+    });
+
+    fetch('/api/userpanel')
+      .then((res) => res.json())
       .then((json) => {
-        setTasks(json);
+        if (json.correct) {
+          setUserD(json);
+          setCorrect(true);
+          actions.user(json);
+        }
       });
-  },[tasks]);
+  }
+
+  console.log(userD)
+  const handlerAdd = () => {
+    loadTasks();
+  }
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
 
   const filteredUnCompleted = tasks.filter(
     (item) => item.complete !== 'Completed'
   );
 
+
   return (
     <>
-      <Header />
+      <Header userD={userD} correct={correct}/>
       {filteredUnCompleted.length < 1 && (
         <div className="center">
           <div
@@ -93,11 +117,10 @@ const UserPanel = () => {
               <div className="user-panel-svg">{illustration}</div>
             </StyledDiv>
           </div>
-          {state.newTodo && <Todo setOpen={setOpen} />}
+          {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
         </div>
       )}
-
-      {filteredUnCompleted.length > 0 && <UserTodos tasks={tasks} />}
+      {filteredUnCompleted.length > 0 && <UserTodos onAdd={handlerAdd} tasks={tasks} />}
     </>
   );
 };

@@ -167,7 +167,7 @@ router.post('/api/payCard', async (req, res) => {
 
 router.get('/api/todos', async (req, res) => {
   const todos = await Todo.find({ userId: req.session.user._id });
-  res.send(todos);
+  res.status(200).send(todos);
 });
 
 router.post('/api/delete', async (req, res) => {
@@ -184,7 +184,7 @@ router.post('/api/delete', async (req, res) => {
 router.get('/api/userpanel', async (req, res) => {
   try {
     const userInfo = await Users.find({ _id: req.session.user._id });
-    res.send({ correct: true, user: userInfo });
+    res.send({ correct: true, user: userInfo, credits: userInfo[0].credits });
   } catch (e) {
     res.send(e);
   }
