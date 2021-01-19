@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   height: auto;
 `;
 
-const UserTodos = ({ tasks }) => {
+const UserTodos = ({ tasks,onAdd }) => {
   const newItems = tasks.filter((item) => item.complete !== 'Completed');
   const [state, actions] = useCounter();
   const [check, setCheck] = useState(false);
@@ -94,7 +94,7 @@ const UserTodos = ({ tasks }) => {
           <Footer />
         </StyledDiv>
       </div>
-      {state.newTodo && <Todo />}
+      {state.newTodo && <Todo onAdd={onAdd} />}
     </div>
   );
 };

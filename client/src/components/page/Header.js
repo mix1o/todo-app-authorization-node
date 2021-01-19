@@ -4,7 +4,7 @@ import { useCounter } from '../../store/sub';
 import Hamburger from '../Hamburger/Hamburger';
 import { useHistory } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({correct,userD}) => {
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
   const [state, actions] = useCounter();
@@ -75,7 +75,7 @@ const Header = () => {
       </nav>
       
     </header>
-    <Hamburger logOut={singOut} isOpen={isOpen} setIsOpen={setIsOpen}/>
+    <Hamburger correct={correct} userD={userD} logOut={singOut} isOpen={isOpen} setIsOpen={setIsOpen}/>
     </>
   );
 };

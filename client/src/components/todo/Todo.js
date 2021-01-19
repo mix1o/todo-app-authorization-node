@@ -3,7 +3,8 @@ import { useCounter } from '../../store/sub';
 import Tour from '../Guide/Tour';
 import { useCookies } from 'react-cookie';
 
-const Todo = () => {
+const Todo = ({onAdd}) => {
+  
   const [cookies] = useCookies({});
   const { user } = cookies;
 
@@ -51,7 +52,8 @@ const Todo = () => {
     const value = event.target.value;
     const name = target.name;
 
-    setTaskData({ ...taskData, [name]: value });
+    // setTaskData({ ...taskData, [name]: value });
+    setTaskData(data => ({ ...data, [name]: value }));
   };
 
   const addNewTask = () => {
@@ -73,6 +75,7 @@ const Todo = () => {
             Description: '',
             Priority: '',
           });
+          onAdd();
         }
       });
   };
