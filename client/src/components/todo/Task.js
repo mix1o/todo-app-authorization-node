@@ -13,6 +13,7 @@ const Task = ({
   isCompleted,
   bgColor,
   finished,
+  onAdd
 }) => {
   let dateF = new Date(date);
   let day = dateF.getDate();
@@ -87,6 +88,7 @@ const Task = ({
               className="label__checkbox"
               onClick={(e) => {
                 sendStatus(e.target.value);
+                onAdd();
               }}
             />
             <i className="checkbox__indicator"></i>

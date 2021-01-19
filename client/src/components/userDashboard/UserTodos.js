@@ -71,6 +71,7 @@ const UserTodos = ({ tasks,onAdd }) => {
                   date={date}
                   status={complete}
                   input={true}
+                  onAdd={onAdd}
                 />
               )
             )}

@@ -22,12 +22,14 @@ import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
 import StyleEffects from './StyleEffects.css';
 import Hisotry from './components/page/History';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
   return (
+
     <div className="App">
       <Router>
         <Switch>
@@ -43,10 +45,10 @@ function App() {
             {user ? <UserPanel /> : <SignIn />}
           </Route>
           {user && <Route exact path="/completed-tasks" component={Hisotry} />}
-          <Route exact path="/pay-now" component={PayNow} />
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
+          <Route exact path="/pay-now" component={PayNow} />
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>

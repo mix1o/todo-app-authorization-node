@@ -31,7 +31,16 @@ const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
   
   const [state, actions] = useCounter();
  
- 
+  useEffect(() => {
+    fetch('/api/userpanel')
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.correct) {
+          actions.user(json);
+        }
+      });
+  }, []);
+
   const STEPS = [
     {
       target: '.credits',
@@ -77,11 +86,11 @@ const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
           </svg>
           <div className="info__user">
             <p className="first">Welcome,</p>
-            {correct && <p className="second">{userD.user[0].name}</p>}
-            {correct && (
+            {state.correct && <p className="second">{state.userData.user[0].name}</p>}
+            {state.correct && (
               <p className="credits">
                 Your credits:
-                <span>{userD.user[0].credits}</span>
+                <span>{state.userData.user[0].credits}</span>
               </p>
             )}
           </div>
@@ -90,7 +99,7 @@ const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
           >
             <ListHamburger />
           </div>
-          {isOpen && userD.user[0].newUser && (
+          {isOpen && state.userData.user[0].newUser && (
             <Tour open={isOpen} steps={STEPS} />
           )}
           <div className="hamburger__log__out">

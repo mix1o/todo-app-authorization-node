@@ -71,20 +71,21 @@ const UserPanel = () => {
       .then((json) => {
         if (json.correct) {
           setUserD(json);
-          setCorrect(true);
           actions.user(json);
+          setCorrect(true);
         }
       });
-  }
-
-  console.log(userD)
-  const handlerAdd = () => {
-    loadTasks();
-  }
-
-  useEffect(() => {
-    loadTasks();
+    }
+    
+    const handlerAdd = () => {
+      loadTasks();
+    }
+    
+    useEffect(() => {
+      loadTasks();
+      actions.loadUser({fun: handlerAdd});
   }, []);
+
 
 
   const filteredUnCompleted = tasks.filter(
@@ -94,7 +95,7 @@ const UserPanel = () => {
 
   return (
     <>
-      <Header userD={userD} correct={correct}/>
+      <Header />
       {filteredUnCompleted.length < 1 && (
         <div className="center">
           <div

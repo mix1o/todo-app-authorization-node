@@ -1,6 +1,6 @@
 import { createStore } from 'react-sweet-state';
 
-const initialState = { count: 0, idOfTask: '', newTodo: false, userData: null};
+const initialState = { count: 0, idOfTask: '', newTodo: false, userData: null,correct: null,userFunction: null};
 
 const actions = {
   payment: (price) => ({ getState, setState }) => {
@@ -16,8 +16,12 @@ const actions = {
     setState({newTodo: e})
   },
   user: (e) => ({getState,setState}) => {
-    const {userData} = getState();
-    setState({userData: e})
+    const {userData,correct} = getState();
+    setState({userData: e, correct: true})
+  },
+  loadUser: (e) => ({getState,setState}) => {
+    const {userFunction} = getState();
+    setState({userFunction: e});
   }
 };
 

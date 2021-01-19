@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+
+const PaymentWrapper = styled.div`
+background: var(--header-color);
+padding: 15px;
+width: 80%;
+text-align: center;
+margin: 0 auto;
+color: #fff;
+transform: translateY(-200%);
+`;
 
 const Payments = ({ price }) => {
   const numberReg = /^4[0-9]{12}(?:[0-9]{3})?$/;
@@ -48,9 +60,25 @@ const Payments = ({ price }) => {
 
   return (
     <div>
-      <button onClick={() => setOpen(true)}>Pay With Card</button>
-      {open && (
-        <div className="wrapper-payment">
+        <table border="1">
+          <tbody>
+          <tr>
+            <th>
+              Pacakge
+            </th>
+            <th>
+              Price
+            </th>
+          
+          </tr>
+          <tr>
+              <td>Here will be name of package</td>
+              <td>Here will be totall price</td>
+            </tr>
+            </tbody>
+        </table>
+        <button onClick={() => setOpen(!open)}>Pay now</button>
+          <PaymentWrapper className={`${open ? 'aniamtion-payment' : ''}`} open={open}>
           <div className="exit" onClick={() => setOpen(false)}>
             X
           </div>
@@ -91,8 +119,8 @@ const Payments = ({ price }) => {
 
           <button onClick={pay}>Pay Now</button>
           {message.length > 2 && <p>{message}</p>}
-        </div>
-      )}
+        </PaymentWrapper>
+    
     </div>
   );
 };
