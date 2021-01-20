@@ -41,10 +41,10 @@ body {
     transform: translateY(-200%);
   }
   60% {
-    transform: translateY(80%);
+    transform: translateY(60%);
   }
   100% {
-    transform: translateY(40%);
+    transform: translateY(20%);
   }
 }
 
@@ -859,5 +859,60 @@ h3 > span {
   animation-fill-mode: forwards;
   animation-duration: 2s;
   animation-delay: 0.3s;
+}
+
+.payment__wrap {
+  padding: 2rem;
+}
+.payment__wrap > h2 {
+  font-size: 3.1rem;
+}
+.payment__details {
+  padding: 2rem;
+  background: var(--light-grey);
+  margin-top: 5rem;
+  border-radius: .5rem;
+}
+.payment__details > h3 {
+  text-align: left;
+}
+.payment__div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 1.2rem;
+}
+.payment__div > i {
+  margin-top: 5px;
+}
+.payment__p {
+  margin-left: 1rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.payment__p > span {
+  color: var(--secondary-grey)
+}
+
+.payment__method {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+}
+.payment__single {
+  width: 40%;
+  background: transparent;
+}
+.payment__single > button {
+  width: 100%;
+  padding: 1rem;
+  height: 6rem;
+  background-color: var(--header-color);
+  border-radius: 1rem;
+  border: none;
+}
+.payment__single > .selectedGreen {
+  background-color: var(--main-color-green);
 }
 /* END PAYMENT COMPONENT */

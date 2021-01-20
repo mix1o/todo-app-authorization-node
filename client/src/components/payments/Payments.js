@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import Header from '../page/Header';
+import Footer from '../page/Footer';
 
 const PaymentWrapper = styled.div`
   background: var(--header-color);
@@ -57,23 +59,12 @@ const Payments = ({ price }) => {
     }
   };
 
+  setTimeout(() => {
+    setOpen(true);
+  },800)
   return (
     <div>
-      <table border="1">
-        <tbody>
-          <tr>
-            <th>Pacakge</th>
-            <th>Credits</th>
-            <th>Price</th>
-          </tr>
-          <tr>
-            <td>{state.titleSub}</td>
-            <td>You will get {state.creditsSub}</td>
-            <td>${state.count}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button onClick={() => setOpen(!open)}>Pay now</button>
+      <Header/>
       <PaymentWrapper
         className={`${open ? 'aniamtion-payment' : ''}`}
         open={open}
@@ -119,6 +110,7 @@ const Payments = ({ price }) => {
         <button onClick={pay}>Pay Now</button>
         {message.length > 2 && <p>{message}</p>}
       </PaymentWrapper>
+      <Footer/>
     </div>
   );
 };

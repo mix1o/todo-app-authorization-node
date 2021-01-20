@@ -110,7 +110,7 @@ const Card = ({
         <span className="card__span">{price.afterComma}</span>
       </div>
 
-      <Link to="/pay-now">
+      <Link to="/confirm-pay">
         <button
           className={`card__btn ${
             recomendation ? 'btn__main--empty' : 'btn__main--full'

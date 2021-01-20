@@ -24,6 +24,8 @@ import StyleEffects from './StyleEffects.css';
 import Hisotry from './components/page/History';
 import { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from './store/sub';
+import PaymentConfirm from './components/payments/PaymentConfirm'
+import PaymentMethod from './components/payments/PaymentMethod'
 
 function App() {
   const [cookies] = useCookies({});
@@ -51,12 +53,14 @@ function App() {
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
           {user ? (
-            <Route exact path="/pay-now">
-              {state.count > 0 ? <PayNow /> : <Redirect to="/subscription" />}
+            <Route exact path="/confirm-pay">
+              {state.count > 0 ? <PaymentConfirm /> : <Redirect to="/subscription" />}
             </Route>
           ) : (
             <Redirect to="/login" />
           )}
+          <Route exact path="/method-payment" component={PaymentMethod}/>
+          <Route exact path="/pay-now" component={PayNow}/>
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>
