@@ -36,6 +36,18 @@ body {
     transform: translateX(4px);
   }
 }
+@keyframes pay {
+  0% {
+    transform: translateY(-200%);
+  }
+  60% {
+    transform: translateY(80%);
+  }
+  100% {
+    transform: translateY(40%);
+  }
+}
+
 .body,
 .header {
   background-color: var(--main-color-green);
@@ -47,6 +59,7 @@ body {
 .header {
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 /* MAIN PAGE */
 
@@ -771,15 +784,12 @@ h3 > span {
 /* end how-works */
 /* subscripton */
 .subscription_cards {
-  position: relative;
-  z-index: -1;
-}
-.subscription_cards {
   width: 85vw;
   margin: 4rem auto 0 auto;
 }
 .card__normal {
   width: 100%;
+
   min-height: 50vh;
   text-align: center;
   border: 0.3rem solid var(--main-color-green);
@@ -843,23 +853,11 @@ h3 > span {
 }
 /* end subscruiption */
 /* PAYMENT COMPONENT */
-@keyframes pay{
-  0%{
-    transform: translateY(-200%);
-  }
-  60% {
-    transform: translateY(80%);
-  }
-  100% {
-    transform: translateY(40%);
-  }
-}
 
 .aniamtion-payment {
   animation-name: pay;
   animation-fill-mode: forwards;
   animation-duration: 2s;
-  animation-delay: .3s;
-  
+  animation-delay: 0.3s;
 }
 /* END PAYMENT COMPONENT */

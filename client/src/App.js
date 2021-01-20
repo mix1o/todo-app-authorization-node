@@ -23,13 +23,15 @@ import MainStyle from './MainStyle.css';
 import StyleEffects from './StyleEffects.css';
 import Hisotry from './components/page/History';
 import { useEffect, useState } from 'react';
+import { CounterSubscriber, useCounter } from './store/sub';
 
 function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
-  return (
+  const [state, actions] = useCounter();
 
+  return (
     <div className="App">
       <Router>
         <Switch>
@@ -48,7 +50,13 @@ function App() {
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
-          <Route exact path="/pay-now" component={PayNow} />
+          {user ? (
+            <Route exact path="/pay-now">
+              {state.count > 0 ? <PayNow /> : <Redirect to="/subscription" />}
+            </Route>
+          ) : (
+            <Redirect to="/login" />
+          )}
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>

@@ -3,15 +3,14 @@ import { CounterSubscriber, useCounter } from '../../store/sub';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 const PaymentWrapper = styled.div`
-background: var(--header-color);
-padding: 15px;
-width: 80%;
-text-align: center;
-margin: 0 auto;
-color: #fff;
-transform: translateY(-200%);
+  background: var(--header-color);
+  padding: 15px;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+  transform: translateY(-200%);
 `;
 
 const Payments = ({ price }) => {
@@ -60,67 +59,66 @@ const Payments = ({ price }) => {
 
   return (
     <div>
-        <table border="1">
-          <tbody>
+      <table border="1">
+        <tbody>
           <tr>
-            <th>
-              Pacakge
-            </th>
-            <th>
-              Price
-            </th>
-          
+            <th>Pacakge</th>
+            <th>Credits</th>
+            <th>Price</th>
           </tr>
           <tr>
-              <td>Here will be name of package</td>
-              <td>Here will be totall price</td>
-            </tr>
-            </tbody>
-        </table>
-        <button onClick={() => setOpen(!open)}>Pay now</button>
-          <PaymentWrapper className={`${open ? 'aniamtion-payment' : ''}`} open={open}>
-          <div className="exit" onClick={() => setOpen(false)}>
-            X
-          </div>
-          <p>To Do List Payment</p>
-          <p>{state.count}$ to pay</p>
+            <td>{state.titleSub}</td>
+            <td>You will get {state.creditsSub}</td>
+            <td>${state.count}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button onClick={() => setOpen(!open)}>Pay now</button>
+      <PaymentWrapper
+        className={`${open ? 'aniamtion-payment' : ''}`}
+        open={open}
+      >
+        <div className="exit" onClick={() => setOpen(false)}>
+          X
+        </div>
+        <p>To Do List Payment</p>
+        <p>{state.count}$ to pay</p>
 
+        <label>
+          <p>Card number: </p>
+          <input
+            name="cardNumber"
+            value={cardData.cardNumber}
+            onChange={(e) => handlerInput(e)}
+            type="text"
+          />
+        </label>
+        <div className="safe">
           <label>
-            <p>Card number: </p>
+            <p>Date</p>
             <input
-              name="cardNumber"
-              value={cardData.cardNumber}
+              name="expireDate"
+              placeholder="01/10"
+              value={cardData.expireDate}
               onChange={(e) => handlerInput(e)}
               type="text"
             />
           </label>
-          <div className="safe">
-            <label>
-              <p>Date</p>
-              <input
-                name="expireDate"
-                placeholder="01/10"
-                value={cardData.expireDate}
-                onChange={(e) => handlerInput(e)}
-                type="text"
-              />
-            </label>
-            <label>
-              <p>CVC</p>
-              <input
-                name="cvc"
-                placeholder="123"
-                value={cardData.cvc}
-                onChange={(e) => handlerInput(e)}
-                type="text"
-              />
-            </label>
-          </div>
+          <label>
+            <p>CVC</p>
+            <input
+              name="cvc"
+              placeholder="123"
+              value={cardData.cvc}
+              onChange={(e) => handlerInput(e)}
+              type="text"
+            />
+          </label>
+        </div>
 
-          <button onClick={pay}>Pay Now</button>
-          {message.length > 2 && <p>{message}</p>}
-        </PaymentWrapper>
-    
+        <button onClick={pay}>Pay Now</button>
+        {message.length > 2 && <p>{message}</p>}
+      </PaymentWrapper>
     </div>
   );
 };

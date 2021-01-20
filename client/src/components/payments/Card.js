@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-
-
+import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
-  color: ${({ changeFontColor }) => (changeFontColor ? '#f7fafc' : '#1db95e')};
+  color: ${({ changeFontColor }) =>
+    changeFontColor ? 'var(--white)' : 'var(----main-color-green)'};
   width: 70%;
   margin: 0 auto;
   text-align: left;
@@ -102,25 +101,25 @@ const Card = ({
           </p>
         </StyledDiv>
       </section>
-      <div className="card__price" style={!recomendation ? {color: '#2d3748'} : {color: '#fff'}}>
+      <div
+        className="card__price"
+        style={!recomendation ? { color: '#2d3748' } : { color: '#fff' }}
+      >
         <span style={{ fontSize: '5rem' }}>$</span>
         <p style={{ fontWeight: '700' }}>{price.roundedPrice}</p>
         <span className="card__span">{price.afterComma}</span>
       </div>
-      <button
-        style={{background: 'red'}}
+
+      <Link to="/pay-now">
+        <button
           className={`card__btn ${
             recomendation ? 'btn__main--empty' : 'btn__main--full'
           }`}
-          onClick={() => actions.payment(priceFull)}
+          onClick={() => actions.payment(priceFull, title, description.row1)}
         >
-     
-      <Link to="/pay-now" style={{background: 'yellow'}}>
-    
-      
           Choose
+        </button>
       </Link>
-      </button> 
     </div>
   );
 };

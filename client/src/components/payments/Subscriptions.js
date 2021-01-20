@@ -4,16 +4,15 @@ import Card from './Card';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 
-
 const Subscriptions = () => {
-
-  const [state,actions] = useCounter();
+  const [state, actions] = useCounter();
 
   return (
     <>
-      <Header onAdd={state.load}/>
-      <main className="subscription_cards" style={{background: 'aqua'}}>
+      <Header onAdd={state.load} />
+      <div className="subscription_cards">
         <h1 className="section__title">Choose your preferable plan</h1>
+
         <Card
           title={'Basic'}
           price={{
@@ -59,9 +58,8 @@ const Subscriptions = () => {
           className={'card__normal'}
           recomendation={false}
         />
-      </main>
+      </div>
       <Footer />
-     
     </>
   );
 };

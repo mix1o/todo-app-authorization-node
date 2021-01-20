@@ -4,6 +4,7 @@ import Warning from './Warning';
 import Confetti from 'react-confetti';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
+import Recaptcha from 'react-recaptcha';
 
 const RegisterationForm = () => {
   const history = useHistory();
@@ -41,28 +42,33 @@ const RegisterationForm = () => {
     setUserData({ ...userData, [name]: value });
   };
 
+  const [recaptchaCheck, setRecaptachCheck] = useState(false);
+
   const registration = () => {
-    fetch('/api/newuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.correct) {
-          setPopup(true);
-          setUserData({
-            Firstname: '',
-            Lastname: '',
-            Email: '',
-            Password: '',
-          });
-        }
-        setCatchError(json);
-      });
-  
+    if (recaptchaCheck) {
+      fetch('/api/newuser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.correct) {
+            setPopup(true);
+            setUserData({
+              Firstname: '',
+              Lastname: '',
+              Email: '',
+              Password: '',
+            });
+          }
+          setCatchError(json);
+        });
+    } else {
+      setCatchError({ message: 'Please confrim you are not robot' });
+    }
   };
   const changePassType = (e) => {
     if (e.keyCode === 9) {
@@ -232,6 +238,16 @@ const RegisterationForm = () => {
               {!popup && <Warning errorMessage={catchError.message} />}
             </label>
           </form>
+
+          <Recaptcha
+            sitekey="6Lf0_zQaAAAAAA74WFt8myKQ5t-oSLtuSDW1wwAH"
+            render="explicit"
+            onloadCallback={() => console.log('Recaptch loaded')}
+            verifyCallback={() => {
+              setRecaptachCheck(true);
+            }}
+          />
+
           <section className="section__buttons ">
             <button
               className="signUp__btn btn__main--full"

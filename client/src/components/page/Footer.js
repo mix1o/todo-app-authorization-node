@@ -19,9 +19,6 @@ const Footer = () => {
           <p>
             <Link to="/about">About</Link>
           </p>
-          <p className="footer__div_second_p">
-            <Link to="/how-works">How to use</Link>
-          </p>
         </div>
         <p>
           <Link to="/terms">Terms of service</Link>

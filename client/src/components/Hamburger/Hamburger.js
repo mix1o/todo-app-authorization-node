@@ -14,7 +14,7 @@ const HamburgerDiv = styled.div`
   width: 80%;
   text-align: right;
   padding: 1rem;
-  z-index: 4;
+  z-index: 200;
 `;
 const HelpDiv = styled.div`
   height: 100vh;
@@ -24,13 +24,12 @@ const HelpDiv = styled.div`
   width: 100%;
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.3s ease-in-out;
-  z-index: 5;
+  z-index: 200;
 `;
 
-const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
-  
+const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {
   const [state, actions] = useCounter();
- 
+
   useEffect(() => {
     fetch('/api/userpanel')
       .then((res) => res.json())
@@ -86,7 +85,9 @@ const Hamburger = ({ isOpen, setIsOpen, logOut,correct,userD }) => {
           </svg>
           <div className="info__user">
             <p className="first">Welcome,</p>
-            {state.correct && <p className="second">{state.userData.user[0].name}</p>}
+            {state.correct && (
+              <p className="second">{state.userData.user[0].name}</p>
+            )}
             {state.correct && (
               <p className="credits">
                 Your credits:
