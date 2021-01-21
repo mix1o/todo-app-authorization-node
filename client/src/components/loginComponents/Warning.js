@@ -5,9 +5,9 @@ const ParagraphError = styled.p`
   color: ${({ isCorrect }) => (isCorrect ? '#2d3748' : '#e53e3e')};
 `;
 
-const Warning = ({ errorMessage, isCorrect }) => {
+const Warning = ({ errorMessage, isCorrect,position }) => {
   return (
-    <ParagraphError className="section__message" isCorrect={isCorrect}>
+    <ParagraphError style={position ? {position: 'static'} : {position: 'absolute'}} className="section__message" isCorrect={isCorrect}>
       {errorMessage}
     </ParagraphError>
   );

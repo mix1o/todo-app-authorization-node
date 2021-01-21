@@ -26,4 +26,25 @@ const four = <svg width="65" height="29" viewBox="0 0 65 29" fill="none" xmlns="
 <path d="M59.4805 24.2561C58.2207 27.8238 56.7791 29 53.7142 29C53.4804 29 52.7012 28.9739 52.5194 28.9216V26.4778C52.7142 26.5039 53.1947 26.53 53.4414 26.53C54.8311 26.53 55.6103 25.942 56.0908 24.4129L56.3765 23.5112L51.0518 8.6784H54.3376L58.0389 20.7145H58.1038L61.8052 8.6784H65L59.4805 24.2561Z" fill="white"/>
 </svg>
 
-export {one,two,tree,four}
+const svgIcon = <i>
+<svg
+  width="18"
+  height="18"
+  viewBox="0 0 20 20"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    width="20"
+    height="20"
+    rx="10"
+    fill={'#1db95e'}
+  />
+  <path
+    d="M8.5 15L4 10.6977L5.3955 9.26829L8.4735 12.1939L14.5785 6L16 7.40304L8.5 15Z"
+    fill={'#f7fafc'}
+  />
+</svg>
+</i>
+
+export {one,two,tree,four,svgIcon}

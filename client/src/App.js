@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from './store/sub';
 import PaymentConfirm from './components/payments/PaymentConfirm'
 import PaymentMethod from './components/payments/PaymentMethod'
+import NewPassword from './components/loginComponents/NewPassword';
 
 function App() {
   const [cookies] = useCookies({});
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
+          <Route exact path="/reset/:token" component={NewPassword}/>
           <Route exact path="/user-panel">
             {!user ? <SignIn /> : <UserPanel />}
           </Route>
@@ -61,6 +63,7 @@ function App() {
           )}
           <Route exact path="/method-payment" component={PaymentMethod}/>
           <Route exact path="/pay-now" component={PayNow}/>
+          
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>

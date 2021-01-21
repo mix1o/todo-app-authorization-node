@@ -18,6 +18,8 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  resetToken: String,
+  expireToken: Date
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -55,7 +55,7 @@ const ContactUs = () => {
     <>
       <Header />
       <div style={{position: 'relative'}}>
-      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' }} className="contactUs">
+      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' ,zIndex: '45'}} className="contactUs">
         <h1 style={{color: "#2d3748"}} className="section__title">Get in touch</h1>
         <section className="contact__section">
        
@@ -103,7 +103,7 @@ const ContactUs = () => {
             {!message.correct && <p className="er">{message.message}</p>}
         </section>
       </main>
-            {message.correct && <div className="correct-message-div">
+            {message.correct && <div style={{zIndex: '50'}} className="correct-message-div">
               <p className="correct-message-p">{message.message}</p>
               <p className="correct-message-p2">You will be redirect in a second</p>  
               <div style={{marginTop: '4rem'}}>
