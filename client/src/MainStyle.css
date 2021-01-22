@@ -333,8 +333,11 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  background-image: url('./components/loginComponents/waves.svg');
   background-position: bottom;
+}
+.popup-relative {
+  height: 100vh;
+  background-image: url('./components/loginComponents/waves.svg');
 }
 .main__signIn {
   justify-content: space-around;
@@ -916,3 +919,20 @@ h3 > span {
   background-color: var(--main-color-green);
 }
 /* END PAYMENT COMPONENT */
+@keyframes appear {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animation-warning {
+  transform: translateY(-100%);
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: .4s;
+  animation-delay: .1s;
+  animation-fill-mode: forwards;
+}

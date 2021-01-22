@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import Warning from './Warning';
+import Popup from './Popup';
+
 const ResetPasswordForm = () => {
   const [passwordVis, setPasswordVis] = useState('password');
   const [isVisible, setIsVisible] = useState(true);
-
+  const history = useHistory();
   const [Email, setEmail] = useState("");
-
-
-
+  const [isOpen,setIsOpen] = useState('');
 
   const [message, setMessage] = useState('');
 
@@ -24,7 +24,10 @@ const ResetPasswordForm = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
+          setIsOpen(false)
           setEmail("");
+        }else {
+          setIsOpen(true)
         }
       });
   };
@@ -42,9 +45,19 @@ const ResetPasswordForm = () => {
     }
   };
 
+  if(message.correct){
+    setTimeout(() => {
+      history.push("/login")
+    },2000)
+  }
+
+
   return (
     <>
-      <div style={{ marginTop: '2rem' }} className="link__back">
+    
+      <div class="popup-relative">
+      <main className="main__reset" style={message.correct ? {filter: 'blur(3px)'} : {filter: 'blur(0px)'}}>
+      <div style={{ marginTop: '2rem',width: '100%' }} className="link__back">
         <Link style={{ margin: '2rem' }} to="/login">
           <svg
             width="40"
@@ -69,7 +82,6 @@ const ResetPasswordForm = () => {
           </svg>
         </Link>
       </div>
-      <main className="main__reset" style={{display: 'block',textAlign: 'center'}}>
         <h2 className="heading-2" style={{color: '#1db95e', marginTop: '4rem'}}>Forgot password?</h2>
         <form className="section__formWrapper" name="reset password form" style={{display: 'inline-block',marginTop: '4rem'}}>
           <label className="passwordForm__email form__label">
@@ -85,8 +97,9 @@ const ResetPasswordForm = () => {
             />
           </label>
         </form>
-      <div style={{marginTop: '5rem'}}>
-        <p style={{fontSize: '1.4rem',margin: '2rem'}}>Sometimes you forget your password</p>
+      
+      
+      <div style={{margin: '10rem'}}>
       <svg width="284" height="198" viewBox="0 0 284 198" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0)">
 <path d="M56.5851 198C87.8362 198 113.17 196.072 113.17 193.694C113.17 191.315 87.8362 189.387 56.5851 189.387C25.334 189.387 0 191.315 0 193.694C0 196.072 25.334 198 56.5851 198Z" fill="#E6E6E6"/>
@@ -126,15 +139,38 @@ const ResetPasswordForm = () => {
 </svg>
 
       </div>
-      <div style={{margin: '3rem'}}>
-        <Warning position={true} errorMessage={message.message}/>
-      </div>
-        <section className="section__buttons">
+        <section  style={{marginTop: '1rem'}} className="section__buttons">
           <button onClick={resetPassword} className=" btn__main--full">
             Send Password Reset
           </button>
         </section>
       </main>
+      {isOpen && <Warning setIsOpen={setIsOpen} isOpen={isOpen} errorMessage={message.message}/>}
+      {message.correct && <Popup title="Please check your email. We have sent mail with reset link" message="You will be redirect in few seconds" size="2rem" iconLink={<Link to="/login">
+          <div
+            style={{
+              height: '5rem',
+              width: '5rem',
+              border: '2px solid #fff',
+              borderRadius: '100%',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <svg
+              className="arrowIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 12l-20 12 5-12-5-12z" />
+            </svg>
+          </div>
+        </Link>}/>}
+      </div>
     </>
   );
 };

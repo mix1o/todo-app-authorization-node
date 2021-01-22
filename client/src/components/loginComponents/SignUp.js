@@ -5,6 +5,7 @@ import Confetti from 'react-confetti';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import Recaptcha from 'react-recaptcha';
+import {useCounter} from '../../store/sub';
 
 const RegisterationForm = () => {
   const history = useHistory();
@@ -33,7 +34,7 @@ const RegisterationForm = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [height, width] = useWindowSize();
   const [popup, setPopup] = useState(false);
-
+  const [isOpen,setIsOpen] = useState(false);
   const handlerInput = (event) => {
     const target = event.target;
     const value = target.value;
@@ -43,9 +44,37 @@ const RegisterationForm = () => {
   };
 
   const [recaptchaCheck, setRecaptachCheck] = useState(false);
+  const [recaptchaLoad, setRecaptachLoad] = useState(false);
 
+  const [state,actions] = useCounter();
   const registration = () => {
-    if (recaptchaCheck) {
+    if (recaptchaLoad  && recaptchaCheck) {
+      fetch('/api/newuser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setCatchError(json);
+          if (json.correct) {
+            setPopup(true);
+            setIsOpen(false)
+            setUserData({
+              Firstname: '',
+              Lastname: '',
+              Email: '',
+              Password: '',
+            });
+            actions.setAlmost(true);
+          }else {
+            setIsOpen(true)
+          }
+        });
+    } 
+    else if(recaptchaLoad === false){
       fetch('/api/newuser', {
         method: 'POST',
         headers: {
@@ -57,16 +86,21 @@ const RegisterationForm = () => {
         .then((json) => {
           if (json.correct) {
             setPopup(true);
+            setIsOpen(false)
             setUserData({
               Firstname: '',
               Lastname: '',
               Email: '',
               Password: '',
             });
+            actions.setAlmost(true);
+          }else {
+            setIsOpen(true)
           }
           setCatchError(json);
         });
-    } else {
+    }
+    else if(recaptchaLoad === true && recaptchaCheck === false){
       setCatchError({ message: 'Please confrim you are not robot' });
     }
   };
@@ -86,7 +120,7 @@ const RegisterationForm = () => {
 
   if (popup) {
     setTimeout(() => {
-      history.push('/login');
+      history.push('/almost-there');
     }, 4000);
   }
 
@@ -101,7 +135,14 @@ const RegisterationForm = () => {
         tweenDuration={1}
         gravity={0.2}
       />
-      <div style={{ marginTop: '2rem' }} className="link__back">
+      
+      <div class="popup-relative">
+      
+        <main
+          style={{ filter: popup ? 'blur(3px)' : 'blur(0)' }}
+          className="main__signUp"
+        >
+          <div style={{ marginTop: '2rem',width: '100%' }} className="link__back">
         <Link style={{ margin: '2rem' }} to="/">
           <svg
             width="40"
@@ -126,13 +167,8 @@ const RegisterationForm = () => {
           </svg>
         </Link>
       </div>
-      <div class="popup-relative">
-        <main
-          style={{ filter: popup ? 'blur(3px)' : 'blur(0)' }}
-          className="main__signUp"
-        >
-          <h1 className="section__header">Create Account</h1>
-          <form className="section__formWrapper" name="sign up form">
+          <h1 style={{marginTop: '3rem'}} className="section__header">Create Account</h1>
+          <form style={{margin: '2rem'}} className="section__formWrapper" name="sign up form">
             <label className="signUp__label--firstname form__label">
               <p className="label__paragraph">First Name: </p>
               <input
@@ -234,24 +270,27 @@ const RegisterationForm = () => {
                   </span>
                 </Link>
               </p>
-
-              {!popup && <Warning errorMessage={catchError.message} />}
+                
+             
+              
             </label>
           </form>
 
           <Recaptcha
             sitekey="6Lf0_zQaAAAAAA74WFt8myKQ5t-oSLtuSDW1wwAH"
             render="explicit"
-            onloadCallback={() => console.log('Recaptch loaded')}
+            onloadCallback={() => setRecaptachLoad(true)}
             verifyCallback={() => {
               setRecaptachCheck(true);
             }}
-          />
+          /> 
 
-          <section className="section__buttons ">
+          <section style={{marginTop: '2rem'}} className="section__buttons ">
             <button
               className="signUp__btn btn__main--full"
-              onClick={registration}
+              onClick={() => {
+                registration()   
+              }}
             >
               Sign Up
             </button>
@@ -264,7 +303,31 @@ const RegisterationForm = () => {
             </div>
           </section>
         </main>
-        {popup && <Popup />}
+        {isOpen && <Warning isOpen={isOpen} setIsOpen={setIsOpen} errorMessage={catchError.message} />}
+        {catchError.correct && <Popup title="Your account has been created" message="You will be redirect in a second" iconLink={<Link to="/login">
+          <div
+            style={{
+              height: '5rem',
+              width: '5rem',
+              border: '2px solid #fff',
+              borderRadius: '100%',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <svg
+              className="arrowIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 12l-20 12 5-12-5-12z" />
+            </svg>
+          </div>
+        </Link>}/>}
       </div>
     </>
   );
