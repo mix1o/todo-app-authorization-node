@@ -101,6 +101,7 @@ const RegisterationForm = () => {
         });
     }
     else if(recaptchaLoad === true && recaptchaCheck === false){
+      setIsOpen(true)
       setCatchError({ message: 'Please confrim you are not robot' });
     }
   };

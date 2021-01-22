@@ -22,10 +22,10 @@ const Warning = ({ errorMessage, position ,setIsOpen}) => {
   return (
     <DivError style={position ? {position: 'static', margin: '3rem'} : {position: 'absolute'}} className="section__message animation-warning">
      
-      <p style={{fontSize: '1.4rem',width: '80%'}}>
+      <p style={{fontSize: '1.4rem',width: '95%'}}>
       {errorMessage}
       </p>
-      <div style={{width: '20%',textAlign: 'right'}}>
+      <div style={{width: '5%',textAlign: 'right'}}>
       <svg
             onClick={() => setIsOpen(false)}
             xmlns="http://www.w3.org/2000/svg"
