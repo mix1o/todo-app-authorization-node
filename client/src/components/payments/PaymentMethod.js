@@ -17,7 +17,7 @@ const PaymentMethod = () => {
               <h3 style={{marginTop: '0'}} className="heading-3">Payment method</h3>
               <div className="payment__method">
                 <div onClick={() => setSelected(true)} className="payment__single">
-                    <button className={`${select ? 'selectedGreen' : '' }`}>
+                    <button className="selectedGreen">
                         {one}
                     </button>
                 </div>
@@ -38,6 +38,10 @@ const PaymentMethod = () => {
                         {four}
                     </button>
                 </div>
+              </div>
+              <div style={{textAlign: 'center',marginTop: '3rem', fontSize: '1.4rem'}}>
+                <p style={{fontWeight: '700'}}>Why credit or debit card is selected?</p>
+                <p style={{marginTop: '1.5rem'}}>We are working for add new method payment</p>
               </div>
               <div style={{textAlign: 'right'}}>
             <Link style={{marginBottom: '1rem'}} className="heading__btn" to="/pay-now">

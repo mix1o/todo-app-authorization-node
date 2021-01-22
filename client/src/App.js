@@ -60,13 +60,7 @@ function App() {
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
-          {/* {user ? (
-            <Route exact path="/confirm-pay">
-              {state.count > 0 ? <PaymentConfirm /> : <Redirect to="/subscription" />}
-            </Route>
-          ) : (
-            <Redirect to="/" />
-          )} */}
+          {user ? <Route exact path="/confirm-pay">{state.count > 0 ? <PaymentConfirm /> : <Redirect to="/subscription" />}</Route>:<Redirect to="/" />}
           <Route exact path="/method-payment" component={PaymentMethod}/>
           <Route exact path="/pay-now" component={PayNow}/>
           
