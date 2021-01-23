@@ -7,7 +7,7 @@ const Tour = ({ steps, open }) => {
     if (open) {
       setHelp(true);
     }
-  }, 400);
+  }, 300);
 
   return (
     <>

@@ -14,7 +14,7 @@ const HamburgerDiv = styled.div`
   width: 80%;
   text-align: right;
   padding: 1rem;
-  z-index: 200;
+  z-index: 5;
 `;
 const HelpDiv = styled.div`
   height: 100vh;
@@ -24,7 +24,7 @@ const HelpDiv = styled.div`
   width: 100%;
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.3s ease-in-out;
-  z-index: 200;
+  z-index: 5;
 `;
 
 const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {
@@ -46,6 +46,9 @@ const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {
       content: 'Credits are used to add new task',
       disableBeacon: true,
       placement: 'top',
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.hamburger_history',
@@ -53,6 +56,9 @@ const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {
       placement: 'bottom-end',
       disableBeacon: true,
       placement: 'top',
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.hamburger_credits',
@@ -60,6 +66,9 @@ const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {
       placement: 'bottom-end',
       disableBeacon: true,
       placement: 'top',
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
   ];
 

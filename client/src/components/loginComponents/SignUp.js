@@ -5,7 +5,7 @@ import Confetti from 'react-confetti';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import Recaptcha from 'react-recaptcha';
-import {useCounter} from '../../store/sub';
+import { useCounter } from '../../store/sub';
 
 const RegisterationForm = () => {
   const history = useHistory();
@@ -34,7 +34,7 @@ const RegisterationForm = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [height, width] = useWindowSize();
   const [popup, setPopup] = useState(false);
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const handlerInput = (event) => {
     const target = event.target;
     const value = target.value;
@@ -44,11 +44,13 @@ const RegisterationForm = () => {
   };
 
   const [recaptchaCheck, setRecaptachCheck] = useState(false);
-  const [recaptchaLoad, setRecaptachLoad] = useState(false);
 
-  const [state,actions] = useCounter();
+  const [recaptchaLoad, setRecaptchaLoad] = useState(false);
+
+  const [state, actions] = useCounter();
+
   const registration = () => {
-    if (recaptchaLoad  && recaptchaCheck) {
+    if (recaptchaLoad && recaptchaCheck) {
       fetch('/api/newuser', {
         method: 'POST',
         headers: {
@@ -61,7 +63,7 @@ const RegisterationForm = () => {
           setCatchError(json);
           if (json.correct) {
             setPopup(true);
-            setIsOpen(false)
+            setIsOpen(false);
             setUserData({
               Firstname: '',
               Lastname: '',
@@ -69,12 +71,11 @@ const RegisterationForm = () => {
               Password: '',
             });
             actions.setAlmost(true);
-          }else {
-            setIsOpen(true)
+          } else {
+            setIsOpen(true);
           }
         });
-    } 
-    else if(recaptchaLoad === false){
+    } else if (recaptchaLoad === false) {
       fetch('/api/newuser', {
         method: 'POST',
         headers: {
@@ -86,7 +87,7 @@ const RegisterationForm = () => {
         .then((json) => {
           if (json.correct) {
             setPopup(true);
-            setIsOpen(false)
+            setIsOpen(false);
             setUserData({
               Firstname: '',
               Lastname: '',
@@ -94,14 +95,13 @@ const RegisterationForm = () => {
               Password: '',
             });
             actions.setAlmost(true);
-          }else {
-            setIsOpen(true)
+          } else {
+            setIsOpen(true);
           }
           setCatchError(json);
         });
-    }
-    else if(recaptchaLoad === true && recaptchaCheck === false){
-      setIsOpen(true)
+    } else if (recaptchaLoad === true && recaptchaCheck === false) {
+      setIsOpen(true);
       setCatchError({ message: 'Please confrim you are not robot' });
     }
   };
@@ -136,40 +136,48 @@ const RegisterationForm = () => {
         tweenDuration={1}
         gravity={0.2}
       />
-      
+
       <div class="popup-relative">
-      
         <main
           style={{ filter: popup ? 'blur(3px)' : 'blur(0)' }}
           className="main__signUp"
         >
-          <div style={{ marginTop: '2rem',width: '100%' }} className="link__back">
-        <Link style={{ margin: '2rem' }} to="/">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 49 49"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            style={{ marginTop: '2rem', width: '100%' }}
+            className="link__back"
           >
-            <circle
-              cx="24.0475"
-              cy="24.0475"
-              r="23.0475"
-              stroke="#4A5568"
-              strokeWidth="2"
-            />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
-              fill="#4A5568"
-            />
-          </svg>
-        </Link>
-      </div>
-          <h1 style={{marginTop: '3rem'}} className="section__header">Create Account</h1>
-          <form style={{margin: '2rem'}} className="section__formWrapper" name="sign up form">
+            <Link style={{ margin: '2rem' }} to="/">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 49 49"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="24.0475"
+                  cy="24.0475"
+                  r="23.0475"
+                  stroke="#4A5568"
+                  strokeWidth="2"
+                />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
+                  fill="#4A5568"
+                />
+              </svg>
+            </Link>
+          </div>
+          <h1 style={{ marginTop: '3rem' }} className="section__header">
+            Create Account
+          </h1>
+          <form
+            style={{ margin: '2rem' }}
+            className="section__formWrapper"
+            name="sign up form"
+          >
             <label className="signUp__label--firstname form__label">
               <p className="label__paragraph">First Name: </p>
               <input
@@ -271,26 +279,27 @@ const RegisterationForm = () => {
                   </span>
                 </Link>
               </p>
-                
-             
-              
             </label>
           </form>
 
           <Recaptcha
             sitekey="6Lf0_zQaAAAAAA74WFt8myKQ5t-oSLtuSDW1wwAH"
             render="explicit"
-            onloadCallback={() => setRecaptachLoad(true)}
+            onloadCallback={() => {
+              console.log('Recaptch loaded');
+              setRecaptchaLoad(true);
+            }}
+            onloadCallback={() => setRecaptchaLoad(true)}
             verifyCallback={() => {
               setRecaptachCheck(true);
             }}
-          /> 
+          />
 
-          <section style={{marginTop: '2rem'}} className="section__buttons ">
+          <section style={{ marginTop: '2rem' }} className="section__buttons ">
             <button
               className="signUp__btn btn__main--full"
               onClick={() => {
-                registration()   
+                registration();
               }}
             >
               Sign Up

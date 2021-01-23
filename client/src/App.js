@@ -11,6 +11,7 @@ import ContactUs from './components/page/ContactUs';
 import NotFound from './components/page/NotFound';
 import HoWorks from './components/page/HoWorks';
 import Subscription from './components/payments/Subscriptions';
+import BasicLoadingAni from './components/animation/BasicLoadingAni';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,30 +25,47 @@ import StyleEffects from './StyleEffects.css';
 import Hisotry from './components/page/History';
 import { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from './store/sub';
-import PaymentConfirm from './components/payments/PaymentConfirm'
-import PaymentMethod from './components/payments/PaymentMethod'
+import PaymentConfirm from './components/payments/PaymentConfirm';
+import PaymentMethod from './components/payments/PaymentMethod';
 import NewPassword from './components/loginComponents/NewPassword';
-import AlmostThere from './components/loginComponents/AlmostThere'
-import ConfirmAccount from './components/loginComponents/ConfirmAccount'
+import AlmostThere from './components/loginComponents/AlmostThere';
+import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 
 function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
   const [state, actions] = useCounter();
+  const [loadingAnimation, setStartAnimation] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartAnimation(false);
+    },2000)
+    console.log('chuju zloty');
+  }, []);
 
   return (
     <div className="App">
+      {loadingAnimation && <BasicLoadingAni />}
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
+
+          <Route exact path="/reset/:token" component={NewPassword} />
+
           <Route exact path="/almost-there">
-            {state.canSeeAlmost ? <AlmostThere/> : <Redirect to="/"/>}
+            {state.canSeeAlmost ? <AlmostThere /> : <Redirect to="/" />}
           </Route>
-          <Route exact path="/alomost-there/:token" component={ConfirmAccount}/>
-          <Route exact path="/reset/:token" component={NewPassword}/>
+          <Route
+            exact
+            path="/alomost-there/:token"
+            component={ConfirmAccount}
+          />
+          <Route exact path="/reset/:token" component={NewPassword} />
+
           <Route exact path="/user-panel">
             {!user ? <SignIn /> : <UserPanel />}
           </Route>
@@ -60,10 +78,34 @@ function App() {
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
-          {user ? <Route exact path="/confirm-pay">{state.count > 0 ? <PaymentConfirm /> : <Redirect to="/subscription" />}</Route>:<Redirect to="/" />}
-          <Route exact path="/method-payment" component={PaymentMethod}/>
-          <Route exact path="/pay-now" component={PayNow}/>
-          
+          {user ? (
+            <Route exact path="/confirm-pay">
+              {state.count > 0 ? (
+                <PaymentConfirm />
+              ) : (
+                <Redirect to="/subscription" />
+              )}
+            </Route>
+          ) : (
+            <Redirect to="/login" />
+          )}
+          <Route exact path="/method-payment" component={PaymentMethod} />
+          <Route exact path="/pay-now" component={PayNow} />
+
+          {user ? (
+            <Route exact path="/confirm-pay">
+              {state.count > 0 ? (
+                <PaymentConfirm />
+              ) : (
+                <Redirect to="/subscription" />
+              )}
+            </Route>
+          ) : (
+            <Redirect to="/" />
+          )}
+          <Route exact path="/method-payment" component={PaymentMethod} />
+          <Route exact path="/pay-now" component={PayNow} />
+
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>
@@ -71,6 +113,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/how-works" component={HoWorks} />
+          <Route exact path="/animation" component={BasicLoadingAni} />
           <Route component={NotFound} />
         </Switch>
       </Router>

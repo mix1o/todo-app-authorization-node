@@ -12,6 +12,7 @@ import Footer from '../page/Footer';
 import { STATES } from 'mongoose';
 import Tour from '../Guide/Tour';
 import { Link } from 'react-router-dom';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -32,6 +33,7 @@ const UserPanel = () => {
   const [state, actions] = useCounter();
   const [userD, setUserD] = useState([]);
   const [correct, setCorrect] = useState(false);
+  const [loadingAnimation, setStartAnimation] = useState(true);
 
   // const convertDate = () => {
   //   if (correct) {
@@ -45,6 +47,12 @@ const UserPanel = () => {
   // };
 
   // const myNewDate = convertDate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartAnimation(false);
+    }, 1500);
+  }, []);
 
   const deleteAccount = () => {
     fetch('/api/delete', {
@@ -61,10 +69,10 @@ const UserPanel = () => {
 
   const loadTasks = () => {
     fetch('/api/todos')
-    .then((response) => response.json())
-    .then((json) => {
-      setTasks(json);        
-    });
+      .then((response) => response.json())
+      .then((json) => {
+        setTasks(json);
+      });
 
     fetch('/api/userpanel')
       .then((res) => res.json())
@@ -75,26 +83,24 @@ const UserPanel = () => {
           setCorrect(true);
         }
       });
-    }
-    
-    const handlerAdd = () => {
-      loadTasks();
-    }
-    
-    useEffect(() => {
-      loadTasks();
-      actions.loadUser({fun: handlerAdd});
+  };
+
+  const handlerAdd = () => {
+    loadTasks();
+  };
+
+  useEffect(() => {
+    loadTasks();
+    actions.loadUser({ fun: handlerAdd });
   }, []);
-
-
 
   const filteredUnCompleted = tasks.filter(
     (item) => item.complete !== 'Completed'
   );
 
-
   return (
     <>
+      {loadingAnimation && <BasicLoadingAni />}
       <Header />
       {filteredUnCompleted.length < 1 && (
         <div className="center">
@@ -121,7 +127,9 @@ const UserPanel = () => {
           {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
         </div>
       )}
-      {filteredUnCompleted.length > 0 && <UserTodos onAdd={handlerAdd} tasks={tasks} />}
+      {filteredUnCompleted.length > 0 && (
+        <UserTodos onAdd={handlerAdd} tasks={tasks} />
+      )}
     </>
   );
 };
