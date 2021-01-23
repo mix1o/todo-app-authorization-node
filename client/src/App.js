@@ -39,14 +39,13 @@ function App() {
   const [loadingAnimation, setStartAnimation] = useState(true);
 
   useEffect(() => {
-    // if (content) {
-    //   setAnimation(false);
-    // }
+    setStartAnimation(false);
     console.log('chuju zloty');
   }, []);
 
   return (
     <div className="App">
+      {loadingAnimation && <BasicLoadingAni />}
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
