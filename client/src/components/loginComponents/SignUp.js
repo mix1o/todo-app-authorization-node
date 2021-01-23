@@ -306,17 +306,7 @@ const RegisterationForm = () => {
         </main>
         {isOpen && <Warning isOpen={isOpen} setIsOpen={setIsOpen} errorMessage={catchError.message} />}
         {catchError.correct && <Popup title="Your account has been created" message="You will be redirect in a second" iconLink={<Link to="/login">
-          <div
-            style={{
-              height: '5rem',
-              width: '5rem',
-              border: '2px solid #fff',
-              borderRadius: '100%',
-              margin: '0 auto',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+          <div className="container__popup__svg"
           >
             <svg
               className="arrowIcon"

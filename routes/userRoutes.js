@@ -241,7 +241,7 @@ router.post('/api/payCard', async (req, res) => {
     );
 
     req.session.user.credits += Math.ceil(price);
-    res.send({ message: 'Awesome!' });
+    res.send({ message: 'Awesome!',correct: true });
   } catch (e) {
     res.send({ message: e });
   }

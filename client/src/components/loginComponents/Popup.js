@@ -12,13 +12,13 @@ const Popup = ({title,message,iconLink,size}) => {
           color: '#1db95e',
           marginBottom: '4rem',
           paddingBottom: '2rem',
-          borderBottom: '2px solid #fff',
+          borderBottom: '2px solid #1db95e',
         }}
       >
         {title}
       </h3>
-      <p>{message}</p>
-      <div style={{ marginTop: '4rem' }}>
+      <p className="popup__message">{message}</p>
+      <div style={{ marginTop: '8rem' }}>
         {iconLink}
       </div>
     </section>

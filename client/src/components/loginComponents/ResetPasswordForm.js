@@ -146,28 +146,10 @@ const ResetPasswordForm = () => {
         </section>
       </main>
       {isOpen && <Warning setIsOpen={setIsOpen} isOpen={isOpen} errorMessage={message.message}/>}
-      {message.correct && <Popup title="Please check your email. We have sent mail with reset link" message="You will be redirect in few seconds" size="2rem" iconLink={<Link to="/login">
-          <div
-            style={{
-              height: '5rem',
-              width: '5rem',
-              border: '2px solid #fff',
-              borderRadius: '100%',
-              margin: '0 auto',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+      {message.correct && <Popup title="We have sent mail with reset link" message="You will be redirect in few seconds" size="2rem" iconLink={<Link to="/login">
+          <div className="container__popup__svg"
           >
-            <svg
-              className="arrowIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M22 12l-20 12 5-12-5-12z" />
-            </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
           </div>
         </Link>}/>}
       </div>

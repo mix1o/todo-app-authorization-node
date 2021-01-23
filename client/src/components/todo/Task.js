@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
-import Tour from '../Guide/Tour';
+
 
 const Task = ({
   id,
@@ -15,6 +15,8 @@ const Task = ({
   finished,
   onAdd
 }) => {
+
+ 
   let dateF = new Date(date);
   let day = dateF.getDate();
   let month = dateF.getMonth() + 1;
@@ -61,7 +63,7 @@ const Task = ({
         idTask: idTask,
       }),
     });
-    console.log(state.idOfTask);
+   
   };
 
   const [state, actions] = useCounter();
@@ -119,6 +121,7 @@ const Task = ({
           </p>
         </div>
       )}
+  
     </section>
   );
 };

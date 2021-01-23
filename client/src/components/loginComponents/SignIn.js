@@ -38,7 +38,7 @@ const SignIn = () => {
           setIsOpen(false)
           setTimeout(() => {
             window.location.href = '/user-panel';
-          },500)
+          },1000)
         }else {
           setIsOpen(true)
         }
@@ -145,11 +145,13 @@ const SignIn = () => {
             </i>
           </label>
           <label className="signUp__label--resetPass form__label">
-            <Link className="label__link" to="/reset">
+            
               <p className="label__par--link label__span--link">
-                Forgot Password?
+                <Link className="label__link" to="/reset">
+                  Forgot Password?
+                </Link>
               </p>
-            </Link>
+            
            
           </label>
         </form>
@@ -175,16 +177,7 @@ const SignIn = () => {
       </main>
       {isOpen && <Warning isOpen={isOpen} setIsOpen={setIsOpen} errorMessage={message.message}/>}
       {message.correct && <Popup title="You are logged in" message="You will be redirect to dashboard" iconLink={<div
-            style={{
-              height: '5rem',
-              width: '5rem',
-              border: '2px solid #fff',
-              borderRadius: '100%',
-              margin: '0 auto',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+           className="container__popup__svg "
           >
             <svg
               className="arrowIcon"
