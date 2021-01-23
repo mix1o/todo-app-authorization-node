@@ -19,7 +19,12 @@ const UserSchema = mongoose.Schema({
     default: true,
   },
   resetToken: String,
-  expireToken: Date
+  expireToken: Date,
+  confirmedAccount: {
+    type: Boolean,
+    default: false,
+  },
+  confirmedAccountToken: String
 });
 
 module.exports = mongoose.model('User', UserSchema);

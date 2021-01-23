@@ -27,6 +27,8 @@ import { CounterSubscriber, useCounter } from './store/sub';
 import PaymentConfirm from './components/payments/PaymentConfirm';
 import PaymentMethod from './components/payments/PaymentMethod';
 import NewPassword from './components/loginComponents/NewPassword';
+import AlmostThere from './components/loginComponents/AlmostThere'
+import ConfirmAccount from './components/loginComponents/ConfirmAccount'
 
 function App() {
   const [cookies] = useCookies({});
@@ -41,7 +43,15 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/reset" component={ResetPasswordForm} />
+<<<<<<< HEAD
           <Route exact path="/reset/:token" component={NewPassword} />
+=======
+          <Route exact path="/almost-there">
+            {state.canSeeAlmost ? <AlmostThere/> : <Redirect to="/"/>}
+          </Route>
+          <Route exact path="/alomost-there/:token" component={ConfirmAccount}/>
+          <Route exact path="/reset/:token" component={NewPassword}/>
+>>>>>>> 76cea0fd04d0b2a02e40bc29665038bb0ce5cd28
           <Route exact path="/user-panel">
             {!user ? <SignIn /> : <UserPanel />}
           </Route>
@@ -54,6 +64,7 @@ function App() {
           {user && <Route exact path="/todo" component={Todo} />}
           <Route exact path="/terms" component={Terms} />
           <Route exact path="/subscription" component={Subscription} />
+<<<<<<< HEAD
           {user ? (
             <Route exact path="/confirm-pay">
               {state.count > 0 ? (
@@ -68,6 +79,12 @@ function App() {
           <Route exact path="/method-payment" component={PaymentMethod} />
           <Route exact path="/pay-now" component={PayNow} />
 
+=======
+          {user ? <Route exact path="/confirm-pay">{state.count > 0 ? <PaymentConfirm /> : <Redirect to="/subscription" />}</Route>:<Redirect to="/" />}
+          <Route exact path="/method-payment" component={PaymentMethod}/>
+          <Route exact path="/pay-now" component={PayNow}/>
+          
+>>>>>>> 76cea0fd04d0b2a02e40bc29665038bb0ce5cd28
           <Route exact path="/settings">
             <h3>Settings</h3>
           </Route>

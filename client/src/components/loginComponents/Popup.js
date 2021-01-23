@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Popup = () => {
+const Popup = ({title,message,iconLink,size}) => {
   return (
     <section className="popup">
       <h3
         style={{
           fontSize: '3rem',
+          fontSize: size,
           fontWeight: '700',
           color: '#1db95e',
           marginBottom: '4rem',
@@ -14,34 +15,11 @@ const Popup = () => {
           borderBottom: '2px solid #fff',
         }}
       >
-        Your account has been created
+        {title}
       </h3>
-      <p>You will be redirect in a second</p>
+      <p>{message}</p>
       <div style={{ marginTop: '4rem' }}>
-        <Link to="/login">
-          <div
-            style={{
-              height: '5rem',
-              width: '5rem',
-              border: '2px solid #fff',
-              borderRadius: '100%',
-              margin: '0 auto',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <svg
-              className="arrowIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M22 12l-20 12 5-12-5-12z" />
-            </svg>
-          </div>
-        </Link>
+        {iconLink}
       </div>
     </section>
   );

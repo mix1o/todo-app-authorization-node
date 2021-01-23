@@ -8,6 +8,8 @@ const NewPassword = () => {
     const [message,setMessage] = useState('');
     const {token} = useParams();
 
+    const [isOpen,setIsOpen] = useState(false);
+
     const password = () => {
         fetch('/api/newPassword', {
             method: 'POST',
@@ -22,13 +24,18 @@ const NewPassword = () => {
               if (json.correct) {
                 setNewPassword("");
                 setConfirmNewPassword("")
+                setIsOpen(false);
+              }else {
+                setIsOpen(true)
               }
             });
     }
 
     return (
         <>
-        <div style={{ marginTop: '2rem' }} className="link__back">
+        <div className="popup-relative">
+        <main className="main__reset" >
+      <div style={{ marginTop: '2rem',width: '100%',textAlign: 'left' }} className="link__back">
         <Link style={{ margin: '2rem' }} to="/login">
           <svg
             width="40"
@@ -53,7 +60,6 @@ const NewPassword = () => {
           </svg>
         </Link>
       </div>
-      <main className="main__reset" style={{display: 'block',textAlign: 'center'}}>
         <h2 className="heading-2" style={{color: '#1db95e', marginTop: '4rem'}}>Forgot password?</h2>
         <form className="section__formWrapper" name="reset password form" style={{display: 'inline-block',marginTop: '4rem'}}>
           <label className="passwordForm__email form__label" style={{display:'block',marginTop: '3rem'}}>
@@ -79,7 +85,7 @@ const NewPassword = () => {
             />
           </label>
         </form>
-      <div style={{marginTop: '3rem'}}>
+      <div style={{marginTop: '1rem'}}>
       <svg width="289" height="272" viewBox="0 0 389 272" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.3269 104.383C17.6989 127.355 26.2818 129.842 36.8219 127.446C48.8628 124.709 58.7455 116.13 63.6164 104.78L66.9755 96.9516C69.2088 91.7475 69.2839 85.8691 67.1845 80.6096C65.0851 75.35 60.9831 71.1402 55.7809 68.9062H55.7808C53.205 67.8 50.4365 67.2122 47.6335 67.1763C44.8305 67.1404 42.048 67.6572 39.4446 68.6971C36.8413 69.737 34.4682 71.2796 32.4608 73.237C30.4535 75.1943 28.8512 77.528 27.7454 80.1048C16.936 84.3526 14.8011 93.1465 17.3269 104.383Z" fill="#2F2E41"/>
 <path d="M85.1011 58.1478L88.3362 52.6715C88.7312 52.0027 88.9698 51.2532 89.0339 50.4791C89.098 49.705 88.9861 48.9264 88.7065 48.2017C88.4269 47.477 87.9869 46.8251 87.4194 46.2949C86.852 45.7646 86.1719 45.3698 85.4302 45.14V45.14C84.6473 44.8974 83.8178 44.8456 83.0108 44.9888C82.2038 45.132 81.4427 45.466 80.791 45.9631C80.1392 46.4602 79.6156 47.1059 79.2639 47.8464C78.9122 48.587 78.7425 49.4009 78.7689 50.2203L78.9591 56.1069L63.7556 97.7869L72.0463 99.5184L85.1011 58.1478Z" fill="#9F616A"/>
@@ -115,15 +121,17 @@ const NewPassword = () => {
 </svg>
 
       </div>
-      <div style={{margin: '0rem'}}>
-        <Warning position={true} errorMessage={message.message}/>
-      </div>
+     
+       
+     
         <section className="section__buttons">
           <button className="btn__main--full" onClick={password}>
             Set new password
           </button>
         </section>
       </main>
+      {isOpen && <Warning setIsOpen={setIsOpen} errorMessage={message.message}/>}
+      </div>
     </>
     )
 }

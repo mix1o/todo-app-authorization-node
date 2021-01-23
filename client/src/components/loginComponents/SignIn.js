@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
+import Popup from './Popup';
 import Warning from './Warning';
+
 
 const SignIn = () => {
   const [message, setMessage] = useState('');
@@ -10,6 +12,7 @@ const SignIn = () => {
   });
   const [passwordVis, setPasswordVis] = useState('password');
   const [isVisible, setIsVisible] = useState(true);
+  const [isOpen,setIsOpen] = useState(false);
 
   const handlerInput = (e) => {
     const target = e.target;
@@ -19,7 +22,8 @@ const SignIn = () => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const hanlderSign = (e) => {
+
+  const hanlderSign = () => {
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -31,7 +35,12 @@ const SignIn = () => {
       .then((json) => {
         setMessage(json);
         if (json.correct) {
-          window.location.href = '/user-panel';
+          setIsOpen(false)
+          setTimeout(() => {
+            window.location.href = '/user-panel';
+          },500)
+        }else {
+          setIsOpen(true)
         }
       });
   };
@@ -51,7 +60,10 @@ const SignIn = () => {
 
   return (
     <>
-      <div style={{ marginTop: '2rem' }} className="link__back">
+      
+      <div className="popup-relative">
+      <main className="main__signIn" style={message.correct ? {filter: 'blur(3px)'} : {filter: 'blur(0px)'}}>
+      <div style={{ marginTop: '.5rem',width: '100%' }} className="link__back">
         <Link style={{ margin: '2rem' }} to="/">
           <svg
             width="40"
@@ -76,7 +88,6 @@ const SignIn = () => {
           </svg>
         </Link>
       </div>
-      <main className="main__signIn ">
         <h1 className="section__header">Sign In</h1>
         <form className="section__formWrapper" name="sign in form">
           <label className="signUp__label--email form__label">
@@ -139,16 +150,17 @@ const SignIn = () => {
                 Forgot Password?
               </p>
             </Link>
-            <Warning
-              errorMessage={message.message}
-              isCorrect={message.correct}
-            />
+           
           </label>
         </form>
 
         <section className="section__buttons">
           <button
-            onClick={(e) => hanlderSign(e)}
+            onClick={() => {
+              
+              hanlderSign()
+  
+            }}
             className="signIn__btn btn__main--full "
           >
             Login
@@ -161,6 +173,30 @@ const SignIn = () => {
           </p>
         </section>
       </main>
+      {isOpen && <Warning isOpen={isOpen} setIsOpen={setIsOpen} errorMessage={message.message}/>}
+      {message.correct && <Popup title="You are logged in" message="You will be redirect to dashboard" iconLink={<div
+            style={{
+              height: '5rem',
+              width: '5rem',
+              border: '2px solid #fff',
+              borderRadius: '100%',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <svg
+              className="arrowIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 12l-20 12 5-12-5-12z" />
+            </svg>
+          </div>}/>}
+      </div>
     </>
   );
 };

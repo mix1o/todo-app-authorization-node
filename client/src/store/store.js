@@ -9,6 +9,7 @@ const initialState = {
   userData: null,
   correct: null,
   userFunction: null,
+  canSeeAlmost: false,
 };
 
 const actions = {
@@ -32,6 +33,10 @@ const actions = {
     const { userFunction } = getState();
     setState({ userFunction: e });
   },
+  setAlmost: (e) => ({getState,setState}) => {
+    const {canSeeAlmost} = getState();
+    setState({canSeeAlmost: e});
+  }
 };
 
 const Store = createStore({ initialState, actions });
