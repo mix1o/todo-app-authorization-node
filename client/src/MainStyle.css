@@ -55,6 +55,22 @@ body {
     transform: rotateZ(-30deg);
   }
 }
+.CircleAni {
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  display: block;
+  margin: 0 1.5rem;
+}
+.CircleAniGreen {
+  background-color: var(--main-color-green);
+}
+.CircleAniGrey {
+  background-color: var(--header-color);
+}
+.CircleAniOrange {
+  background-color: var(--border-guide-color);
+}
 .body,
 .header {
   background-color: var(--main-color-green);
@@ -340,11 +356,8 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  background-position: bottom;
-}
-.popup-relative {
-  height: 100vh;
   background-image: url('./components/loginComponents/waves.svg');
+  background-position: bottom;
 }
 .main__signIn {
   justify-content: space-around;
@@ -926,48 +939,3 @@ h3 > span {
   background-color: var(--main-color-green);
 }
 /* END PAYMENT COMPONENT */
-<<<<<<< HEAD
-/* moje confetti */
-.confWrp {
-  position: relative;
-}
-.conf {
-  position: absolute;
-  top: 200px;
-  left: 50px;
-}
-.confeti {
-  position: absolute;
-  top: 200px;
-  animation: skew 1s ease-in-out infinite alternate;
-}
-.conf2 {
-  position: absolute;
-  top: 200px;
-  left: 200px;
-}
-.confeti2 {
-  position: absolute;
-  top: 200px;
-  animation: skew 1s ease-in-out infinite alternate;
-}
-/* koniec confetti */
-=======
-@keyframes appear {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.animation-warning {
-  transform: translateY(-100%);
-  opacity: 0;
-  animation-name: appear;
-  animation-duration: .4s;
-  animation-delay: .1s;
-  animation-fill-mode: forwards;
-}
->>>>>>> 76cea0fd04d0b2a02e40bc29665038bb0ce5cd28
