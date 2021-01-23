@@ -47,7 +47,14 @@ body {
     transform: translateY(20%);
   }
 }
-
+@keyframes skew {
+  0% {
+    transform: rotateZ(30deg);
+  }
+  100% {
+    transform: rotateZ(-30deg);
+  }
+}
 .body,
 .header {
   background-color: var(--main-color-green);
@@ -59,7 +66,7 @@ body {
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1;
 }
 /* MAIN PAGE */
 
@@ -871,7 +878,7 @@ h3 > span {
   padding: 2rem;
   background: var(--light-grey);
   margin-top: 5rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 .payment__details > h3 {
   text-align: left;
@@ -891,7 +898,7 @@ h3 > span {
   font-weight: 300;
 }
 .payment__p > span {
-  color: var(--secondary-grey)
+  color: var(--secondary-grey);
 }
 
 .payment__method {
@@ -916,3 +923,28 @@ h3 > span {
   background-color: var(--main-color-green);
 }
 /* END PAYMENT COMPONENT */
+/* moje confetti */
+.confWrp {
+  position: relative;
+}
+.conf {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+}
+.confeti {
+  position: absolute;
+  top: 200px;
+  animation: skew 1s ease-in-out infinite alternate;
+}
+.conf2 {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+}
+.confeti2 {
+  position: absolute;
+  top: 200px;
+  animation: skew 1s ease-in-out infinite alternate;
+}
+/* koniec confetti */

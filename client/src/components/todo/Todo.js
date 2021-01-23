@@ -3,8 +3,7 @@ import { useCounter } from '../../store/sub';
 import Tour from '../Guide/Tour';
 import { useCookies } from 'react-cookie';
 
-const Todo = ({onAdd}) => {
-  
+const Todo = ({ onAdd }) => {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
@@ -13,27 +12,42 @@ const Todo = ({onAdd}) => {
       target: '.todo__taskName',
       content: 'Here you can enter name of task',
       disableBeacon: true,
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.todo__description',
       content: 'Add description about task',
       disableBeacon: true,
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.select__diff',
       content: 'Here you can choose priority of task',
       disableBeacon: true,
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.tour-credits',
       content:
         'Your credits. Notice that you need have at least on credit to add task',
       disableBeacon: true,
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
     {
       target: '.btn-newtask',
       content: 'This button adds new task',
       disableBeacon: true,
+      floaterProps: {
+        disableAnimation: true,
+      },
     },
   ];
 
@@ -53,7 +67,7 @@ const Todo = ({onAdd}) => {
     const name = target.name;
 
     // setTaskData({ ...taskData, [name]: value });
-    setTaskData(data => ({ ...data, [name]: value }));
+    setTaskData((data) => ({ ...data, [name]: value }));
   };
 
   const addNewTask = () => {

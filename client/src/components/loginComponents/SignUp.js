@@ -43,7 +43,7 @@ const RegisterationForm = () => {
   };
 
   const [recaptchaCheck, setRecaptachCheck] = useState(false);
-
+  const [recaptchaLoad, setRecaptchaLoad] = useState(false);
   const registration = () => {
     if (recaptchaCheck) {
       fetch('/api/newuser', {
@@ -242,7 +242,10 @@ const RegisterationForm = () => {
           <Recaptcha
             sitekey="6Lf0_zQaAAAAAA74WFt8myKQ5t-oSLtuSDW1wwAH"
             render="explicit"
-            onloadCallback={() => console.log('Recaptch loaded')}
+            onloadCallback={() => {
+              console.log('Recaptch loaded');
+              setRecaptchaLoad(true);
+            }}
             verifyCallback={() => {
               setRecaptachCheck(true);
             }}
