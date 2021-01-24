@@ -52,16 +52,12 @@ router.post('/api/newuser', async (req, res) => {
         html: `<div>
         <h3>This link is available for 1 hour</h3>
         <h5>Click link below to reset password</h5>
-        <a href="https://mntasks.herokuapp.com/alomost-there/${t}">Click to confrim</a>
+        <a target="_blank" href="https://mntasks.herokuapp.com/alomost-there/${t}">Click to confrim</a>
         </div>`,
     };
   
 
-    sgMail.send(msg).then(() => {
-      console.log("email-send")
-    }).catch((error) => {
-      console.log(error.response.body)
-    })
+    sgMail.send(msg);
 
   } catch (e) {
     res.status(400).send(e);
@@ -228,19 +224,19 @@ router.post('/api/newToDo', async (req, res, next) => {
 });
 
 router.post('/api/payCard', async (req, res) => {
-  const { price } = req.body;
+  const { creditsAdd } = req.body;
   try {
     const updateCredits = await Users.updateOne(
       { _id: req.session.user._id },
 
       {
         $set: {
-          credits: req.session.user.credits + Math.ceil(price),
+          credits: req.session.user.credits + creditsAdd,
         },
       }
     );
 
-    req.session.user.credits += Math.ceil(price);
+    req.session.user.credits += creditsAdd;
     res.send({ message: 'Awesome!',correct: true });
   } catch (e) {
     res.send({ message: e });

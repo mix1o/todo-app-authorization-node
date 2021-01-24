@@ -36,6 +36,7 @@ function App() {
   const { user } = cookies;
 
   const [state, actions] = useCounter();
+<<<<<<< HEAD
   const [loadingAnimation, setStartAnimation] = useState(true);
 
   useEffect(() => {
@@ -49,6 +50,12 @@ function App() {
     <div className="App">
       {loadingAnimation && <BasicLoadingAni />}
       {}
+=======
+  
+
+  return (
+    <div className="App">
+>>>>>>> 276147f43f270a0e3de9be009fd2ab74bf2ead8e
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
@@ -61,60 +68,34 @@ function App() {
             {state.canSeeAlmost ? <AlmostThere /> : <Redirect to="/" />}
           </Route>
           <Route
-            exact
-            path="/alomost-there/:token"
+            exact path="/alomost-there/:token"
             component={ConfirmAccount}
           />
-          <Route exact path="/reset/:token" component={NewPassword} />
-
           <Route exact path="/user-panel">
-            {!user ? <SignIn /> : <UserPanel />}
+            {!user ? <Redirect to="/login" /> : <UserPanel />}
           </Route>
-          {/* {user && <Route exact path="/login" component={UserPanel} />} */}
-          {/* <Route exact path="/login" component={SignIn}/> */}
           <Route exact path="/login">
-            {user ? <UserPanel /> : <SignIn />}
+            {user ? <Redirect to="/user-panel" /> : <SignIn />}
           </Route>
           {user && <Route exact path="/completed-tasks" component={Hisotry} />}
           {user && <Route exact path="/todo" component={Todo} />}
-          <Route exact path="/terms" component={Terms} />
-          <Route exact path="/subscription" component={Subscription} />
-          {user ? (
-            <Route exact path="/confirm-pay">
-              {state.count > 0 ? (
-                <PaymentConfirm />
-              ) : (
-                <Redirect to="/subscription" />
-              )}
-            </Route>
-          ) : (
-            <Redirect to="/login" />
-          )}
-          <Route exact path="/method-payment" component={PaymentMethod} />
-          <Route exact path="/pay-now" component={PayNow} />
-
-          {user ? (
-            <Route exact path="/confirm-pay">
-              {state.count > 0 ? (
-                <PaymentConfirm />
-              ) : (
-                <Redirect to="/subscription" />
-              )}
-            </Route>
-          ) : (
-            <Redirect to="/" />
-          )}
-          <Route exact path="/method-payment" component={PaymentMethod} />
-          <Route exact path="/pay-now" component={PayNow} />
-
-          <Route exact path="/settings">
+          {user && <Route exact path="/terms" component={Terms} />}
+          {user && <Route exact path="/subscription" component={Subscription} />}
+          {user && <Route exact path="/confirm-pay">
+              {state.count > 0 ? <PaymentConfirm/> : <Redirect to="/subscription" />}
+            </Route>}
+          {user && <Route exact path="/method-payment" component={PaymentMethod} />}
+          <Route exact path="/pay-now">
+            {state.count > 1 ? <PayNow/> : <Redirect to="/subscription"/>}
+          </Route>         
+          {user && <Route exact path="/settings">
             <h3>Settings</h3>
-          </Route>
-          <Route exact path="/policy" component={Policy} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact-us" component={ContactUs} />
+          </Route>}
+          {user && <Route exact path="/policy" component={Policy} />}
+          {user && <Route exact path="/about" component={About} />}
+          {user && <Route exact path="/contact-us" component={ContactUs} />}
           <Route exact path="/how-works" component={HoWorks} />
-          <Route exact path="/animation" component={BasicLoadingAni} />
+        
           <Route component={NotFound} />
         </Switch>
       </Router>

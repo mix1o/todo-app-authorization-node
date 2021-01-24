@@ -2,24 +2,31 @@ import React, { useEffect, useState } from 'react'
 import Header from '../page/Header';
 import Task from '../todo/Task';
 import Footer from './Footer';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
+
 const History = () => {
 
     const [tasks,setTasks] = useState([]);
+    const [loading,setLoading] = useState(true);
 
     useEffect(() => {
         fetch('/api/todos')
         .then(res => res.json())
-        .then(json => setTasks(json))
-    }, [tasks])
+        .then(json => {
+            setTasks(json)
+            setTimeout(() => {
+                setLoading(false);
+            },500)                
+        })
+    }, [])
 
     const filteredCompleted = tasks.filter((item) => item.complete == 'Completed');
 
     return (
-        <div>
+        <>
+        {loading && <BasicLoadingAni/>}
+         {!loading && <div>
             <Header/>
-           
-            
-        
             {filteredCompleted.length > 0 && 
             <>
              <h3 className="heading-3">Your's completed tasks</h3>
@@ -51,7 +58,8 @@ const History = () => {
                 </div>
             }
             <Footer/>
-        </div>
+        </div>}
+        </>
     )
 }
 

@@ -1,8 +1,23 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import BasicLoadingAni from "../animation/BasicLoadingAni";
 const Main = () => {
+
+
+  const [loadingAnimation, setStartAnimation] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartAnimation(false);
+    },1500)
+   
+  }, []);
+
+
   return (
-    <main className="main__heading">
+    <>
+    {loadingAnimation && <BasicLoadingAni/>}
+    {!loadingAnimation && <main className="main__heading">
       <h1 className="heading-1">
         All your tasks in
         <span className="heading__span">One Place</span>
@@ -257,7 +272,8 @@ const Main = () => {
           </a>
         </div>
       </div>
-    </main>
+    </main>}
+    </>
   );
 };
 

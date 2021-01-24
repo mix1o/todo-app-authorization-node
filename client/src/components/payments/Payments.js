@@ -10,6 +10,7 @@ import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Warning from '../loginComponents/Warning';
 import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
 
+<<<<<<< HEAD
 const CardCVCDate = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -18,6 +19,15 @@ const CardCVCDate = styled.div`
 const Cardinfo = styled.label`
   position: relative;
   width: ${({ width }) => width};
+=======
+const PaymentWrapper = styled.div`
+  background: var(--white);
+  padding: 15px;
+  width: 80%;
+  text-align: center;
+  margin: 2rem auto;
+  color: #000;
+>>>>>>> 276147f43f270a0e3de9be009fd2ab74bf2ead8e
 `;
 
 const Payments = ({ price }) => {
@@ -60,7 +70,7 @@ const Payments = ({ price }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ price: state.count }),
+        body: JSON.stringify({ creditsAdd: state.count }),
       });
       setLoading(true);
       setMessage({ correct: true });
@@ -82,6 +92,7 @@ const Payments = ({ price }) => {
   }, 800);
   return (
     <>
+<<<<<<< HEAD
       {loading && <BasicLoadingAni />}
       <div className="popup-relative">
         <Header />
@@ -153,6 +164,16 @@ const Payments = ({ price }) => {
                 />
               </Cardinfo>
             </CardCVCDate>
+=======
+      {loading && <BasicLoadingAni/>}
+      {!loading && <div className="popup-relative">
+      <Header/>
+        <main style={message.correct ? {filter: 'blur(3px)'} : {filter: 'blur(0px)'}}>
+      <PaymentWrapper>
+
+        <p>To Do List Payment</p>
+        <p>{state.count}$ to pay</p>
+>>>>>>> 276147f43f270a0e3de9be009fd2ab74bf2ead8e
 
             <button
               className="btn__main--full"
@@ -189,11 +210,50 @@ const Payments = ({ price }) => {
               </Link>
             }
           />
+<<<<<<< HEAD
         )}
         {isOpen && (
           <Warning setIsOpen={setIsOpen} errorMessage={message.message} />
         )}
       </div>
+=======
+        </label>
+        <div className="safe">
+          <label>
+            <p>Date</p>
+            <input
+              name="expireDate"
+              placeholder="01/10"
+              value={cardData.expireDate}
+              onChange={(e) => handlerInput(e)}
+              type="text"
+            />
+          </label>
+          <label>
+            <p>CVC</p>
+            <input
+              name="cvc"
+              placeholder="123"
+              value={cardData.cvc}
+              onChange={(e) => handlerInput(e)}
+              type="text"
+            />
+          </label>
+        </div>
+
+        <button onClick={pay}>Pay Now</button>
+      </PaymentWrapper>
+      <Footer/>
+      </main>
+      {message.correct && !loading && <Popup title="Congratulation. You successful added credits" message="You will be redirect to dashboard" iconLink={<Link to="/login">
+          <div className="container__popup__svg"
+          >
+         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 16.166c0-4.289-4.465-5.483-7.887-7.091-2.079-1.079-1.816-3.658 1.162-3.832 1.652-.1 3.351.39 4.886.929l.724-3.295c-1.814-.551-3.437-.803-4.885-.841v-2.036h-2v2.134c-3.89.535-5.968 2.975-5.968 5.7 0 4.876 5.693 5.62 7.556 6.487 2.54 1.136 2.07 3.5-.229 4.021-1.993.451-4.538-.337-6.45-1.079l-.909 3.288c1.787.923 3.931 1.417 6 1.453v1.996h2v-2.105c3.313-.464 6.005-2.293 6-5.729z"/></svg>
+          </div>
+        </Link>}  />}
+        {isOpen && <Warning setIsOpen={setIsOpen} errorMessage={message.message}/>}
+    </div>}
+>>>>>>> 276147f43f270a0e3de9be009fd2ab74bf2ead8e
     </>
   );
 };

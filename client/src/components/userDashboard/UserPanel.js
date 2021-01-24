@@ -35,19 +35,6 @@ const UserPanel = () => {
   const [correct, setCorrect] = useState(false);
   const [loadingAnimation, setStartAnimation] = useState(true);
 
-  // const convertDate = () => {
-  //   if (correct) {
-  //     const date = new Date(user[0].createdDate);
-  //     const day = date.getDate();
-  //     const month = date.getMonth() + 1;
-  //     const year = date.getFullYear();
-  //     const x = `${day}/${month}/${year}`;
-  //     return x;
-  //   }
-  // };
-
-  // const myNewDate = convertDate();
-
   useEffect(() => {
     setTimeout(() => {
       setStartAnimation(false);
@@ -101,6 +88,7 @@ const UserPanel = () => {
   return (
     <>
       {loadingAnimation && <BasicLoadingAni />}
+      {!loadingAnimation && <div>
       <Header />
       {filteredUnCompleted.length < 1 && (
         <div className="center">
@@ -130,6 +118,7 @@ const UserPanel = () => {
       {filteredUnCompleted.length > 0 && (
         <UserTodos onAdd={handlerAdd} tasks={tasks} />
       )}
+      </div>}
     </>
   );
 };

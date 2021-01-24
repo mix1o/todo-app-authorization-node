@@ -20,7 +20,7 @@ const Card = ({
   description,
   className,
   recomendation,
-  priceFull,
+  creditsQuantity,
 }) => {
   const [state, actions] = useCounter();
 
@@ -115,7 +115,7 @@ const Card = ({
           className={`card__btn ${
             recomendation ? 'btn__main--empty' : 'btn__main--full'
           }`}
-          onClick={() => actions.payment(priceFull, title, description.row1)}
+          onClick={() => actions.payment(creditsQuantity, title, description.row1)}
         >
           Choose
         </button>

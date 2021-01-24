@@ -8,6 +8,7 @@ const ConfirmAccount = () => {
     const [message,setMessage] = useState("");
     const {token} = useParams();
     const history = useHistory();
+    const [isOpen,setIsOpen] = useState(false);
 
     const confirm = () => {
         fetch('/api/confirm', {
@@ -20,13 +21,14 @@ const ConfirmAccount = () => {
             .then((response) => response.json())
             .then((json) => {
                 setMessage(json)
+                if(json.correct){
+                  setIsOpen(false)
+                }else {
+                  setIsOpen(true)
+                }
             });
     }
 
-
-    setTimeout(() => {
-        confirm();
-    },200)
 
     if(message.correct){
         setTimeout(() => {
@@ -36,7 +38,10 @@ const ConfirmAccount = () => {
   
     return (
         <>
-        <div style={{ marginTop: '2rem' }} className="link__back">
+        
+      <div className="popup-relative">
+      <div style={{textAlign: 'center'}} className="main__signIn">
+      <div style={{marginTop: '-1.5rem',width: '100%',textAlign: 'left' }} className="link__back">
         <Link style={{ margin: '2rem' }} to="/login">
           <svg
             width="40"
@@ -61,8 +66,6 @@ const ConfirmAccount = () => {
           </svg>
         </Link>
       </div>
-      <div className="popup-relative">
-      <div style={{textAlign: 'center'}} className="main__signIn">
         <h2 className="heading-2" style={{color: '#1db95e', fontSize: '4rem'}}>Confrim account</h2>
         <p style={{fontSize: '1.8rem', width: '80%', color: '#2d3748'}}>Thank you for confirm your account and for your trust</p>
         <div>
@@ -148,9 +151,10 @@ const ConfirmAccount = () => {
 
 
         </div>
+          <button onClick={() => confirm()} className="btn__main--full" style={{width: '60%'}}>Confirm your account</button>
         </div>
-        {!message.correct && <Warning errorMessage={message.message}/>}
-        {message.correct && <Popup title="You ssuccessful confrim account" message="You will be redirect to login"/>}
+        {isOpen && <Warning setIsOpen={setIsOpen} errorMessage={message.message}/>}
+        {message.correct && <Popup title="You successful confrim account" message="You will be redirect to login"/>}
         </div>
         </>
     )
