@@ -19,7 +19,7 @@ const Subscriptions = () => {
             roundedPrice: '4',
             afterComma: '99',
           }}
-          priceFull={'4.99'}
+          creditsQuantity={5}
           description={{
             row1: '5 Credits',
             row2: 'Dark Theme',
@@ -34,7 +34,7 @@ const Subscriptions = () => {
             roundedPrice: '9',
             afterComma: '99',
           }}
-          priceFull={'9.99'}
+          creditsQuantity={15}
           description={{
             row1: '15 Credits',
             row2: 'Dark Theme',
@@ -49,7 +49,7 @@ const Subscriptions = () => {
             roundedPrice: '19',
             afterComma: '99',
           }}
-          priceFull={'19.99'}
+          creditsQuantity={35}
           description={{
             row1: '35 Credits',
             row2: 'Dark Theme',

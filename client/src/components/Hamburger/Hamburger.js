@@ -14,7 +14,7 @@ const HamburgerDiv = styled.div`
   width: 80%;
   text-align: right;
   padding: 1rem;
-  z-index: 5;
+  z-index: 6;
 `;
 const HelpDiv = styled.div`
   height: 100vh;
@@ -24,7 +24,7 @@ const HelpDiv = styled.div`
   width: 100%;
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.3s ease-in-out;
-  z-index: 5;
+  z-index: 6;
 `;
 
 const Hamburger = ({ isOpen, setIsOpen, logOut, correct, userD }) => {

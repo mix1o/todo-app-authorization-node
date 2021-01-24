@@ -14,9 +14,8 @@ const PaymentWrapper = styled.div`
   padding: 15px;
   width: 80%;
   text-align: center;
-  margin: 0 auto;
+  margin: 2rem auto;
   color: #000;
-  transform: translateY(-200%);
 `;
 
 const Payments = ({ price }) => {
@@ -59,7 +58,7 @@ const Payments = ({ price }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ price: state.count }),
+        body: JSON.stringify({ creditsAdd: state.count }),
       });
       setLoading(true)
       setMessage({correct: true})
@@ -82,13 +81,10 @@ const Payments = ({ price }) => {
   return (
     <>
       {loading && <BasicLoadingAni/>}
-      <div className="popup-relative">
+      {!loading && <div className="popup-relative">
       <Header/>
         <main style={message.correct ? {filter: 'blur(3px)'} : {filter: 'blur(0px)'}}>
-      <PaymentWrapper
-        className={`${open ? 'aniamtion-payment' : ''}`}
-        open={open}
-      >
+      <PaymentWrapper>
 
         <p>To Do List Payment</p>
         <p>{state.count}$ to pay</p>
@@ -136,7 +132,7 @@ const Payments = ({ price }) => {
           </div>
         </Link>}  />}
         {isOpen && <Warning setIsOpen={setIsOpen} errorMessage={message.message}/>}
-    </div>
+    </div>}
     </>
   );
 };

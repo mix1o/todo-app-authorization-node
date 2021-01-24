@@ -55,7 +55,7 @@ const ContactUs = () => {
     <>
       <Header />
       <div style={{position: 'relative'}}>
-      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' ,zIndex: '45'}} className="contactUs">
+      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' ,zIndex: '2'}} className="contactUs">
         <h1 style={{color: "#2d3748"}} className="section__title">Get in touch</h1>
         <section className="contact__section">
        
