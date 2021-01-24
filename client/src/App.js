@@ -41,13 +41,14 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setStartAnimation(false);
-    },2000)
+    }, 2000);
     console.log('chuju zloty');
   }, []);
 
   return (
     <div className="App">
       {loadingAnimation && <BasicLoadingAni />}
+      {}
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />

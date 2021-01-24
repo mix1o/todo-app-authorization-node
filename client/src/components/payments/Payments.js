@@ -5,18 +5,19 @@ import styled from 'styled-components';
 import Header from '../page/Header';
 import Footer from '../page/Footer';
 import Popup from '../loginComponents/Popup';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Warning from '../loginComponents/Warning';
+import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
 
-const PaymentWrapper = styled.div`
-  background: var(--white);
-  padding: 15px;
-  width: 80%;
-  text-align: center;
-  margin: 0 auto;
-  color: #000;
-  transform: translateY(-200%);
+const CardCVCDate = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 5rem;
+`;
+const Cardinfo = styled.label`
+  position: relative;
+  width: ${({ width }) => width};
 `;
 
 const Payments = ({ price }) => {
@@ -24,7 +25,7 @@ const Payments = ({ price }) => {
   const dateReg = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
   const cvcReg = /^[0-9]{3}$/;
 
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const history = useHistory();
   const [state, actions] = useCounter();
@@ -44,7 +45,7 @@ const Payments = ({ price }) => {
     setCardData({ ...cardData, [name]: value });
   };
 
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const pay = () => {
     if (
@@ -61,85 +62,140 @@ const Payments = ({ price }) => {
         },
         body: JSON.stringify({ price: state.count }),
       });
-      setLoading(true)
-      setMessage({correct: true})
-      setIsOpen(false)
+      setLoading(true);
+      setMessage({ correct: true });
+      setIsOpen(false);
       setTimeout(() => {
         setLoading(false);
-      },2000)
-      setTimeout(() =>{
+      }, 2000);
+      setTimeout(() => {
         history.push('/user-panel');
-      },4000)
+      }, 4000);
     } else {
-      setMessage({message: 'Something is wrong. Please check your inputs'});
-      setIsOpen(true)
+      setMessage({ message: 'Something is wrong. Please check your inputs' });
+      setIsOpen(true);
     }
   };
 
   setTimeout(() => {
     setOpen(true);
-  },800)
+  }, 800);
   return (
     <>
-      {loading && <BasicLoadingAni/>}
+      {loading && <BasicLoadingAni />}
       <div className="popup-relative">
-      <Header/>
-        <main style={message.correct ? {filter: 'blur(3px)'} : {filter: 'blur(0px)'}}>
-      <PaymentWrapper
-        className={`${open ? 'aniamtion-payment' : ''}`}
-        open={open}
-      >
+        <Header />
+        <main
+          style={
+            message.correct ? { filter: 'blur(3px)' } : { filter: 'blur(0px)' }
+          }
+          className="payment__wrap"
+        >
+          <h2 className="heading-2">Provide credit card details</h2>
+          <section className="payment__finish  ">
+            <label className="payment__cardLabel ">
+              <p className="payment__labelTitle">Card number: </p>
+              <i className="payment__icon" style={{ top: '4rem' }}>
+                {CreditCard}
+              </i>
+              <input
+                className="payment__cardInput"
+                placeholder="1234-1234-1234-1234"
+                name="cardNumber"
+                size="16"
+                maxLength="16"
+                value={cardData.cardNumber}
+                onChange={(e) => handlerInput(e)}
+                type="text"
+              />
+            </label>
+            <label className="payment__cardLabel ">
+              <p className="payment__labelTitle">Owner Name:</p>
+              <i className="payment__icon" style={{ top: '3.8rem' }}>
+                {Profile}
+              </i>
+              <input
+                className="payment__cardInput"
+                type="text"
+                placeholder="Card owner name"
+                name="ownerName"
+              />
+            </label>
+            <CardCVCDate>
+              <Cardinfo width={'25%'}>
+                <p className="payment__labelTitle">Date</p>
+                <i className="payment__icon" style={{ top: '3.5rem' }}>
+                  {Calendar}
+                </i>
+                <input
+                  className="payment__cardInput"
+                  name="expireDate"
+                  placeholder="22/21"
+                  value={cardData.expireDate}
+                  onChange={(e) => handlerInput(e)}
+                  type="number"
+                />
+              </Cardinfo>
+              <Cardinfo width={'23%'}>
+                <p className="payment__labelTitle">CVC</p>
+                <i className="payment__icon" style={{ top: '3.6rem' }}>
+                  {Lock}
+                </i>
+                <input
+                  className="payment__cardInput"
+                  name="cvc"
+                  size="100"
+                  maxLength="4"
+                  placeholder="323"
+                  value={cardData.cvc}
+                  onChange={(e) => handlerInput(e)}
+                  type="password"
+                />
+              </Cardinfo>
+            </CardCVCDate>
 
-        <p>To Do List Payment</p>
-        <p>{state.count}$ to pay</p>
-
-        <label>
-          <p>Card number: </p>
-          <input
-            name="cardNumber"
-            value={cardData.cardNumber}
-            onChange={(e) => handlerInput(e)}
-            type="text"
+            <button
+              className="btn__main--full"
+              style={{
+                width: '30%',
+                marginRight: '0',
+                marginLeft: 'auto',
+                marginBottom: '1rem',
+                display: 'block',
+              }}
+              onClick={pay}
+            >
+              Pay Now
+            </button>
+          </section>
+        </main>
+        <Footer />
+        {message.correct && !loading && (
+          <Popup
+            title="Congratulation. You successful added credits"
+            message="You will be redirect to dashboard"
+            iconLink={
+              <Link to="/login">
+                <div className="container__popup__svg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 16.166c0-4.289-4.465-5.483-7.887-7.091-2.079-1.079-1.816-3.658 1.162-3.832 1.652-.1 3.351.39 4.886.929l.724-3.295c-1.814-.551-3.437-.803-4.885-.841v-2.036h-2v2.134c-3.89.535-5.968 2.975-5.968 5.7 0 4.876 5.693 5.62 7.556 6.487 2.54 1.136 2.07 3.5-.229 4.021-1.993.451-4.538-.337-6.45-1.079l-.909 3.288c1.787.923 3.931 1.417 6 1.453v1.996h2v-2.105c3.313-.464 6.005-2.293 6-5.729z" />
+                  </svg>
+                </div>
+              </Link>
+            }
           />
-        </label>
-        <div className="safe">
-          <label>
-            <p>Date</p>
-            <input
-              name="expireDate"
-              placeholder="01/10"
-              value={cardData.expireDate}
-              onChange={(e) => handlerInput(e)}
-              type="text"
-            />
-          </label>
-          <label>
-            <p>CVC</p>
-            <input
-              name="cvc"
-              placeholder="123"
-              value={cardData.cvc}
-              onChange={(e) => handlerInput(e)}
-              type="text"
-            />
-          </label>
-        </div>
-
-        <button onClick={pay}>Pay Now</button>
-      </PaymentWrapper>
-      <Footer/>
-      </main>
-      {message.correct && !loading && <Popup title="Congratulation. You successful added credits" message="You will be redirect to dashboard" iconLink={<Link to="/login">
-          <div className="container__popup__svg"
-          >
-         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 16.166c0-4.289-4.465-5.483-7.887-7.091-2.079-1.079-1.816-3.658 1.162-3.832 1.652-.1 3.351.39 4.886.929l.724-3.295c-1.814-.551-3.437-.803-4.885-.841v-2.036h-2v2.134c-3.89.535-5.968 2.975-5.968 5.7 0 4.876 5.693 5.62 7.556 6.487 2.54 1.136 2.07 3.5-.229 4.021-1.993.451-4.538-.337-6.45-1.079l-.909 3.288c1.787.923 3.931 1.417 6 1.453v1.996h2v-2.105c3.313-.464 6.005-2.293 6-5.729z"/></svg>
-          </div>
-        </Link>}  />}
-        {isOpen && <Warning setIsOpen={setIsOpen} errorMessage={message.message}/>}
-    </div>
+        )}
+        {isOpen && (
+          <Warning setIsOpen={setIsOpen} errorMessage={message.message} />
+        )}
+      </div>
     </>
   );
 };
 
 export default Payments;
-

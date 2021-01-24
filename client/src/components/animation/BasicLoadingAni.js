@@ -1,12 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
-const CircleWrapper = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  margin: '0 auto',
-};
+const CircleWrapper = styled.div`
+  display: flex;
+`;
+const AnimationWrapper = styled(motion.div)`
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--secondary-grey);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+`;
+const CircleMotion = styled(motion.span)`
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  display: block;
+  margin: 0 1.5rem;
+  justify-content: center;
+  background-color: ${({ styledBGColor }) => styledBGColor};
+`;
+const LogoStyle = styled.p`
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+`;
 
 const LoadingWrapperVariants = {
   start: {
@@ -39,28 +61,12 @@ const LoadingCircleTransitione = {
 const BasicLoadingAni = () => {
   return (
     <>
-      <motion.div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'var( --secondary-grey)',
-        }}
+      <AnimationWrapper
         variants={LoadingWrapperVariants}
         initial="start"
         animate="end"
       >
-        <p
-          style={{
-            marginBottom: '3rem',
-            fontSize: '3rem',
-            fontWeight: 700,
-            color: 'var(--white)',
-          }}
-        >
+        <LogoStyle>
           <span
             style={{
               color: 'var(--main-color-green',
@@ -69,25 +75,28 @@ const BasicLoadingAni = () => {
             mn
           </span>
           Tasks
-        </p>
-        <div style={CircleWrapper}>
-          <motion.span
+        </LogoStyle>
+        <CircleWrapper>
+          <CircleMotion
+            styledBGColor={'var(--main-color-green)'}
             className="CircleAni CircleAniGreen"
             variants={LoadingCircleVariants}
             transition={LoadingCircleTransitione}
-          ></motion.span>
-          <motion.span
+          ></CircleMotion>
+          <CircleMotion
+            styledBGColor={'var(--header-color)'}
             className="CircleAni CircleAniGrey"
             variants={LoadingCircleVariants}
             transition={LoadingCircleTransitione}
-          ></motion.span>
-          <motion.span
+          ></CircleMotion>
+          <CircleMotion
+            styledBGColor={'var(--border-guide-color)'}
             className="CircleAni CircleAniOrange"
             variants={LoadingCircleVariants}
             transition={LoadingCircleTransitione}
-          ></motion.span>
-        </div>
-      </motion.div>
+          ></CircleMotion>
+        </CircleWrapper>
+      </AnimationWrapper>
     </>
   );
 };
