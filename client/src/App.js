@@ -37,19 +37,8 @@ function App() {
 
   const [state, actions] = useCounter();
 
-  const [loadingAnimation, setStartAnimation] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setStartAnimation(false);
-    }, 2000);
-    console.log('chuju zloty');
-  }, []);
-
   return (
     <div className="App">
-      {loadingAnimation && <BasicLoadingAni />}
-
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
