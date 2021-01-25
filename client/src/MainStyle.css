@@ -185,9 +185,6 @@ p {
   width: 95%;
   border: 1px solid var(--paragraphs-colors);
 }
-.todo__taskName > input::placeholder {
-  color: var(--input-placeholder-text);
-}
 .todo__taskName > .todo__description {
   padding: 1rem 1rem 7rem 1rem;
 }
@@ -959,17 +956,18 @@ h3 > span {
   position: relative;
 }
 .payment__cardInput {
-  padding: 0.85rem 0.85rem 0.85rem 4rem;
+  padding: 0.85rem 0 0.85rem 4rem;
   margin-bottom: 1.25rem;
   background-color: var(--input-background);
   border: 0.1rem solid var(--paragraphs-colors);
   border-radius: 0.3rem;
   width: 100%;
+  color: var(--header-color);
 }
 .payment__labelTitle {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  font-weight: 100;
+  font-weight: 500;
 }
 .payment__icon {
   position: absolute;

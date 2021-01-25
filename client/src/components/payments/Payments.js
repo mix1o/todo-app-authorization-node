@@ -13,24 +13,25 @@ import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
 const CardCVCDate = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 `;
 const Cardinfo = styled.label`
   position: relative;
   width: ${({ width }) => width};
+  min-width: 80px;
 `;
 
 const Payments = ({ price }) => {
   const numberReg = /^4[0-9]{12}(?:[0-9]{3})?$/;
   const dateReg = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
   const cvcReg = /^[0-9]{3}$/;
-
   const [isOpen, setIsOpen] = useState(false);
-
   const history = useHistory();
   const [state, actions] = useCounter();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const [cardData, setCardData] = useState({
     cardNumber: '',
     expireDate: '',
@@ -39,17 +40,23 @@ const Payments = ({ price }) => {
 
   const handlerInput = (e) => {
     const target = e.target;
-    const value = e.target.value;
+    const value = target.value;
     const name = target.name;
-
+    //console.log(value.split(formatBack).join(''));
     setCardData({ ...cardData, [name]: value });
   };
 
-  const [loading, setLoading] = useState(false);
+  const onEnterSubmit = (e) => {
+    if (e.keyCode === 13) {
+      handlerInput(e);
+    }
+  };
 
   const pay = () => {
+    const formatBack = new RegExp(/\s+|[,/]/g);
+    console.log(cardData.expireDate);
     if (
-      numberReg.test(cardData.cardNumber) &&
+      numberReg.test(cardData.cardNumber.split(formatBack).join('')) &&
       dateReg.test(cardData.expireDate) &&
       cvcReg.test(cardData.cvc)
     ) {
@@ -77,6 +84,41 @@ const Payments = ({ price }) => {
     }
   };
 
+  const formatCard = (e) => {
+    const target = e.target;
+    switch (e.target.name) {
+      case 'cardNumber':
+        let position = target.selectionEnd;
+        let length = target.value.length;
+
+        target.value = target.value
+          .replace(/[^\dA-Z]/g, '')
+          .replace(/(.{4})/g, '$1 ')
+          .trim();
+
+        target.selectionEnd = position +=
+          target.value.charAt(position - 1) === ' ' &&
+          target.value.charAt(length - 1) === ' ' &&
+          length !== target.value.length
+            ? 1
+            : 0;
+
+        break;
+      case 'expireDate':
+        if (!/^\d{0,2}\/?\d{0,2}$/.test(e.target.value)) {
+          return;
+        }
+        if (/^\d{3,}$/.test(target.value)) {
+          target.value = target.value
+            .match(new RegExp('.{1,2}', 'g'))
+            .join('/');
+        }
+        break;
+      default:
+        return;
+    }
+  };
+
   setTimeout(() => {
     setOpen(true);
   }, 800);
@@ -92,7 +134,10 @@ const Payments = ({ price }) => {
           className="payment__wrap"
         >
           <h2 className="heading-2">Provide credit card details</h2>
-          <section className="payment__finish  ">
+          <section
+            className="payment__finish  "
+            onKeyUp={(e) => onEnterSubmit(e)}
+          >
             <label className="payment__cardLabel ">
               <p className="payment__labelTitle">Card number: </p>
               <i className="payment__icon" style={{ top: '4rem' }}>
@@ -102,11 +147,15 @@ const Payments = ({ price }) => {
                 className="payment__cardInput"
                 placeholder="1234-1234-1234-1234"
                 name="cardNumber"
-                size="16"
-                maxLength="16"
+                maxLength="19"
                 value={cardData.cardNumber}
-                onChange={(e) => handlerInput(e)}
+                onChange={(e) => {
+                  formatCard(e);
+                  handlerInput(e);
+                }}
                 type="text"
+                autoComplete="cc-number"
+                inputMode="numeric"
               />
             </label>
             <label className="payment__cardLabel ">
@@ -119,21 +168,26 @@ const Payments = ({ price }) => {
                 type="text"
                 placeholder="Card owner name"
                 name="ownerName"
+                inputMode="text"
               />
             </label>
             <CardCVCDate>
-              <Cardinfo width={'25%'}>
+              <Cardinfo width={'28%'}>
                 <p className="payment__labelTitle">Date</p>
                 <i className="payment__icon" style={{ top: '3.5rem' }}>
                   {Calendar}
                 </i>
                 <input
+                  autoComplete="cc-exp"
                   className="payment__cardInput"
                   name="expireDate"
                   placeholder="22/21"
+                  maxLength="5"
                   value={cardData.expireDate}
-                  onChange={(e) => handlerInput(e)}
-                  type="number"
+                  onChange={(e) => {
+                    formatCard(e);
+                    handlerInput(e);
+                  }}
                 />
               </Cardinfo>
               <Cardinfo width={'23%'}>
@@ -144,9 +198,10 @@ const Payments = ({ price }) => {
                 <input
                   className="payment__cardInput"
                   name="cvc"
-                  size="100"
                   maxLength="4"
                   placeholder="323"
+                  autoComplete="cc-csc"
+                  inputMode="numeric"
                   value={cardData.cvc}
                   onChange={(e) => handlerInput(e)}
                   type="password"

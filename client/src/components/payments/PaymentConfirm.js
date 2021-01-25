@@ -24,14 +24,14 @@ const PaymentConfirm = () => {
           <div className="payment__div">
             {svgIcon}
             <p className="payment__p">
-              Credits:{' '}
+              Credits:
               <span style={{ fontWeight: '900' }}>{state.creditsSub}</span>
             </p>
           </div>
           <div className="payment__div">
             {svgIcon}
             <p className="payment__p">
-              You can refund your purchase for{' '}
+              You can refund your purchase for
               <span style={{ fontWeight: '900' }}>30 days</span> after buying it
             </p>
           </div>
@@ -39,7 +39,7 @@ const PaymentConfirm = () => {
             {svgIcon}
             <p className="payment__p">
               Total to pay included <br />
-              VAT &#40;23%&#41;:{' '}
+              VAT &#40;23%&#41;
               <span style={{ fontWeight: '900' }}>${state.count}</span>
             </p>
           </div>
