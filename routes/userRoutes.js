@@ -52,7 +52,7 @@ router.post('/api/newuser', async (req, res) => {
         html: `<div>
         <h3>This link is available for 1 hour</h3>
         <h5>Click link below to reset password</h5>
-        <a target="_blank" href="https://mntasks.herokuapp.com/alomost-there/${t}">Click to confrim</a>
+        <a target="_blank" href="https://mntasks.herokuapp.com/almost-there/${t}">Click to confrim</a>
         </div>`,
     };
   
@@ -237,6 +237,19 @@ router.post('/api/payCard', async (req, res) => {
     );
 
     req.session.user.credits += creditsAdd;
+    sgMail.setApiKey('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');
+    const msg = {
+        to: req.session.user.email,
+        from: "mntasks@interia.pl",
+        subject: "nmTasks Thank you for payment",
+        text: "cos",
+        html: `<div>
+        <h1>dziena</h1>
+        </div>`,
+    };
+  
+
+    sgMail.send(msg);
     res.send({ message: 'Awesome!',correct: true });
   } catch (e) {
     res.send({ message: e });
