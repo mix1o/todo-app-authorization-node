@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Popup = ({title,message,iconLink,size}) => {
+const Popup = ({ title, message, iconLink, size }) => {
   return (
     <section className="popup">
       <h3
         style={{
           fontSize: '3rem',
-          fontSize: size,
           fontWeight: '700',
           color: '#1db95e',
           marginBottom: '4rem',
@@ -18,9 +17,7 @@ const Popup = ({title,message,iconLink,size}) => {
         {title}
       </h3>
       <p className="popup__message">{message}</p>
-      <div style={{ marginTop: '8rem' }}>
-        {iconLink}
-      </div>
+      <div style={{ marginTop: '8rem' }}>{iconLink}</div>
     </section>
   );
 };

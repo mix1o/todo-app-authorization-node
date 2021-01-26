@@ -55,21 +55,17 @@ body {
     transform: rotateZ(-30deg);
   }
 }
-.CircleAni {
-  width: 25px;
-  height: 25px;
-  border-radius: 100px;
-  display: block;
-  margin: 0 1.5rem;
+@keyframes appear {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-.CircleAniGreen {
-  background-color: var(--main-color-green);
-}
-.CircleAniGrey {
-  background-color: var(--header-color);
-}
-.CircleAniOrange {
-  background-color: var(--border-guide-color);
+.testowa {
+  font-family: 'icomoon';
 }
 .body,
 .header {
@@ -188,9 +184,6 @@ p {
   padding: 1rem;
   width: 95%;
   border: 1px solid var(--paragraphs-colors);
-}
-.todo__taskName > input::placeholder {
-  color: var(--input-placeholder-text);
 }
 .todo__taskName > .todo__description {
   padding: 1rem 1rem 7rem 1rem;
@@ -764,16 +757,16 @@ h3 > span {
 }
 @keyframes slide {
   0% {
-    transform: translate(-50%,-200%);
+    transform: translate(-50%, -200%);
   }
   100% {
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
 }
 .popup {
   animation-name: slide;
   animation-duration: 1s;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
   animation-fill-mode: forwards;
   background-color: var(--header-color);
   color: var(--white);
@@ -781,7 +774,7 @@ h3 > span {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-200%);
+  transform: translate(-50%, -200%);
   font-size: 1.7rem;
   width: 80%;
   padding: 2rem;
@@ -790,12 +783,11 @@ h3 > span {
   border-radius: 1.7rem;
 }
 .popup__message {
-
   font-size: 1.4rem;
   font-weight: 300;
   letter-spacing: 1px;
 }
-.container__popup__svg{
+.container__popup__svg {
   height: 5rem;
   width: 5rem;
   border: 2px solid var(--main-color-green);
@@ -924,12 +916,12 @@ h3 > span {
 /* end subscruiption */
 /* PAYMENT COMPONENT */
 
-.aniamtion-payment {
+/* .aniamtion-payment {
   animation-name: pay;
   animation-fill-mode: forwards;
   animation-duration: 2s;
   animation-delay: 0.3s;
-}
+} */
 
 .payment__wrap {
   padding: 2rem;
@@ -985,22 +977,43 @@ h3 > span {
 .payment__single > .selectedGreen {
   background-color: var(--main-color-green);
 }
-/* END PAYMENT COMPONENT */
-@keyframes appear {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.payment__cardLabel {
+  position: relative;
 }
+.payment__cardInput {
+  padding: 0.85rem 0 0.85rem 4rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--input-background);
+  border: 0.1rem solid var(--paragraphs-colors);
+  border-radius: 0.3rem;
+  width: 100%;
+  color: var(--header-color);
+}
+.payment__labelTitle {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.payment__icon {
+  position: absolute;
+  left: 1rem;
+}
+.payment__finish {
+  display: flex;
+  flex-flow: column;
+  width: 90vw;
+  padding: 2rem;
+  background: var(--light-grey);
+  margin-top: 5rem;
+  border-radius: 0.5rem;
+}
+/* END PAYMENT COMPONENT */
 .animation-warning {
   transform: translateY(-100%);
   opacity: 0;
   animation-name: appear;
-  animation-duration: .2s;
-  animation-delay: .1s;
+  animation-duration: 0.2s;
+  animation-delay: 0.1s;
   animation-fill-mode: forwards;
 }
 input::placeholder,textarea::placeholder{

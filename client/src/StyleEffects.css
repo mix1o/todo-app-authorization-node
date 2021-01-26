@@ -22,3 +22,6 @@ a::selection,
   background: #fff;
   color: var(--main-color-green);
 }
+input::placeholder {
+  color: var(--input-placeholder-text);
+}

@@ -37,7 +37,6 @@ function App() {
   const { user } = cookies;
 
   const [state, actions] = useCounter();
-  
 
   return (
     <div className="App">
@@ -65,11 +64,21 @@ function App() {
           {user && <Route exact path="/completed-tasks" component={Hisotry} />}
           {user && <Route exact path="/todo" component={Todo} />}
           {user && <Route exact path="/terms" component={Terms} />}
-          {user && <Route exact path="/subscription" component={Subscription} />}
-          {user && <Route exact path="/confirm-pay">
-              {state.count > 0 ? <PaymentConfirm/> : <Redirect to="/subscription" />}
-            </Route>}
-          {user && <Route exact path="/method-payment" component={PaymentMethod} />}
+          {user && (
+            <Route exact path="/subscription" component={Subscription} />
+          )}
+          {user && (
+            <Route exact path="/confirm-pay">
+              {state.count > 0 ? (
+                <PaymentConfirm />
+              ) : (
+                <Redirect to="/subscription" />
+              )}
+            </Route>
+          )}
+          {user && (
+            <Route exact path="/method-payment" component={PaymentMethod} />
+          )}
           <Route exact path="/pay-now">
             {state.count > 1 ? <PayNow/> : <Redirect to="/subscription"/>}
           </Route>         
@@ -78,7 +87,7 @@ function App() {
           {user && <Route exact path="/about" component={About} />}
           {user && <Route exact path="/contact-us" component={ContactUs} />}
           <Route exact path="/how-works" component={HoWorks} />
-        
+
           <Route component={NotFound} />
         </Switch>
       </Router>

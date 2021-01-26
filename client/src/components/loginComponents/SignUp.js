@@ -122,7 +122,7 @@ const RegisterationForm = () => {
   if (popup) {
     setTimeout(() => {
       history.push('/almost-there');
-    }, 4000);
+    }, 2000);
   }
 
   return (
@@ -313,21 +313,34 @@ const RegisterationForm = () => {
             </div>
           </section>
         </main>
-        {isOpen && <Warning isOpen={isOpen} setIsOpen={setIsOpen} errorMessage={catchError.message} />}
-        {catchError.correct && <Popup title="Your account has been created" message="You will be redirect in a second" iconLink={<Link to="/login">
-          <div className="container__popup__svg"
-          >
-            <svg
-              className="arrowIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M22 12l-20 12 5-12-5-12z" />
-            </svg>
-          </div>
-        </Link>}/>}
+        {isOpen && (
+          <Warning
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            errorMessage={catchError.message}
+          />
+        )}
+        {catchError.correct && (
+          <Popup
+            title="Your account has been created"
+            message="You will be redirect in a second"
+            iconLink={
+              <Link>
+                <div className="container__popup__svg">
+                  <svg
+                    className="arrowIcon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M22 12l-20 12 5-12-5-12z" />
+                  </svg>
+                </div>
+              </Link>
+            }
+          />
+        )}
       </div>
     </>
   );
