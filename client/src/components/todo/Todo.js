@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useCounter } from '../../store/sub';
 import Tour from '../Guide/Tour';
 import { useCookies } from 'react-cookie';
+import Warning from '../loginComponents/Warning';
 
 const Todo = ({ onAdd }) => {
   const [cookies] = useCookies({});
   const { user } = cookies;
+
+  const [isOpen,setIsOpen] = useState(false);
 
   const STEPS = [
     {
@@ -90,6 +93,11 @@ const Todo = ({ onAdd }) => {
             Priority: '',
           });
           onAdd();
+        }else {
+          setIsOpen(true)
+          setTimeout(() => {
+            setIsOpen(false)
+          },2000)
         }
       });
   };
@@ -111,10 +119,11 @@ const Todo = ({ onAdd }) => {
         />
       </label>
       <label className="todo__taskName">
-        <input
+        <textarea
           className="todo__description"
           name="Description"
-          type="text"
+          cols="41"
+          rows="5"
           placeholder="Description of the task e.g. Meet up with fiance"
           value={taskData.Description}
           onChange={(e) => handlerInput(e)}
@@ -150,7 +159,7 @@ const Todo = ({ onAdd }) => {
       <button className="btn-newtask" onClick={addNewTask}>
         Add task
       </button>
-      <p className="task__message">{message}</p>
+      {isOpen && <Warning errorMessage={message} setIsOpen={setIsOpen}/>}
     </section>
   );
 };

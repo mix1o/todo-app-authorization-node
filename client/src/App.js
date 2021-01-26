@@ -30,6 +30,7 @@ import PaymentMethod from './components/payments/PaymentMethod';
 import NewPassword from './components/loginComponents/NewPassword';
 import AlmostThere from './components/loginComponents/AlmostThere';
 import ConfirmAccount from './components/loginComponents/ConfirmAccount';
+import Settings from './components/page/Settings';
 
 function App() {
   const [cookies] = useCookies({});
@@ -51,8 +52,7 @@ function App() {
             {state.canSeeAlmost ? <AlmostThere /> : <Redirect to="/" />}
           </Route>
           <Route
-            exact
-            path="/alomost-there/:token"
+            exact path="/almost-there/:token"
             component={ConfirmAccount}
           />
           <Route exact path="/user-panel">
@@ -80,13 +80,9 @@ function App() {
             <Route exact path="/method-payment" component={PaymentMethod} />
           )}
           <Route exact path="/pay-now">
-            {state.count > 1 ? <PayNow /> : <Redirect to="/subscription" />}
-          </Route>
-          {user && (
-            <Route exact path="/settings">
-              <h3>Settings</h3>
-            </Route>
-          )}
+            {state.count > 1 ? <PayNow/> : <Redirect to="/subscription"/>}
+          </Route>         
+          {user && <Route exact path="/settings" component={Settings}/>}
           {user && <Route exact path="/policy" component={Policy} />}
           {user && <Route exact path="/about" component={About} />}
           {user && <Route exact path="/contact-us" component={ContactUs} />}

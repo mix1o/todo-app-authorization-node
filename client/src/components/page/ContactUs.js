@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import Header from './Header';
 import Footer from './Footer';
-
-import {useHistory} from 'react-router-dom';
+import Popup from '../loginComponents/Popup'
+import {useHistory,Link} from 'react-router-dom';
 
 const ContactUs = () => {
 
@@ -55,7 +55,7 @@ const ContactUs = () => {
     <>
       <Header />
       <div style={{position: 'relative'}}>
-      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' ,zIndex: '2'}} className="contactUs">
+      <main style={{ filter: message.correct ? 'blur(3px)' : 'blur(0)' ,zIndex: '-1'}} className="contactUs">
         <h1 style={{color: "#2d3748"}} className="section__title">Get in touch</h1>
         <section className="contact__section">
        
@@ -88,7 +88,6 @@ const ContactUs = () => {
               <textarea
                 className="label__textarea"
                 placeholder="Remember, be nice!"
-                name="message"
                 cols="30"
                 rows="10"
                 name="Message"
@@ -103,13 +102,12 @@ const ContactUs = () => {
             {!message.correct && <p className="er">{message.message}</p>}
         </section>
       </main>
-            {message.correct && <div style={{zIndex: '50'}} className="correct-message-div">
-              <p className="correct-message-p">{message.message}</p>
-              <p className="correct-message-p2">You will be redirect in a second</p>  
-              <div style={{marginTop: '4rem'}}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
-              </div>
-            </div>}
+      {message.correct && <Popup title="Your email has been send" message="You will be redirect in few seconds" size="2rem" iconLink={<Link to="/user-panel">
+          <div className="container__popup__svg"
+          >
+         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+          </div>
+        </Link>}/>}
         </div>
       <Footer />
     </>
