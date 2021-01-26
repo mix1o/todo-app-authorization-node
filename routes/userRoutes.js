@@ -5,7 +5,7 @@ const Todo = require('../schema/todoSchema');
 const bcrypt = require('bcryptjs');
 const token = require('crypto-token');
 const ObjectID = require('mongodb').ObjectID;
-const nodemailer = require("nodemailer")
+const nodemailer = require('nodemailer');
 const {
   registerValidation,
   loginValidation,
@@ -39,105 +39,104 @@ router.post('/api/newuser', async (req, res) => {
     password: hashPassword,
     confirmedAccountToken: t,
   });
-  
+
   try {
     const savedUser = await user.save();
     res.send({ message: 'Your account has been created!', correct: true });
-    sgMail.setApiKey('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');
+    sgMail.setApiKey(
+      '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'
+    );
     const msg = {
-        to: req.body.Email,
-        from: "mntasks@interia.pl",
-        subject: "nmTasks Confrim your account",
-        text: "test",
-        html: `<div>
+      to: req.body.Email,
+      from: 'mntasks@interia.pl',
+      subject: 'nmTasks Confrim your account',
+      text: 'test',
+      html: `<div>
         <h3>This link is available for 1 hour</h3>
         <h5>Click link below to reset password</h5>
         <a target="_blank" href="https://mntasks.herokuapp.com/alomost-there/${t}">Click to confrim</a>
         </div>`,
     };
-  
 
     sgMail.send(msg);
-
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.post('/api/confirm', async (req,res) => {
-  const {token} = req.body;
-  const user = await Users.findOne({confirmedAccountToken: token})
- console.log(user)
-  if(!user) return res.send({message: 'Something went wrong'});
+router.post('/api/confirm', async (req, res) => {
+  const { token } = req.body;
+  const user = await Users.findOne({ confirmedAccountToken: token });
+  console.log(user);
+  if (!user) return res.send({ message: 'Something went wrong' });
 
   user.confirmedAccount = true;
   user.save().then((result) => {
-    res.send({message: 'Successful confirm account', correct: true})
+    res.send({ message: 'Successful confirm account', correct: true });
   });
-})
-
+});
 
 router.post('/api/resetPassword', (req, res) => {
-
-  
   const { error } = resetValidation(req.body);
 
   if (error) return res.send({ message: error.details[0].message });
 
-    Users.findOne({ email: req.body.Email })
-    .then(user => {
-      if(!user){
-        return res.send({message: 'Email not found'});
+  Users.findOne({ email: req.body.Email })
+    .then((user) => {
+      if (!user) {
+        return res.send({ message: 'Email not found' });
       }
       const t = token(32);
       console.log(t);
       user.resetToken = t;
-      user.expireToken = Date.now() + 8000000
+      user.expireToken = Date.now() + 8000000;
       user.save().then((result) => {
-        sgMail.setApiKey('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');
+        sgMail.setApiKey(
+          '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'
+        );
         const msg = {
-            to: req.body.Email,
-            from: "mntasks@interia.pl",
-            subject: "nmTasks Reset your password",
-            text: "We have sent mail to reset password",
-            html: `<div style='margin: 0 auto; padding: 0; max-width: 90%; align-items: center; justify-content: center; flex: 1 1 100%; flex-flow: column wrap; border-radius: 10px; color: #353353; font-size: 10px; ' > <h3 style=' max-width: 100%; background-color: #1db95e; color: #fff; font-size: 3em; padding: 1em 0 1em 1em; border-radius: 10px 10px 0 0; margin: 0; ' > mnTasks </h3> <section style='text-align: left; color: #353353;font-size: 1.1rem; background-color: #f9f9f9' > <h5 style=' font-size: 1.4rem; font-weight: 700; padding: 1em 0; margin: 0 0 0 1em;color: #353353; ' > Reset your password </h5> <div style='margin: 0 0 1em 1em'> <p style='font-weight: 500;color: #353353; margin: 0 0 1em 0'> We recently received a request to reset the password to your account: </p> <span style='font-weight: 700'>${req.body.Email}</span> </div> <p style='font-weight: 500;color: #353353; margin: 0 0 1em 1em'> To reset your password, click on the button bellow or copy and paste link into your browser: </p><p>https://mntasks.herokuapp.com/reset/${t}</p> <a href="https://mntasks.herokuapp.com/reset/${t}" target='_blank' style='margin: 0; text-decoration: none; color: #000' ><button style=' padding: 0.75em 1.2em; margin: 0.5em 0 2em 1em; font-size: 1em; font-weight: 700; background: #1db95e; border: none; border-radius: 0.3em; color: #fff; ' > Reset Now </button> </a> </section> <footer style='text-align: left; background-color: #E6E6E6; margin: 0; padding: 0; border-radius: 0 0 10px 10px;'> <p style='font-weight: bold; color: #353353;font-size: 1.4em; margin:0 0 0 1em; padding-top: 1em;'>Important Security Notice:</p> <p style='margin-left: 1em;color: #353353; font-size: 1.3em;'> mnTaska never asks for your password or other sensitive information by email. Do not click links or respond to a suspicious email! </p> <p style='margin-left: 1em;color: #353353; font-size: 1.3em;'> Do not reply to this email! This message was generated automaticly. </p> <p style='margin-left: 1em;color: #353353;padding-bottom: 1em; font-size: 1.3em;'>&copy; mnTasks 2021</p> </footer> </div></div>
-            `,
+          to: req.body.Email,
+          from: 'mntasks@interia.pl',
+          subject: 'nmTasks Reset your password',
+          text: 'We have sent mail to reset password',
+          html: ` <div style="font-family:Verdana;margin: 0 auto; padding: 0; max-width: 90%; align-items: center; justify-content: center; flex: 1 1 100%; flex-flow: column wrap; border-radius: 10px; color: #353353; font-size: 10px; "> <h3 style=" max-width: 100%; background-color: #1db95e; color: #fff; font-size: 3em; padding: 1em 0 1em 1em; border-radius: 10px 10px 0 0; margin: 0; "> mnTasks </h3> <div style="text-align: left; color: #353353;font-size: 1.1em; background-color: #f9f9f9"> <h5 style=" font-size: 2em; font-weight: 700; padding: 1em 0; margin: 0 0 0 0.5em;color: #353353; "> Reset your password </h5> <div style="margin: 0 0 1em 1em"> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 0"> We recently received a request to reset the password to your account: </p> <span style="font-weight: 700;font-size:1.3em">${req.body.Email}</span> </div> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 1em"> To reset your password, click on the button bellow or copy and paste link into your browse </p> <p style="font-size:1.3em;margin: 0 0 1em 1em; color:#4285F4;text-decoration: underline">https://mntasks.herokuapp.com/reset/${t}</p> <div> <a href="https://mntasks.herokuapp.com/reset/${t}" target="_blank" style="display:inline-block; padding: 0.75em 1.2em; margin: 0.5em 0 2.5em 1em; font-size: 1.2em; font-weight: 700; background: #1db95e;text-decoration:none; background-color:#1db95e;border: none; border-radius: 0.3em; color: #fff; "> Reset </a> </div> </div> <div style="text-align: left; background-color: #E6E6E6; padding: 0; border-radius: 0 0 10px 10px;"> <p style="font-weight: bold; color: #353353;font-size: 1.4em; margin:0 0 0 1em; padding-top: 1em;"> Important Security Notice: </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> mnTaska never asks for your password or other sensitive information by email. Do not click links or respond to a suspicious email! </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> Do not reply to this email! This message was generated automaticly. </p> <p style="margin-left: 1em;color: #353353;padding-bottom: 1em; font-size: 1.3em;"> &copy; mnTasks 2021 </p> </div> </div>`,
         };
-      
+
         sgMail.send(msg);
-        res.send({message: "Check your email", correct: true})
-      })
-    }).catch(err => console.log(err))
-
-});
-router.post("/api/newPassword", (req,res) => {
-
-  const {error} = newPasswordValidation(req.body);
-
-  if(error) return res.send({message:  error.details[0].message});
-
-  
-  if(req.body.newPassword !== req.body.confrimNewPassword) return res.send({message: "Passwords are not the same"})
-
-  const {newPassword,confrimNewPassword,token} = req.body;
-
-  Users.findOne({resetToken: token,expireToken:{$gt:Date.now()}})
-  .then(user => {
-    if(!user){
-      return res.send({message: "Try again session expired"})
-    }
-    bcrypt.hash(newPassword,10).then(hashedpassword => {
-      user.password = hashedpassword;
-      user.resetToken = undefined;
-      user.expireToken = undefined;
-      user.save().then(saveduser => {
-        res.send({message: "Your password has been changed",correct: true})
-      })
+        res.send({ message: 'Check your email', correct: true });
+      });
     })
-  }).catch(err => console.log(err))
+    .catch((err) => console.log(err));
+});
+router.post('/api/newPassword', (req, res) => {
+  const { error } = newPasswordValidation(req.body);
 
-})
+  if (error) return res.send({ message: error.details[0].message });
 
+  if (req.body.newPassword !== req.body.confrimNewPassword)
+    return res.send({ message: 'Passwords are not the same' });
+
+  const { newPassword, confrimNewPassword, token } = req.body;
+
+  Users.findOne({ resetToken: token, expireToken: { $gt: Date.now() } })
+    .then((user) => {
+      if (!user) {
+        return res.send({ message: 'Try again session expired' });
+      }
+      bcrypt.hash(newPassword, 10).then((hashedpassword) => {
+        user.password = hashedpassword;
+        user.resetToken = undefined;
+        user.expireToken = undefined;
+        user.save().then((saveduser) => {
+          res.send({
+            message: 'Your password has been changed',
+            correct: true,
+          });
+        });
+      });
+    })
+    .catch((err) => console.log(err));
+});
 
 router.post('/api/login', async (req, res, next) => {
   // const { error } = loginValidation(req.body);
@@ -150,9 +149,9 @@ router.post('/api/login', async (req, res, next) => {
   const validPass = await bcrypt.compare(req.body.Password, client.password);
   if (!validPass) return res.send({ message: 'Invalid password!' });
 
-
-  if(!client.confirmedAccount) return res.send({message: 'Please confirm your email'})
-  console.log(client.confirmedAccount)
+  if (!client.confirmedAccount)
+    return res.send({ message: 'Please confirm your email' });
+  console.log(client.confirmedAccount);
 
   req.session.user = client;
   const user = { ...client };
@@ -237,7 +236,7 @@ router.post('/api/payCard', async (req, res) => {
     );
 
     req.session.user.credits += creditsAdd;
-    res.send({ message: 'Awesome!',correct: true });
+    res.send({ message: 'Awesome!', correct: true });
   } catch (e) {
     res.send({ message: e });
   }
@@ -289,18 +288,17 @@ router.post('/api/message', (req, res) => {
 
   const { Subject, Email, Message } = req.body;
 
-  
-  sgMail.setApiKey('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');
-    const msg = {
-        to: "mntasks@interia.pl",
-        from: Email,
-        subject: Subject,
-        text: Message,
-    };
-  
-	sgMail.send(msg);
-	
+  sgMail.setApiKey(
+    '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'
+  );
+  const msg = {
+    to: 'mntasks@interia.pl',
+    from: Email,
+    subject: Subject,
+    text: Message,
+  };
 
+  sgMail.send(msg);
 
   res.status(200).send({ message: 'Your email has been send', correct: true });
 });

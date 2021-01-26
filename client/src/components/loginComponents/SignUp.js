@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import Recaptcha from 'react-recaptcha';
 import { useCounter } from '../../store/sub';
+import { Star } from './Icons';
 
 const RegisterationForm = () => {
   const history = useHistory();
@@ -179,7 +180,10 @@ const RegisterationForm = () => {
             name="sign up form"
           >
             <label className="signUp__label--firstname form__label">
-              <p className="label__paragraph">First Name: </p>
+              <div className="form__labelWrapper-para">
+                {Star}
+                <p className="label__paragraph">First Name: </p>
+              </div>
               <input
                 className="label__input label__input--name"
                 type="text"
@@ -191,7 +195,10 @@ const RegisterationForm = () => {
             </label>
 
             <label className="signUp__label--lastname form__label ">
-              <p className="label__paragraph">Last Name: </p>
+              <div className="form__labelWrapper-para">
+                {Star}
+                <p className="label__paragraph">Last Name: </p>
+              </div>
               <input
                 className="label__input label__input--surrname"
                 type="text"
@@ -202,7 +209,10 @@ const RegisterationForm = () => {
               />
             </label>
             <label className="signUp__label--email form__label">
-              <p className="label__paragraph">E-mail address:</p>
+              <div className="form__labelWrapper-para">
+                {Star}
+                <p className="label__paragraph">E-mail address:</p>
+              </div>
               <input
                 className="label__input label__input--email"
                 type="email"
@@ -214,7 +224,10 @@ const RegisterationForm = () => {
               />
             </label>
             <label className="signUp__label--password form__label">
-              <p className="label__paragraph">Password: </p>
+              <div className="form__labelWrapper-para">
+                {Star}
+                <p className="label__paragraph">Password: </p>
+              </div>
               <input
                 className="label__input label__input--password"
                 type={passwordVis}
@@ -225,7 +238,7 @@ const RegisterationForm = () => {
               />
               <i
                 tabIndex="0"
-                role="checkbox"
+                role="checkbox "
                 className="toggle_password"
                 isVisible={isVisible}
                 onClick={changePassType}

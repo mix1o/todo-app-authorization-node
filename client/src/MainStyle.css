@@ -64,6 +64,14 @@ body {
     opacity: 1;
   }
 }
+@keyframes slide {
+  0% {
+    transform: translate(-50%, -200%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
 .testowa {
   font-family: 'icomoon';
 }
@@ -378,9 +386,13 @@ h3 > span {
   width: 100%;
   position: relative;
 }
+.form__labelWrapper-para {
+  display: flex;
+}
 .label__paragraph {
   font-size: 1.2rem;
   margin-bottom: 0.3rem;
+  margin-left: 0.5rem;
   color: var(--secondary-grey);
 }
 .section__message {
@@ -730,14 +742,6 @@ h3 > span {
 .popup-relative {
   position: relative;
 }
-@keyframes slide {
-  0% {
-    transform: translate(-50%, -200%);
-  }
-  100% {
-    transform: translate(-50%, -50%);
-  }
-}
 .popup {
   animation-name: slide;
   animation-duration: 1s;
@@ -753,7 +757,7 @@ h3 > span {
   font-size: 1.7rem;
   width: 80%;
   padding: 2rem;
-  height: 40vh;
+  height: 290px;
   text-align: center;
   border-radius: 1.7rem;
 }

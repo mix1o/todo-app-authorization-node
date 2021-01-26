@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Popup = ({ title, message, iconLink, size }) => {
   return (
@@ -17,7 +16,7 @@ const Popup = ({ title, message, iconLink, size }) => {
         {title}
       </h3>
       <p className="popup__message">{message}</p>
-      <div style={{ marginTop: '8rem' }}>{iconLink}</div>
+      <div style={{ marginTop: '3rem ' }}>{iconLink}</div>
     </section>
   );
 };

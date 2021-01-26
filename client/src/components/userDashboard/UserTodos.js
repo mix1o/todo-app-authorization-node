@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   height: auto;
 `;
 
-const UserTodos = ({ tasks,onAdd }) => {
+const UserTodos = ({ tasks, onAdd }) => {
   const newItems = tasks.filter((item) => item.complete !== 'Completed');
   const [state, actions] = useCounter();
   const [check, setCheck] = useState(false);
