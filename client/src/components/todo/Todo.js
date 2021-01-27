@@ -8,7 +8,7 @@ const Todo = ({ onAdd }) => {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const STEPS = [
     {
@@ -93,11 +93,11 @@ const Todo = ({ onAdd }) => {
             Priority: '',
           });
           onAdd();
-        }else {
-          setIsOpen(true)
+        } else {
+          setIsOpen(true);
           setTimeout(() => {
-            setIsOpen(false)
-          },2000)
+            setIsOpen(false);
+          }, 2000);
         }
       });
   };
@@ -111,6 +111,7 @@ const Todo = ({ onAdd }) => {
       </p>
       <label className="todo__taskName">
         <input
+          className="label__input"
           name="Title"
           type="text"
           placeholder="Short title of the task"
@@ -120,7 +121,7 @@ const Todo = ({ onAdd }) => {
       </label>
       <label className="todo__taskName">
         <textarea
-          className="todo__description"
+          className="label__textarea"
           name="Description"
           cols="41"
           rows="5"
@@ -159,7 +160,7 @@ const Todo = ({ onAdd }) => {
       <button className="btn-newtask" onClick={addNewTask}>
         Add task
       </button>
-      {isOpen && <Warning errorMessage={message} setIsOpen={setIsOpen}/>}
+      {isOpen && <Warning errorMessage={message} setIsOpen={setIsOpen} />}
     </section>
   );
 };

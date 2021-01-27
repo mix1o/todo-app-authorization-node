@@ -11,7 +11,7 @@ const PaymentConfirm = () => {
   return (
     <>
       <Header />
-      <div className="payment__wrap">
+      <div className="payment__wrap" id="confirm__pay">
         <h2 className="heading-2">Confrim order and proceed to checkout</h2>
         <div className="payment__details">
           <h3 className="heading-3">Order details: </h3>

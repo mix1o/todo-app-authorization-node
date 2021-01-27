@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const StyledDiv = styled.div`
   color: ${({ changeFontColor }) =>
@@ -21,6 +22,7 @@ const Card = ({
   className,
   recomendation,
   creditsQuantity,
+  totalPrice,
 }) => {
   const [state, actions] = useCounter();
 
@@ -109,17 +111,25 @@ const Card = ({
         <p style={{ fontWeight: '700' }}>{price.roundedPrice}</p>
         <span className="card__span">{price.afterComma}</span>
       </div>
-
-      <Link to="/confirm-pay">
-        <button
-          className={`card__btn ${
-            recomendation ? 'btn__main--empty' : 'btn__main--full'
-          }`}
-          onClick={() => actions.payment(creditsQuantity, title, description.row1)}
-        >
-          Choose
-        </button>
-      </Link>
+      <div>
+        <Link to="/confirm-pay#confirm__pay">
+          <button
+            className={`card__btn ${
+              recomendation ? 'btn__main--empty' : 'btn__main--full'
+            }`}
+            onClick={() =>
+              actions.payment(
+                creditsQuantity,
+                title,
+                description.row1,
+                totalPrice
+              )
+            }
+          >
+            Choose
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

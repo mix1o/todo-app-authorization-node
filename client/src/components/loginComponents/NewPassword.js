@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Warning from './Warning';
 import Popup from './Popup';
-import { ForgetPassword, Star } from './Icons';
+import { changePassType } from './changePassType';
+import { ForgetPassword, Star, OpenEye, ClosedEye } from './Icons';
 
 const NewPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confrimNewPassword, setConfirmNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const { token } = useParams();
-
+  const [passwordVis, setPasswordVis] = useState('password');
+  const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const password = () => {
@@ -88,7 +90,7 @@ const NewPassword = () => {
               </div>
               <input
                 className="label__input label__input--email"
-                type="password"
+                type={passwordVis}
                 placeholder="New password"
                 required
                 value={newPassword}
@@ -107,12 +109,27 @@ const NewPassword = () => {
               </div>
               <input
                 className="label__input label__input--email"
-                type="password"
+                type={passwordVis}
                 placeholder="Confirm new password"
                 required
                 value={confrimNewPassword}
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
+              <i
+                tabIndex="0"
+                role="checkbox"
+                className="toggle_password"
+                isVisible={isVisible}
+                onClick={(e) =>
+                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                }
+                onKeyUp={(e) =>
+                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                }
+              >
+                {isVisible && ClosedEye}
+                {!isVisible && OpenEye}
+              </i>
             </label>
           </form>
           <div style={{ marginTop: '1rem' }}>{ForgetPassword}</div>
