@@ -8,7 +8,7 @@ const CircleWrapper = styled.div`
 const AnimationWrapper = styled(motion.div)`
   width: 100vw;
   height: 100vh;
-  background-color: var(--secondary-grey);
+  background-color: var(--header-color);
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -4,7 +4,7 @@ import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 import { Link, Has } from 'react-router-dom';
 import { svgIcon } from './paymentssvg';
-import { HashLink } from 'react-router-hash-link';
+
 const PaymentConfirm = () => {
   const [state, actions] = useCounter();
 
