@@ -616,7 +616,6 @@ h3 > span {
   text-align: center;
   font-size: 3.2rem;
   color: #fff;
-  
 }
 .info__user > .first {
   font-weight: 100;
@@ -642,7 +641,7 @@ h3 > span {
   margin-left: 10px;
   color: #fff;
   border-radius: 3px;
-  padding: .3rem .6rem;
+  padding: 0.3rem 0.6rem;
 }
 .hamburger__left__border {
   backdrop-filter: blur(3px);
@@ -652,43 +651,23 @@ h3 > span {
   text-align: center;
 }
 .log__out {
- 
   position: absolute;
   bottom: 15px;
   right: 15px;
-
-  text-align: center;
-  /* background: #2d3748; */
-  /* width: 60%; */
-  /* margin: 0 auto; */
-  /* margin-top: 5rem; */
 }
 .log__out > button {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  color: #fff;
-  font-size: 1.7rem;
-  border: none;
-  width: 100%;
   background: transparent;
-  /* padding: 1.5rem 2rem; */
-}
-.log__out > svg {
-  margin-right: 1rem;
+  border: none;
 }
 
 /* END HAMBURGER */
 /* Contact us */
 .contactUs {
   max-width: 85vw;
-  margin: 10rem auto;
-  position: relative;
-  z-index: -1;
+  margin: 5rem auto;
 }
 .contact__section {
   position: relative;
-  z-index: -1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1021,7 +1000,8 @@ h3 > span {
   animation-delay: 0.1s;
   animation-fill-mode: forwards;
 }
-input::placeholder,textarea::placeholder{
+input::placeholder,
+textarea::placeholder {
   font-family: 'Noto Sans JP', sans-serif;
   color: var(--input-placeholder-text)
 }

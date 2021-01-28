@@ -10,12 +10,18 @@ const initialState = {
   correct: null,
   userFunction: null,
   canSeeAlmost: false,
+  totalPriceState: 0,
 };
 
 const actions = {
-  payment: (price, title, credits) => ({ getState, setState }) => {
-    const { count, titleSub, creditsSub } = getState();
-    setState({ count: price, titleSub: title, creditsSub: credits });
+  payment: (price, title, credits, totalPrice) => ({ getState, setState }) => {
+    const { count, titleSub, creditsSub, totalPriceState } = getState();
+    setState({
+      count: price,
+      titleSub: title,
+      creditsSub: credits,
+      totalPriceState: totalPrice,
+    });
   },
   changeStatus: (specifyIdTask) => ({ getState, setState }) => {
     const { idOfTask } = getState();
@@ -33,10 +39,10 @@ const actions = {
     const { userFunction } = getState();
     setState({ userFunction: e });
   },
-  setAlmost: (e) => ({getState,setState}) => {
-    const {canSeeAlmost} = getState();
-    setState({canSeeAlmost: e});
-  }
+  setAlmost: (e) => ({ getState, setState }) => {
+    const { canSeeAlmost } = getState();
+    setState({ canSeeAlmost: e });
+  },
 };
 
 const Store = createStore({ initialState, actions });

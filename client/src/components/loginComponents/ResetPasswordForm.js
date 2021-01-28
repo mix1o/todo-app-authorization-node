@@ -118,6 +118,16 @@ const ResetPasswordForm = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
+            <p
+              style={{
+                marginTop: '1.5rem',
+                textAlign: 'left',
+                width: '100%',
+                color: 'var(--secondary-grey)',
+              }}
+            >
+              {Star} Required fields
+            </p>
           </form>
 
           <div style={{ margin: '10rem' }}>{ForgetPassword}</div>

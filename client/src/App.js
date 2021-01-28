@@ -51,10 +51,7 @@ function App() {
           <Route exact path="/almost-there">
             {state.canSeeAlmost ? <AlmostThere /> : <Redirect to="/" />}
           </Route>
-          <Route
-            exact path="/almost-there/:token"
-            component={ConfirmAccount}
-          />
+          <Route exact path="/almost-there/:token" component={ConfirmAccount} />
           <Route exact path="/user-panel">
             {!user ? <Redirect to="/login" /> : <UserPanel />}
           </Route>
@@ -80,12 +77,12 @@ function App() {
             <Route exact path="/method-payment" component={PaymentMethod} />
           )}
           <Route exact path="/pay-now">
-            {state.count > 1 ? <PayNow/> : <Redirect to="/subscription"/>}
-          </Route>         
-          {user && <Route exact path="/settings" component={Settings}/>}
+            {state.count > 1 ? <PayNow /> : <Redirect to="/subscription" />}
+          </Route>
+          {user && <Route exact path="/settings" component={Settings} />}
           {user && <Route exact path="/policy" component={Policy} />}
           {user && <Route exact path="/about" component={About} />}
-          {user && <Route exact path="/contact-us" component={ContactUs} />}
+          <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/how-works" component={HoWorks} />
 
           <Route component={NotFound} />
