@@ -265,6 +265,15 @@ const RegisterationForm = () => {
                 </Link>
               </p>
             </label>
+            <p
+              style={{
+                textAlign: 'left',
+                width: '100%',
+                color: 'var(--secondary-grey)',
+              }}
+            >
+              {Star} Required fields
+            </p>
           </form>
 
           <Recaptcha

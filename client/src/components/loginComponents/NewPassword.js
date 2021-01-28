@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Warning from './Warning';
 import Popup from './Popup';
 import { changePassType } from './changePassType';
-import { ForgetPassword, Star, OpenEye, ClosedEye } from './Icons';
+import { FinishedReset, Star, OpenEye, ClosedEye } from './Icons';
 
 const NewPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -131,8 +131,17 @@ const NewPassword = () => {
                 {!isVisible && OpenEye}
               </i>
             </label>
+            <p
+              style={{
+                textAlign: 'left',
+                width: '100%',
+                color: 'var(--secondary-grey)',
+              }}
+            >
+              {Star} Required fields
+            </p>
           </form>
-          <div style={{ marginTop: '1rem' }}>{ForgetPassword}</div>
+          <div style={{ marginTop: '1rem' }}>{FinishedReset}</div>
 
           <section className="section__buttons">
             <button className="btn__main--full" onClick={password}>

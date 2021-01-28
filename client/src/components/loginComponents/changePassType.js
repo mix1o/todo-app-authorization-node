@@ -1,18 +1,13 @@
-export const changePassType = (
-  e,
-  passwordVis,
-  setPasswordVis,
-  setIsVisible
-) => {
+export const changePassType = (e, passwordVis, setPasswordVis, setIsShown) => {
   if (e.keyCode === 9) {
     return;
   }
 
   if (passwordVis === 'password') {
     setPasswordVis('text');
-    setIsVisible(false);
+    setIsShown(false);
   } else {
     setPasswordVis('password');
-    setIsVisible(true);
+    setIsShown(true);
   }
 };

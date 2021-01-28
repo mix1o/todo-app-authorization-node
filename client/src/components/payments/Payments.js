@@ -126,7 +126,7 @@ const Payments = ({ price }) => {
     setOpen(true);
   }, 800);
   return (
-    <>
+    <div id="top__component">
       {loading && <BasicLoadingAni />}
       {!loading && (
         <div className="popup-relative">
@@ -256,7 +256,7 @@ const Payments = ({ price }) => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

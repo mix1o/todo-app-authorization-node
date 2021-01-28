@@ -12,7 +12,7 @@ const SignIn = () => {
     Password: '',
   });
   const [passwordVis, setPasswordVis] = useState('password');
-  const [isVisible, setIsVisible] = useState(true);
+  const [isShown, setIsShown] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const handlerInput = (e) => {
@@ -116,16 +116,16 @@ const SignIn = () => {
                 tabIndex="0"
                 role="checkbox"
                 className="toggle_password"
-                isVisible={isVisible}
+                isVisible={isShown}
                 onClick={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
                 onKeyUp={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
               >
-                {isVisible && ClosedEye}
-                {!isVisible && OpenEye}
+                {isShown && ClosedEye}
+                {!isShown && OpenEye}
               </i>
             </label>
             <label className="signUp__label--resetPass form__label">
@@ -135,6 +135,15 @@ const SignIn = () => {
                 </Link>
               </p>
             </label>
+            <p
+              style={{
+                textAlign: 'left',
+                width: '100%',
+                color: 'var(--secondary-grey)',
+              }}
+            >
+              {Star} Required fields
+            </p>
           </form>
 
           <section className="section__buttons">
