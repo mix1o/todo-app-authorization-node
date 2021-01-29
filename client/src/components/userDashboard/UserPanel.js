@@ -13,7 +13,6 @@ import { STATES } from 'mongoose';
 import Tour from '../Guide/Tour';
 import { Link } from 'react-router-dom';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
-
 const StyledDiv = styled.div`
   text-align: center;
   padding: 9rem 1.5rem;
@@ -88,37 +87,40 @@ const UserPanel = () => {
   return (
     <>
       {loadingAnimation && <BasicLoadingAni />}
-      {!loadingAnimation && <div>
-      <Header />
-      {filteredUnCompleted.length < 1 && (
-        <div className="center">
-          <div
-            onClick={() => {
-              if (state.newTodo) {
-                actions.openTodo(false);
-              }
-            }}
-          >
-            <StyledDiv open={state.newTodo}>
-              <h2 className="heading-2">Start with adding new task</h2>
-              {!open && (
-                <button
-                  className="btn-user-panel"
-                  onClick={() => actions.openTodo(true)}
-                >
-                  Add task
-                </button>
-              )}
-              <div className="user-panel-svg">{illustration}</div>
-            </StyledDiv>
-          </div>
-          {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+      {!loadingAnimation && (
+        <div>
+          <Header />
+          {filteredUnCompleted.length < 1 && (
+            <div className="center">
+              <div
+                onClick={() => {
+                  if (state.newTodo) {
+                    actions.openTodo(false);
+                  }
+                }}
+              >
+                <StyledDiv open={state.newTodo}>
+                  <h2 className="heading-2">Start with adding new task</h2>
+                  {!open && (
+                    <button
+                      className="btn-user-panel"
+                      onClick={() => actions.openTodo(true)}
+                    >
+                      Add task
+                    </button>
+                  )}
+
+                  <div className="user-panel-svg">{illustration}</div>
+                </StyledDiv>
+              </div>
+              {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+            </div>
+          )}
+          {filteredUnCompleted.length > 0 && (
+            <UserTodos onAdd={handlerAdd} tasks={tasks} />
+          )}
         </div>
       )}
-      {filteredUnCompleted.length > 0 && (
-        <UserTodos onAdd={handlerAdd} tasks={tasks} />
-      )}
-      </div>}
     </>
   );
 };

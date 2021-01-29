@@ -590,75 +590,97 @@ h3 > span {
 }
 .list__hamburger > li {
   margin-top: 4rem;
-  width: 65%;
+  width: 85%;
   display: block;
-  margin: 2rem auto;
-  clip-path: polygon(10% 0, 100% 0, 91% 100%, 0% 100%);
-  /* clip-path: polygon(0 65%, 0% 100%, 37% 100%); */
+  margin: 1rem auto;
 }
 .hamburger_link {
-  font-size: 1.8rem;
-  /* color: #fff; */
-  color: var(--header-color);
-  background: #fff;
-  padding: 1rem 2rem;
+  font-size: 2.2rem;
+  color: #fff;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid #fff;
   text-decoration: none;
   font-weight: 400;
 }
-
-.info__user {
-  margin: 4rem 0 1rem 0;
-  text-align: center;
-  font-size: 3.2rem;
-  color: #fff;
+.iconBorder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100px;
 }
-.info__user > .first {
+.iconBorderOrange {
+  border: 3px solid var(--border-guide-color);
+}
+.iconBorderGreen {
+  border: 3px solid var(--main-color-green);
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+.actions > p {
+  color: #fff;
+  font-size: 3.5rem;
+}
+.actions > p > span {
+  color: var(--main-color-green);
+  font-weight: 700;
+  font-size: 2.7rem;
+}
+.hamburger__info {
+  padding: 2rem;
+  color: #fff;
+  font-size: 3.5rem;
+}
+.hamburger__div__input {
+  position: relative;
+  margin: 3rem 0;
+}
+.hamburger__input {
+  padding: 1.5rem 4rem;
+  background: #4f5b70;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+}
+.hamburger__input::placeholder {
+  color: #becbd9;
   font-weight: 100;
-  font-size: 2rem;
-}
-.lines-hamburger {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #d9d9d9;
-  color: #fff;
 }
 .credits {
-  padding: 2rem;
-  border-top: 1px solid #d9d9d9;
-  font-size: 2rem;
-  margin-top: 4rem;
-  font-weight: 100;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem 4rem;
   text-align: center;
+  border-top: 1px solid #f7fafc;
+  border-bottom: 1px solid #f7fafc;
 }
-.credits > span {
-  font-weight: 900;
-  padding: 5px;
-  background: var(--header-color);
-  margin-left: 10px;
+.credits > p {
   color: #fff;
-  border-radius: 3px;
-  padding: 0.3rem 0.6rem;
+  font-size: 1.9rem;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
-.hamburger__left__border {
-  backdrop-filter: blur(3px);
-  height: 100vh;
-}
-.hamburger__log__out {
-  text-align: center;
+.credits > p > span {
+  color: var(--main-color-green);
+  padding: 1px 1px 5px 5px;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 .log__out {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 1.5rem;
+  right: 1.5rem;
 }
-.log__out > button {
-  background: transparent;
-  border: none;
-}
+
 /* END HAMBURGER */
 /* Contact us */
 .contactUs {
