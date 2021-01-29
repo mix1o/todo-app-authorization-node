@@ -1024,5 +1024,54 @@ h3 > span {
 input::placeholder,
 textarea::placeholder {
   font-family: 'Noto Sans JP', sans-serif;
-  color: var(--input-placeholder-text);
+  color: var(--input-placeholder-text)
 }
+/* SETTINGS */
+
+.settings__main {
+  padding: 2rem;
+}
+.settings__section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e6e6e6;
+}
+.settings__section > p {
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+.settings__section > h4 {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.settings__section > div {
+  margin-top: 2rem;
+}
+.info__user__settings{
+  font-weight: 300;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info__user__settings > span {
+  text-align: center;
+}
+.width__span {
+  width: 100%;
+}
+.settings__edit__button {
+  font-weight: 700;
+  color: var(--main-color-green);
+}
+.settings__button__delete {
+  border: 3px solid var(--red);
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 1.7rem;
+  width: 100%;
+  box-shadow: 0 0 4px 0 red;
+}
+/* END SETTINGS */
