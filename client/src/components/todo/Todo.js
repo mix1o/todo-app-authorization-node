@@ -14,6 +14,7 @@ const Todo = ({ onAdd }) => {
     {
       target: '.todo__taskName',
       content: 'Here you can enter name of task',
+      disableScrolling: true,
       disableBeacon: true,
       floaterProps: {
         disableAnimation: true,
@@ -22,6 +23,7 @@ const Todo = ({ onAdd }) => {
     {
       target: '.todo__description',
       content: 'Add description about task',
+      disableScrolling: true,
       disableBeacon: true,
       floaterProps: {
         disableAnimation: true,
@@ -30,7 +32,8 @@ const Todo = ({ onAdd }) => {
     {
       target: '.select__diff',
       content: 'Here you can choose priority of task',
-      disableBeacon: true,
+      disableBeacon: false,
+      disableScrolling: true,
       floaterProps: {
         disableAnimation: true,
       },
@@ -40,6 +43,7 @@ const Todo = ({ onAdd }) => {
       content:
         'Your credits. Notice that you need have at least on credit to add task',
       disableBeacon: true,
+      disableScrolling: true,
       floaterProps: {
         disableAnimation: true,
       },

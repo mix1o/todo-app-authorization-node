@@ -8,23 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  --main-color-green: #1db95e;
-  --secondary-grey: #4a5568;
-  --header-color: #2d3748;
-  --paragraphs-colors: #a0aec0;
-  --input-placeholder-text: #cbd5e0;
-  --input-background: #f7fafc;
-  --white: #f7fafc;
-  --light-grey: #f9f9f9;
-  --red: #e53e3e;
-  --low-prio: 29, 185, 94;
-  --medium-prio: 240, 145, 51;
-  --high-prio: 235, 34, 19;
-  --alpha: 0.45;
-  --linera-gradient-alpha: 0.85;
-  --outline-color: #161616;
-  --border-guide-color: #ff9b21;
-  --card--info--bg: #ebf0f5;
   font-family: 'Noto Sans JP', sans-serif;
   scroll-behavior: smooth;
 }
@@ -145,15 +128,11 @@ body {
   fill: var(--header-color);
 }
 /* END MAIN PAGE */
-
 .left-section > div {
   display: inline-block;
 }
 .left-section > .left-section-first-item {
   margin-right: 0.5rem;
-}
-svg {
-  fill: var(--white);
 }
 p {
   font-weight: 500;
@@ -226,9 +205,9 @@ p {
 }
 .section__task {
   border: 1px solid var(--paragraphs-colors);
-  font-size: 18px;
-  padding: 15px;
-  margin-top: 20px;
+  font-size: 1.8rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
 }
 .task__total {
   font-weight: 700;
@@ -240,15 +219,17 @@ p {
   align-items: center;
 }
 .finish_text {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .task__desc {
-  font-size: 17px;
-  color: var(--paragraphs-colors);
+  font-size: 1.5rem;
+  color: var(--header-color);
+  font-weight: 100;
 }
 .task__name {
-  font-size: 25px;
+  font-size: 2.5rem;
   font-weight: 700;
+  color: var(--outline-color);
 }
 .status-div {
   display: flex;
@@ -276,7 +257,8 @@ p {
   background: rgba(var(--high-prio), var(--alpha));
 }
 .completed__task__bgColor {
-  background-color: rgba(221, 255, 236, 0.4);
+  border: 3px solid var(--light-green);
+  border-radius: 3px;
 }
 
 .btn-tasks-new {
@@ -296,7 +278,7 @@ h3 > span {
 }
 .heading-3 {
   text-align: center;
-  margin-top: 2rem;
+
   font-size: 2.6rem;
   color: var(--secondary-grey);
 }
@@ -465,8 +447,8 @@ h3 > span {
 }
 /* custom checkbox */
 .checkbox__indicator {
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: var(--input-background);
   border: 0.1rem solid var(--secondary-grey);
   border-radius: 0.3rem;
@@ -548,6 +530,7 @@ h3 > span {
   border-top: 1px solid var(--paragraphs-colors);
   text-align: center;
   margin-top: 4rem;
+  margin-bottom: 7rem;
   padding: 2rem;
 }
 .footer__second > div > i > svg {
@@ -596,7 +579,9 @@ h3 > span {
 }
 .hamburger_link {
   font-size: 2.2rem;
-  color: #fff;
+  color: var(--white);
+  background-color: var(--dark-subtle);
+  border-radius: 0.3rem;
   padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
@@ -604,6 +589,11 @@ h3 > span {
   width: 100%;
   text-decoration: none;
   font-weight: 400;
+}
+.hamburger__title {
+  font-size: 2.5rem;
+  color: var(--white);
+  font-weight: 100;
 }
 .iconBorder {
   display: flex;
@@ -613,12 +603,49 @@ h3 > span {
   width: 4rem;
   border-radius: 100px;
 }
+/* icons styles */
 .iconBorderOrange {
   border: 3px solid var(--border-guide-color);
 }
-.iconBorderGreen {
-  border: 3px solid var(--main-color-green);
+.iconBorderOrange > svg {
+  fill: var(--border-guide-color);
 }
+.iconBorderGreen {
+  border: 3px solid var(--light-green);
+}
+.iconBorderGreen > svg {
+  fill: var(--light-green);
+}
+.hamburger_contact > i {
+  border: 3px solid var(--google-blue);
+}
+.hamburger_contact > i > svg {
+  fill: var(--google-blue);
+}
+/* end icon styles */
+/* menu bottom */
+.menuBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: var(--main-color-green);
+  position: fixed;
+  min-width: 100vw;
+  bottom: 0;
+}
+.menuBottom__section a {
+  text-decoration: none;
+}
+.menuBottom__section {
+  text-align: center;
+  padding: 0.5rem;
+}
+.menuBottom__name {
+  font-size: 1.2rem;
+  color: var(--white);
+}
+/* endmenubottom */
 .actions {
   display: flex;
   justify-content: space-between;
@@ -635,35 +662,49 @@ h3 > span {
   font-size: 2.7rem;
 }
 .hamburger__info {
-  padding: 2rem;
-  color: #fff;
+  margin-top: 2rem;
+  padding: 0rem 2rem;
+  color: var(--white);
   font-size: 3.5rem;
 }
 .hamburger__div__input {
   position: relative;
-  margin: 3rem 0;
+  width: 90%;
+  margin: 5rem auto;
+  display: flex;
+  flex-flow: row;
 }
 .hamburger__input {
   padding: 1.5rem 4rem;
-  background: #4f5b70;
+  background: var(--dark-light-blue);
   border: none;
-  border-radius: 3px;
-  width: 100%;
+  border-radius: 0.3rem 0 0 0.3rem;
+  color: var(--white);
+  font-size: 1.6rem;
 }
 .hamburger__input::placeholder {
   color: #becbd9;
   font-weight: 100;
+}
+.hamburger__cancel {
+  width: 20%;
+  background-color: var(--main-color-green);
+  border: none;
+  border-radius: 0 0.3rem 0.3rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
 }
 .credits {
   width: 90%;
   margin: 0 auto;
   padding: 2rem 4rem;
   text-align: center;
-  border-top: 1px solid #f7fafc;
-  border-bottom: 1px solid #f7fafc;
+  border-top: 1px solid var(--white);
+  border-bottom: 1px solid var(--white);
 }
 .credits > p {
-  color: #fff;
+  color: var(--white);
   font-size: 1.9rem;
   font-weight: 100;
   letter-spacing: 2px;
@@ -1024,7 +1065,7 @@ h3 > span {
 input::placeholder,
 textarea::placeholder {
   font-family: 'Noto Sans JP', sans-serif;
-  color: var(--input-placeholder-text)
+  color: var(--input-placeholder-text);
 }
 /* SETTINGS */
 
@@ -1047,7 +1088,7 @@ textarea::placeholder {
 .settings__section > div {
   margin-top: 2rem;
 }
-.info__user__settings{
+.info__user__settings {
   font-weight: 300;
   font-size: 1.5rem;
   display: flex;
@@ -1075,3 +1116,6 @@ textarea::placeholder {
   box-shadow: 0 0 4px 0 red;
 }
 /* END SETTINGS */
+.bgColorHistory {
+  background-color: rgba(224, 255, 220, 0.4);
+}

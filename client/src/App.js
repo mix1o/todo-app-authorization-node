@@ -22,6 +22,7 @@ import Main from './components/page/Main';
 import { useCookies } from 'react-cookie';
 import MainStyle from './MainStyle.css';
 import StyleEffects from './StyleEffects.css';
+import Colors from './Colors.css';
 import Hisotry from './components/page/History';
 import { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from './store/sub';
@@ -31,6 +32,7 @@ import NewPassword from './components/loginComponents/NewPassword';
 import AlmostThere from './components/loginComponents/AlmostThere';
 import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 import Settings from './components/page/Settings';
+import ScrollToTop from './functions/ScrollToTop';
 
 function App() {
   const [cookies] = useCookies({});
@@ -41,6 +43,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />

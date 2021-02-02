@@ -3,15 +3,15 @@ import Header from '../page/Header';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 import { Link } from 'react-router-dom';
-import { genericHashLink } from 'react-router-hash-link';
 import { one, two, tree, four } from './paymentssvg';
+import HamburgerTop from '../Hamburger/HamburgerTop';
+
 const PaymentMethod = () => {
   const [select, setSelected] = useState(false);
-  const RouterHashLink = genericHashLink(Link);
 
   return (
     <div id="top__component">
-      <Header />
+      <HamburgerTop />
       <div className="payment__wrap">
         <h2 className="heading-2">Finish the payment</h2>
         <div className="payment__details">
@@ -49,13 +49,13 @@ const PaymentMethod = () => {
             </p>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <RouterHashLink
+            <Link
               style={{ marginBottom: '1rem' }}
               className="heading__btn"
-              to="/pay-now#top__component"
+              to="/pay-now"
             >
               Next
-            </RouterHashLink>
+            </Link>
           </div>
         </div>
       </div>

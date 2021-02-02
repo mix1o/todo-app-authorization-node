@@ -116,7 +116,6 @@ const SignIn = () => {
                 tabIndex="0"
                 role="checkbox"
                 className="toggle_password"
-                isVisible={isShown}
                 onClick={(e) =>
                   changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }

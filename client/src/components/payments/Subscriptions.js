@@ -3,13 +3,15 @@ import Header from '../page/Header';
 import Card from './Card';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
+import Hamburger from '../Hamburger/Hamburger';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const Subscriptions = () => {
   const [state, actions] = useCounter();
 
   return (
     <>
-      <Header onAdd={state.load} />
+      <HamburgerTop onAdd={state.load} />
       <div className="subscription_cards">
         <h1 className="section__title">Choose your preferable plan</h1>
 

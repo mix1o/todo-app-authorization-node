@@ -1,11 +1,12 @@
 import React from 'react';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 import Header from '../page/Header';
 import Footer from './Footer';
 
 const Terms = () => {
   return (
     <>
-      <Header />
+      <HamburgerTop />
       <main className="terms">
         <h1 className="section__title">Term of sevice</h1>
         <p className="main__info">

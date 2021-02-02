@@ -1,0 +1,29 @@
+:root {
+  --main-color-green: #1db95e;
+  --light-green: #1db95e;
+  --secondary-grey: #4a5568;
+  --header-color: #2d3748;
+  --paragraphs-colors: #a0aec0;
+  --hamburger-bars-bg: #757e8d;
+  --input-placeholder-text: #cbd5e0;
+  --input-background: #f7fafc;
+  --white: #f7fafc;
+  --light-grey: #f9f9f9;
+  --red: #e53e3e;
+  --google-blue: #4285f4;
+  --low-prio: 29, 185, 94;
+  --medium-prio: 240, 145, 51;
+  --high-prio: 235, 34, 19;
+  --alpha: 0.45;
+  --linera-gradient-alpha: 0.85;
+  --outline-color: #161616;
+  --border-guide-color: #ff9b21;
+  --card--info--bg: #ebf0f5;
+
+  /* dark mode colors */
+  --dark-base: #2d3748;
+  --dark-light-blue: #4f5b70;
+  --dark-subtle: #444e61;
+  --dark-text: #f7fafc;
+  --dark-text-subtle: #cbd5e0;
+}

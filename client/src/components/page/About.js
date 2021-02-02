@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const About = () => {
   return (
     <>
-      <Header />
+      <HamburgerTop />
       <main className="about terms">
         <section className="about__topSeciton">
           <h1 className="section__title">About</h1>

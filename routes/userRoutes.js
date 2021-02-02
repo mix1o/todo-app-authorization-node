@@ -13,6 +13,7 @@ const {
   taskValidation,
   messageValidation,
   newPasswordValidation,
+  editDataValidation,
 } = require('../validation/validation');
 const sgMail = require('@sendgrid/mail');
 
@@ -95,7 +96,8 @@ router.post('/api/resetPassword', (req, res) => {
           from: 'mntasks@interia.pl',
           subject: 'nmTasks Reset your password',
           text: 'We have sent mail to reset password',
-          html: ` <div style="font-family:Verdana;margin: 0 auto; padding: 0; max-width: 90%; align-items: center; justify-content: center; flex: 1 1 100%; flex-flow: column wrap; border-radius: 10px; color: #353353; font-size: 10px; "> <h3 style=" max-width: 100%; background-color: #1db95e; color: #fff; font-size: 3em; padding: 1em 0 1em 1em; border-radius: 10px 10px 0 0; margin: 0; "> mnTasks </h3> <div style="text-align: left; color: #353353;font-size: 1.1em; background-color: #f9f9f9"> <h5 style=" font-size: 2em; font-weight: 700; padding: 1em 0; margin: 0 0 0 0.5em;color: #353353; "> Reset your password </h5> <div style="margin: 0 0 1em 1em"> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 0"> We recently received a request to reset the password to your account: </p> <span style="font-weight: 700;font-size:1.3em">${req.body.Email}</span> </div> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 1em"> To reset your password, click on the button bellow or copy and paste link into your browse </p> <p style="font-size:1.3em;margin: 0 0 1em 1em; color:#4285F4;text-decoration: underline">https://mntasks.herokuapp.com/reset/${t}</p> <div> <button style="border:none;background:#f9f9f9"> <a href="https://mntasks.herokuapp.com/reset/${t}" target="_blank" style="display:inline-block; padding: 0.75em 1.2em; margin: 0.5em 0 2.5em 1em; font-size: 1.2em; font-weight: 700; background: #1db95e;text-decoration:none; background-color:#1db95e;border: none; border-radius: 0.3em; color: #fff; "> Reset </a></button> </div> </div> <div style="text-align: left; background-color: #E6E6E6; padding: 0; border-radius: 0 0 10px 10px;"> <p style="font-weight: bold; color: #353353;font-size: 1.4em; margin:0 0 0 1em; padding-top: 1em;"> Important Security Notice: </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> mnTaska never asks for your password or other sensitive information by email. Do not click links or respond to a suspicious email! </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> Do not reply to this email! This message was generated automaticly. </p> <p style="margin-left: 1em;color: #353353;padding-bottom: 1em; font-size: 1.3em;"> &copy; mnTasks 2021 </p> </div> </div>`};
+          html: ` <div style="font-family:Verdana;margin: 0 auto; padding: 0; max-width: 90%; align-items: center; justify-content: center; flex: 1 1 100%; flex-flow: column wrap; border-radius: 10px; color: #353353; font-size: 10px; "> <h3 style=" max-width: 100%; background-color: #1db95e; color: #fff; font-size: 3em; padding: 1em 0 1em 1em; border-radius: 10px 10px 0 0; margin: 0; "> mnTasks </h3> <div style="text-align: left; color: #353353;font-size: 1.1em; background-color: #f9f9f9"> <h5 style=" font-size: 2em; font-weight: 700; padding: 1em 0; margin: 0 0 0 0.5em;color: #353353; "> Reset your password </h5> <div style="margin: 0 0 1em 1em"> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 0"> We recently received a request to reset the password to your account: </p> <span style="font-weight: 700;font-size:1.3em">${req.body.Email}</span> </div> <p style="font-size:1.3em;font-weight: 500;color: #353353; margin: 0 0 1em 1em"> To reset your password, click on the button bellow or copy and paste link into your browse </p> <p style="font-size:1.3em;margin: 0 0 1em 1em; color:#4285F4;text-decoration: underline">https://mntasks.herokuapp.com/reset/${t}</p> <div> <button style="border:none;background:#f9f9f9"> <a href="https://mntasks.herokuapp.com/reset/${t}" target="_blank" style="display:inline-block; padding: 0.75em 1.2em; margin: 0.5em 0 2.5em 1em; font-size: 1.2em; font-weight: 700; background: #1db95e;text-decoration:none; background-color:#1db95e;border: none; border-radius: 0.3em; color: #fff; "> Reset </a></button> </div> </div> <div style="text-align: left; background-color: #E6E6E6; padding: 0; border-radius: 0 0 10px 10px;"> <p style="font-weight: bold; color: #353353;font-size: 1.4em; margin:0 0 0 1em; padding-top: 1em;"> Important Security Notice: </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> mnTaska never asks for your password or other sensitive information by email. Do not click links or respond to a suspicious email! </p> <p style="margin-left: 1em;color: #353353; font-size: 1.3em;"> Do not reply to this email! This message was generated automaticly. </p> <p style="margin-left: 1em;color: #353353;padding-bottom: 1em; font-size: 1.3em;"> &copy; mnTasks 2021 </p> </div> </div>`,
+        };
 
         sgMail.send(msg);
         res.send({ message: 'Check your email', correct: true });
@@ -303,6 +305,65 @@ router.post('/api/message', (req, res) => {
   sgMail.send(msg);
 
   res.status(200).send({ message: 'Your email has been send', correct: true });
+});
+
+router.post('/api/searchContent', async (req, res) => {
+  const { content } = req.body;
+  console.log(content);
+
+  const searchData = await Todo.find({
+    userId: req.session.user._id,
+    $or: [
+      { name: { $regex: '.*' + content + '.*', $options: 'i' } },
+      { description: { $regex: '.*' + content + '.*', $options: 'i' } },
+    ],
+  });
+
+  res.send(searchData);
+});
+
+router.post('/api/editData', async (req, res) => {
+  const { data, index } = req.body;
+  const user = await Users.findOne({ _id: req.session.user._id });
+  switch (index) {
+    case 'nickname':
+      if (data.length < 4)
+        return res.send({ message: 'Nickname must be at least 3 charakters' });
+
+      console.log(user.name);
+      console.log(data);
+      if (user.name == data)
+        return res.send({ message: 'Old nickname cannot be a new nickname' });
+
+      user.name = data;
+      break;
+    case 'email':
+      const { error } = editDataValidation(req.body);
+
+      if (error) return res.send({ message: 'Email must be vaild' });
+
+      if (user.email == data)
+        return res.send({ message: 'Old email cannot be a new email' });
+
+      const userEmail = await Users.findOne({ email: data });
+      if (userEmail) return res.send({ message: 'Email adress exists!' });
+
+      user.email = data;
+      break;
+    case 'password':
+      if (data.length < 6)
+        return res.send({ message: 'Password must be at least 6 charackters' });
+
+      const validPass = await bcrypt.compare(data, user.password);
+      if (validPass)
+        return res.send({ message: 'Old password cannot be a new password' });
+
+      const salt = await bcrypt.genSalt(10);
+      const hashPassword = await bcrypt.hash(data, salt);
+      user.password = hashPassword;
+      break;
+  }
+  user.save();
 });
 
 module.exports = router;

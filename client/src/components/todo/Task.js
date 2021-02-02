@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
-
+import { ConverDate } from '../../functions/ConvertDate';
 
 const Task = ({
   id,
@@ -12,47 +12,13 @@ const Task = ({
   input,
   isCompleted,
   bgColor,
+  fontColor,
   finished,
-  onAdd
+  onAdd,
+  searchUserData,
+  searchUserBool,
+  bgColorHistory,
 }) => {
-
- 
-  let dateF = new Date(date);
-  let day = dateF.getDate();
-  let month = dateF.getMonth() + 1;
-  let years = dateF.getFullYear();
-
-  if (day < '10') {
-    day = `0${day}`;
-  }
-  if (month < '10') {
-    month = `0${month}`;
-  }
-
-  let dateCompleted = new Date(finished);
-  let dayCompleted = dateCompleted.getDate();
-  let monthCompleted = dateCompleted.getMonth() + 1;
-  let yearsCompleted = dateCompleted.getFullYear();
-  let hoursCompleted = dateCompleted.getHours();
-  let minutesCompleted = dateCompleted.getMinutes();
-  let secondsCompleted = dateCompleted.getSeconds();
-
-  if (dayCompleted < '10') {
-    dayCompleted = `0${dayCompleted}`;
-  }
-  if (monthCompleted < '10') {
-    monthCompleted = `0${monthCompleted}`;
-  }
-  if (hoursCompleted < '10') {
-    hoursCompleted = `0${hoursCompleted}`;
-  }
-  if (minutesCompleted < '10') {
-    minutesCompleted = `0${minutesCompleted}`;
-  }
-  if (secondsCompleted < '10') {
-    secondsCompleted = `0${secondsCompleted}`;
-  }
-
   const sendStatus = (idTask) => {
     fetch('/api/changeStatusTask', {
       method: 'POST',
@@ -63,27 +29,45 @@ const Task = ({
         idTask: idTask,
       }),
     });
-   
   };
+
+  const dateOutput = ConverDate(date, finished);
 
   const [state, actions] = useCounter();
 
+  // const inputTest = functionInput();
+  // console.log(inputTest);
+
   return (
-    <section className={`section__task ${bgColor}`}>
-      <div className="status-div">
+    <section className={`section__task ${bgColor} ${bgColorHistory}`}>
+      <div className={`status-div`}>
         <div style={{ marginRight: '10px' }} className={`circle ${prio}`}></div>
-        <p className="task__name">{name}</p>
+        <p className="task__name" style={{ color: fontColor }}>
+          {name}
+        </p>
       </div>
-      <p className="task__desc">{desc}</p>
-      <p style={{ fontSize: '1.5rem' }} className="task__desc">
-        Status:{' '}
-        <span style={{ fontSize: '1.4rem', color: '#2d3748' }}>{status}</span>
+      <p className="task__desc" style={{ color: fontColor }}>
+        {desc}
       </p>
+
       {input && (
         <div className="status__task">
-          <p className="task__date">Added {`${day}:${month}:${years}`}</p>
+          <p className="task__date">
+            Added:
+            <span
+              style={
+                fontColor
+                  ? { color: fontColor }
+                  : { color: 'var(--secondary-grey)' }
+              }
+            >
+              {dateOutput.dateAdded}
+            </span>
+          </p>
           <label className="finish">
-            <p className="finish_text">Finish now</p>
+            <p className="finish_text" style={{ color: fontColor }}>
+              Finish now
+            </p>
             <input
               type="checkbox"
               value={id}
@@ -91,6 +75,9 @@ const Task = ({
               onClick={(e) => {
                 sendStatus(e.target.value);
                 onAdd();
+                if (searchUserBool) {
+                  searchUserData();
+                }
               }}
             />
             <i className="checkbox__indicator"></i>
@@ -99,11 +86,11 @@ const Task = ({
       )}
       {isCompleted && (
         <div style={{ display: 'block' }} className="status__task">
-          <p className="task__date">
-            Date added:{' '}
-            <span
-              style={{ fontWeight: '900' }}
-            >{`${day}:${month}:${years}`}</span>
+          <p className="task__date" style={{ color: fontColor }}>
+            Date added:
+            <span style={{ fontWeight: '900', color: fontColor }}>
+              {dateOutput.dateAdded}
+            </span>
           </p>
           <p
             style={{
@@ -111,17 +98,22 @@ const Task = ({
               paddingBottom: '.3rem',
               textAlign: 'center',
               marginTop: '2rem',
+              color: fontColor,
             }}
           >
-            Date finished:{' '}
-            {`${dayCompleted}:${monthCompleted}:${yearsCompleted}`}
+            Date finished:
             <span
-              style={{ fontWeight: '700', marginLeft: '1rem' }}
-            >{`${hoursCompleted}:${minutesCompleted}:${secondsCompleted}`}</span>
+              style={{
+                fontWeight: '700',
+                marginLeft: '1rem',
+                color: fontColor,
+              }}
+            >
+              {dateOutput.dateFinished}
+            </span>
           </p>
         </div>
       )}
-  
     </section>
   );
 };

@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const CircleWrapper = styled.div`
-  display: flex;
-`;
 const AnimationWrapper = styled(motion.div)`
   width: 100vw;
   height: 100vh;
@@ -13,6 +10,13 @@ const AnimationWrapper = styled(motion.div)`
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  positione: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+`;
+const CircleWrapper = styled.div`
+  display: flex;
 `;
 const CircleMotion = styled(motion.span)`
   width: 25px;
@@ -54,50 +58,49 @@ const LoadingCircleVariants = {
 
 const LoadingCircleTransitione = {
   duration: 0.4,
-  yoyo: Infinity,
+  repeat: 'Infinity',
+  repeatType: 'reverse',
   ease: 'easeInOut',
 };
 
 const BasicLoadingAni = () => {
   return (
-    <>
-      <AnimationWrapper
-        variants={LoadingWrapperVariants}
-        initial="start"
-        animate="end"
-      >
-        <LogoStyle>
-          <span
-            style={{
-              color: 'var(--main-color-green',
-            }}
-          >
-            mn
-          </span>
-          Tasks
-        </LogoStyle>
-        <CircleWrapper>
-          <CircleMotion
-            styledBGColor={'var(--main-color-green)'}
-            className="CircleAni CircleAniGreen"
-            variants={LoadingCircleVariants}
-            transition={LoadingCircleTransitione}
-          ></CircleMotion>
-          <CircleMotion
-            styledBGColor={'var(--header-color)'}
-            className="CircleAni CircleAniGrey"
-            variants={LoadingCircleVariants}
-            transition={LoadingCircleTransitione}
-          ></CircleMotion>
-          <CircleMotion
-            styledBGColor={'var(--border-guide-color)'}
-            className="CircleAni CircleAniOrange"
-            variants={LoadingCircleVariants}
-            transition={LoadingCircleTransitione}
-          ></CircleMotion>
-        </CircleWrapper>
-      </AnimationWrapper>
-    </>
+    <AnimationWrapper
+      variants={LoadingWrapperVariants}
+      initial="start"
+      animate="end"
+    >
+      <LogoStyle>
+        <span
+          style={{
+            color: 'var(--main-color-green',
+          }}
+        >
+          mn
+        </span>
+        Tasks
+      </LogoStyle>
+      <CircleWrapper>
+        <CircleMotion
+          styledBGColor={'var(--light-green)'}
+          className="CircleAni CircleAniGreen"
+          variants={LoadingCircleVariants}
+          transition={LoadingCircleTransitione}
+        ></CircleMotion>
+        <CircleMotion
+          styledBGColor={'var(--red)'}
+          className="CircleAni CircleAniGrey"
+          variants={LoadingCircleVariants}
+          transition={LoadingCircleTransitione}
+        ></CircleMotion>
+        <CircleMotion
+          styledBGColor={'var(--border-guide-color)'}
+          className="CircleAni CircleAniOrange"
+          variants={LoadingCircleVariants}
+          transition={LoadingCircleTransitione}
+        ></CircleMotion>
+      </CircleWrapper>
+    </AnimationWrapper>
   );
 };
 

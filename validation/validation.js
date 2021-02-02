@@ -30,7 +30,7 @@ const newPasswordValidation = (data) => {
   const schema = Joi.object({
     newPassword: Joi.string().min(6).required(),
     confrimNewPassword: Joi.string().min(6).required(),
-    token: Joi.required()
+    token: Joi.required(),
   });
   return schema.validate(data);
 };
@@ -53,9 +53,18 @@ const messageValidation = (data) => {
   return schema.validate(data);
 };
 
+const editDataValidation = (data) => {
+  const schema = Joi.object({
+    data: Joi.string().email().required().min(6),
+    index: Joi.string().min(2).required(),
+  });
+  return schema.validate(data);
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.resetValidation = resetValidation;
 module.exports.taskValidation = taskValidation;
 module.exports.messageValidation = messageValidation;
 module.exports.newPasswordValidation = newPasswordValidation;
+module.exports.editDataValidation = editDataValidation;

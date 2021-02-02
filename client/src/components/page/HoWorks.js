@@ -43,7 +43,7 @@ const HoWorks = () => {
             <img
               style={{ width: '100%' }}
               src={addTask}
-              alt="image how to add task"
+              alt="how to add task"
             />
           </div>
         </section>
@@ -55,7 +55,7 @@ const HoWorks = () => {
             <img
               style={{ width: '100%' }}
               src={taskUserPanel}
-              alt="image how to add task"
+              alt="how to add task"
             />
           </div>
         </section>
@@ -65,7 +65,7 @@ const HoWorks = () => {
             <img
               style={{ width: '100%' }}
               src={taskHistory}
-              alt="image how to add task"
+              alt=" how to add task"
             />
           </div>
         </section>
@@ -74,7 +74,7 @@ const HoWorks = () => {
           <p>Credits are used on the site to add more tasks</p>
           <p>You can buy more credits in our shop</p>
           <div>
-            <img src="pass" alt="image" />
+            <img src="pass" alt="idk co to" />
           </div>
         </section>
         <section className="how-works-box">

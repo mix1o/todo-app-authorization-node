@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { genericHashLink } from 'react-router-hash-link';
 
 const StyledDiv = styled.div`
   color: ${({ changeFontColor }) =>
@@ -25,7 +24,6 @@ const Card = ({
   totalPrice,
 }) => {
   const [state, actions] = useCounter();
-  const RouterHashLink = genericHashLink(Link);
 
   return (
     <div className={className}>
@@ -113,7 +111,7 @@ const Card = ({
         <span className="card__span">{price.afterComma}</span>
       </div>
       <div>
-        <RouterHashLink smooth to="/confirm-pay#top__component">
+        <Link to="/confirm-pay">
           <button
             className={`card__btn ${
               recomendation ? 'btn__main--empty' : 'btn__main--full'
@@ -129,7 +127,7 @@ const Card = ({
           >
             Choose
           </button>
-        </RouterHashLink>
+        </Link>
       </div>
     </div>
   );

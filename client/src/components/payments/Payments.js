@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Warning from '../loginComponents/Warning';
 import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const CardCVCDate = styled.div`
   display: flex;
@@ -130,7 +131,7 @@ const Payments = ({ price }) => {
       {loading && <BasicLoadingAni />}
       {!loading && (
         <div className="popup-relative">
-          <Header />
+          <HamburgerTop />
           <main
             style={
               message.correct

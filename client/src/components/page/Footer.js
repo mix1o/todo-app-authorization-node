@@ -8,7 +8,7 @@ const Footer = () => {
         <p
           style={{
             fontWeight: '700',
-            color: '#4A5568',
+            color: ' var(--secondary-grey)',
             marginBottom: '3rem',
             fontSize: '2rem',
           }}

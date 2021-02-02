@@ -4,15 +4,14 @@ import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 import { Link } from 'react-router-dom';
 import { svgIcon } from './paymentssvg';
-import { genericHashLink } from 'react-router-hash-link';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const PaymentConfirm = () => {
   const [state, actions] = useCounter();
-  const RouterHashLink = genericHashLink(Link);
 
   return (
     <div id="top__component">
-      <Header />
+      <HamburgerTop />
       <div className="payment__wrap">
         <h2 className="heading-2">Confrim order and proceed to checkout</h2>
         <main className="payment__details">
@@ -46,14 +45,13 @@ const PaymentConfirm = () => {
             </p>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <RouterHashLink
-              smooth
+            <Link
               style={{ marginBottom: '1rem' }}
               className="heading__btn"
-              to="/method-payment#top__component"
+              to="/method-payment"
             >
               Next
-            </RouterHashLink>
+            </Link>
           </div>
         </main>
       </div>

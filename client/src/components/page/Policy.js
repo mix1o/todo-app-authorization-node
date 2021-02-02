@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../page/Header';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 import Footer from './Footer';
 
 const Policy = () => {
   return (
     <>
-      <Header />
+      <HamburgerTop />
       <main className="terms">
         <h1 className="section__title">Privacy Policy</h1>
         <p className="main__info">

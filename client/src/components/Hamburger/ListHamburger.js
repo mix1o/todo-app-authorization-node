@@ -35,13 +35,13 @@ const ListHamburger = () => {
         </Link>
       </li>
       <li>
-        <Link className="hamburger_link hamburger_credits" to="/contact-us">
+        <Link className="hamburger_link hamburger_contact" to="/contact-us">
           Contact
           {phone}
         </Link>
       </li>
       <li>
-        <Link className="hamburger_link hamburger_credits" to="/settings">
+        <Link className="hamburger_link hamburger_settings" to="/settings">
           Settings
           {settings}
         </Link>

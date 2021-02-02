@@ -6,6 +6,7 @@ import Warning from '../loginComponents/Warning';
 import { useHistory, Link } from 'react-router-dom';
 import { Star } from '../loginComponents/Icons';
 import { useCookies } from 'react-cookie';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +66,7 @@ const ContactUs = () => {
   return (
     <>
       <div className="popup-relative">
-        {user && <Header />}
+        {user && <HamburgerTop />}
         {!user && (
           <div style={{ padding: '3rem' }}>
             <Link to="/">

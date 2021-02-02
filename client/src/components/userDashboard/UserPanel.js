@@ -13,6 +13,9 @@ import { STATES } from 'mongoose';
 import Tour from '../Guide/Tour';
 import { Link } from 'react-router-dom';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
+import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
+
 const StyledDiv = styled.div`
   text-align: center;
   padding: 9rem 1.5rem;
@@ -87,9 +90,9 @@ const UserPanel = () => {
   return (
     <>
       {loadingAnimation && <BasicLoadingAni />}
+      {!loadingAnimation && <HamburgerTop onAdd={handlerAdd} />}
       {!loadingAnimation && (
         <div>
-          <Header />
           {filteredUnCompleted.length < 1 && (
             <div className="center">
               <div
@@ -113,6 +116,7 @@ const UserPanel = () => {
                   <div className="user-panel-svg">{illustration}</div>
                 </StyledDiv>
               </div>
+              <MenuBottom />
               {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
             </div>
           )}
