@@ -22,7 +22,7 @@ const SmallerPolygon = styled.div`
   z-index: 7;
   min-width: 40px;
   height: 10vh;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 60%, 0 0);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 40% 60%, 0 0);
   text-align: right;
   padding: 0.75rem;
 `;
@@ -31,13 +31,7 @@ const HamburgerTop = ({ onAdd }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
-      style={
-        !isOpen
-          ? { marginBottom: '4rem', height: 'auto', position: 'relative' }
-          : { marginBottom: '0', height: 'auto', position: 'relative' }
-      }
-    >
+    <div style={{position: 'sticky',top:'0',left: '0', zIndex: '6'}}>
       <Hamburger onAdd={onAdd} isOpen={isOpen} setIsOpen={setIsOpen} />
       <BiggerPolygon />
       <SmallerPolygon

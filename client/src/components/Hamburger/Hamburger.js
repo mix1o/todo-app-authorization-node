@@ -20,13 +20,13 @@ import {
 } from './HamburgerIcons';
 import TasksFound from './TasksFound';
 import ReactJoyride from 'react-joyride';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const HamburgerDiv = styled.div`
-  position: ${({ change }) => (change ? 'absolute' : 'fixed')};
-  height: ${({ heightCalc, AreTasks }) =>
-    AreTasks ? `${heightCalc}px` : '100vh'};
+position: fixed;
+height: 100vh;
   top: 0;
-  left: 0;
+  bottom: 0;
   width: 100%;
   transition: transform 0.3s ease-in-out;
   background: var(--header-color);
@@ -42,9 +42,8 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
   const [content, setContent] = useState('');
   const [clicked, setClicked] = useState(false);
   const [results, setResults] = useState([]);
-  const [change, setChange] = useState(false);
-  const [tasks, setTasks] = useState([]);
-  const [AreTasks, setAreTasks] = useState(false);
+  const [areResult,setAreResult] = useState(false);
+  const [helpContent,setHelpContent] = useState("");
 
   useEffect(() => {
     fetch('/api/userpanel')
@@ -57,6 +56,7 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
   }, []);
 
   const searchUserData = () => {
+    setHelpContent(content);
     fetch('/api/searchContent', {
       method: 'POST',
       headers: {
@@ -67,13 +67,10 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
       .then((res) => res.json())
       .then((json) => {
         setResults(json);
-        setChange(true);
-        setAreTasks(true);
       });
   };
 
-  const heightCalc = results.length * 224;
-
+ 
   const singOut = () => {
     fetch('/api/signOut', {
       method: 'POST',
@@ -154,16 +151,23 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
     (item) => item.complete === 'Completed'
   );
 
+    const [loading,setLoading] = useState(true);
+
+    if(areResult){
+
+      setTimeout(() => {
+        setLoading(false);
+      },300)
+    }
+
   return (
     <div style={{ position: 'relative' }}>
       <Tour steps={STEPS} />
 
       <HamburgerDiv
-        heightCalc={heightCalc}
-        AreTasks={AreTasks}
-        change={change}
         isOpen={isOpen}
-      >
+        >
+        {areResult && loading && <BasicLoadingAni/>}
         <div className="actions">
           <div></div>
           <p>
@@ -187,7 +191,11 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
         )}
         <div className="hamburger__div__input">
           <div
-            onClick={() => searchUserData()}
+            onClick={() => {
+              searchUserData()
+              setAreResult(true)
+              setLoading(true)
+            }}
             style={{ position: 'absolute', top: '10px', left: '10px' }}
           >
             {search}
@@ -209,6 +217,9 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
               onClick={() => {
                 setClicked(false);
                 setContent('');
+                setResults([]);
+                setAreResult(false)
+                setLoading(true)
               }}
             >
               Cancel
@@ -216,12 +227,17 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
           )}
         </div>
         {clicked && (
+          <div className="container__found__tasks">
+
           <TasksFound
-            content={content}
+            content={helpContent}
             searchUserData={searchUserData}
             completedTasks={completedTasks}
             unCompletedTasks={unCompletedTasks}
-          />
+            areResult={areResult}
+            results={results}
+            />
+            </div>
         )}
         {!clicked && (
           <div>
@@ -237,6 +253,11 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
             </div>
           </div>
         )}
+        <div style={{position: 'absolute',top:'10px',left: '10px'}}>
+          <Link onClick={() => setIsOpen(false)} to="/user-panel">
+            {home}
+          </Link>
+        </div>
       </HamburgerDiv>
     </div>
   );

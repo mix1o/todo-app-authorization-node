@@ -722,6 +722,12 @@ h3 > span {
   right: 1.5rem;
 }
 
+.container__found__tasks {
+  background: var(--header-color);
+  overflow-y: auto;
+  height: 70vh;
+}
+
 /* END HAMBURGER */
 /* Contact us */
 .contactUs {
@@ -1068,7 +1074,17 @@ textarea::placeholder {
   color: var(--input-placeholder-text);
 }
 /* SETTINGS */
-
+.settings__edit__div {
+  background: vaR(--header-color);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 50vh;
+  width: 90%;
+  z-index: 12;
+  padding: 1rem;
+}
 .settings__main {
   padding: 2rem;
 }
@@ -1118,4 +1134,13 @@ textarea::placeholder {
 /* END SETTINGS */
 .bgColorHistory {
   background-color: rgba(224, 255, 220, 0.4);
+}
+.list__hamburger > .lower {
+  margin-top: 1.5rem;
+}
+.green-color-p{
+  color: var(--main-color-green);
+}
+.red-color-p {
+  color: var(--red)
 }
