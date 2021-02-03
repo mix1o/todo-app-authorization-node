@@ -4,9 +4,13 @@ import Footer from './Footer';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 
+import EditPopup from '../loginComponents/EditPopup';
+
 const Settings = () => {
   const [state, actions] = useCounter();
   const [cor, setCor] = useState(false);
+  const [message,setMessage] = useState('');
+  const [open,setOpen] = useState(false);
 
   const loadUser = () => {
     fetch('/api/userpanel')
@@ -49,13 +53,30 @@ const Settings = () => {
       body: JSON.stringify({ data, index }),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json.message));
+      .then((json) => {
+        if(json.correct){
+          loadUser();
+          setTimeout(() => {
+            setOpen(false)
+          },2000)
+        }
+        setMessage(json)
+      });
   };
+
+  const openEdit = (argument) => {
+    setOpen(true)
+    setEditDataType(argument)
+  }
+  const [editDataType,setEditDataType] = useState('');
+
 
   return (
     <div className="popup-relative">
+      
       <HamburgerTop />
-      <div className="settings__main">
+      {open && <EditPopup message={message} setMessage={setMessage} editDataType={editDataType} updateData={updateData} setOpen={setOpen}/>}
+      <div style={open ? {filter:'blur(3px)'} : {filter: 'blur(0)'}} className="settings__main">
         <h2 className="heading-2">Settings</h2>
         <div className="settings__section">
           {state.correct && (
@@ -82,8 +103,7 @@ const Settings = () => {
                 </span>
                 <span
                   onClick={() => {
-                    updateData('marek22', 'nickname');
-                    loadUser();
+                    openEdit('nickname')
                   }}
                   className="settings__edit__button"
                 >
@@ -99,15 +119,14 @@ const Settings = () => {
                 <span className="width__span">
                   {state.userData.user[0].email}
                 </span>
-                <button
+                <span
                   onClick={() => {
-                    updateData('taskimaski@taskimaski.pl', 'email');
-                    loadUser();
+                    openEdit('email')
                   }}
                   className="settings__edit__button"
                 >
                   Edit
-                </button>
+                </span>
               </div>
             )}
           </div>
@@ -118,8 +137,7 @@ const Settings = () => {
                 <span className="width__span">******</span>
                 <span
                   onClick={() => {
-                    updateData('123123', 'password');
-                    loadUser();
+                    openEdit('password')
                   }}
                   className="settings__edit__button"
                 >

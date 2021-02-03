@@ -1,23 +1,34 @@
 import React from 'react';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Task from '../todo/Task';
 
 const TasksFound = ({
-  onAdd,
   content,
   searchUserData,
   completedTasks,
   unCompletedTasks,
+  areResult,
+  results,
 }) => {
   return (
     <div style={{ padding: '1rem' }}>
-      <p className="hamburger__title">
-        <span style={{ color: 'var(--main-color-green)', fontWeight: '700' }}>
-          {content}
-        </span>
-      </p>
+      {areResult && results.length > 1 && (
+        <p className="hamburger__title">
+          Results for:
+          <span style={{ color: 'var(--main-color-green)', fontWeight: '700' }}>
+            {content}
+          </span>
+        </p>
+      )}
       {unCompletedTasks.length > 0 && <hr style={{ margin: '2.5rem 0' }} />}
       {unCompletedTasks.length > 0 && (
         <p className="hamburger__title">Uncompleted tasks</p>
+      )}
+      {areResult && results.length < 1 && (
+        <p className="hamburger__title">
+          No results for:
+          <span style={{ color: 'red', fontWeight: '700' }}>{content}</span>
+        </p>
       )}
       {unCompletedTasks.map(
         ({ _id, name, description, priority, date, complete, input }) => (

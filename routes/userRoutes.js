@@ -336,6 +336,7 @@ router.post('/api/editData', async (req, res) => {
         return res.send({ message: 'Old nickname cannot be a new nickname' });
 
       user.name = data;
+      res.send({message: 'You successful change nickname',correct: true})
       break;
     case 'email':
       const { error } = editDataValidation(req.body);
@@ -349,6 +350,7 @@ router.post('/api/editData', async (req, res) => {
       if (userEmail) return res.send({ message: 'Email adress exists!' });
 
       user.email = data;
+      res.send({message: 'You successful change email',correct: true})
       break;
     case 'password':
       if (data.length < 6)
@@ -361,6 +363,7 @@ router.post('/api/editData', async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashPassword = await bcrypt.hash(data, salt);
       user.password = hashPassword;
+      res.send({message: 'You successful change password',correct: true})
       break;
   }
   user.save();

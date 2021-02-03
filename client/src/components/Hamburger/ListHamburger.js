@@ -28,19 +28,19 @@ const ListHamburger = () => {
           {zhonya}
         </Link>
       </li>
-      <li>
+      <li className="lower">
         <Link className="hamburger_link hamburger_credits" to="/subscription">
           Pricing
           {dolar}
         </Link>
       </li>
-      <li>
+      <li className="lower">
         <Link className="hamburger_link hamburger_contact" to="/contact-us">
           Contact
           {phone}
         </Link>
       </li>
-      <li>
+      <li className="lower">
         <Link className="hamburger_link hamburger_settings" to="/settings">
           Settings
           {settings}
