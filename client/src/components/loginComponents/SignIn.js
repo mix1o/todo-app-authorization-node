@@ -181,6 +181,7 @@ const SignIn = () => {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  fill="var(--white)"
                 >
                   <path d="M22 12l-20 12 5-12-5-12z" />
                 </svg>

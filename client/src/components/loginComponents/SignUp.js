@@ -226,7 +226,7 @@ const RegisterationForm = () => {
               />
               <i
                 tabIndex="0"
-                role="checkbox "
+                aria-roledescription="checkbox"
                 className="toggle_password"
                 isVisible={isVisible}
                 onClick={(e) =>
@@ -327,6 +327,7 @@ const RegisterationForm = () => {
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
+                    fill="var(--white)"
                   >
                     <path d="M22 12l-20 12 5-12-5-12z" />
                   </svg>

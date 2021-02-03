@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { CounterSubscriber, useCounter } from '../../store/sub';
-import darkmode from '../../img/darkmode.jpg';
-import lightmode from '../../img/lightmode.jpg';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const Settings = () => {
@@ -134,12 +132,8 @@ const Settings = () => {
         <div className="settings__section">
           <h4>Theme</h4>
           <div>
-            <img src={lightmode} style={{ width: '100%' }} alt="light mode" />
-            <img
-              src={darkmode}
-              style={{ width: '100%', marginTop: '2rem' }}
-              alt="dark mode"
-            />
+            <p>ligt</p>
+            <p>dark</p>
           </div>
         </div>
         <div className="settings__section">

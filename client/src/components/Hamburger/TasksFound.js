@@ -11,7 +11,6 @@ const TasksFound = ({
   return (
     <div style={{ padding: '1rem' }}>
       <p className="hamburger__title">
-        Results for:{' '}
         <span style={{ color: 'var(--main-color-green)', fontWeight: '700' }}>
           {content}
         </span>

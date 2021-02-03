@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import addTask from '../../img/addTask.jpg';
-import taskHistory from '../../img/taskHistory.jpg';
-import taskUserPanel from '../../img/taskUserPanel.jpg';
 
 const HoWorks = () => {
   return (
@@ -40,11 +37,7 @@ const HoWorks = () => {
             Our application gives you the ability to save your daily tasks
           </p>
           <div>
-            <img
-              style={{ width: '100%' }}
-              src={addTask}
-              alt="how to add task"
-            />
+            <img style={{ width: '100%' }} alt="how to add task" />
           </div>
         </section>
         <section className="how-works-box">
@@ -52,21 +45,13 @@ const HoWorks = () => {
             You can manage all your<strong> daily tasks</strong> in one place.
           </p>
           <div>
-            <img
-              style={{ width: '100%' }}
-              src={taskUserPanel}
-              alt="how to add task"
-            />
+            <img style={{ width: '100%' }} alt="how to add task" />
           </div>
         </section>
         <section className="how-works-box">
           <p className="title-box">Completed are done</p>
           <div>
-            <img
-              style={{ width: '100%' }}
-              src={taskHistory}
-              alt=" how to add task"
-            />
+            <img style={{ width: '100%' }} alt=" how to add task" />
           </div>
         </section>
         <section className="how-works-box">
