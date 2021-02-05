@@ -64,7 +64,7 @@ const ContactUs = () => {
   }
 
   return (
-    <>
+    <div className="contact">
       <div className="popup-relative">
         {user && <HamburgerTop />}
         {!user && (
@@ -185,7 +185,7 @@ const ContactUs = () => {
         )}
         {user && <Footer />}
       </div>
-    </>
+    </div>
   );
 };
 

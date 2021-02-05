@@ -7,7 +7,7 @@ const bars = (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="18" cy="18" r="16.5" stroke="var(--white)" stroke-width="3" />
+      <circle cx="18" cy="18" r="16.5" stroke="var(--white)" strokeWidth="3" />
       <path
         d="M28 23H8V20.4385H28V23ZM28 15.5615H8V13H28V15.5615Z"
         fill="var(--white"
@@ -63,7 +63,7 @@ const phone2 = (
       <path
         d="M17.2632 32C26.1961 32 33.5263 25.1081 33.5263 16.5C33.5263 7.89187 26.1961 1 17.2632 1C8.33022 1 1 7.89187 1 16.5C1 25.1081 8.33022 32 17.2632 32Z"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   </i>
@@ -197,6 +197,21 @@ const search = (
   </i>
 );
 
+const next = (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 27 27"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.5 2.25C19.7032 2.25 24.75 7.29675 24.75 13.5C24.75 19.7032 19.7032 24.75 13.5 24.75C7.29675 24.75 2.25 19.7032 2.25 13.5C2.25 7.29675 7.29675 2.25 13.5 2.25ZM13.5 0C6.04463 0 0 6.04463 0 13.5C0 20.9554 6.04463 27 13.5 27C20.9554 27 27 20.9554 27 13.5C27 6.04463 20.9554 0 13.5 0ZM15.75 13.5L10.6875 18.5625L12.4054 20.25L19.125 13.5L12.4054 6.75L10.6875 8.4375L15.75 13.5V13.5Z"
+      fill="white"
+    />
+  </svg>
+);
+
 export {
   search,
   bars,
@@ -209,4 +224,5 @@ export {
   zhonya,
   dolar,
   settings,
+  next,
 };

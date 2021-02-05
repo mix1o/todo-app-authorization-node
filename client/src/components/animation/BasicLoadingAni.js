@@ -10,7 +10,7 @@ const AnimationWrapper = styled(motion.div)`
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  positione: fixed;
+  positione: absolute;
   top: 0;
   left: 0;
   z-index: 999;

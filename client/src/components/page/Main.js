@@ -210,7 +210,7 @@ const Main = () => {
           </div>
           <div className="heading__socials">
             <div className="social">
-              <a href="https://github.com/" target="_blank">
+              <a href="https://github.com/" rel="noreferrer" target="_blank">
                 <i>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +225,11 @@ const Main = () => {
               </a>
             </div>
             <div className="social">
-              <a>
+              <a
+                href="https://www.facebook.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i>
                   <svg
                     xmlns="https://www.facebook.com/"
@@ -240,7 +244,11 @@ const Main = () => {
               </a>
             </div>
             <div className="social">
-              <a href="https://www.instagram.com/" target="_blank">
+              <a
+                href="https://www.instagram.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +263,11 @@ const Main = () => {
               </a>
             </div>
             <div className="social">
-              <a href="https://twitter.com/home" target="_blank">
+              <a
+                href="https://twitter.com/home"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -268,6 +280,22 @@ const Main = () => {
                   </svg>
                 </i>
               </a>
+            </div>
+            <div className="social">
+              <Link to="/contact-us">
+                <svg
+                  width="35"
+                  height="35"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 0C6.71625 0 0 6.71625 0 15C0 23.2837 6.71625 30 15 30C23.2837 30 30 23.2837 30 15C30 6.71625 23.2837 0 15 0ZM19.3062 22.2837C14.7012 24.3887 7.555 10.4963 12.0563 8.14875L13.3725 7.5L15.555 11.7613L14.2525 12.4025C12.8838 13.1362 15.7337 18.7025 17.1337 18.0237L18.4238 17.3925L20.6238 21.6388L19.3062 22.2837V22.2837Z"
+                    fill="#4A5568"
+                  />
+                </svg>
+              </Link>
             </div>
           </div>
         </main>

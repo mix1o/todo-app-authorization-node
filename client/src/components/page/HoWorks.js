@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import how1 from '../../img/how1.png';
+import how2 from '../../img/how2.png';
+import how3 from '../../img/how3.png';
+import how4 from '../../img/how4.png';
+import { next } from '../Hamburger/HamburgerIcons';
 
 const HoWorks = () => {
+  const howImgs = [how1, how2, how3, how4];
+  const textImg = [
+    'Our application gives you the ability to save your daily tasks',
+    'You can manage all your daily tasks in one place',
+    'You can buy more credits in our shop',
+    'You can choose from different plans',
+  ];
+  const [imgIndex, setImgIndex] = useState(0);
+
   return (
-    <>
-      <Link to="/">
+    <main className="how__main">
+      <h2 className="how__header">How it works</h2>
+      <Link to="/" style={{ position: 'absolute', top: '2%', left: '4%' }}>
         <svg
-          style={{ margin: '2rem' }}
           width="40"
           height="40"
           viewBox="0 0 49 49"
@@ -17,68 +31,52 @@ const HoWorks = () => {
             cx="24.0475"
             cy="24.0475"
             r="23.0475"
-            stroke="#4A5568"
-            strokeWidth="2"
+            stroke="var(--white)"
+            strokeWidth="3"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
-            fill="#4A5568"
+            fill="var(--white)"
           />
         </svg>
       </Link>
-
-      <main>
-        <h3 className="heading-3">How it works</h3>
-        <section className="how-works-box">
-          <div></div>
-          <p className="title-box">
-            Our application gives you the ability to save your daily tasks
-          </p>
-          <div>
-            <img style={{ width: '100%' }} alt="how to add task" />
+      <div className="how__ContentWrapper">
+        <span className="how__index ">
+          <div className="how__works__div how__works__border__div">
+            <div className="how__works__div how__works__background__div">
+              <span
+                style={{ color: 'var(--main-color-green)', fontSize: '2rem' }}
+              >
+                {imgIndex + 1}
+              </span>
+            </div>
           </div>
-        </section>
-        <section className="how-works-box">
-          <p className="title-box">
-            You can manage all your<strong> daily tasks</strong> in one place.
-          </p>
+        </span>
+        <div className="how__imgWrapper">
+          <p className="how__paragraph"> {textImg[imgIndex]}</p>
           <div>
-            <img style={{ width: '100%' }} alt="how to add task" />
+            <img
+              className="how__img"
+              src={howImgs[imgIndex]}
+              alt={howImgs[imgIndex]}
+            />
           </div>
-        </section>
-        <section className="how-works-box">
-          <p className="title-box">Completed are done</p>
-          <div>
-            <img style={{ width: '100%' }} alt=" how to add task" />
-          </div>
-        </section>
-        <section className="how-works-box">
-          <p className="title-box">What are credits?</p>
-          <p>Credits are used on the site to add more tasks</p>
-          <p>You can buy more credits in our shop</p>
-          <div>
-            <img src="pass" alt="idk co to" />
-          </div>
-        </section>
-        <section className="how-works-box">
-          <p className="title-box">
-            Start your journey <strong>now</strong>
-          </p>
-          <p>You can easily join us</p>
-          <div>
-            <Link
-              style={{ marginTop: '2rem', marginBottom: '0' }}
-              className="heading__btn"
-              to="/sign-up"
-            >
-              Sign up
-            </Link>
-          </div>
-        </section>
-      </main>
-    </>
+        </div>
+        <i
+          style={{ position: 'absolute', right: '5%', bottom: '2%' }}
+          onClick={() => {
+            setImgIndex(imgIndex + 1);
+            if (imgIndex === howImgs.length - 1) {
+              setImgIndex(0);
+            }
+          }}
+        >
+          {next}
+        </i>
+      </div>
+    </main>
   );
 };
 

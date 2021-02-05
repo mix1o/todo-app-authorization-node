@@ -19,12 +19,11 @@ import {
   search,
 } from './HamburgerIcons';
 import TasksFound from './TasksFound';
-import ReactJoyride from 'react-joyride';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const HamburgerDiv = styled.div`
-position: fixed;
-height: 100vh;
+  position: fixed;
+  height: 100vh;
   top: 0;
   bottom: 0;
   width: 100%;
@@ -36,14 +35,14 @@ height: 100vh;
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
 `;
 
-const Hamburger = ({ isOpen, setIsOpen, userD }) => {
+const Hamburger = ({ isOpen, setIsOpen }) => {
   const [state, actions] = useCounter();
   const history = useHistory();
   const [content, setContent] = useState('');
   const [clicked, setClicked] = useState(false);
   const [results, setResults] = useState([]);
-  const [areResult,setAreResult] = useState(false);
-  const [helpContent,setHelpContent] = useState("");
+  const [areResult, setAreResult] = useState(false);
+  const [helpContent, setHelpContent] = useState('');
 
   useEffect(() => {
     fetch('/api/userpanel')
@@ -70,7 +69,6 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
       });
   };
 
- 
   const singOut = () => {
     fetch('/api/signOut', {
       method: 'POST',
@@ -151,23 +149,20 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
     (item) => item.complete === 'Completed'
   );
 
-    const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-    if(areResult){
-
-      setTimeout(() => {
-        setLoading(false);
-      },300)
-    }
+  if (areResult) {
+    setTimeout(() => {
+      setLoading(false);
+    }, 300);
+  }
 
   return (
     <div style={{ position: 'relative' }}>
-      <Tour steps={STEPS} />
+      {user.newUser && isOpen && <Tour open={true} steps={STEPS} />}
 
-      <HamburgerDiv
-        isOpen={isOpen}
-        >
-        {areResult && loading && <BasicLoadingAni/>}
+      <HamburgerDiv isOpen={isOpen}>
+        {areResult && loading && <BasicLoadingAni />}
         <div className="actions">
           <div></div>
           <p>
@@ -192,9 +187,9 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
         <div className="hamburger__div__input">
           <div
             onClick={() => {
-              searchUserData()
-              setAreResult(true)
-              setLoading(true)
+              searchUserData();
+              setAreResult(true);
+              setLoading(true);
             }}
             style={{ position: 'absolute', top: '10px', left: '10px' }}
           >
@@ -218,8 +213,8 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
                 setClicked(false);
                 setContent('');
                 setResults([]);
-                setAreResult(false)
-                setLoading(true)
+                setAreResult(false);
+                setLoading(true);
               }}
             >
               Cancel
@@ -228,16 +223,15 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
         </div>
         {clicked && (
           <div className="container__found__tasks">
-
-          <TasksFound
-            content={helpContent}
-            searchUserData={searchUserData}
-            completedTasks={completedTasks}
-            unCompletedTasks={unCompletedTasks}
-            areResult={areResult}
-            results={results}
+            <TasksFound
+              content={helpContent}
+              searchUserData={searchUserData}
+              completedTasks={completedTasks}
+              unCompletedTasks={unCompletedTasks}
+              areResult={areResult}
+              results={results}
             />
-            </div>
+          </div>
         )}
         {!clicked && (
           <div>
@@ -253,7 +247,7 @@ const Hamburger = ({ isOpen, setIsOpen, userD }) => {
             </div>
           </div>
         )}
-        <div style={{position: 'absolute',top:'10px',left: '10px'}}>
+        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
           <Link onClick={() => setIsOpen(false)} to="/user-panel">
             {home}
           </Link>

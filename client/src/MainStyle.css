@@ -628,11 +628,12 @@ h3 > span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: var(--main-color-green);
   position: fixed;
   min-width: 100vw;
   bottom: 0;
+  z-index: 1;
 }
 .menuBottom__section a {
   text-decoration: none;
@@ -640,6 +641,8 @@ h3 > span {
 .menuBottom__section {
   text-align: center;
   padding: 0.5rem;
+  width: 22%;
+  text-align: center;
 }
 .menuBottom__name {
   font-size: 1.2rem;
@@ -733,6 +736,9 @@ h3 > span {
 .contactUs {
   max-width: 85vw;
   margin: 5rem auto;
+}
+.contact {
+  background-image: url('./components/loginComponents/waves.svg');
 }
 .contact__section {
   position: relative;
@@ -1075,12 +1081,13 @@ textarea::placeholder {
 }
 /* SETTINGS */
 .settings__edit__div {
-  background: vaR(--header-color);
+  background: rgb(247, 247, 247);
+  border: 2px solid var(--paragraphs-colors);
+  border-radius: 3px;
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  height: 50vh;
+  transform: translate(-50%, -50%);
   width: 90%;
   z-index: 12;
   padding: 1rem;
@@ -1100,6 +1107,7 @@ textarea::placeholder {
 .settings__section > h4 {
   font-size: 1.7rem;
   font-weight: 700;
+  color: var(--header-color);
 }
 .settings__section > div {
   margin-top: 2rem;
@@ -1123,13 +1131,17 @@ textarea::placeholder {
 }
 .settings__button__delete {
   border: 3px solid var(--red);
+  border-radius: 0.5rem;
   padding: 1rem 2rem;
   background: transparent;
   color: var(--red);
   font-weight: 700;
   font-size: 1.7rem;
   width: 100%;
-  box-shadow: 0 0 4px 0 red;
+  box-shadow: 0 0 4px 0 var(--red);
+}
+.setting__closIcon > i > svg > path {
+  fill: var(--secondary-grey);
 }
 /* END SETTINGS */
 .bgColorHistory {
@@ -1138,9 +1150,117 @@ textarea::placeholder {
 .list__hamburger > .lower {
   margin-top: 1.5rem;
 }
-.green-color-p{
+.green-color-p {
   color: var(--main-color-green);
 }
 .red-color-p {
-  color: var(--red)
+  color: var(--red);
 }
+/* delete account popup */
+.settings__deletePopup {
+  width: 90%;
+  z-index: 2;
+  background-color: #fff;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  border: 3px solid var(--red);
+  box-shadow: 0 0 4px 0 var(--red);
+  border-radius: 0.5rem;
+}
+.settings__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.settings__passParagraph {
+  font-size: 1.8rem;
+  color: var(--header-color);
+  font-weight: 700;
+}
+.input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.85rem;
+  background-color: var(--input-background);
+  border: 0.1rem solid var(--paragraphs-colors);
+  border-radius: 0.3rem;
+}
+/* how works */
+.how__works__div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100px;
+}
+.how__works__border__div {
+  border: 2px solid #fff;
+  padding: 2rem;
+  position: relative;
+}
+.how__works__background__div {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transform: translate(-50%, -50%);
+}
+.how__index {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.how__main {
+  background: var(--main-color-green);
+  height: 100vh;
+  position: relative;
+  padding-top: 3rem;
+}
+.how__header {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--white);
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: 3;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.how__ContentWrapper {
+  height: 100%;
+  background-image: url('./bgs/curvedBg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.how__imgWrapper {
+  width: 70%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--main-color-green);
+  text-align: center;
+  border-radius: 1rem;
+  padding: 3rem 1rem;
+}
+.how__img {
+  width: 85%;
+}
+.how__paragraph {
+  font-size: 1.6rem;
+  color: var(--white);
+  margin: 1.7rem 1rem;
+}
+/* end how wokrs */

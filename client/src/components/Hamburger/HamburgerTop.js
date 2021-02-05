@@ -31,7 +31,7 @@ const HamburgerTop = ({ onAdd }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div style={{position: 'sticky',top:'0',left: '0', zIndex: '6'}}>
+    <div style={{ position: 'sticky', top: '0', left: '0', zIndex: '6' }}>
       <Hamburger onAdd={onAdd} isOpen={isOpen} setIsOpen={setIsOpen} />
       <BiggerPolygon />
       <SmallerPolygon

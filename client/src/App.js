@@ -33,6 +33,7 @@ import AlmostThere from './components/loginComponents/AlmostThere';
 import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 import Settings from './components/page/Settings';
 import ScrollToTop from './functions/ScrollToTop';
+import MenuBottom from './components/Hamburger/MenuBottom';
 
 function App() {
   const [cookies] = useCookies({});
@@ -44,6 +45,7 @@ function App() {
     <div className="App">
       <Router>
         <ScrollToTop />
+
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/sign-up" component={SignUp} />
@@ -90,6 +92,7 @@ function App() {
 
           <Route component={NotFound} />
         </Switch>
+        {user && <MenuBottom />}
       </Router>
     </div>
   );

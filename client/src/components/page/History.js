@@ -3,6 +3,7 @@ import Task from '../todo/Task';
 import Footer from './Footer';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const History = () => {
   const [tasks, setTasks] = useState([]);

@@ -116,7 +116,7 @@ const UserPanel = () => {
                   <div className="user-panel-svg">{illustration}</div>
                 </StyledDiv>
               </div>
-              <MenuBottom />
+
               {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
             </div>
           )}
