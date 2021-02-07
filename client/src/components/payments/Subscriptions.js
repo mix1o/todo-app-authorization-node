@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from '../page/Header';
 import Card from './Card';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
-import Hamburger from '../Hamburger/Hamburger';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const Subscriptions = () => {
   const [state, actions] = useCounter();
@@ -65,6 +64,7 @@ const Subscriptions = () => {
         />
       </div>
       <Footer />
+      <MenuBottom />
     </>
   );
 };

@@ -3,61 +3,13 @@ import { useCounter } from '../../store/sub';
 import Tour from '../Guide/Tour';
 import { useCookies } from 'react-cookie';
 import Warning from '../loginComponents/Warning';
+import { STEPSTASK } from '../Guide/Steps';
 
 const Todo = ({ onAdd }) => {
   const [cookies] = useCookies({});
   const { user } = cookies;
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const STEPS = [
-    {
-      target: '.todo__taskName',
-      content: 'Here you can enter name of task',
-      disableScrolling: true,
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.todo__description',
-      content: 'Add description about task',
-      disableScrolling: true,
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.select__diff',
-      content: 'Here you can choose priority of task',
-      disableBeacon: false,
-      disableScrolling: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.tour-credits',
-      content:
-        'Your credits. Notice that you need have at least on credit to add task',
-      disableBeacon: true,
-      disableScrolling: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.btn-newtask',
-      content: 'This button adds new task',
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-  ];
-
   const [state, actions] = useCounter();
   const [taskData, setTaskData] = useState({
     Title: '',
@@ -108,7 +60,7 @@ const Todo = ({ onAdd }) => {
 
   return (
     <section className="todo__body">
-      {user.newUser && <Tour open={true} steps={STEPS} />}
+      {user.newUser && <Tour open={true} steps={STEPSTASK} />}
       <p style={{ fontSize: '17px', color: '#4a5568' }}>Make a new task</p>
       <p style={{ marginTop: '1rem', fontSize: '13px', color: '#4a5568' }}>
         1 credit gives you 1 task

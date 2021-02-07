@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Header from '../page/Header';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 import { Link } from 'react-router-dom';
 import { one, two, tree, four } from './paymentssvg';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const PaymentMethod = () => {
   const [select, setSelected] = useState(false);
@@ -60,6 +60,7 @@ const PaymentMethod = () => {
         </div>
       </div>
       <Footer />
+      <MenuBottom />
     </div>
   );
 };

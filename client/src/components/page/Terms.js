@@ -1,12 +1,18 @@
 import React from 'react';
 import HamburgerTop from '../Hamburger/HamburgerTop';
-import Header from '../page/Header';
 import Footer from './Footer';
+import MenuBottom from '../Hamburger/MenuBottom';
+import { useCookies } from 'react-cookie';
+import EmptyBurger from '../../bgs/EmptyBurger';
 
 const Terms = () => {
+  const [cookies] = useCookies({});
+  const { user } = cookies;
+
   return (
     <>
-      <HamburgerTop />
+      {user && <HamburgerTop />}
+      {!user && <EmptyBurger />}
       <main className="terms">
         <h1 className="section__title">Term of sevice</h1>
         <p className="main__info">
@@ -19,6 +25,7 @@ const Terms = () => {
         </p>
       </main>
       <Footer />
+      {user && <MenuBottom />}
     </>
   );
 };

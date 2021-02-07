@@ -117,7 +117,7 @@ const NewPassword = () => {
               />
               <i
                 tabIndex="0"
-                role="checkbox"
+                aria-label="checkbox"
                 className="toggle_password"
                 isVisible={isVisible}
                 onClick={(e) =>

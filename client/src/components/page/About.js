@@ -2,11 +2,18 @@ import React from 'react';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
+import { useCookies } from 'react-cookie';
+import EmptyBurger from '../../bgs/EmptyBurger';
 
 const About = () => {
+  const [cookies] = useCookies({});
+  const { user } = cookies;
+
   return (
     <>
-      <HamburgerTop />
+      {user && <HamburgerTop />}
+      {!user && <EmptyBurger />}
       <main className="about terms">
         <section className="about__topSeciton">
           <h1 className="section__title">About</h1>
@@ -30,6 +37,7 @@ const About = () => {
           </p>
         </section>
       </main>
+      {user && <MenuBottom />}
       <Footer />
     </>
   );

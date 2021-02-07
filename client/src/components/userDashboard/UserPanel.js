@@ -4,7 +4,6 @@ import UserTodos from './UserTodos';
 import Payments from '../payments/Payments';
 import Card from '../payments/Card';
 import { CounterSubscriber, useCounter } from '../../store/sub';
-import Header from '../page/Header';
 import { illustration } from '../../illustration';
 import Todo from '../todo/Todo';
 import styled from 'styled-components';
@@ -25,36 +24,24 @@ const StyledDiv = styled.div`
 `;
 
 const UserPanel = () => {
-  const [message, setMessage] = useState('');
-
-  const history = useHistory();
-
-  const [startTour, setStartTour] = useState();
   const [showBox, setShowBox] = useState(true);
   const [open, setOpen] = useState(false);
-  const [state, actions] = useCounter();
-  const [userD, setUserD] = useState([]);
   const [correct, setCorrect] = useState(false);
   const [loadingAnimation, setStartAnimation] = useState(true);
+
+  const [message, setMessage] = useState('');
+  const [startTour, setStartTour] = useState();
+  const [state, actions] = useCounter();
+  const [userD, setUserD] = useState([]);
+  const [tasks, setTasks] = useState([]);
+
+  const history = useHistory();
 
   useEffect(() => {
     setTimeout(() => {
       setStartAnimation(false);
     }, 1500);
   }, []);
-
-  const deleteAccount = () => {
-    fetch('/api/delete', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    history.push('/');
-  };
-
-  const [tasks, setTasks] = useState([]);
 
   const loadTasks = () => {
     fetch('/api/todos')
@@ -90,7 +77,9 @@ const UserPanel = () => {
   return (
     <>
       {loadingAnimation && <BasicLoadingAni />}
-      {!loadingAnimation && <HamburgerTop onAdd={handlerAdd} />}
+      {!loadingAnimation && (
+        <HamburgerTop onAdd={handlerAdd} blur={state.newTodo} />
+      )}
       {!loadingAnimation && (
         <div>
           {filteredUnCompleted.length < 1 && (
@@ -123,6 +112,7 @@ const UserPanel = () => {
           {filteredUnCompleted.length > 0 && (
             <UserTodos onAdd={handlerAdd} tasks={tasks} />
           )}
+          <MenuBottom />
         </div>
       )}
     </>

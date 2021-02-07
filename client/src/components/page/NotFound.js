@@ -1,9 +1,12 @@
 import React from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const NotFound = () => {
+  const [cookies] = useCookies({});
+  const { user } = cookies;
+
   return (
     <>
       <main className="main__notFound">

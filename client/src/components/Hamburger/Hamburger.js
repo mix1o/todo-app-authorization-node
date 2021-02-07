@@ -5,21 +5,10 @@ import { useCookies } from 'react-cookie';
 import { useCounter } from '../../store/sub';
 import Tour from '../Guide/Tour';
 import { Link, useHistory } from 'react-router-dom';
-import Task from '../todo/Task';
-import {
-  bars,
-  close,
-  phone,
-  plusSign,
-  home,
-  logOutIcon,
-  zhonya,
-  dolar,
-  settings,
-  search,
-} from './HamburgerIcons';
+import { home, logOutIcon, search } from './HamburgerIcons';
 import TasksFound from './TasksFound';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
+import { STEPSBURGER } from '../Guide/Steps';
 
 const HamburgerDiv = styled.div`
   position: fixed;
@@ -81,64 +70,6 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
     });
   };
 
-  const STEPS = [
-    {
-      target: '.hamburger__input',
-      content: 'Search for your completed and uncompleted tasks.',
-      disableBeacon: true,
-      placement: 'top',
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.credits',
-      content: 'Credits are used to add new task',
-      disableBeacon: true,
-      placement: 'top',
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.hamburger_history',
-      content: 'You can view all your completed task in the history section',
-      placement: 'top',
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.hamburger_credits',
-      content: 'If you run out of credits you can buy more from our shop',
-      placement: 'top',
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.hamburger_contact',
-      content:
-        'If you have some problems with our app or you just want to send message, got here.',
-      placement: 'top',
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-    {
-      target: '.hamburger_settings',
-      content: 'Change account setting, theme or delete your account ',
-      placement: 'top',
-      disableBeacon: true,
-      floaterProps: {
-        disableAnimation: true,
-      },
-    },
-  ];
-
   const [cookies] = useCookies({});
   const { user } = cookies;
 
@@ -159,7 +90,7 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      {user.newUser && isOpen && <Tour open={true} steps={STEPS} />}
+      {user.newUser && isOpen && <Tour open={true} steps={STEPSBURGER} />}
 
       <HamburgerDiv isOpen={isOpen}>
         {areResult && loading && <BasicLoadingAni />}

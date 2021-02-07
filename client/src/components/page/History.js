@@ -32,10 +32,7 @@ const History = () => {
         <div>
           {filteredCompleted.length > 0 && (
             <>
-              <h3 className="heading-3">Your's completed tasks</h3>
-              <p className="history__p">
-                Here you can see all your's completed tasks
-              </p>
+              <h3 className="heading-3">All tasks that you have completed</h3>
               <div style={{ padding: '1rem' }}>
                 {filteredCompleted
                   .reverse()
@@ -86,11 +83,12 @@ const History = () => {
                   />
                 </svg>
               </div>
-              <Footer />
             </div>
           )}
+          <MenuBottom />
         </div>
       )}
+      <Footer />
     </>
   );
 };

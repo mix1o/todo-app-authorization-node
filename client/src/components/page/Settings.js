@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import { useHistory } from 'react-router-dom';
 import EditPopup from '../loginComponents/EditPopup';
 import { ConverDate } from '../../functions/ConvertDate';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const Settings = () => {
   const [state, actions] = useCounter();
@@ -265,6 +265,7 @@ const Settings = () => {
         </div>
       </div>
       <Footer />
+      <MenuBottom />
     </div>
   );
 };

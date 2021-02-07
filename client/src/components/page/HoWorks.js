@@ -4,15 +4,21 @@ import how1 from '../../img/how1.png';
 import how2 from '../../img/how2.png';
 import how3 from '../../img/how3.png';
 import how4 from '../../img/how4.png';
+import how5 from '../../img/how5.png';
+import how6 from '../../img/how6.png';
+import how7 from '../../img/how7.png';
 import { next } from '../Hamburger/HamburgerIcons';
 
 const HoWorks = () => {
-  const howImgs = [how1, how2, how3, how4];
+  const howImgs = [how1, how2, how3, how5, how6, how7, how4];
   const textImg = [
-    'Our application gives you the ability to save your daily tasks',
-    'You can manage all your daily tasks in one place',
-    'You can buy more credits in our shop',
-    'You can choose from different plans',
+    'Create a free account',
+    'Quickly add new tasks',
+    'Simple search',
+    'Contact us anytime',
+    'Everything is recorded ',
+    'Plenty purchase plans',
+    'Many payments methods',
   ];
   const [imgIndex, setImgIndex] = useState(0);
 

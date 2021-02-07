@@ -1,11 +1,18 @@
 import React from 'react';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import Footer from './Footer';
+import { useCookies } from 'react-cookie';
+import MenuBottom from '../Hamburger/MenuBottom';
+import EmptyBurger from '../../bgs/EmptyBurger';
 
 const Policy = () => {
+  const [cookies] = useCookies({});
+  const { user } = cookies;
+
   return (
     <>
-      <HamburgerTop />
+      {user && <HamburgerTop />}
+      {!user && <EmptyBurger />}
       <main className="terms">
         <h1 className="section__title">Privacy Policy</h1>
         <p className="main__info">
@@ -23,6 +30,7 @@ const Policy = () => {
           Privacy Policy shall constitute your acceptance of such amendment.
         </p>
       </main>
+      {user && <MenuBottom />}
       <Footer />
     </>
   );

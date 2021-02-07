@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../page/Header';
 import Footer from '../page/Footer';
 import { useCounter } from '../../store/sub';
 import { Link } from 'react-router-dom';
 import { svgIcon } from './paymentssvg';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const PaymentConfirm = () => {
   const [state, actions] = useCounter();
@@ -56,6 +56,7 @@ const PaymentConfirm = () => {
         </main>
       </div>
       <Footer />
+      <MenuBottom />
     </div>
   );
 };

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from '../page/Header';
 import Footer from '../page/Footer';
 import Popup from '../loginComponents/Popup';
 import { Link } from 'react-router-dom';
@@ -10,6 +9,7 @@ import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Warning from '../loginComponents/Warning';
 import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const CardCVCDate = styled.div`
   display: flex;
@@ -234,7 +234,7 @@ const Payments = ({ price }) => {
           <Footer />
           {message.correct && !loading && (
             <Popup
-              title="Congratulation. You successful added credits"
+              title="You successful added credits"
               message="You will be redirect to dashboard"
               iconLink={
                 <Link to="/login">
@@ -258,6 +258,7 @@ const Payments = ({ price }) => {
           )}
         </div>
       )}
+      {!loading && <MenuBottom />}
     </div>
   );
 };

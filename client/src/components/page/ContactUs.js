@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import Popup from '../loginComponents/Popup';
 import Warning from '../loginComponents/Warning';
@@ -7,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { Star } from '../loginComponents/Icons';
 import { useCookies } from 'react-cookie';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import MenuBottom from '../Hamburger/MenuBottom';
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -184,6 +184,7 @@ const ContactUs = () => {
           <Warning errorMessage={message.message} setIsOpen={setIsOpen} />
         )}
         {user && <Footer />}
+        {user && <MenuBottom />}
       </div>
     </div>
   );

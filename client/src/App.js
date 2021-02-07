@@ -38,7 +38,6 @@ import MenuBottom from './components/Hamburger/MenuBottom';
 function App() {
   const [cookies] = useCookies({});
   const { user } = cookies;
-
   const [state, actions] = useCounter();
 
   return (
@@ -65,7 +64,7 @@ function App() {
           </Route>
           {user && <Route exact path="/completed-tasks" component={Hisotry} />}
           {user && <Route exact path="/todo" component={Todo} />}
-          {user && <Route exact path="/terms" component={Terms} />}
+          <Route exact path="/terms" component={Terms} />
           {user && (
             <Route exact path="/subscription" component={Subscription} />
           )}
@@ -85,14 +84,13 @@ function App() {
             {state.count > 1 ? <PayNow /> : <Redirect to="/subscription" />}
           </Route>
           {user && <Route exact path="/settings" component={Settings} />}
-          {user && <Route exact path="/policy" component={Policy} />}
-          {user && <Route exact path="/about" component={About} />}
+          <Route exact path="/policy" component={Policy} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/how-works" component={HoWorks} />
 
           <Route component={NotFound} />
         </Switch>
-        {user && <MenuBottom />}
       </Router>
     </div>
   );
