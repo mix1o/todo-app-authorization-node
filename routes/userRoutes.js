@@ -279,7 +279,7 @@ router.get('/api/userpanel', async (req, res) => {
 
 router.post('/api/changeStatusTask', async (req, res) => {
   const { idTask } = req.body;
-  // const myId = JSON.parse(req.body.idTask);
+  
   const newStatusTask = await Todo.updateOne(
     { _id: idTask },
     {
@@ -289,6 +289,25 @@ router.post('/api/changeStatusTask', async (req, res) => {
       },
     }
   );
+
+  const todoToUpdate = await Todo.findOne({_id: idTask});
+
+  const todoDate = Math.round(todoToUpdate.date.getTime() / 1000);
+  const finishedDateTask = Math.round(todoToUpdate.finishedDate.getTime() / 1000);
+
+  const sinceTime = finishedDateTask - todoDate;
+
+    console.log(sinceTime)
+
+    if(sinceTime <= 86400){
+    const userCreditsUpdate = await Users.updateOne(
+    { _id: req.session.user._id },
+    {credits: req.session.user.credits + 1}
+    )
+
+    req.session.user.credits = req.session.user.credits + 1;
+  }
+
   res.send({ message: 'New status of task' });
 });
 

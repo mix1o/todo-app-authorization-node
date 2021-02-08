@@ -37,6 +37,7 @@ const Payments = ({ price }) => {
     cardNumber: '',
     expireDate: '',
     cvc: '',
+    ownerName: ''
   });
 
   const handlerInput = (e) => {
@@ -59,7 +60,8 @@ const Payments = ({ price }) => {
     if (
       numberReg.test(cardData.cardNumber.split(formatBack).join('')) &&
       dateReg.test(cardData.expireDate) &&
-      cvcReg.test(cardData.cvc)
+      cvcReg.test(cardData.cvc) &&
+      cardData.ownerName.length > 5
     ) {
       console.log('ok');
 
@@ -176,6 +178,10 @@ const Payments = ({ price }) => {
                   placeholder="Card owner name"
                   name="ownerName"
                   inputMode="text"
+                  value={cardData.ownerName}
+                  onChange={(e) => {
+                    handlerInput(e);
+                  }}
                 />
               </label>
               <CardCVCDate>
@@ -217,13 +223,14 @@ const Payments = ({ price }) => {
               </CardCVCDate>
 
               <button
-                className="btn__main--full"
+                className="heading__btn"
                 style={{
-                  width: '30%',
+                  width: '40%',
                   marginRight: '0',
                   marginLeft: 'auto',
                   marginBottom: '1rem',
                   display: 'block',
+                  marginTop: '5rem'
                 }}
                 onClick={pay}
               >
