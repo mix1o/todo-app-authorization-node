@@ -17,8 +17,10 @@ const {
 } = require('../validation/validation');
 const sgMail = require('@sendgrid/mail');
 
-router.get('http://localhost:8000/test', (req, res) => {
-  res.send('test');
+router.post('/cookie-accept', (req, res) => {
+  res
+    .cookie('accept', true, { maxAge: 24 * 60 * 60 * 1000 * 7 })
+    .send('cookie set');
 });
 
 router.post('/api/newuser', async (req, res) => {
@@ -279,7 +281,7 @@ router.get('/api/userpanel', async (req, res) => {
 
 router.post('/api/changeStatusTask', async (req, res) => {
   const { idTask } = req.body;
-  
+
   const newStatusTask = await Todo.updateOne(
     { _id: idTask },
     {
@@ -290,20 +292,22 @@ router.post('/api/changeStatusTask', async (req, res) => {
     }
   );
 
-  const todoToUpdate = await Todo.findOne({_id: idTask});
+  const todoToUpdate = await Todo.findOne({ _id: idTask });
 
   const todoDate = Math.round(todoToUpdate.date.getTime() / 1000);
-  const finishedDateTask = Math.round(todoToUpdate.finishedDate.getTime() / 1000);
+  const finishedDateTask = Math.round(
+    todoToUpdate.finishedDate.getTime() / 1000
+  );
 
   const sinceTime = finishedDateTask - todoDate;
 
-    console.log(sinceTime)
+  console.log(sinceTime);
 
-    if(sinceTime <= 86400){
+  if (sinceTime <= 86400) {
     const userCreditsUpdate = await Users.updateOne(
-    { _id: req.session.user._id },
-    {credits: req.session.user.credits + 1}
-    )
+      { _id: req.session.user._id },
+      { credits: req.session.user.credits + 1 }
+    );
 
     req.session.user.credits = req.session.user.credits + 1;
   }

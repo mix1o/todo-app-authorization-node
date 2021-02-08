@@ -48,6 +48,7 @@ const HoWorks = () => {
           />
         </svg>
       </Link>
+
       <div className="how__ContentWrapper">
         <span className="how__index ">
           <div className="how__works__div how__works__border__div">

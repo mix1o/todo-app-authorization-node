@@ -34,11 +34,21 @@ import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 import Settings from './components/page/Settings';
 import ScrollToTop from './functions/ScrollToTop';
 import MenuBottom from './components/Hamburger/MenuBottom';
+import CookiesPopup from './components/CookiesPopup';
 
 function App() {
   const [cookies] = useCookies({});
-  const { user } = cookies;
+  const { user, accept } = cookies;
   const [state, actions] = useCounter();
+
+  const acceptCookieHandler = () => {
+    fetch('/cookie-accept', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(() => window.location.reload());
+  };
 
   return (
     <div className="App">
@@ -92,6 +102,9 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       </Router>
+      {!accept && state.animationStop && (
+        <CookiesPopup acceptFunction={acceptCookieHandler} />
+      )}
     </div>
   );
 }
