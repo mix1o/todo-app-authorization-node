@@ -21,6 +21,7 @@ const HoWorks = () => {
     'Many payments methods',
   ];
   const [imgIndex, setImgIndex] = useState(0);
+  const [nextA, setNextA] = useState(false);
 
   return (
     <main className="how__main">
@@ -63,7 +64,7 @@ const HoWorks = () => {
         </span>
         <div className="how__imgWrapper">
           <p className="how__paragraph"> {textImg[imgIndex]}</p>
-          <div>
+          <div className={`${nextA ? 'how__imgWrapper__animation' : ''}`}>
             <img
               className="how__img"
               src={howImgs[imgIndex]}
@@ -72,9 +73,18 @@ const HoWorks = () => {
           </div>
         </div>
         <i
-          style={{ position: 'absolute', right: '5%', bottom: '2%' }}
+          style={{
+            position: 'absolute',
+            right: '5%',
+            bottom: '2%',
+          }}
+          className={`${nextA ? 'blockClick' : ''}`}
           onClick={() => {
             setImgIndex(imgIndex + 1);
+            setNextA(true);
+            setTimeout(() => {
+              setNextA(false);
+            }, 1000);
             if (imgIndex === howImgs.length - 1) {
               setImgIndex(0);
             }

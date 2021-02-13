@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import Footer from '../page/Footer';
-import { useCounter } from '../../store/sub';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import MenuBottom from '../Hamburger/MenuBottom';
 

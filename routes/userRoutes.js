@@ -398,4 +398,9 @@ router.post('/api/editData', async (req, res) => {
   user.save();
 });
 
+router.get('/api/countTasks', async (req, res) => {
+  const countTasks = await Todo.find({ complete: 'Completed' });
+  res.status(200).send(countTasks);
+});
+
 module.exports = router;

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Task from '../todo/Task';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import styled from 'styled-components';
 import Todo from '../todo/Todo';
 import Footer from '../page/Footer';
@@ -15,7 +15,6 @@ const StyledDiv = styled.div`
 const UserTodos = ({ tasks, onAdd }) => {
   const newItems = tasks.filter((item) => item.complete !== 'Completed');
   const [state, actions] = useCounter();
-  const [check, setCheck] = useState(false);
 
   let date = new Date();
 
@@ -76,20 +75,22 @@ const UserTodos = ({ tasks, onAdd }) => {
               )
             )}
           <div style={{ textAlign: 'center' }}>
-            <a
-              onClick={() => actions.openTodo(true)}
+            <button
+              onClick={() => {
+                actions.openTodo(true);
+                window.scrollTo(0, 0);
+              }}
               className="btn-tasks-new"
               style={{
                 display: 'inline-block',
                 color: '#1db95e',
                 textDecoration: 'none',
-                fontSize: '1.4rem',
+                fontSize: '1.7rem',
                 background: 'transparent',
               }}
-              href="#todo"
             >
               Add task
-            </a>
+            </button>
           </div>
 
           <Footer />

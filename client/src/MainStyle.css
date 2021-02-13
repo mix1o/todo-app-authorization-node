@@ -565,8 +565,8 @@ h3 > span {
 }
 .hamburger__title {
   font-size: 2.5rem;
-  color: var(--white);
   font-weight: 100;
+  color: var(--white);
 }
 .iconBorder {
   display: flex;
@@ -575,6 +575,9 @@ h3 > span {
   height: 4rem;
   width: 4rem;
   border-radius: 100px;
+}
+.menu__disable {
+  pointer-events: none;
 }
 /* icons styles */
 .iconBorderOrange {
@@ -1257,3 +1260,20 @@ textarea::placeholder {
   padding: 0.75rem;
 }
 /* end random stuff */
+@keyframes slideHow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.how__imgWrapper__animation {
+  animation-name: slideHow;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.blockClick {
+  pointer-events: none;
+}

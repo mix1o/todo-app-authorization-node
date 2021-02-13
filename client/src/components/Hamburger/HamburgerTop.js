@@ -32,16 +32,20 @@ const HamburgerTop = ({ onAdd, blur }) => {
 
   return (
     <div
+      id="todo"
       className={`${blur ? 'hamburger__topBlur' : ' '}`}
       style={{ position: 'sticky', top: '0', left: '0', zIndex: '6' }}
     >
       <Hamburger onAdd={onAdd} isOpen={isOpen} setIsOpen={setIsOpen} />
       <BiggerPolygon />
+
       <SmallerPolygon
         onClick={() => {
           setIsOpen(!isOpen);
         }}
         isOpen={isOpen}
+        disable={blur}
+        className={`${blur ? 'menu__disable' : ''}`}
       >
         {isOpen ? close : bars}
       </SmallerPolygon>

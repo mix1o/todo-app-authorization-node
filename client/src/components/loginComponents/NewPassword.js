@@ -11,7 +11,7 @@ const NewPassword = () => {
   const [message, setMessage] = useState('');
   const { token } = useParams();
   const [passwordVis, setPasswordVis] = useState('password');
-  const [isVisible, setIsVisible] = useState(true);
+  const [isShown, setIsShown] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const password = () => {
@@ -119,16 +119,15 @@ const NewPassword = () => {
                 tabIndex="0"
                 aria-label="checkbox"
                 className="toggle_password"
-                isVisible={isVisible}
                 onClick={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
                 onKeyUp={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
               >
-                {isVisible && ClosedEye}
-                {!isVisible && OpenEye}
+                {isShown && ClosedEye}
+                {!isShown && OpenEye}
               </i>
             </label>
             <p

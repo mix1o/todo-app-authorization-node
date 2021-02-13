@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import React from 'react';
 import { ConverDate } from '../../functions/ConvertDate';
 
 const Task = ({
@@ -8,7 +7,6 @@ const Task = ({
   desc,
   prio,
   date,
-  status,
   input,
   isCompleted,
   bgColor,
@@ -32,11 +30,6 @@ const Task = ({
   };
 
   const dateOutput = ConverDate(date, finished);
-
-  const [state, actions] = useCounter();
-
-  // const inputTest = functionInput();
-  // console.log(inputTest);
 
   return (
     <section className={`section__task ${bgColor} ${bgColorHistory}`}>

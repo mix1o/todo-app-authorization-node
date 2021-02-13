@@ -5,7 +5,7 @@ import Confetti from 'react-confetti';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import Recaptcha from 'react-recaptcha';
-import { useCounter } from '../../store/sub';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import { Star, OpenEye, ClosedEye } from './Icons';
 import { changePassType } from './changePassType';
 
@@ -33,7 +33,7 @@ const RegisterationForm = () => {
   });
   const [catchError, setCatchError] = useState('');
   const [passwordVis, setPasswordVis] = useState('password');
-  const [isVisible, setIsVisible] = useState(true);
+  const [isShown, setIsShown] = useState(true);
   const [height, width] = useWindowSize();
   const [popup, setPopup] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -126,7 +126,7 @@ const RegisterationForm = () => {
         gravity={0.2}
       />
 
-      <div class="popup-relative">
+      <div className="popup-relative">
         <main
           style={{ filter: popup ? 'blur(3px)' : 'blur(0)' }}
           className="main__signUp"
@@ -228,16 +228,15 @@ const RegisterationForm = () => {
                 tabIndex="0"
                 aria-roledescription="checkbox"
                 className="toggle_password"
-                isVisible={isVisible}
                 onClick={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
                 onKeyUp={(e) =>
-                  changePassType(e, passwordVis, setPasswordVis, setIsVisible)
+                  changePassType(e, passwordVis, setPasswordVis, setIsShown)
                 }
               >
-                {isVisible && ClosedEye}
-                {!isVisible && OpenEye}
+                {isShown && ClosedEye}
+                {!isShown && OpenEye}
               </i>
             </label>
             <label className="form__label form__checkbox">
@@ -254,11 +253,11 @@ const RegisterationForm = () => {
 
               <p className="label__terms">
                 I agree to the
-                <Link className="label__link" to="/">
+                <Link className="label__link" to="/terms">
                   <span className="label__tearms label__span--link">Terms</span>
                 </Link>
                 and
-                <Link className="label__link" to="/">
+                <Link className="label__link" to="/policy">
                   <span className="label__policy label__span--link">
                     Privacy Policy.
                   </span>
@@ -280,10 +279,8 @@ const RegisterationForm = () => {
             sitekey="6Lf0_zQaAAAAAA74WFt8myKQ5t-oSLtuSDW1wwAH"
             render="explicit"
             onloadCallback={() => {
-              console.log('Recaptch loaded');
               setRecaptchaLoad(true);
             }}
-            onloadCallback={() => setRecaptchaLoad(true)}
             verifyCallback={() => {
               setRecaptachCheck(true);
             }}
@@ -319,7 +316,7 @@ const RegisterationForm = () => {
             title="Your account has been created"
             message="You will be redirect in a second"
             iconLink={
-              <Link>
+              <Link to="/">
                 <div className="container__popup__svg">
                   <svg
                     className="arrowIcon"

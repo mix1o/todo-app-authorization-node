@@ -1,5 +1,4 @@
 import React from 'react';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
 import Task from '../todo/Task';
 
 const TasksFound = ({
@@ -20,7 +19,9 @@ const TasksFound = ({
           </span>
         </p>
       )}
+
       {unCompletedTasks.length > 0 && <hr style={{ margin: '2.5rem 0' }} />}
+
       {unCompletedTasks.length > 0 && (
         <p className="hamburger__title">Uncompleted tasks</p>
       )}
@@ -30,6 +31,7 @@ const TasksFound = ({
           <span style={{ color: 'red', fontWeight: '700' }}>{content}</span>
         </p>
       )}
+
       {unCompletedTasks.map(
         ({ _id, name, description, priority, date, complete, input }) => (
           <Task

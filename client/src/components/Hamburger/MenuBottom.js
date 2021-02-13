@@ -1,6 +1,6 @@
 import React from 'react';
 import { home, plusSign, phone2 } from './HamburgerIcons';
-import { useCounter } from '../../store/sub';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import { Link } from 'react-router-dom';
 
 function MenuBottom() {
@@ -16,9 +16,10 @@ function MenuBottom() {
       </div>
       <div className="menuBottom__section">
         <Link
-          to="/user-panel"
+          to="/user-panel#todo"
           onClick={() => {
             actions.openTodo(true);
+            window.scrollTo(0, 0);
           }}
         >
           {plusSign}

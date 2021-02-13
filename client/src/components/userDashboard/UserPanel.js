@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import UserTodos from './UserTodos';
-import Payments from '../payments/Payments';
-import Card from '../payments/Card';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import { illustration } from '../../illustration';
 import Todo from '../todo/Todo';
 import styled from 'styled-components';
-import Footer from '../page/Footer';
-import { STATES } from 'mongoose';
-import Tour from '../Guide/Tour';
-import { Link } from 'react-router-dom';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 import MenuBottom from '../Hamburger/MenuBottom';
 import HamburgerTop from '../Hamburger/HamburgerTop';
@@ -24,18 +17,10 @@ const StyledDiv = styled.div`
 `;
 
 const UserPanel = () => {
-  const [showBox, setShowBox] = useState(true);
   const [open, setOpen] = useState(false);
-  const [correct, setCorrect] = useState(false);
   const [loadingAnimation, setStartAnimation] = useState(true);
-
-  const [message, setMessage] = useState('');
-  const [startTour, setStartTour] = useState();
   const [state, actions] = useCounter();
-  const [userD, setUserD] = useState([]);
   const [tasks, setTasks] = useState([]);
-
-  const history = useHistory();
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,9 +39,7 @@ const UserPanel = () => {
       .then((res) => res.json())
       .then((json) => {
         if (json.correct) {
-          setUserD(json);
           actions.user(json);
-          setCorrect(true);
         }
       });
   };

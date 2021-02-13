@@ -17,15 +17,10 @@ const Todo = ({ onAdd }) => {
     Priority: 'Low',
   });
   const [message, setMessage] = useState('');
-  const [sel, setSel] = useState(false);
-  const [correct, setCorrect] = useState();
-
   const handlerInput = (event) => {
     const target = event.target;
     const value = event.target.value;
     const name = target.name;
-
-    // setTaskData({ ...taskData, [name]: value });
     setTaskData((data) => ({ ...data, [name]: value }));
   };
 

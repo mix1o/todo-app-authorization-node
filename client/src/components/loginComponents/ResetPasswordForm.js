@@ -5,12 +5,9 @@ import Popup from './Popup';
 import { ForgetPassword, Star } from './Icons';
 
 const ResetPasswordForm = () => {
-  const [passwordVis, setPasswordVis] = useState('password');
-  const [isVisible, setIsVisible] = useState(true);
   const history = useHistory();
   const [Email, setEmail] = useState('');
   const [isOpen, setIsOpen] = useState('');
-
   const [message, setMessage] = useState('');
 
   const resetPassword = () => {
@@ -31,19 +28,6 @@ const ResetPasswordForm = () => {
           setIsOpen(true);
         }
       });
-  };
-  const changePassType = (e) => {
-    if (e.keyCode === 9) {
-      return;
-    }
-
-    if (passwordVis === 'password') {
-      setPasswordVis('text');
-      setIsVisible(false);
-    } else {
-      setPasswordVis('password');
-      setIsVisible(true);
-    }
   };
 
   if (message.correct) {
