@@ -17,9 +17,11 @@ const {
 } = require('../validation/validation');
 const sgMail = require('@sendgrid/mail');
 
-router.get('http://localhost:8000/test', (req, res) => {
-  res.send('test');
-});
+router.post('/cookie-accept',(req,res) => {
+
+  res.cookie('accept',true,{maxAge: 24 * 60 * 60 * 1000 * 7}).send('cookie set')
+ 
+})
 
 router.post('/api/newuser', async (req, res) => {
   const { error } = registerValidation(req.body);
@@ -143,7 +145,7 @@ router.post('/api/login', async (req, res, next) => {
 
   if (!client.confirmedAccount)
     return res.send({ message: 'Please confirm your email' });
-  console.log(client.confirmedAccount);
+
 
   req.session.user = client;
   const user = { ...client };

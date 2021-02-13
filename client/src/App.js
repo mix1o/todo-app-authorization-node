@@ -37,11 +37,23 @@ import MenuBottom from './components/Hamburger/MenuBottom';
 
 function App() {
   const [cookies] = useCookies({});
-  const { user } = cookies;
+  const { user,accept } = cookies;
   const [state, actions] = useCounter();
+
+  const acceptCookieHandler = () => {
+    fetch('/cookie-accept', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(() => window.location.reload())
+  }
+
+
 
   return (
     <div className="App">
+      {!accept && <p onClick={() => acceptCookieHandler()}>Akkcept Cookies</p>}
       <Router>
         <ScrollToTop />
 

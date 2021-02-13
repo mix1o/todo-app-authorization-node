@@ -40,6 +40,7 @@ app.use(
   })
 );
 
+
 app.use(auth);
 app.use('/', userRoutes);
 
