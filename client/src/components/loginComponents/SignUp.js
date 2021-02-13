@@ -8,7 +8,7 @@ import Recaptcha from 'react-recaptcha';
 import { useCounter, CounterSubscriber } from '../../store/sub';
 import { Star, OpenEye, ClosedEye } from './Icons';
 import { changePassType } from './changePassType';
-
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 const RegisterationForm = () => {
   const history = useHistory();
   const useWindowSize = () => {

@@ -38,7 +38,7 @@ const ResetPasswordForm = () => {
 
   return (
     <>
-      <div class="popup-relative">
+      <div className="popup-relative">
         <main
           className="main__reset"
           style={
