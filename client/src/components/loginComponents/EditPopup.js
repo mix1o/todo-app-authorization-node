@@ -97,7 +97,7 @@ const EditPopup = ({
               className="btn__main--full"
               style={{ margin: '1rem 0 1rem 0' }}
             >
-              Change Noww
+              Change Now
             </button>
           </div>
         </>

@@ -3,6 +3,7 @@ import Joyride from 'react-joyride';
 
 const Tour = ({ steps, open }) => {
   const [help, setHelp] = useState(false);
+
   setTimeout(() => {
     if (open) {
       setHelp(true);

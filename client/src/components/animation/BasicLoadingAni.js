@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const AnimationWrapper = styled(motion.div)`
   width: 100vw;
@@ -50,17 +50,22 @@ const LoadingWrapperVariants = {
 const LoadingCircleVariants = {
   start: {
     y: '0%',
+    transition: {
+      duration: 0.4,
+      repeat: 'Infinity',
+      repeatType: 'reverse',
+      ease: 'easeInOut',
+    },
   },
   end: {
     y: '100%',
+    transition: {
+      duration: 0.4,
+      repeat: 'Infinity',
+      repeatType: 'reverse',
+      ease: 'easeInOut',
+    },
   },
-};
-
-const LoadingCircleTransitione = {
-  duration: 0.4,
-  repeat: 'Infinity',
-  repeatType: 'reverse',
-  ease: 'easeInOut',
 };
 
 const BasicLoadingAni = () => {
@@ -85,19 +90,16 @@ const BasicLoadingAni = () => {
           styledBGColor={'var(--light-green)'}
           className="CircleAni CircleAniGreen"
           variants={LoadingCircleVariants}
-          transition={LoadingCircleTransitione}
         ></CircleMotion>
         <CircleMotion
           styledBGColor={'var(--red)'}
           className="CircleAni CircleAniGrey"
           variants={LoadingCircleVariants}
-          transition={LoadingCircleTransitione}
         ></CircleMotion>
         <CircleMotion
           styledBGColor={'var(--border-guide-color)'}
           className="CircleAni CircleAniOrange"
           variants={LoadingCircleVariants}
-          transition={LoadingCircleTransitione}
         ></CircleMotion>
       </CircleWrapper>
     </AnimationWrapper>

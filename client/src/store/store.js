@@ -11,6 +11,7 @@ const initialState = {
   userFunction: null,
   canSeeAlmost: false,
   totalPriceState: 0,
+  animationStop: false,
 };
 
 const actions = {
@@ -42,6 +43,10 @@ const actions = {
   setAlmost: (e) => ({ getState, setState }) => {
     const { canSeeAlmost } = getState();
     setState({ canSeeAlmost: e });
+  },
+  changeStateAnimation: (e) => ({ getState, setState }) => {
+    const { animationStop } = getState();
+    setState({ animationStop: e });
   },
 };
 

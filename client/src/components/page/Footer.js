@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const [totalTasks, setTotalTasks] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/countTasks')
+      .then((response) => response.json())
+      .then((json) => {
+        setTotalTasks(json);
+      });
+  }, []);
+
   return (
     <div className="footer">
       <div className="footer__first">
@@ -52,7 +62,7 @@ const Footer = () => {
               marginRight: '.5rem',
             }}
           >
-            13,124
+            {totalTasks.length}
           </strong>
           Users finished tasks
         </p>

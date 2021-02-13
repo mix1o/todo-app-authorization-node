@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Footer from '../page/Footer';
-import { useCounter } from '../../store/sub';
 import { Link } from 'react-router-dom';
 import { one, two, tree, four } from './paymentssvg';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import MenuBottom from '../Hamburger/MenuBottom';
 
 const PaymentMethod = () => {
-  const [select, setSelected] = useState(false);
-
   return (
     <div id="top__component">
       <HamburgerTop />
@@ -19,7 +16,7 @@ const PaymentMethod = () => {
             Payment method
           </h3>
           <div className="payment__method">
-            <div onClick={() => setSelected(true)} className="payment__single">
+            <div className="payment__single">
               <button className="selectedGreen">{one}</button>
             </div>
             <div className="payment__single">

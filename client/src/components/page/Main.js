@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const Main = () => {
   const [loadingAnimation, setStartAnimation] = useState(true);
 
+  const [state, actions] = useCounter();
+
   useEffect(() => {
     setTimeout(() => {
       setStartAnimation(false);
+      actions.changeStateAnimation(true);
     }, 1500);
   }, []);
 

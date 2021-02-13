@@ -1,14 +1,7 @@
 import React from 'react';
 import { ConverDate } from '../../functions/ConvertDate';
 
-const SearchResults = ({
-  title,
-  description,
-  complete,
-  date,
-  finishedDate,
-  priority,
-}) => {
+const SearchResults = ({ date, finishedDate }) => {
   const dateOutput = ConverDate(date, finishedDate);
 
   return (

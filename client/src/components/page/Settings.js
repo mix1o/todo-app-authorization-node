@@ -245,6 +245,7 @@ const Settings = () => {
         <div className="settings__section">
           <div>
             <button
+              style={open ? { pointerEvents: 'none' } : {}}
               onClick={() => setOpenDelete(true)}
               className="settings__button__delete"
             >

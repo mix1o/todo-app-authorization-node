@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import React from 'react';
 import { ConverDate } from '../../functions/ConvertDate';
 
 const Task = ({
@@ -8,7 +7,6 @@ const Task = ({
   desc,
   prio,
   date,
-  status,
   input,
   isCompleted,
   bgColor,
@@ -32,11 +30,6 @@ const Task = ({
   };
 
   const dateOutput = ConverDate(date, finished);
-
-  const [state, actions] = useCounter();
-
-  // const inputTest = functionInput();
-  // console.log(inputTest);
 
   return (
     <section className={`section__task ${bgColor} ${bgColorHistory}`}>
@@ -64,7 +57,13 @@ const Task = ({
               {dateOutput.dateAdded}
             </span>
           </p>
-          <label className="finish">
+          <label onClick={() => {
+                sendStatus(id);
+                onAdd();
+                if (searchUserBool) {
+                  searchUserData();
+                }
+              }} className="finish">
             <p className="finish_text" style={{ color: fontColor }}>
               Finish now
             </p>
@@ -72,16 +71,11 @@ const Task = ({
               type="checkbox"
               value={id}
               className="label__checkbox"
-              onClick={(e) => {
-                sendStatus(e.target.value);
-                onAdd();
-                if (searchUserBool) {
-                  searchUserData();
-                }
-              }}
+              
             />
             <i className="checkbox__indicator"></i>
           </label>
+         
         </div>
       )}
       {isCompleted && (

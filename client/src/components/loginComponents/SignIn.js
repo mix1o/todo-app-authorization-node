@@ -114,7 +114,7 @@ const SignIn = () => {
               />
               <i
                 tabIndex="0"
-                role="checkbox"
+                aria-label="checkbox"
                 className="toggle_password"
                 onClick={(e) =>
                   changePassType(e, passwordVis, setPasswordVis, setIsShown)

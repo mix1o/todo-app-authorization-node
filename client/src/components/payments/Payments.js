@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from '../page/Footer';
@@ -30,21 +30,19 @@ const Payments = ({ price }) => {
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
   const [state, actions] = useCounter();
-  const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [cardData, setCardData] = useState({
     cardNumber: '',
     expireDate: '',
     cvc: '',
-    ownerName: ''
+    ownerName: '',
   });
 
   const handlerInput = (e) => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    //console.log(value.split(formatBack).join(''));
     setCardData({ ...cardData, [name]: value });
   };
 
@@ -56,15 +54,12 @@ const Payments = ({ price }) => {
 
   const pay = () => {
     const formatBack = new RegExp(/\s+|[,/]/g);
-    console.log(cardData.expireDate);
     if (
       numberReg.test(cardData.cardNumber.split(formatBack).join('')) &&
       dateReg.test(cardData.expireDate) &&
       cvcReg.test(cardData.cvc) &&
       cardData.ownerName.length > 5
     ) {
-      console.log('ok');
-
       fetch('/api/payCard', {
         method: 'POST',
         headers: {
@@ -125,9 +120,6 @@ const Payments = ({ price }) => {
     }
   };
 
-  setTimeout(() => {
-    setOpen(true);
-  }, 800);
   return (
     <div id="top__component">
       {loading && <BasicLoadingAni />}
@@ -230,7 +222,7 @@ const Payments = ({ price }) => {
                   marginLeft: 'auto',
                   marginBottom: '1rem',
                   display: 'block',
-                  marginTop: '5rem'
+                  marginTop: '5rem',
                 }}
                 onClick={pay}
               >
