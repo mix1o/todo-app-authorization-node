@@ -26,7 +26,7 @@ const HoWorks = () => {
   return (
     <main className="how__main">
       <h2 className="how__header">How it works</h2>
-      <Link to="/" style={{ position: 'absolute', top: '2%', left: '4%' }}>
+      <Link to="/" style={{position: 'absolute', top: '2%', left: '4%',zIndex: '3' }}>
         <svg
           width="40"
           height="40"
@@ -75,8 +75,8 @@ const HoWorks = () => {
         <i
           style={{
             position: 'absolute',
-            right: '5%',
-            bottom: '2%',
+            right: '3%',
+            bottom: '1%',
           }}
           className={`${nextA ? 'blockClick' : ''}`}
           onClick={() => {

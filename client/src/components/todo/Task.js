@@ -60,9 +60,9 @@ const Task = ({
           <label onClick={() => {
                 sendStatus(id);
                 onAdd();
-                if (searchUserBool) {
-                  searchUserData();
-                }
+                // if (searchUserBool) {
+                //   searchUserData();
+                // }
               }} className="finish">
             <p className="finish_text" style={{ color: fontColor }}>
               Finish now

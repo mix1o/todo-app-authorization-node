@@ -152,6 +152,8 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     onKeyDown={(e) => {
                       if (e.keyCode === 13) {
                         searchUserData();
+                        setAreResult(true);
+                        setLoading(true);
                       }
                     }}
                   />

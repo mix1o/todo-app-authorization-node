@@ -80,7 +80,7 @@ const Payments = ({ price }) => {
         history.push('/user-panel');
       }, 4000);
     } else {
-      setMessage({ message: 'Something is wrong. Please check your inputs' });
+      setMessage({ message: 'Something went wrong please check your data and try again ' });
       setIsOpen(true);
     }
   };
