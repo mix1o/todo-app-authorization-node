@@ -41,6 +41,11 @@ const EditPopup = ({
               className="label__input"
               style={{ width: '100%', margin: '2rem 0' }}
               placeholder="New nickname"
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) {
+                  updateData(nickname, 'nickname');
+                }
+              }}
             />
           </label>
           <div>
@@ -65,6 +70,11 @@ const EditPopup = ({
               className="label__input"
               placeholder="example@task.com"
               style={{ width: '100%', margin: '2rem 0' }}
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) {
+                  updateData(email, 'email');
+                }
+              }}
             />
           </label>
           <div>
@@ -89,6 +99,11 @@ const EditPopup = ({
               placeholder="New password"
               className="label__input"
               style={{ width: '100%', margin: '2rem 0' }}
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) {
+                  updateData(password, 'password');
+                }
+              }}
             />
           </label>
           <div>

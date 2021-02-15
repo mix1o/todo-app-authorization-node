@@ -111,6 +111,11 @@ const SignIn = () => {
                 placeholder="Password"
                 value={userData.name}
                 onChange={(e) => handlerInput(e)}
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) {
+                    hanlderSign();
+                  }
+                }}
               />
               <i
                 tabIndex="0"

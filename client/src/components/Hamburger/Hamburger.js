@@ -147,6 +147,11 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     style={clicked ? { width: '80%' } : { width: '100%' }}
                     onClick={() => setClicked(true)}
                     onChange={(e) => setContent(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.keyCode === 13) {
+                        searchUserData();
+                      }
+                    }}
                   />
                   {clicked && (
                     <button

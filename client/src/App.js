@@ -22,14 +22,13 @@ import NewPassword from './components/loginComponents/NewPassword';
 import AlmostThere from './components/loginComponents/AlmostThere';
 import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 import Settings from './components/page/Settings';
-import ScrollToTop from './functions/ScrollToTop';
+import { ScrollToTop, ScrollOfSearchBar } from './functions/ScrollTo';
 import CookiesPopup from './components/CookiesPopup';
 import {
   SwitchTransition,
   RouteTransition,
 } from './components/animation/PageTransitions';
 import { useEffect, useState } from 'react';
-import BasicLoadingAni from './components/animation/BasicLoadingAni';
 
 function App() {
   const [cookies] = useCookies({});
@@ -52,6 +51,10 @@ function App() {
       actions.changeStateAnimation(true);
     }, 1500);
   }, []);
+
+  window.addEventListener('load', () => {
+    ScrollOfSearchBar();
+  });
 
   return (
     <div className="App">

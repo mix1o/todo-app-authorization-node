@@ -80,7 +80,7 @@ const Settings = () => {
 
   return (
     <div className="popup-relative">
-      <HamburgerTop />
+      <HamburgerTop blur={openDelete || open} />
       {open && (
         <EditPopup
           message={message}
@@ -122,6 +122,11 @@ const Settings = () => {
             className="input"
             aria-label="password"
             placeholder="Password"
+            onKeyDown={(e) => {
+              if (e.keyCode === 13) {
+                deleteAccount();
+              }
+            }}
           />
 
           <p

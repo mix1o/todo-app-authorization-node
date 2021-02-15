@@ -100,6 +100,11 @@ const ResetPasswordForm = () => {
                 required
                 value={Email}
                 onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) {
+                    resetPassword();
+                  }
+                }}
               />
             </label>
             <p
