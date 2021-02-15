@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Popup = ({ title, message, iconLink, size, position }) => {
+const Popup = ({ title, message, iconLink, position }) => {
   return (
     <section style={position ? { top: '30%' } : {}} className="popup">
       <h3

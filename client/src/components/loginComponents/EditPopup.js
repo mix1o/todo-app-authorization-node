@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { close } from '../Hamburger/HamburgerIcons';
+import { motion } from 'framer-motion';
+import { mountVariants } from '../animation/SlidInOut';
 
 const EditPopup = ({
   setMessage,
@@ -17,8 +19,15 @@ const EditPopup = ({
       setMessage('');
     }, 2000);
   }
+
   return (
-    <div className="settings__edit__div">
+    <motion.div
+      variants={mountVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="settings__edit__div"
+    >
       <div style={{ textAlign: 'right' }}>
         <div
           className="setting__closIcon"
@@ -123,7 +132,7 @@ const EditPopup = ({
       >
         {message.message}
       </p>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { bars, close } from './HamburgerIcons';
 import Hamburger from './Hamburger';
+import styled from 'styled-components';
 
 const BiggerPolygon = styled.div`
   position: fixed

@@ -100,11 +100,6 @@ const ResetPasswordForm = () => {
                 required
                 value={Email}
                 onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.keyCode === 13) {
-                    resetPassword();
-                  }
-                }}
               />
             </label>
             <p
@@ -135,7 +130,7 @@ const ResetPasswordForm = () => {
         )}
         {message.correct && (
           <Popup
-            title="We have sent mail with reset link"
+            title="We have sent an email with a reset link"
             message="You will be redirect in few seconds"
             size="2rem"
             iconLink={

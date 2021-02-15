@@ -22,7 +22,7 @@ import NewPassword from './components/loginComponents/NewPassword';
 import AlmostThere from './components/loginComponents/AlmostThere';
 import ConfirmAccount from './components/loginComponents/ConfirmAccount';
 import Settings from './components/page/Settings';
-import { ScrollToTop, ScrollOfSearchBar } from './functions/ScrollTo';
+import ScrollToTop from './functions/ScrollTo';
 import CookiesPopup from './components/CookiesPopup';
 import {
   SwitchTransition,
@@ -51,10 +51,6 @@ function App() {
       actions.changeStateAnimation(true);
     }, 1500);
   }, []);
-
-  window.addEventListener('load', () => {
-    ScrollOfSearchBar();
-  });
 
   return (
     <div className="App">

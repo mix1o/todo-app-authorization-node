@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Warning from './Warning';
 import Confetti from 'react-confetti';
 import { useHistory } from 'react-router-dom';
-import Popup from './Popup';
-import Recaptcha from 'react-recaptcha';
 import { useCounter, CounterSubscriber } from '../../store/sub';
 import { Star, OpenEye, ClosedEye } from './Icons';
 import { changePassType } from './changePassType';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
+import Popup from './Popup';
+import Recaptcha from 'react-recaptcha';
+
 const RegisterationForm = () => {
   const history = useHistory();
   const useWindowSize = () => {

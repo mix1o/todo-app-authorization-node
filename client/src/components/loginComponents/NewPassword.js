@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Warning from './Warning';
-import Popup from './Popup';
 import { changePassType } from './changePassType';
+import { Link, useParams } from 'react-router-dom';
 import { FinishedReset, Star, OpenEye, ClosedEye } from './Icons';
+import Popup from './Popup';
+import Warning from './Warning';
 
 const NewPassword = () => {
+  const [message, setMessage] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confrimNewPassword, setConfirmNewPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const { token } = useParams();
   const [passwordVis, setPasswordVis] = useState('password');
-  const [isShown, setIsShown] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isShown, setIsShown] = useState(true);
+  const { token } = useParams();
 
   const password = () => {
     fetch('/api/newPassword', {
@@ -150,9 +150,8 @@ const NewPassword = () => {
         </main>
         {message.correct && (
           <Popup
-            title="Successful! Your password has been changed"
+            title="Your password has been changed"
             message="You will be redirect in few seconds"
-            size="2rem"
             iconLink={
               <Link to="/login">
                 <div className="container__popup__svg">

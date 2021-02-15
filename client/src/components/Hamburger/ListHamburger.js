@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { phone, zhonya, dolar, settings } from './HamburgerIcons';
 import { SlidInItems } from '../animation/PageTransitions';
+import { phone, zhonya, dolar, settings } from './HamburgerIcons';
 
 const ListHamburger = ({ open }) => {
   return (

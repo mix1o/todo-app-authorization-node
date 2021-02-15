@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { ConfirmIllustration } from './Icons';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import Warning from './Warning';
-import { ConfirmIllustration } from './Icons';
 
 const ConfirmAccount = () => {
-  const [message, setMessage] = useState('');
-  const { token } = useParams();
-  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const history = useHistory();
+  const { token } = useParams();
 
   const confirm = () => {
     fetch('/api/confirm', {
@@ -74,7 +74,7 @@ const ConfirmAccount = () => {
             Confrim account
           </h2>
           <p style={{ fontSize: '1.8rem', width: '80%', color: '#2d3748' }}>
-            Thank you for confirm your account and for your trust
+            Thank you for confirm your account
           </p>
           <div>{ConfirmIllustration}</div>
           <button

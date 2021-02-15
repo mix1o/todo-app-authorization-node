@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { changePassType } from './changePassType';
+import { Star, OpenEye, ClosedEye } from './Icons';
 import Popup from './Popup';
 import Warning from './Warning';
-import { Star, OpenEye, ClosedEye } from './Icons';
-import { changePassType } from './changePassType';
 
 const SignIn = () => {
   const [message, setMessage] = useState('');
+  const [passwordVis, setPasswordVis] = useState('password');
+  const [isShown, setIsShown] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState({
     Email: '',
     Password: '',
   });
-  const [passwordVis, setPasswordVis] = useState('password');
-  const [isShown, setIsShown] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
 
   const handlerInput = (e) => {
     const target = e.target;

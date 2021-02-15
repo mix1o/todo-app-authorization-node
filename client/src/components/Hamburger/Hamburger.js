@@ -1,17 +1,17 @@
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useCookies } from 'react-cookie';
 import { useCounter } from '../../store/sub';
 import { STEPSBURGER } from '../Guide/Steps';
 import { Link, useHistory } from 'react-router-dom';
+import { hamburgerVariants } from '../animation/SlidInOut';
 import { home, logOutIcon, search } from './HamburgerIcons';
-import React, { useEffect, useState } from 'react';
+import { SlidInContainer } from '../animation/MountTransition';
+import { SlidInPresence, SlidInItems } from '../animation/PageTransitions';
 import Tour from '../Guide/Tour';
 import styled from 'styled-components';
 import TasksFound from './TasksFound';
 import ListHamburger from './ListHamburger';
-import { motion } from 'framer-motion';
-import { SlidInPresence, SlidInItems } from '../animation/PageTransitions';
-import { SlidInContainer } from '../animation/MountTransition';
-import { hamburgerVariants } from '../animation/SlidInOut';
 
 const HamburgerDiv = styled(motion.div)`
   position: fixed;
@@ -24,15 +24,17 @@ const HamburgerDiv = styled(motion.div)`
 `;
 
 const Hamburger = ({ isOpen, setIsOpen }) => {
-  const [state, actions] = useCounter();
   const history = useHistory();
+  const [state, actions] = useCounter();
   const [content, setContent] = useState('');
-  const [clicked, setClicked] = useState(false);
-  const [results, setResults] = useState([]);
-  const [areResult, setAreResult] = useState(false);
   const [helpContent, setHelpContent] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [clicked, setClicked] = useState(false);
+  const [areResult, setAreResult] = useState(false);
+  const [results, setResults] = useState([]);
   const [cookies] = useCookies({});
   const { user } = cookies;
+  const [isNew, setIsNew] = useState(false);
 
   const searchUserData = () => {
     setHelpContent(content);
@@ -67,6 +69,7 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
       .then((json) => {
         if (json.correct) {
           actions.user(json);
+          setIsNew(true);
         }
       });
   }, []);
@@ -78,17 +81,16 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
     (item) => item.complete === 'Completed'
   );
 
-  const [loading, setLoading] = useState(true);
-
   if (areResult) {
     setTimeout(() => {
       setLoading(false);
     }, 300);
   }
-
   return (
     <div style={{ position: 'relative' }}>
-      {user.newUser && isOpen && <Tour open={true} steps={STEPSBURGER} />}
+      {isNew && state.userData.user[0].newUser && isOpen && (
+        <Tour open={true} steps={STEPSBURGER} />
+      )}
       <SlidInPresence>
         {isOpen && (
           <HamburgerDiv

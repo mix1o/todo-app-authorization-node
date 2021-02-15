@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { home, plusSign, phone2 } from './HamburgerIcons';
 import { useCounter, CounterSubscriber } from '../../store/sub';
-import { Link } from 'react-router-dom';
 
 function MenuBottom() {
   const [state, actions] = useCounter();

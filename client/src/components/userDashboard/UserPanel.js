@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import BasicLoadingAni from '../animation/BasicLoadingAni';
 import MenuBottom from '../Hamburger/MenuBottom';
 import HamburgerTop from '../Hamburger/HamburgerTop';
+import { AnimatePresence } from 'framer-motion';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -85,7 +86,9 @@ const UserPanel = () => {
               </StyledDiv>
             </div>
 
-            {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+            <AnimatePresence>
+              {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+            </AnimatePresence>
           </div>
         )}
         {filteredUnCompleted.length > 0 && (
