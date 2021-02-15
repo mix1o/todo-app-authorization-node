@@ -8,8 +8,10 @@ import Tour from '../Guide/Tour';
 import styled from 'styled-components';
 import TasksFound from './TasksFound';
 import ListHamburger from './ListHamburger';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { SlidInPresence, SlidInItems } from '../animation/PageTransitions';
+import { SlidInContainer } from '../animation/MountTransition';
+import { hamburgerVariants } from '../animation/SlidInOut';
 
 const HamburgerDiv = styled(motion.div)`
   position: fixed;
@@ -87,107 +89,123 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
   return (
     <div style={{ position: 'relative' }}>
       {user.newUser && isOpen && <Tour open={true} steps={STEPSBURGER} />}
-
-      {isOpen && (
-        <HamburgerDiv isOpen={isOpen}>
-          {/* {areResult && loading && <BasicLoadingAni />} */}
-          <div className="actions">
-            <div></div>
-            <p>
-              <span>mn</span>
-              Tasks
-            </p>
-            <div></div>
-          </div>
-          {!clicked && (
-            <div className="hamburger__info">
-              <p style={{ fontWeight: '100', fontSize: '3.2rem' }}>Hello !</p>
-              <p
-                style={{
-                  fontWeight: '700',
-                  letterSpacing: '3px',
-                  marginTop: '-1rem',
-                }}
-              >
-                {state.correct && state.userData.user[0].name}
-              </p>
-            </div>
-          )}
-          <div className="hamburger__div__input">
-            <div
-              onClick={() => {
-                searchUserData();
-                setAreResult(true);
-                setLoading(true);
-              }}
-              style={{ position: 'absolute', top: '10px', left: '10px' }}
-            >
-              {search}
-            </div>
-            <input
-              placeholder="What do you need?"
-              className="hamburger__input"
-              aria-label="search"
-              type="text"
-              value={content}
-              style={clicked ? { width: '80%' } : { width: '100%' }}
-              onClick={() => setClicked(true)}
-              onChange={(e) => setContent(e.target.value)}
-            />
-            {clicked && (
-              <button
-                className="hamburger__cancel"
-                aria-label="cancel search"
-                onClick={() => {
-                  setClicked(false);
-                  setContent('');
-                  setResults([]);
-                  setAreResult(false);
-                  setLoading(true);
-                }}
-              >
-                Cancel
-              </button>
-            )}
-          </div>
-
-          {clicked && (
-            <div className="container__found__tasks">
-              <TasksFound
-                content={helpContent}
-                searchUserData={searchUserData}
-                completedTasks={completedTasks}
-                unCompletedTasks={unCompletedTasks}
-                areResult={areResult}
-                results={results}
-              />
-            </div>
-          )}
-
-          {!clicked && (
-            <div>
-              <div className="credits">
-                <p>
-                  Your credits:
-                  <span>
-                    {' '}
-                    {state.correct && state.userData.user[0].credits}
-                  </span>
-                </p>
+      <SlidInPresence>
+        {isOpen && (
+          <HamburgerDiv
+            variants={hamburgerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <SlidInContainer>
+              <SlidInItems>
+                <div className="actions">
+                  <div></div>
+                  <p>
+                    <span>mn</span>
+                    Tasks
+                  </p>
+                  <div></div>
+                </div>
+              </SlidInItems>
+              <SlidInItems>
+                {!clicked && (
+                  <div className="hamburger__info">
+                    <p style={{ fontWeight: '100', fontSize: '3.2rem' }}>
+                      Hello !
+                    </p>
+                    <p
+                      style={{
+                        fontWeight: '700',
+                        letterSpacing: '3px',
+                        marginTop: '-1rem',
+                      }}
+                    >
+                      {state.correct && state.userData.user[0].name}
+                    </p>
+                  </div>
+                )}
+              </SlidInItems>
+              <SlidInItems>
+                <div className="hamburger__div__input">
+                  <div
+                    onClick={() => {
+                      searchUserData();
+                      setAreResult(true);
+                      setLoading(true);
+                    }}
+                    style={{ position: 'absolute', top: '10px', left: '10px' }}
+                  >
+                    {search}
+                  </div>
+                  <input
+                    placeholder="What do you need?"
+                    className="hamburger__input"
+                    aria-label="search"
+                    type="text"
+                    value={content}
+                    style={clicked ? { width: '80%' } : { width: '100%' }}
+                    onClick={() => setClicked(true)}
+                    onChange={(e) => setContent(e.target.value)}
+                  />
+                  {clicked && (
+                    <button
+                      className="hamburger__cancel"
+                      aria-label="cancel search"
+                      onClick={() => {
+                        setClicked(false);
+                        setContent('');
+                        setResults([]);
+                        setAreResult(false);
+                        setLoading(true);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              </SlidInItems>
+              <SlidInItems>
+                {clicked && (
+                  <div className="container__found__tasks">
+                    <TasksFound
+                      content={helpContent}
+                      searchUserData={searchUserData}
+                      completedTasks={completedTasks}
+                      unCompletedTasks={unCompletedTasks}
+                      areResult={areResult}
+                      results={results}
+                    />
+                  </div>
+                )}
+              </SlidInItems>
+              {!clicked && (
+                <div>
+                  <SlidInItems>
+                    <div className="credits">
+                      <p>
+                        Your credits:
+                        <span>
+                          {state.correct && state.userData.user[0].credits}
+                        </span>
+                      </p>
+                    </div>
+                  </SlidInItems>
+                  <ListHamburger open={isOpen} />
+                  <div onClick={() => singOut()} className="log__out">
+                    {logOutIcon}
+                  </div>
+                </div>
+              )}
+              <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+                <Link onClick={() => setIsOpen(false)} to="/user-panel">
+                  {home}
+                </Link>
               </div>
-              <ListHamburger open={isOpen} />
-              <div onClick={() => singOut()} className="log__out">
-                {logOutIcon}
-              </div>
-            </div>
-          )}
-          <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
-            <Link onClick={() => setIsOpen(false)} to="/user-panel">
-              {home}
-            </Link>
-          </div>
-        </HamburgerDiv>
-      )}
+            </SlidInContainer>
+          </HamburgerDiv>
+        )}
+      </SlidInPresence>
     </div>
   );
 };

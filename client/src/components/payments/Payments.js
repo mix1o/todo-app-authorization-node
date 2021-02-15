@@ -229,8 +229,8 @@ const Payments = ({ price }) => {
                 Pay Now
               </button>
             </section>
+            <Footer />
           </main>
-          <Footer />
           {message.correct && !loading && (
             <Popup
               title="You successful added credits"
@@ -250,8 +250,10 @@ const Payments = ({ price }) => {
                   </div>
                 </Link>
               }
+              position={true}
             />
           )}
+
           {isOpen && (
             <Warning setIsOpen={setIsOpen} errorMessage={message.message} />
           )}

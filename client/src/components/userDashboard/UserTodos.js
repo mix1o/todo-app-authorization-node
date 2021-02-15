@@ -4,6 +4,8 @@ import { useCounter } from '../../store/sub';
 import styled from 'styled-components';
 import Todo from '../todo/Todo';
 import Footer from '../page/Footer';
+import { SlidInPresence, SlidInItems } from '../animation/PageTransitions';
+import { SlidInContainer } from '../animation/MountTransition';
 
 const StyledDiv = styled.div`
   filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
@@ -11,8 +13,7 @@ const StyledDiv = styled.div`
   padding: 1rem;
   height: auto;
 `;
-
-const UserTodos = ({ tasks, onAdd }) => {
+const UserTodos = ({ tasks, onAdd, show }) => {
   const newItems = tasks.filter((item) => item.complete !== 'Completed');
   const [state, actions] = useCounter();
 
@@ -47,53 +48,72 @@ const UserTodos = ({ tasks, onAdd }) => {
         }}
       >
         <StyledDiv open={state.newTodo} className="tasks">
-          <h3>
-            Today is <span>{`${dayName} ${dayOfWeek} ${month}`}</span>
-          </h3>
-          {tasks && (
-            <p style={{ fontSize: '12px', marginBottom: '2rem' }}>
-              Total tasks:
-              <span className="task__total">{newItems.length}</span>
-            </p>
-          )}
-          <p style={{ fontSize: '22px' }}>Current tasks</p>
-          {newItems
-            .reverse()
-            .map(
-              ({ _id, name, description, priority, date, complete, input }) => (
-                <Task
-                  id={_id}
-                  key={_id}
-                  name={name}
-                  desc={description}
-                  prio={priority}
-                  date={date}
-                  status={complete}
-                  input={true}
-                  onAdd={onAdd}
-                />
-              )
+          <SlidInPresence>
+            {!show && (
+              <SlidInContainer>
+                <SlidInItems>
+                  <h3>
+                    Today is <span>{`${dayName} ${dayOfWeek} ${month}`}</span>
+                  </h3>
+                  {tasks && (
+                    <p style={{ fontSize: '12px', marginBottom: '2rem' }}>
+                      All tasks:
+                      <span className="task__total">{newItems.length}</span>
+                    </p>
+                  )}
+                </SlidInItems>
+                <SlidInItems>
+                  <p style={{ fontSize: '22px' }}>Current tasks</p>
+                </SlidInItems>
+                {newItems
+                  .reverse()
+                  .map(
+                    ({
+                      _id,
+                      name,
+                      description,
+                      priority,
+                      date,
+                      complete,
+                      input,
+                    }) => (
+                      <Task
+                        id={_id}
+                        key={_id}
+                        name={name}
+                        desc={description}
+                        prio={priority}
+                        date={date}
+                        status={complete}
+                        input={true}
+                        onAdd={onAdd}
+                      />
+                    )
+                  )}
+                <SlidInItems>
+                  <div style={{ textAlign: 'center' }}>
+                    <button
+                      onClick={() => {
+                        actions.openTodo(true);
+                        window.scrollTo(0, 0);
+                      }}
+                      className="btn-tasks-new"
+                      style={{
+                        display: 'inline-block',
+                        color: '#1db95e',
+                        textDecoration: 'none',
+                        fontSize: '1.7rem',
+                        background: 'transparent',
+                      }}
+                    >
+                      Add task
+                    </button>
+                  </div>
+                </SlidInItems>
+                <Footer />
+              </SlidInContainer>
             )}
-          <div style={{ textAlign: 'center' }}>
-            <button
-              onClick={() => {
-                actions.openTodo(true);
-                window.scrollTo(0, 0);
-              }}
-              className="btn-tasks-new"
-              style={{
-                display: 'inline-block',
-                color: '#1db95e',
-                textDecoration: 'none',
-                fontSize: '1.7rem',
-                background: 'transparent',
-              }}
-            >
-              Add task
-            </button>
-          </div>
-
-          <Footer />
+          </SlidInPresence>
         </StyledDiv>
       </div>
       {state.newTodo && <Todo onAdd={onAdd} />}

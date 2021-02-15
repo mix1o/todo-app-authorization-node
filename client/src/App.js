@@ -28,11 +28,15 @@ import {
   SwitchTransition,
   RouteTransition,
 } from './components/animation/PageTransitions';
+import { useEffect, useState } from 'react';
+import BasicLoadingAni from './components/animation/BasicLoadingAni';
 
 function App() {
   const [cookies] = useCookies({});
   const { user, accept } = cookies;
   const [state, actions] = useCounter();
+  const [loadingAnimation, setStartAnimation] = useState(true);
+
   const acceptCookieHandler = () => {
     fetch('/cookie-accept', {
       method: 'POST',
@@ -41,6 +45,13 @@ function App() {
       },
     }).then(() => window.location.reload());
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartAnimation(false);
+      actions.changeStateAnimation(true);
+    }, 1500);
+  }, []);
 
   return (
     <div className="App">

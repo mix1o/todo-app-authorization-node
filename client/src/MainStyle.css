@@ -306,7 +306,7 @@ h3 > span {
 .main__signUp,
 .main__reset,
 .main__signIn {
-  height: 85vh;
+  height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -315,10 +315,9 @@ h3 > span {
   background-position: bottom;
 }
 .main__signIn {
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .section__header {
-  margin-top: 6rem;
   color: var(--main-color-green);
   font-size: 4.4rem;
   font-weight: 700;
@@ -544,7 +543,7 @@ h3 > span {
   list-style: none;
   width: 100%;
 }
-.list__hamburger > li {
+.lower {
   margin-top: 4rem;
   width: 85%;
   display: block;

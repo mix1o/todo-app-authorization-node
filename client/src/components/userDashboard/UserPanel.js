@@ -59,45 +59,44 @@ const UserPanel = () => {
 
   return (
     <>
-      {loadingAnimation && <BasicLoadingAni />}
-      {!loadingAnimation && (
-        <HamburgerTop onAdd={handlerAdd} blur={state.newTodo} />
-      )}
-      {!loadingAnimation && (
-        <div>
-          {filteredUnCompleted.length < 1 && (
-            <div className="center">
-              <div
-                onClick={() => {
-                  if (state.newTodo) {
-                    actions.openTodo(false);
-                  }
-                }}
-              >
-                <StyledDiv open={state.newTodo}>
-                  <h2 className="heading-2">Start with adding new task</h2>
-                  {!open && (
-                    <button
-                      className="btn-user-panel"
-                      onClick={() => actions.openTodo(true)}
-                    >
-                      Add task
-                    </button>
-                  )}
+      <HamburgerTop onAdd={handlerAdd} blur={state.newTodo} />
+      <div>
+        {filteredUnCompleted.length < 1 && (
+          <div className="center">
+            <div
+              onClick={() => {
+                if (state.newTodo) {
+                  actions.openTodo(false);
+                }
+              }}
+            >
+              <StyledDiv open={state.newTodo}>
+                <h2 className="heading-2">Start with adding new task</h2>
+                {!open && (
+                  <button
+                    className="btn-user-panel"
+                    onClick={() => actions.openTodo(true)}
+                  >
+                    Add task
+                  </button>
+                )}
 
-                  <div className="user-panel-svg">{illustration}</div>
-                </StyledDiv>
-              </div>
-
-              {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+                <div className="user-panel-svg">{illustration}</div>
+              </StyledDiv>
             </div>
-          )}
-          {filteredUnCompleted.length > 0 && (
-            <UserTodos onAdd={handlerAdd} tasks={tasks} />
-          )}
-          <MenuBottom />
-        </div>
-      )}
+
+            {state.newTodo && <Todo onAdd={handlerAdd} setOpen={setOpen} />}
+          </div>
+        )}
+        {filteredUnCompleted.length > 0 && (
+          <UserTodos
+            onAdd={handlerAdd}
+            tasks={tasks}
+            loadingAnimation={loadingAnimation}
+          />
+        )}
+        <MenuBottom />
+      </div>
     </>
   );
 };

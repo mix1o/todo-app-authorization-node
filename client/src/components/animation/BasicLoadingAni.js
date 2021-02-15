@@ -49,18 +49,20 @@ const LoadingWrapperVariants = {
 
 const LoadingCircleVariants = {
   start: {
-    y: '0%',
+    y: 0,
     transition: {
       duration: 0.4,
+      type: 'tween',
       repeat: 'Infinity',
       repeatType: 'reverse',
       ease: 'easeInOut',
     },
   },
   end: {
-    y: '100%',
+    y: 25,
     transition: {
       duration: 0.4,
+      type: 'tween',
       repeat: 'Infinity',
       repeatType: 'reverse',
       ease: 'easeInOut',
