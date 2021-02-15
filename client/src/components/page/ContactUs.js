@@ -160,7 +160,7 @@ const ContactUs = () => {
         </main>
         {message.correct && (
           <Popup
-            position={true}
+            position={user ? true : null}
             title="Your email has been send"
             message="You will be redirect in few seconds"
             size="2rem"
