@@ -26,7 +26,10 @@ const HoWorks = () => {
   return (
     <main className="how__main">
       <h2 className="how__header">How it works</h2>
-      <Link to="/" style={{position: 'absolute', top: '2%', left: '4%',zIndex: '3' }}>
+      <Link
+        to="/"
+        style={{ position: 'absolute', top: '2%', left: '4%', zIndex: '3' }}
+      >
         <svg
           width="40"
           height="40"

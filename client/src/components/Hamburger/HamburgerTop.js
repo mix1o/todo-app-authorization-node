@@ -4,6 +4,9 @@ import Hamburger from './Hamburger';
 import styled from 'styled-components';
 
 const BiggerPolygon = styled.div`
+@media (min-width: 576px) and (orientation: landscape) {
+height: 57px;
+}
   position: fixed
   top: 0;
   left: 0;
@@ -14,6 +17,10 @@ const BiggerPolygon = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 25%);
 `;
 const SmallerPolygon = styled.div`
+  @media (min-width: 576px) and (orientation: landscape) {
+    height: 70px;
+    clip-path: polygon(50% 0, 100% 0, 100% 90%, 65% 62%, 50% 0);
+  }
   position: fixed;
   top: 0;
   right: 0;
@@ -34,7 +41,12 @@ const HamburgerTop = ({ onAdd, blur }) => {
     <div
       id="todo"
       className={`${blur ? 'hamburger__topBlur' : ' '}`}
-      style={{ position: 'sticky', top: '0', left: '0', zIndex: '6' }}
+      style={{
+        position: 'sticky',
+        top: '0',
+        left: '0',
+        zIndex: '6',
+      }}
     >
       <Hamburger onAdd={onAdd} isOpen={isOpen} setIsOpen={setIsOpen} />
       <BiggerPolygon />
@@ -45,7 +57,7 @@ const HamburgerTop = ({ onAdd, blur }) => {
         }}
         isOpen={isOpen}
         disable={blur}
-        className={`${blur ? 'menu__disable' : ''}`}
+        className={`${blur ? 'menu__disable' : ''} menu__polygon`}
       >
         {isOpen ? close : bars}
       </SmallerPolygon>

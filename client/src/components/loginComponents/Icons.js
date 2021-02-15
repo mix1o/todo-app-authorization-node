@@ -1,5 +1,6 @@
 const Star = (
   <svg
+    className="star"
     width="10"
     height="10"
     viewBox="0 0 15 13"

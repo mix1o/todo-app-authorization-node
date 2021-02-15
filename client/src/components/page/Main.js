@@ -27,7 +27,7 @@ const Main = () => {
             Sign In
           </Link>
         </div>
-        <div>
+        <div style={{}}>
           <svg
             width="355"
             height="262"
@@ -200,8 +200,13 @@ const Main = () => {
             </defs>
           </svg>
           <Link
-            style={{ marginTop: '2rem', marginBottom: '0' }}
-            className="heading__btn"
+            style={{
+              marginTop: '3rem',
+              marginBottom: '0',
+              display: 'block',
+              margin: '0 auto',
+            }}
+            className="heading__btn headin_btn--short"
             to="/how-works"
           >
             How it works?

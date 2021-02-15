@@ -131,10 +131,7 @@ const RegisterationForm = () => {
           style={{ filter: popup ? 'blur(3px)' : 'blur(0)' }}
           className="main__signUp"
         >
-          <div
-            style={{ marginTop: '2rem', width: '100%' }}
-            className="link__back"
-          >
+          <div style={{ marginTop: '2rem', width: '100%' }}>
             <Link style={{ margin: '2rem' }} to="/">
               <svg
                 width="40"
@@ -265,6 +262,7 @@ const RegisterationForm = () => {
               </p>
             </label>
             <p
+              className="required__fields"
               style={{
                 textAlign: 'left',
                 width: '100%',
@@ -297,7 +295,7 @@ const RegisterationForm = () => {
             </button>
 
             <div className="signUp_div_signIn">
-              <p style={{ fontSize: '1.3rem' }}>Already have the account?</p>
+              <p className="label__paragraph">Already have the account?</p>
               <button className="signUp__btn__signIn">
                 <Link to="/login">Sign In</Link>
               </button>

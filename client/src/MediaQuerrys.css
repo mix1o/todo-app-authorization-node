@@ -1,0 +1,95 @@
+@media (min-width: 576px) and (orientation: landscape) {
+  html {
+    font-size: 9px;
+  }
+  .menuBottom {
+    height: 14vh;
+  }
+  .menu__polygon {
+    clip-path: polygon(10% 10%, 100% 0, 100% 90%, 40% 60%, 0 0);
+    background-color: red;
+  }
+  .section__task {
+    width: 85%;
+    margin: 3rem auto;
+  }
+  .tasks__date {
+    margin-left: 6rem;
+  }
+  .headin_btn--short {
+    width: 30vw;
+  }
+  .how__main {
+    position: relative;
+    height: 200vh;
+  }
+  .how__img {
+    width: 54%;
+  }
+  .how__imgWrapper {
+    width: 50%;
+  }
+  .main__signUp,
+  .main__signIn,
+  .main__reset {
+    width: 50vw;
+  }
+  .section__formWrapper {
+    width: 100%;
+  }
+  .form__label {
+    margin-left: 5rem;
+    width: 100%;
+  }
+  .label__paragraph {
+    font-size: 1.7rem;
+  }
+  .star {
+    margin-top: 0.8rem;
+  }
+  .required__fields {
+    margin-left: 5rem;
+    font-size: 1.8rem;
+  }
+  .rest__reqired {
+    font-size: 1.5rem;
+  }
+  .section__buttons {
+    width: 100%;
+  }
+  .label__terms {
+    font-size: 1.5rem;
+  }
+  .checkbox__indicator {
+    margin-top: 0.5rem;
+  }
+  .label__input {
+    width: 90%;
+  }
+  .label__eye {
+    top: 3.2rem;
+    right: 5rem;
+  }
+  .signIn__btn {
+    width: 90%;
+    margin-left: 2.5rem;
+  }
+  .link__back {
+    margin-top: 8rem;
+  }
+  .popup {
+    width: 40%;
+  }
+  .popup__message {
+    font-size: 1.7rem;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

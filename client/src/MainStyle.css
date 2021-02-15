@@ -272,10 +272,7 @@ h3 > span {
   z-index: 1;
 }
 /* sign up */
-.not__account {
-  font-size: 1.3rem;
-}
-.not__account > a {
+.label__paragraph > a {
   color: #fff;
   background: var(--main-color-green);
   padding: 3px 3px 1rem 1rem;
@@ -313,6 +310,7 @@ h3 > span {
   align-items: center;
   background-image: url('./components/loginComponents/waves.svg');
   background-position: bottom;
+  margin: 0 auto;
 }
 .main__signIn {
   justify-content: space-evenly;
@@ -700,8 +698,9 @@ h3 > span {
 }
 .log__out {
   position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  right: 0;
+  margin-top: 2rem;
+  padding: 2rem;
 }
 
 .container__found__tasks {

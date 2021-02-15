@@ -36,10 +36,10 @@ const NewPassword = () => {
       });
   };
 
-  if(message.correct){
+  if (message.correct) {
     setTimeout(() => {
-      history.push("/login")
-    },2000)
+      history.push('/login');
+    }, 2000);
   }
 
   return (
@@ -81,22 +81,17 @@ const NewPassword = () => {
             Forgot password?
           </h2>
           <form
+            style={{ margin: '2rem' }}
             className="section__formWrapper"
             name="reset password form"
-            style={{ display: 'inline-block', marginTop: '4rem' }}
           >
-            <label
-              className="passwordForm__email form__label"
-              style={{ display: 'block', marginTop: '3rem' }}
-            >
+            <label className="signUp__label--password form__label">
               <div className="form__labelWrapper-para">
                 {Star}
-                <p className="label__paragraph" style={{ textAlign: 'left' }}>
-                  New password:
-                </p>
+                <p className="label__paragraph"> New password:</p>
               </div>
               <input
-                className="label__input label__input--email"
+                className="label__input label__input--password"
                 type={passwordVis}
                 placeholder="New password"
                 required
@@ -104,18 +99,13 @@ const NewPassword = () => {
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </label>
-            <label
-              className="passwordForm__email form__label"
-              style={{ display: 'block', marginTop: '3rem' }}
-            >
+            <label className="signUp__label--password form__label">
               <div className="form__labelWrapper-para">
                 {Star}
-                <p className="label__paragraph" style={{ textAlign: 'left' }}>
-                  Confirm new password:
-                </p>
+                <p className="label__paragraph">Confirm new password:</p>
               </div>
               <input
-                className="label__input label__input--email"
+                className="label__input label__input--password"
                 type={passwordVis}
                 placeholder="Confirm new password"
                 required
@@ -138,6 +128,7 @@ const NewPassword = () => {
               </i>
             </label>
             <p
+              className="required__fields"
               style={{
                 textAlign: 'left',
                 width: '100%',

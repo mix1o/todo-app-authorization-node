@@ -4,6 +4,7 @@ import App from './App';
 import MainStyle from './MainStyle.css';
 import StyleEffects from './StyleEffects.css';
 import Colors from './Colors.css';
+import MediaQuerrys from './MediaQuerrys.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(

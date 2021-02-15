@@ -54,10 +54,7 @@ const SignIn = () => {
             message.correct ? { filter: 'blur(3px)' } : { filter: 'blur(0px)' }
           }
         >
-          <div
-            style={{ marginTop: '.5rem', width: '100%' }}
-            className="link__back"
-          >
+          <div style={{ width: '100%' }} className="link__back">
             <Link style={{ margin: '2rem' }} to="/">
               <svg
                 width="40"
@@ -82,6 +79,7 @@ const SignIn = () => {
               </svg>
             </Link>
           </div>
+
           <h1 className="section__header">Sign In</h1>
           <form className="section__formWrapper" name="sign in form">
             <label className="signUp__label--email form__label">
@@ -140,6 +138,7 @@ const SignIn = () => {
               </p>
             </label>
             <p
+              className=" required__fields"
               style={{
                 textAlign: 'left',
                 width: '100%',
@@ -160,7 +159,7 @@ const SignIn = () => {
               Login
             </button>
             <p
-              className="not__account"
+              className="label__paragraph"
               style={{ textAlign: 'center', marginBottom: '2rem' }}
             >
               Don't have an account <Link to="/sign-up">Create one</Link>

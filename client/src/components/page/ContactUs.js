@@ -5,6 +5,7 @@ import Warning from '../loginComponents/Warning';
 import { useHistory, Link } from 'react-router-dom';
 import { Star } from '../loginComponents/Icons';
 import { useCookies } from 'react-cookie';
+import { motion } from 'framer-motion';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import MenuBottom from '../Hamburger/MenuBottom';
 

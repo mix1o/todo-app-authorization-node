@@ -14,13 +14,14 @@ import TasksFound from './TasksFound';
 import ListHamburger from './ListHamburger';
 
 const HamburgerDiv = styled(motion.div)`
-  position: fixed;
+  position: absolute;
   height: 100vh;
   top: 0;
-  bottom: 0;
+  left: 0;
   width: 100%;
   background: var(--header-color);
   z-index: 6;
+  overflow-y: scroll;
 `;
 
 const Hamburger = ({ isOpen, setIsOpen }) => {

@@ -103,6 +103,7 @@ const ResetPasswordForm = () => {
               />
             </label>
             <p
+              className="rest__reqired"
               style={{
                 marginTop: '1.5rem',
                 textAlign: 'left',
