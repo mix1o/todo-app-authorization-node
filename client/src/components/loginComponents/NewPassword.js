@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { changePassType } from './changePassType';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { FinishedReset, Star, OpenEye, ClosedEye } from './Icons';
 import Popup from './Popup';
 import Warning from './Warning';
@@ -13,6 +13,7 @@ const NewPassword = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isShown, setIsShown] = useState(true);
   const { token } = useParams();
+  const history = useHistory();
 
   const password = () => {
     fetch('/api/newPassword', {
@@ -34,6 +35,12 @@ const NewPassword = () => {
         }
       });
   };
+
+  if(message.correct){
+    setTimeout(() => {
+      history.push("/login")
+    },2000)
+  }
 
   return (
     <>
@@ -169,7 +176,7 @@ const NewPassword = () => {
             }
           />
         )}
-        {isOpen && (
+        {isOpen && !message.correct && (
           <Warning setIsOpen={setIsOpen} errorMessage={message.message} />
         )}
       </div>
