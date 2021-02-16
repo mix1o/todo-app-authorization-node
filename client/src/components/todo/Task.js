@@ -64,9 +64,6 @@ const Task = ({
             onClick={() => {
               sendStatus(id);
               onAdd();
-              // if (searchUserBool) {
-              //   searchUserData();
-              // }
             }}
             className="finish"
           >

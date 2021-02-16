@@ -102,7 +102,10 @@ const ContactUs = () => {
           }}
           className="contactUs"
         >
-          <h1 style={{ color: '#2d3748' }} className="section__title">
+          <h1
+            style={{ color: '#2d3748', textAlign: 'center' }}
+            className="section__title"
+          >
             Get in touch
           </h1>
           <section>

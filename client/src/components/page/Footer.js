@@ -20,16 +20,16 @@ const Footer = () => {
             fontWeight: '700',
             color: ' var(--secondary-grey)',
             marginBottom: '3rem',
-            fontSize: '2rem',
+            fontSize: '2.2rem',
           }}
         >
           Usefull Links
         </p>
-        <div>
-          <p>
-            <Link to="/about">About</Link>
-          </p>
-        </div>
+
+        <p>
+          <Link to="/about">About</Link>
+        </p>
+
         <p>
           <Link to="/terms">Terms of service</Link>
         </p>

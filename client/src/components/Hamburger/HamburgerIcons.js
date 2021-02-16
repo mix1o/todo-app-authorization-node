@@ -48,7 +48,7 @@ const phone = (
 );
 
 const phone2 = (
-  <i>
+  <i className="menu__bottomIcon">
     <svg
       width="35"
       height="33"
@@ -70,7 +70,7 @@ const phone2 = (
 );
 
 const plusSign = (
-  <i>
+  <i className="menu__bottomIcon">
     <svg
       width="34"
       height="33"
@@ -92,7 +92,7 @@ const plusSign = (
 );
 
 const home = (
-  <i>
+  <i className="menu__bottomIcon">
     <svg
       width="34"
       height="33"
@@ -200,7 +200,7 @@ const search = (
 
 const next = (
   <svg
-  className="next__btn__how"
+    className="next__btn__how"
     width="40"
     height="40"
     viewBox="0 0 27 27"

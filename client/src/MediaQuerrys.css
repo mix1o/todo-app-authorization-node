@@ -1,3 +1,4 @@
+/* iphone x landscape */
 @media (min-width: 576px) and (orientation: landscape) {
   html {
     font-size: 9px;
@@ -20,7 +21,6 @@
   .headin_btn--short {
     width: 30vw;
   }
-  /* how works */
   .how__main {
     background-color: var(--header-color);
     position: relative;
@@ -32,7 +32,6 @@
   .how__imgWrapper {
     width: 50%;
   }
-  /* login,signup,reset,contact */
   .main__signUp,
   .main__signIn,
   .main__reset,
@@ -91,24 +90,18 @@
   .section__title {
     margin-left: 2rem;
   }
-  /* end login signup,reset */
-  /* footer pages */
   .main__info {
     margin-left: 2rem;
   }
   .footer__first {
     margin-left: 10rem;
   }
-  /* end footer pages */
-  /* hamburger */
   .hamburger__cancel {
     width: 15%;
   }
   .hamburger__title {
     margin-left: 4rem;
   }
-  /* end hamburger */
-  /* payments */
   .card__normal,
   .payment__details {
     width: 50%;
@@ -126,7 +119,6 @@
     width: 80%;
     margin: 5rem auto;
   }
-  /* end payments */
   .settings__main {
     margin-top: 0;
   }
@@ -153,17 +145,8 @@
     margin: 0 1rem;
   }
 }
-
-@media (min-width: 768px) {
-}
-
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1200px) {
-}
 /* IPHONE 5/SE */
-@media (max-width: 350px) and (orientation: portrait){
+@media (max-width: 350px) and (orientation: portrait) {
   html {
     font-size: 7.5px;
   }
@@ -187,7 +170,7 @@
     width: 70%;
   }
   .user-panel-svg {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
   .heading-2 {
     margin-top: 2rem;
@@ -210,11 +193,10 @@
     left: 8px;
   }
 }
-@media (max-width: 575px) and (orientation: landscape){
+@media (max-width: 575px) and (orientation: landscape) {
   html {
     font-size: 7.2px;
   }
-  /*  */
   .menu__polygon {
     clip-path: polygon(10% 10%, 100% 0, 100% 90%, 40% 60%, 0 0);
     background-color: red;
@@ -229,7 +211,6 @@
   .headin_btn--short {
     width: 30vw;
   }
-  /* how works */
   .how__main {
     background-color: var(--header-color);
     position: relative;
@@ -241,7 +222,6 @@
   .how__imgWrapper {
     width: 50%;
   }
-  /* login,signup,reset,contact */
   .main__signUp,
   .main__signIn,
   .main__reset,
@@ -303,24 +283,18 @@
   .section__title {
     margin-left: 2rem;
   }
-  /* end login signup,reset */
-  /* footer pages */
   .main__info {
     margin-left: 2rem;
   }
   .footer__first {
     margin-left: 10rem;
   }
-  /* end footer pages */
-  /* hamburger */
   .hamburger__cancel {
     width: 15%;
   }
   .hamburger__title {
     margin-left: 4rem;
   }
-  /* end hamburger */
-  /* payments */
   .card__normal,
   .payment__details {
     width: 65%;
@@ -338,7 +312,6 @@
     width: 80%;
     margin: 5rem auto;
   }
-  /* end payments */
   .settings__main {
     margin-top: 0;
   }
@@ -368,5 +341,190 @@
   .hamburger__div__input-child {
     top: 5px;
     left: 5px;
+  }
+}
+@media (min-width: 1024px) and (orientation: portrait) {
+  .headin_btn--short {
+    margin-top: 2rem;
+    max-width: 20%;
+  }
+  .main__heading {
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+  }
+  .contactUs {
+    height: 100vh;
+  }
+  .section__formWrapper {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .form__label {
+    margin-left: 5rem;
+    width: 100%;
+  }
+  .label__paragraph,
+  .signUp__btn__signIn,
+  .label__terms,
+  .rest__reqired {
+    font-size: 1.7rem;
+  }
+  .label__link {
+    font-size: 1.4rem;
+  }
+  .label__input {
+    width: 100%;
+  }
+  .star {
+    margin-top: 0.8rem;
+  }
+  .required__fields {
+    margin-left: 5rem;
+    font-size: 1.8rem;
+  }
+  .checkbox__indicator {
+    margin-top: 0.5rem;
+  }
+  .label__eye {
+    top: 3.2rem;
+  }
+  .signIn__btn {
+    width: 90%;
+    margin-left: 2.5rem;
+  }
+  .btn__main--full {
+    width: 50%;
+    display: block;
+    margin: 5rem auto;
+  }
+  .popup {
+    width: 40%;
+  }
+  .section__task,
+  .tasks__date,
+  .footer__first {
+    width: 80%;
+    margin: 4rem auto;
+  }
+  .edit__label {
+    width: 50%;
+  }
+  .todo__body {
+    width: 70%;
+  }
+  .label__textarea {
+    width: 95%;
+  }
+  .todo__actions {
+    margin: 0 1rem;
+  }
+  .hamburger__info {
+    margin-left: 4rem;
+  }
+  .log__out {
+    bottom: 2rem;
+  }
+  .container__found__tasks {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .task__desc {
+    font-size: 2.3rem;
+    margin: 1.5rem 0;
+  }
+  .status__task > p {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+  }
+  .card__normal {
+    width: 50%;
+    margin: 4rem auto;
+  }
+  .card__price {
+    width: 100%;
+  }
+  .section__title {
+    text-align: center;
+  }
+  .label__textarea {
+    width: 100%;
+  }
+  .card__normal,
+  .payment__details {
+    width: 50%;
+    margin: 5rem auto;
+  }
+  .section__title,
+  .card__price,
+  .heading-2 {
+    text-align: center;
+    width: 100%;
+  }
+  .payment__details,
+  .payment__finish,
+  .settings__main {
+    width: 80%;
+    margin: 5rem auto;
+  }
+  .settings__main {
+    margin-top: 0;
+  }
+  .settings__button__delete,
+  .button__change {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  .settings__edit__div,
+  .settings__deletePopup {
+    width: 50%;
+  }
+}
+@media (min-width: 1024px) and (orientation: landscape) {
+  html {
+    font-size: 14px;
+  }
+  .hamburger__info {
+    margin-left: 5rem;
+  }
+  .log__out {
+    bottom: 2rem;
+  }
+  .lower {
+    margin: 4rem auto;
+  }
+  .card__recomended {
+    top: 5rem;
+    right: -6rem;
+    width: 40%;
+  }
+  .task__desc {
+    margin: 2rem 0;
+  }
+  .card__btn {
+    width: 50%;
+  }
+  .tasks__date > h3 {
+    font-size: 2rem;
+  }
+  .tasks__date > h3 > span {
+    font-size: 1.3rem;
+  }
+}
+
+/* powyzej 1024px szerokosc */
+@media (min-width: 1024px) {
+  .menuBottom {
+    max-width: 1024px;
+    max-height: 85px;
+  }
+  .menuBottom__name {
+    font-size: 2rem;
+  }
+  .menu__bottomIcon > svg {
+    width: 40px;
+    height: 40px;
   }
 }

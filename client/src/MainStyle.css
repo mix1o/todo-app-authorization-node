@@ -326,7 +326,6 @@ h3 > span {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  max-width: 85vw;
 }
 .form__message {
   color: var(--red);
@@ -604,8 +603,10 @@ h3 > span {
   padding: 0.5rem 1.5rem;
   background-color: var(--main-color-green);
   position: fixed;
-  min-width: 100vw;
+  width: 100vw;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 }
 .menuBottom__section a {
@@ -891,7 +892,6 @@ h3 > span {
 }
 .card__normal {
   width: 100%;
-
   min-height: 50vh;
   text-align: center;
   border: 0.3rem solid var(--main-color-green);
