@@ -214,7 +214,9 @@ const Settings = () => {
                     openEdit('nickname');
                   }}
                   className="settings__edit__button"
+                  style={openDelete ? {pointerEvents: 'none'} : {}}
                 >
+                 
                   Edit
                 </span>
               </div>
@@ -232,6 +234,7 @@ const Settings = () => {
                     openEdit('email');
                   }}
                   className="settings__edit__button"
+                  style={openDelete ? {pointerEvents: 'none'} : {}}
                 >
                   Edit
                 </span>
@@ -248,6 +251,7 @@ const Settings = () => {
                     openEdit('password');
                   }}
                   className="settings__edit__button"
+                  style={openDelete ? {pointerEvents: 'none'} : {}}
                 >
                   Edit
                 </span>

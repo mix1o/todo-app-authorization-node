@@ -654,6 +654,11 @@ h3 > span {
   display: flex;
   flex-flow: row;
 }
+.hamburger__div__input-child {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 .hamburger__input {
   padding: 1.5rem 4rem;
   background: var(--dark-light-blue);

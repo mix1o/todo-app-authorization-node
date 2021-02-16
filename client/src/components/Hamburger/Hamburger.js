@@ -132,12 +132,13 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
               <SlidInItems>
                 <div className="hamburger__div__input">
                   <div
+                    className="hamburger__div__input-child"
                     onClick={() => {
                       searchUserData();
                       setAreResult(true);
                       setLoading(true);
                     }}
-                    style={{ position: 'absolute', top: '10px', left: '10px' }}
+                   
                   >
                     {search}
                   </div>

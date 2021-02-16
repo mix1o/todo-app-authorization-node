@@ -158,6 +158,7 @@ const dolar = (
 const settings = (
   <i>
     <svg
+      className="settings__icon_ham"
       width="41"
       height="41"
       viewBox="0 0 41 41"
@@ -199,6 +200,7 @@ const search = (
 
 const next = (
   <svg
+  className="next__btn__how"
     width="40"
     height="40"
     viewBox="0 0 27 27"

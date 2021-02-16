@@ -27,7 +27,7 @@ const Main = () => {
             Sign In
           </Link>
         </div>
-        <div style={{}}>
+        <div className="container-svg-main">
           <svg
             width="355"
             height="262"
@@ -283,6 +283,7 @@ const Main = () => {
           </div>
           <div className="social">
             <Link to="/contact-us">
+              <i>
               <svg
                 width="35"
                 height="35"
@@ -295,6 +296,7 @@ const Main = () => {
                   fill="#4A5568"
                 />
               </svg>
+            </i>
             </Link>
           </div>
         </div>

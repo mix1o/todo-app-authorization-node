@@ -29,7 +29,8 @@ const HoWorks = () => {
 
       <div className="how__ContentWrapper">
         <div style={{ width: '100%' }}>
-          <Link style={{ margin: '2rem' }} to="/">
+          <Link style={{ margin: '2rem',position: 'relative',zIndex: '3' }} to="/">
+            <i>
             <svg
               width="40"
               height="40"
@@ -52,6 +53,7 @@ const HoWorks = () => {
                 fill="#f7fafc"
               />
             </svg>
+            </i>
           </Link>
         </div>
         <span className="how__index ">
@@ -76,6 +78,7 @@ const HoWorks = () => {
           </div>
         </div>
         <i
+          className="container__next-how-works"
           style={{
             position: 'absolute',
             right: '3%',

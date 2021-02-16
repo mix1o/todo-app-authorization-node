@@ -15,6 +15,9 @@ const StyledDiv = styled.div`
   filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
   background: ${({ open }) => (open ? 'rgb(235, 235, 235)' : '#fff')};
   height: 93vh;
+  @media (max-width: 350px) and (orientation: portrait){
+    padding: 1rem;
+  }
 `;
 
 const UserPanel = () => {
