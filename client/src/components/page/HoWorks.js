@@ -26,34 +26,34 @@ const HoWorks = () => {
   return (
     <main className="how__main">
       <h2 className="how__header">How it works</h2>
-      <Link
-        to="/"
-        style={{ position: 'absolute', top: '2%', left: '4%', zIndex: '3' }}
-      >
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 49 49"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="24.0475"
-            cy="24.0475"
-            r="23.0475"
-            stroke="var(--white)"
-            strokeWidth="3"
-          />
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
-            fill="var(--white)"
-          />
-        </svg>
-      </Link>
 
       <div className="how__ContentWrapper">
+        <div style={{ width: '100%' }}>
+          <Link style={{ margin: '2rem' }} to="/">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 49 49"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="backArrow"
+            >
+              <circle
+                cx="24.0475"
+                cy="24.0475"
+                r="23.0475"
+                stroke="#f7fafc"
+                strokeWidth="3"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
+                fill="#f7fafc"
+              />
+            </svg>
+          </Link>
+        </div>
         <span className="how__index ">
           <div className="how__works__div how__works__border__div">
             <div className="how__works__div how__works__background__div">

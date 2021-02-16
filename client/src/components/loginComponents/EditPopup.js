@@ -42,14 +42,14 @@ const EditPopup = ({
       {editDataType === 'nickname' && (
         <>
           <h3 className="heading-3">Edit your nickname</h3>
-          <label className="form__label">
+          <label style={{ textAlign: 'center', display: 'block' }}>
             <input
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               type="text"
-              className="label__input"
-              style={{ width: '100%', margin: '2rem 0' }}
+              className="label__input label__input--password"
               placeholder="New nickname"
+              style={{ margin: '2rem auto' }}
               onKeyDown={(e) => {
                 if (e.keyCode === 13) {
                   updateData(nickname, 'nickname');
@@ -60,10 +60,9 @@ const EditPopup = ({
           <div>
             <button
               onClick={() => updateData(nickname, 'nickname')}
-              className="btn__main--full"
-              style={{ margin: '1rem 0 1rem 0' }}
+              className="btn__main--full button__change"
             >
-              Change{' '}
+              Change
             </button>
           </div>
         </>
@@ -71,14 +70,14 @@ const EditPopup = ({
       {editDataType === 'email' && (
         <>
           <h3 className="heading-3">Edit your new email</h3>
-          <label className="form__label">
+          <label style={{ textAlign: 'center', display: 'block' }}>
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               className="label__input"
+              style={{ margin: '2rem auto' }}
               placeholder="example@task.com"
-              style={{ width: '100%', margin: '2rem 0' }}
               onKeyDown={(e) => {
                 if (e.keyCode === 13) {
                   updateData(email, 'email');
@@ -89,8 +88,7 @@ const EditPopup = ({
           <div>
             <button
               onClick={() => updateData(email, 'email')}
-              className="btn__main--full"
-              style={{ margin: '1rem 0 1rem 0' }}
+              className="btn__main--full button__change"
             >
               Change Now
             </button>
@@ -100,14 +98,14 @@ const EditPopup = ({
       {editDataType === 'password' && (
         <>
           <h3 className="heading-3">Edit your password</h3>
-          <label>
+          <label style={{ textAlign: 'center', display: 'block' }}>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="New password"
-              className="label__input"
-              style={{ width: '100%', margin: '2rem 0' }}
+              className="label__input label__editPopup"
+              style={{ margin: '2rem 0' }}
               onKeyDown={(e) => {
                 if (e.keyCode === 13) {
                   updateData(password, 'password');
@@ -118,8 +116,7 @@ const EditPopup = ({
           <div>
             <button
               onClick={() => updateData(password, 'password')}
-              className="btn__main--full"
-              style={{ margin: '1rem 0 1rem 0' }}
+              className="btn__main--full button__change"
             >
               Change Now
             </button>

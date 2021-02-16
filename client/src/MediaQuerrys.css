@@ -3,7 +3,8 @@
     font-size: 9px;
   }
   .menuBottom {
-    height: 14vh;
+    padding: 2rem 0;
+    height: 16vh;
   }
   .menu__polygon {
     clip-path: polygon(10% 10%, 100% 0, 100% 90%, 40% 60%, 0 0);
@@ -19,7 +20,9 @@
   .headin_btn--short {
     width: 30vw;
   }
+  /* how works */
   .how__main {
+    background-color: var(--header-color);
     position: relative;
     height: 200vh;
   }
@@ -29,9 +32,11 @@
   .how__imgWrapper {
     width: 50%;
   }
+  /* login,signup,reset,contact */
   .main__signUp,
   .main__signIn,
-  .main__reset {
+  .main__reset,
+  .contactUs {
     width: 50vw;
   }
   .section__formWrapper {
@@ -82,6 +87,70 @@
   }
   .popup__message {
     font-size: 1.7rem;
+  }
+  .section__title {
+    margin-left: 2rem;
+  }
+  /* end login signup,reset */
+  /* footer pages */
+  .main__info {
+    margin-left: 2rem;
+  }
+  .footer__first {
+    margin-left: 10rem;
+  }
+  /* end footer pages */
+  /* hamburger */
+  .hamburger__cancel {
+    width: 15%;
+  }
+  .hamburger__title {
+    margin-left: 4rem;
+  }
+  /* end hamburger */
+  /* payments */
+  .card__normal,
+  .payment__details {
+    width: 50%;
+    margin: 5rem auto;
+  }
+  .section__title,
+  .card__price,
+  .heading-2 {
+    text-align: center;
+    width: 100%;
+  }
+  .payment__details,
+  .payment__finish,
+  .settings__main {
+    width: 80%;
+    margin: 5rem auto;
+  }
+  /* end payments */
+  .settings__main {
+    margin-top: 0;
+  }
+  .settings__button__delete,
+  .button__change {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  .settings__edit__div,
+  .settings__deletePopup {
+    width: 50%;
+  }
+  .edit__label {
+    width: 50%;
+  }
+  .todo__body {
+    width: 70%;
+  }
+  .label__textarea {
+    width: 95%;
+  }
+  .todo__actions {
+    margin: 0 1rem;
   }
 }
 

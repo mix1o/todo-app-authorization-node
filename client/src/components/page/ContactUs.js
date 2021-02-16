@@ -105,54 +105,69 @@ const ContactUs = () => {
           <h1 style={{ color: '#2d3748' }} className="section__title">
             Get in touch
           </h1>
-          <section className="contact__section">
-            <label className="form__label">
-              <div className="form__labelWrapper-para">
-                {Star}
-                <p className="label__paragraph">Subject:</p>
-              </div>
-              <input
-                className="label__input"
-                type="text"
-                placeholder="Your name or alias"
-                required
-                name="Subject"
-                value={userData.Subject}
-                onChange={(e) => handlerInput(e)}
-              />
-            </label>
-            <label className="form__label">
-              <div className="form__labelWrapper-para">
-                {Star}
-                <p className="label__paragraph">Email:</p>
-              </div>
-              <input
-                className="label__input"
-                type="email"
-                placeholder="Your email address"
-                required
-                name="Email"
-                value={userData.Email}
-                onChange={(e) => handlerInput(e)}
-              />
-            </label>
-            <label className="form__label">
-              <div className="form__labelWrapper-para">
-                {Star}
-                <p className="label__paragraph">Message:</p>
-              </div>
-              <textarea
-                className="label__textarea"
-                placeholder="Remember, be nice!"
-                cols="30"
-                rows="10"
-                name="Message"
-                value={userData.Message}
-                onChange={(e) => handlerInput(e)}
-              ></textarea>
-            </label>
+          <section>
+            <form className="section__formWrapper" name="get in touch">
+              <label className="form__label">
+                <div className="form__labelWrapper-para">
+                  {Star}
+                  <p className="label__paragraph">Subject:</p>
+                </div>
+                <input
+                  className="label__input"
+                  type="text"
+                  placeholder="Your name or alias"
+                  required
+                  name="Subject"
+                  value={userData.Subject}
+                  onChange={(e) => handlerInput(e)}
+                />
+              </label>
+              <label className="form__label">
+                <div className="form__labelWrapper-para">
+                  {Star}
+                  <p className="label__paragraph">Email:</p>
+                </div>
+                <input
+                  className="label__input"
+                  type="email"
+                  placeholder="Your email address"
+                  required
+                  name="Email"
+                  value={userData.Email}
+                  onChange={(e) => handlerInput(e)}
+                />
+              </label>
+              <label className="form__label">
+                <div className="form__labelWrapper-para">
+                  {Star}
+                  <p className="label__paragraph">Message:</p>
+                </div>
+                <textarea
+                  className="label__textarea label__input"
+                  placeholder="Remember, be nice!"
+                  cols="30"
+                  rows="10"
+                  name="Message"
+                  value={userData.Message}
+                  onChange={(e) => handlerInput(e)}
+                ></textarea>
+              </label>
+              <p
+                className=" required__fields"
+                style={{
+                  textAlign: 'left',
+                  width: '100%',
+                  color: 'var(--secondary-grey)',
+                }}
+              >
+                {Star} Required fields
+              </p>
+            </form>
+            <section className="section__buttons"></section>
             <button
-              onClick={sendMessage}
+              onClick={() => {
+                sendMessage();
+              }}
               className="btn__main--full contact__btnSend"
             >
               Send Message

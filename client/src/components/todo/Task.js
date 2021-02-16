@@ -32,14 +32,17 @@ const Task = ({
   const dateOutput = ConverDate(date, finished);
 
   return (
-    <section className={`section__task ${bgColor} ${bgColorHistory}`}>
+    <section className={`section__task  ${bgColor} ${bgColorHistory}`}>
       <div className={`status-div`}>
         <div style={{ marginRight: '10px' }} className={`circle ${prio}`}></div>
         <p className="task__name" style={{ color: fontColor }}>
           {name}
         </p>
       </div>
-      <p className="task__desc" style={{ color: fontColor }}>
+      <p
+        className="task__desc"
+        style={{ color: fontColor, fontFamily: 'Lato' }}
+      >
         {desc}
       </p>
 
@@ -57,25 +60,22 @@ const Task = ({
               {dateOutput.dateAdded}
             </span>
           </p>
-          <label onClick={() => {
-                sendStatus(id);
-                onAdd();
-                // if (searchUserBool) {
-                //   searchUserData();
-                // }
-              }} className="finish">
+          <label
+            onClick={() => {
+              sendStatus(id);
+              onAdd();
+              // if (searchUserBool) {
+              //   searchUserData();
+              // }
+            }}
+            className="finish"
+          >
             <p className="finish_text" style={{ color: fontColor }}>
               Finish now
             </p>
-            <input
-              type="checkbox"
-              value={id}
-              className="label__checkbox"
-              
-            />
+            <input type="checkbox" value={id} className="label__checkbox" />
             <i className="checkbox__indicator"></i>
           </label>
-         
         </div>
       )}
       {isCompleted && (
