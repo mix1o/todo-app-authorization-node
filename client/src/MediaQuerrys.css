@@ -1,5 +1,150 @@
 /* iphone x landscape */
-
+@media (min-width: 576px) and (orientation: landscape) {
+  html {
+    font-size: 9px;
+  }
+  .menuBottom {
+    padding: 2rem 0;
+    height: 16vh;
+  }
+  .menu__polygon {
+    clip-path: polygon(10% 10%, 100% 0, 100% 90%, 40% 60%, 0 0);
+    background-color: red;
+  }
+  .section__task {
+    width: 85%;
+    margin: 3rem auto;
+  }
+  .tasks__date {
+    margin-left: 6rem;
+  }
+  .headin_btn--short {
+    width: 30vw;
+  }
+  .how__main {
+    background-color: var(--header-color);
+    position: relative;
+    height: 200vh;
+  }
+  .how__img {
+    width: 54%;
+  }
+  .how__imgWrapper {
+    width: 50%;
+  }
+  .main__signUp,
+  .main__signIn,
+  .main__reset,
+  .contactUs {
+    width: 50vw;
+  }
+  .section__formWrapper {
+    width: 100%;
+  }
+  .form__label {
+    margin-left: 5rem;
+    width: 100%;
+  }
+  .label__paragraph {
+    font-size: 1.7rem;
+  }
+  .star {
+    margin-top: 0.8rem;
+  }
+  .required__fields {
+    margin-left: 5rem;
+    font-size: 1.8rem;
+  }
+  .rest__reqired {
+    font-size: 1.5rem;
+  }
+  .section__buttons {
+    width: 100%;
+  }
+  .label__terms {
+    font-size: 1.5rem;
+  }
+  .checkbox__indicator {
+    margin-top: 0.5rem;
+  }
+  .label__input {
+    width: 90%;
+  }
+  .label__eye {
+    top: 3.2rem;
+    right: 5rem;
+  }
+  .signIn__btn {
+    width: 90%;
+    margin-left: 2.5rem;
+  }
+  .link__back {
+    margin-top: 8rem;
+  }
+  .popup {
+    width: 40%;
+  }
+  .popup__message {
+    font-size: 1.7rem;
+  }
+  .section__title {
+    margin-left: 2rem;
+  }
+  .main__info {
+    margin-left: 2rem;
+  }
+  .footer__first {
+    margin-left: 10rem;
+  }
+  .hamburger__cancel {
+    width: 15%;
+  }
+  .hamburger__title {
+    margin-left: 4rem;
+  }
+  .card__normal,
+  .payment__details {
+    width: 50%;
+    margin: 5rem auto;
+  }
+  .section__title,
+  .card__price,
+  .heading-2 {
+    text-align: center;
+    width: 100%;
+  }
+  .payment__details,
+  .payment__finish,
+  .settings__main {
+    width: 80%;
+    margin: 5rem auto;
+  }
+  .settings__main {
+    margin-top: 0;
+  }
+  .settings__button__delete,
+  .button__change {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  .settings__edit__div,
+  .settings__deletePopup {
+    width: 50%;
+  }
+  .edit__label {
+    width: 50%;
+  }
+  .todo__body {
+    width: 70%;
+  }
+  .label__textarea {
+    width: 95%;
+  }
+  .todo__actions {
+    margin: 0 1rem;
+  }
+}
 /* IPHONE 5/SE */
 @media (max-width: 350px) and (orientation: portrait) {
   html {
@@ -49,156 +194,6 @@
   .hamburger__div__input-child {
     top: 6px;
     left: 8px;
-  }
-}
-@media (max-width: 575px) and (orientation: landscape) {
-  html {
-    font-size: 7.2px;
-  }
-  .menu__polygon {
-    clip-path: polygon(10% 10%, 100% 0, 100% 90%, 40% 60%, 0 0);
-    background-color: red;
-  }
-  .section__task {
-    width: 85%;
-    margin: 3rem auto;
-  }
-  .tasks__date {
-    margin-left: 6rem;
-  }
-  .headin_btn--short {
-    width: 30vw;
-  }
-  .how__main {
-    background-color: var(--header-color);
-    position: relative;
-    height: 170vh;
-  }
-  .how__img {
-    width: 54%;
-  }
-  .how__imgWrapper {
-    width: 50%;
-  }
-  .main__signUp,
-  .main__signIn,
-  .main__reset,
-  .contactUs {
-    width: 70vw;
-  }
-  .section__formWrapper {
-    width: 100%;
-  }
-  .form__label {
-    margin-left: 5rem;
-    width: 100%;
-  }
-  .label__paragraph {
-    font-size: 1.7rem;
-  }
-  .star {
-    margin-top: 0.8rem;
-  }
-  .required__fields {
-    margin-left: 5rem;
-    font-size: 1.8rem;
-  }
-  .rest__reqired {
-    font-size: 1.5rem;
-  }
-  .section__buttons {
-    width: 100%;
-  }
-  .label__terms {
-    font-size: 1.5rem;
-  }
-  .checkbox__indicator {
-    margin-top: 0.5rem;
-  }
-  .label__input {
-    width: 90%;
-  }
-  .label__textarea {
-    width: 90%;
-  }
-  .label__eye {
-    top: 3.2rem;
-    right: 6.4rem;
-  }
-  .signIn__btn {
-    width: 90%;
-    margin-left: 2.5rem;
-  }
-  .link__back {
-    margin-top: 8rem;
-  }
-  .popup {
-    width: 40%;
-  }
-  .popup__message {
-    font-size: 1.7rem;
-  }
-  .section__title {
-    margin-left: 2rem;
-  }
-  .main__info {
-    margin-left: 2rem;
-  }
-  .footer__first {
-    margin-left: 10rem;
-  }
-  .hamburger__cancel {
-    width: 15%;
-  }
-  .hamburger__title {
-    margin-left: 4rem;
-  }
-  .card__normal,
-  .payment__details {
-    width: 65%;
-    margin: 5rem auto;
-  }
-  .section__title,
-  .card__price,
-  .heading-2 {
-    text-align: center;
-    width: 100%;
-  }
-  .payment__details,
-  .payment__finish,
-  .settings__main {
-    width: 80%;
-    margin: 5rem auto;
-  }
-  .settings__main {
-    margin-top: 0;
-  }
-  .settings__button__delete,
-  .button__change {
-    width: 70%;
-    display: block;
-    margin: 0 auto;
-  }
-  .settings__edit__div,
-  .settings__deletePopup {
-    width: 50%;
-  }
-  .edit__label {
-    width: 50%;
-  }
-  .todo__body {
-    width: 70%;
-  }
-  .todo__actions {
-    margin: 0 1rem;
-  }
-  .settings__icon_ham {
-    width: 31px;
-    height: 31px;
-  }
-  .hamburger__div__input-child {
-    top: 5px;
-    left: 5px;
   }
 }
 @media (min-width: 1024px) and (orientation: portrait) {
