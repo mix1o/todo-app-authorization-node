@@ -150,6 +150,9 @@
   html {
     font-size: 7.5px;
   }
+  .section__header {
+    color: red;
+  }
   .container-svg-main > svg {
     width: 100%;
   }
