@@ -53,7 +53,7 @@ const UserTodos = ({ tasks, onAdd, show }) => {
               Today is <span>{`${dayName} ${dayOfWeek} ${month}`}</span>
             </h3>
             {tasks && (
-              <p style={{ fontSize: '12px', marginBottom: '2rem' }}>
+              <p style={{ marginBottom: '2rem' }}>
                 All tasks:
                 <span className="task__total">{newItems.length}</span>
                 <p style={{ fontSize: '22px', marginTop: '2rem' }}>
