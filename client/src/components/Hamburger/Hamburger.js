@@ -220,6 +220,21 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
         )}
       </SlidInPresence>
       <nav className="nav__menu">
+        <Link
+          to="/user-panel"
+          style={{
+            textDecoration: 'none',
+            marginRight: 'auto',
+            display: 'inline-block',
+          }}
+        >
+          <div className="nav__logo">
+            <p>
+              <span>mn</span>
+              Tasks
+            </p>
+          </div>
+        </Link>
         <Link className="nav__items" to="/completed-tasks">
           History
         </Link>
@@ -235,7 +250,9 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
         <Link className="nav__items" to="/settings">
           Settings
         </Link>
-
+        <p className="nav__credits">
+          Credits: {state.correct && state.userData.user[0].credits}{' '}
+        </p>
         <button
           onClick={() => {
             singOut();
