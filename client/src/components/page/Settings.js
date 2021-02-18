@@ -216,7 +216,6 @@ const Settings = () => {
                   className="settings__edit__button"
                   style={openDelete ? {pointerEvents: 'none'} : {}}
                 >
-                 
                   Edit
                 </span>
               </div>
