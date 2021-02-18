@@ -25,20 +25,21 @@ const Footer = () => {
         >
           Usefull Links
         </p>
+        <div className="footer__nav">
+          <p>
+            <Link to="/about">About</Link>
+          </p>
 
-        <p>
-          <Link to="/about">About</Link>
-        </p>
-
-        <p>
-          <Link to="/terms">Terms of service</Link>
-        </p>
-        <p>
-          <Link to="/policy">Privacy policy</Link>
-        </p>
-        <p>
-          <Link to="/contact-us">Contact us</Link>
-        </p>
+          <p>
+            <Link to="/terms">Terms of service</Link>
+          </p>
+          <p>
+            <Link to="/policy">Privacy policy</Link>
+          </p>
+          <p>
+            <Link to="/contact-us">Contact us</Link>
+          </p>
+        </div>
       </div>
       <div className="footer__second">
         <p>&copy; 2021 nmTasks. All rights reserved</p>

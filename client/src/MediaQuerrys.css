@@ -615,3 +615,114 @@
     height: 40px;
   }
 }
+@media (min-width: 1366px) {
+  html {
+    font-size: 12px;
+  }
+  .label__input {
+    width: 100%;
+  }
+  .btn__main--full {
+    width: 40%;
+    display: block;
+    margin: 3rem auto;
+  }
+  .label__eye {
+    right: 1rem;
+    top: 3.5rem;
+  }
+  .signUp__btn__signIn > a {
+    font-size: 1.5rem;
+  }
+  .how__main {
+    height: 100vh;
+  }
+  .how__imgWrapper {
+    width: 35%;
+  }
+  .menuBottom {
+    display: none;
+  }
+  .containter__tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+  .section__task {
+    width: 100%;
+    margin: 0;
+  }
+  .nav__menu {
+    display: block;
+    background-color: var(--main-color-green);
+    padding: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav__items {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    transition: transform 0.2s ease-in-out;
+  }
+  .nav__items:hover {
+    border-bottom: 2px solid var(--header-color);
+    margin-top: -2px;
+    transform: scale(1.1);
+  }
+  .heading-3 {
+    margin: 3rem 0;
+  }
+  .subscrition__card--wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+  .card__normal--highlighted {
+    transform: scale(1.15);
+  }
+  .card__recomended {
+    display: none;
+  }
+  .payment__details,
+  .payment__finish,
+  .todo__body,
+  .settings__button__delete {
+    width: 50%;
+  }
+  .footer__nav {
+    display: flex;
+    justify-content: center;
+  }
+  .select__options {
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+  .settings__edit__button {
+    cursor: pointer;
+  }
+
+  .nav__items--logout {
+    border: none;
+    background-color: var(--header-color);
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    color: var(--white);
+    margin: 0 1rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .nav__items--logout:hover {
+    background-color: var(--white);
+    color: var(--header-color);
+  }
+  .main__signUp,
+  .main__reset,
+  .main__signIn {
+    background-image: none;
+  }
+}

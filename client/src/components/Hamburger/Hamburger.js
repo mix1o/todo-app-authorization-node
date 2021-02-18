@@ -22,6 +22,9 @@ const HamburgerDiv = styled(motion.div)`
   background: var(--header-color);
   z-index: 6;
   overflow-y: scroll;
+  @media (min-width: 1366px) {
+    display: none;
+  } ;
 `;
 
 const Hamburger = ({ isOpen, setIsOpen }) => {
@@ -138,7 +141,6 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                       setAreResult(true);
                       setLoading(true);
                     }}
-                   
                   >
                     {search}
                   </div>
@@ -217,6 +219,32 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
           </HamburgerDiv>
         )}
       </SlidInPresence>
+      <nav className="nav__menu">
+        <Link className="nav__items" to="/completed-tasks">
+          History
+        </Link>
+
+        <Link className="nav__items" to="/subscription">
+          Pricing
+        </Link>
+
+        <Link className="nav__items" to="/contact-us">
+          Contact
+        </Link>
+
+        <Link className="nav__items" to="/settings">
+          Settings
+        </Link>
+
+        <button
+          onClick={() => {
+            singOut();
+          }}
+          className=" nav__items--logout"
+        >
+          Log out
+        </button>
+      </nav>
     </div>
   );
 };

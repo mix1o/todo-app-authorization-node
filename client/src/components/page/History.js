@@ -33,7 +33,7 @@ const History = () => {
           {filteredCompleted.length > 0 && (
             <>
               <h3 className="heading-3">All tasks that you have completed</h3>
-              <div style={{ padding: '1rem' }}>
+              <div style={{ padding: '1rem' }} className="containter__tasks">
                 {filteredCompleted
                   .reverse()
                   .map(

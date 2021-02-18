@@ -62,25 +62,33 @@ const UserTodos = ({ tasks, onAdd, show }) => {
               </p>
             )}
           </div>
-
-          {newItems
-            .reverse()
-            .map(
-              ({ _id, name, description, priority, date, complete, input }) => (
-                <Task
-                  id={_id}
-                  key={_id}
-                  name={name}
-                  desc={description}
-                  prio={priority}
-                  date={date}
-                  status={complete}
-                  input={true}
-                  onAdd={onAdd}
-                />
-              )
-            )}
-
+          <div className="containter__tasks">
+            {newItems
+              .reverse()
+              .map(
+                ({
+                  _id,
+                  name,
+                  description,
+                  priority,
+                  date,
+                  complete,
+                  input,
+                }) => (
+                  <Task
+                    id={_id}
+                    key={_id}
+                    name={name}
+                    desc={description}
+                    prio={priority}
+                    date={date}
+                    status={complete}
+                    input={true}
+                    onAdd={onAdd}
+                  />
+                )
+              )}
+          </div>
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={() => {

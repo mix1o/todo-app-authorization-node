@@ -4,9 +4,12 @@ import Hamburger from './Hamburger';
 import styled from 'styled-components';
 
 const BiggerPolygon = styled.div`
-@media (min-width: 576px) and (orientation: landscape) {
-height: 57px;
-}
+  @media (min-width: 576px) and (orientation: landscape) {
+    height: 57px;
+  }
+   @media (min-width: 1366px) {
+    display: none;
+  } ;
   position: fixed
   top: 0;
   left: 0;
@@ -20,6 +23,9 @@ const SmallerPolygon = styled.div`
   @media (min-width: 576px) and (orientation: landscape) {
     height: 70px;
     clip-path: polygon(50% 0, 100% 0, 100% 90%, 65% 62%, 50% 0);
+  }
+  @media (min-width: 1366px) {
+    display: none;
   }
   position: fixed;
   top: 0;
