@@ -47,7 +47,7 @@ router.post('/api/newuser', async (req, res) => {
     const savedUser = await user.save();
     res.send({ message: 'Your account has been created!', correct: true });
     sgMail.setApiKey(
-      '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'
+      process.env.SG_MAIL
     );
     const msg = {
       to: req.body.Email,
@@ -90,7 +90,7 @@ router.post('/api/resetPassword', (req, res) => {
       user.expireToken = Date.now() + 8000000;
       user.save().then((result) => {
         sgMail.setApiKey(
-          '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'
+          process.env.SG_MAIL
         );
         const msg = {
           to: req.body.Email,
@@ -230,7 +230,7 @@ router.post('/api/payCard', async (req, res) => {
 
     req.session.user.credits += creditsAdd;
     sgMail.setApiKey(
-      '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'
+     process.env.SG_MAIL
     );
     const msg = {
       to: req.session.user.email,
@@ -321,7 +321,7 @@ router.post('/api/message', (req, res) => {
   const { Subject, Email, Message } = req.body;
 
   sgMail.setApiKey(
-    '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'
+    process.env.SG_MAIL
   );
   const msg = {
     to: 'mntasks@interia.pl',
